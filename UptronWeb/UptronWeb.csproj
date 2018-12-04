@@ -536,6 +536,9 @@
     <Content Include="Views\Masters\AddDoctors.cshtml" />
     <Content Include="Views\Masters\AddSchedule.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\AboutUS_Company.cshtml" />
+    <Content Include="Views\Home\AboutUS_Circular.cshtml" />
+    <Content Include="Views\Home\AboutUS_Objective.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

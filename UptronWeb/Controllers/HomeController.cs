@@ -14,7 +14,17 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult Dashboard()
+        public ActionResult AboutUS_Company()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUS_Circular()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUS_Objective()
         {
             return View();
         }
