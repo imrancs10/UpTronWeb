@@ -1,0 +1,69 @@
+
+#feedback {
+  position: fixed;
+  right: -40px;
+  bottom: 0;
+  height: 500px;
+  margin-left: -3px;
+  margin-bottom: 30px;
+  z-index:99999999999999999999999999999;
+}
+
+
+#contactheading {
+    background-color:#333;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    padding:15px 15px 15px 15px;
+    color:#fff;
+    margin: -1px -11px -3px -7px;
+}
+#feedback p{ padding:10px 10px 0px 10px;
+}
+
+#feedback-form {
+  float: left;
+  width: 300px;
+  height: 445px;
+  z-index: 1000;
+  top:50px;
+  padding-left: 5px;
+  padding-right: 10px;
+  background-clip: 'padding-box';
+  border: 1px solid rgba(0,0,0,.2);
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+#feedback-tab {
+  float: right;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  width: 120px;
+  height: 38px;
+  background-color: rgba(0,0,0,0.5);
+  margin-top: 130px;
+  margin-left: -42px;
+
+  padding-top: 8px;
+ 
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 4px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+
+}
+
+#feedback-tab:hover { background-color: rgba(0,0,0,0.4); }
+
+#feedback-form textarea { resize: none; }

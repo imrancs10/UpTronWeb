@@ -16,6 +16,8 @@ namespace UptronWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //GlobalFilters.Filters.Add(new CustomExceptionFilter());
+            log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

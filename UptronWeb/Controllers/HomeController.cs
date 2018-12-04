@@ -9,6 +9,11 @@ namespace UptronWeb.Controllers
     public class HomeController : CommonController
     {
         // GET: Home
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Dashboard()
         {
             return View();

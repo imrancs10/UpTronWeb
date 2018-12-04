@@ -1,0 +1,354 @@
+﻿
+/*=======================================================================
+[04] Slider Area
+=========================================================================*/
+/*.service1-area {
+    position: relative;
+}*/
+/*.service1-area .service1-inner-area {
+    position: absolute;
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}*/
+.service-box1 {
+    border-right: 1px solid #aaaaaa;
+    padding: 12px 5px 0px 23px;
+    height: 153px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    background-color: rgba(0, 33, 71, 0.8);
+}
+.service-box1 .service-box-content {
+    -webkit-box-flex: 3;
+    -moz-flex: 3;
+    -webkit-flex: 3;
+    flex: 3;
+}
+.service-box1 .service-box-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+h3 {
+    font-size: 24px;
+}
+content h3 a {
+    color: #fff !important;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+a {
+    text-decoration: none;
+    
+}
+.span {
+color:#fff !important;
+}
+.border {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #b7b7b7;
+}
+.service-box1 .service-box-content p {
+    color: #ffffff;
+    font-weight: 400;
+}
+p {
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+}
+p {
+    margin: 0 0 10px;
+}
+.service-box1 .service-box-icon {
+    text-align: center;
+    padding-top: 10px;
+    -webkit-box-flex: 1;
+    -moz-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.service-box1:hover .service-box-content h3 a {
+    color: #fdc800;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.service-box1 .service-box-content h3 a {
+    color: #ffffff;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+a:active, a:hover, a:focus {
+    outline: 0 none;
+}
+.service-box1 .service-box-icon i {
+    color: #fdc800;
+    font-size: 36px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-controlNav {
+  display: none;
+}
+.slider1-area .nivo-directionNav a.nivo-prevNav {
+  left: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-prevNav:before {
+  content: "\f053";
+  font: normal normal normal 14px/1 FontAwesome;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 18px;
+  z-index: 9;
+  height: 10px;
+  width: 10px;
+  left: 19px;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-prevNav:hover {
+  background-color: rgba(0, 33, 71, 0.6);
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-prevNav:hover:before {
+  background: transparent;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-nextNav {
+  right: 8px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-nextNav:before {
+  content: "\f054";
+  font: normal normal normal 14px/1 FontAwesome;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 18px;
+  z-index: 9;
+  height: 10px;
+  width: 10px;
+  right: 19px;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-nextNav:hover {
+  background-color: rgba(0, 33, 71, 0.6);
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-directionNav a.nivo-nextNav:hover:before {
+  background: transparent;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.slider1-area .nivo-caption {
+  opacity: 1;
+  top: -40px;
+}
+@media only screen and (max-width: 991px) {
+  .slider1-area .nivo-caption {
+    top: 0;
+  }
+  .service1-area .service1-inner-area {
+    position: absolute;
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}
+}
+.slider1-area .slide-1 h1,
+.slider1-area .slide-2 h1,
+.slider1-area .slide-3 h1 {
+  color: #ffffff;
+  text-transform: capitalize;
+  font-size: 56px;
+  margin-bottom: 10px;
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .slider1-area .slide-1 h1,
+  .slider1-area .slide-2 h1,
+  .slider1-area .slide-3 h1 {
+    font-size: 42px;
+  }
+  .service1-area .service1-inner-area {
+    position: absolute;
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .slider1-area .slide-1 h1,
+  .slider1-area .slide-2 h1,
+  .slider1-area .slide-3 h1 {
+    font-size: 38px;
+  }
+  .service1-area .service1-inner-area {
+    position: absolute;
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .slider1-area .slide-1 h1,
+  .slider1-area .slide-2 h1,
+  .slider1-area .slide-3 h1 {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+  .service1-area .service1-inner-area {
+    position: absolute;
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}
+}
+@media only screen and (max-width: 479px) {
+  .slider1-area .slide-1 h1,
+  .slider1-area .slide-2 h1,
+  .slider1-area .slide-3 h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+}
+@media only screen and (max-width: 319px) {
+  .slider1-area .slide-1 h1,
+  .slider1-area .slide-2 h1,
+  .slider1-area .slide-3 h1 {
+    font-size: 24px;
+  }
+  .service1-area .service1-inner-area {
+    /*position: absolute;*/
+    top: -153px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9;
+}
+}
+.slider1-area .slide-1 p,
+.slider1-area .slide-2 p,
+.slider1-area .slide-3 p {
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+@media (min-width: 991px) and (max-width: 1199px) {
+  .slider1-area .slide-1 p,
+  .slider1-area .slide-2 p,
+  .slider1-area .slide-3 p {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .slider1-area .slide-1 p,
+  .slider1-area .slide-2 p,
+  .slider1-area .slide-3 p {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .slider1-area .slide-1 p,
+  .slider1-area .slide-2 p,
+  .slider1-area .slide-3 p {
+    display: none;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .slider1-area .slide-1 .slider-btn-area,
+  .slider1-area .slide-2 .slider-btn-area,
+  .slider1-area .slide-3 .slider-btn-area {
+    display: none;
+  }
+}
+.slider3-area .nivo-caption {
+  opacity: 1;
+  top: 0;
+}
+@media only screen and (max-width: 1199px) {
+  .slider3-area .nivo-caption {
+    top: 0;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .slider3-area .nivo-caption .slide-1 p,
+  .slider3-area .nivo-caption .slide-2 p,
+  .slider3-area .nivo-caption .slide-3 p {
+    display: none;
+  }
+}
+
