@@ -1,0 +1,494 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
+    <title>Uptron Powertronics Limited</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/styles/bootstrap.css">
+    <link rel="stylesheet" href="~/styles/dependencies.css">
+    <link rel="stylesheet" href="~/styles/components.css">
+    <link rel="stylesheet" href="~/styles/wrapkit.css">
+    <link rel="stylesheet" href="~/styles/demo.css">
+</head>
+<body>
+    <main class="wrapkit-wrapper" id="wrapper">
+        <!-- ============================================
+        HEADER SECTION
+        =============================================== -->
+        <!-- navigation -->
+        <nav class="header navbar">
+            <div class="container-fluid">
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-left">
+                    <a class="navbar-brand" href="#" role="logo" aria-label="Logo">
+                        <img class="logo" src="../../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                    </a>
+                    <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
+                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-right" role="navigation">
+
+                    <div class="dropdown">
+
+                        <br />
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <label id="lblUserName1" runat="server"></label>
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a data-toggle="modal" data-target="#customModal2" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a id="A1" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span> Sign out</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div><!-- /.dropdown -->
+                </div><!-- /navigation -->
+
+            </div><!-- /.container-fluid -->
+        </nav><!-- /navigation -->
+        <!-- ============================================
+        SIDEBAR SECTION
+        =============================================== -->
+        <aside class="sidebar" role="complementary">
+
+            <!-- profile -->
+            <div class="sidebar-block">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="Dashboard.aspx">
+                            <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
+                            <img class="media-object img-circle" src="~/images/dummy/unknown-profile.jpg" alt="photo profile">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading" id="lblUserName" runat="server">  </h4>
+
+                    </div>
+                </div>
+            </div><!-- /.sidebar-block -->
+            <!-- /profile -->
+            <!-- /navigation -->
+            <div class="nav-wrapper">
+                <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
+                    <li class="nav-item open active" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-down"></i>
+                            <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
+                            <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">GET STARTED</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="layout.html">
+                            <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                            <span class="nav-text">Layout</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="ecosystem.html">
+                            <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                            <span class="nav-text">Ecosystem</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="panels.html">
+                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                            <span class="nav-text">Panels</span>
+                        </a>
+                    </li>
+                    <!--<li class="nav-item open" role="presentation">
+                      <a href="#" data-toggle="nav-child"><i class="nav-caret pull-right fa fa-angle-down"></i>
+                        <span class="nav-icon"><i class="fa fa-align-left"></i></span>
+                        <span class="nav-text">Level Menu</span>
+                      </a>
+                      <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu" style="opacity: 1; display: block;">
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);">
+                          <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><i class="nav-caret pull-right fa fa-angle-right"></i><span class="nav-text">Node</span></a>
+                          <ul class="nav nav-child level-2 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
+                          </ul>
+                        </li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
+                      </ul>
+                    </li>-->
+
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">USER INTERFACES</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="nav-text">Components</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-grid.html"><span class="nav-text">Grids</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-type.html"><span class="nav-text">Type</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-button.html"><span class="nav-text">Buttons</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-icons.html"><span class="nav-text">Icons</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-modal.html"><span class="nav-text">Modal</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-tooltip-popover.html"><span class="nav-text">Tooltips &amp; Popovers</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-alert-callout.html"><span class="nav-text">Alerts &amp; Callout</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-progressbar.html"><span class="nav-text">Progress bar</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-label-badge.html"><span class="nav-text">Label &amp; Badge</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-navbar.html"><span class="nav-text">Navbar</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-nav.html"><span class="nav-text">Nav</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-tabs-collapse.html"><span class="nav-text">Tabs &amp; Collapse</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-check-square"></i></span>
+                            <span class="nav-text">Forms</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-basic.html"><span class="nav-text">Basic Elements</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-advance.html"><span class="nav-text">Advance Elements</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-uploader.html"><span class="nav-text">Uploader</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-xeditable.html"><span class="nav-text">x-Editable</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-wizard.html"><span class="nav-text">Wizard</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-editor.html"><span class="nav-text">Editor</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-imagecropping.html"><span class="nav-text">Image Cropping</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-validator.html"><span class="nav-text">Validator</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-line-chart"></i></span>
+                            <span class="nav-text">Charts</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-js.html"><span class="nav-text">ChartJs</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-morris.html"><span class="nav-text">Morris</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-inline.html"><span class="nav-text">Inline Charts</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-database"></i></span>
+                            <span class="nav-text">Tables</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="table-basic.html"><span class="nav-text">Basic Table</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="table-datatables.html"><span class="nav-text">DataTables</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">DEVELOPMENT</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="ui-kits.html">
+                            <span class="nav-icon"><i class="fa fa-cube"></i></span>
+                            <span class="nav-text">Widgets</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-plug"></i></span>
+                            <span class="nav-text">Plugins</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-animate.html"><span class="nav-text">Animated</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-bootbox.html"><span class="nav-text">Bootbox</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-calendar.html"><span class="nav-text">Calendar</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-maps.html"><span class="nav-text">Maps</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-nestable.html"><span class="nav-text">Nestable List</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-session-timeout.html"><span class="nav-text">Session Timeout</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-toastr.html"><span class="nav-text">Toastr</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-treeview.html"><span class="nav-text">Tree View</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-file-text-o"></i></span>
+                            <span class="nav-text">Pages</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-signin.html"><span class="nav-text">Signin</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-locked.html"><span class="nav-text">Lock Screen</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-error.html"><span class="nav-text">Error Page</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="nav-text">Profile</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-inbox.html"><span class="nav-text">Inbox</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-timeline.html"><span class="nav-text">Timeline</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-gallery.html"><span class="nav-text">Gallery</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-pricing.html"><span class="nav-text">Pricing</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-invoice.html"><span class="nav-text">Invoice</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-search.html"><span class="nav-text">Search Result</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-help.html"><span class="nav-text">Help</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="collapse-item" role="presentation">
+                        <a href="#" data-sidebar="toggleCollapse">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside><!-- /.SIDEBAR -->
+        <!-- ============================================
+        MAIN CONTENT SECTION
+        =============================================== -->
+        <section class="content-wrapper" role="main" ">
+            <div class="content">
+
+                <div class="content-bar">
+                    <ul class="breadcrumb breadcrumb-angle">
+                        <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                        <li class="active">Dashboard</li>
+                    </ul>
+                </div><!-- /.content-bar -->
+                <hr />
+
+                <div class="content-body">
+                    <!-- RESUME BLOCK -->
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                @*<img class="embed-responsive-item" src="~/images/dummy/desk3.jpg" alt="cover" />*@
+                                <img class="embed-responsive-item"  src="../../images/dummy/desk3.jpg" />
+
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Home Page</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="Slider.aspx"><i class="icon-eye fa-fw"></i> Slider Change</a>
+                                    </div>
+                                    <div>
+                                        <a href="AddBestJob.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Best Job</a>
+                                        <a href="AddInstitute.aspx"><i class="icon-star fa-fw"></i> Best Institute</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/rent.jpg" alt="cover" />
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Room Rent</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="AddRentName.aspx"> <i class="icon-eye fa-fw"></i>Add Rent Property </a>
+                                    </div>
+                                    <div>
+                                        <a href="AddRentArea.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Rent Location</a>
+                                        <a href="AddRentCategory.aspx"><i class="icon-star fa-fw"></i> Rent Category</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/Products.jpg" alt="cover">
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Electronic Products</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="AddProductDetail.aspx"><i class="icon-eye fa-fw"></i> Add Products </a>
+                                    </div>
+                                    <div>
+                                        <a href="AddLatestProduct.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Latets Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/institute.jpg" alt="cover">
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Best Institute</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="AddInstitute.aspx"> <i class="icon-eye fa-fw"></i> Add Best Institute</a>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/job.jpg" alt="cover">
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Best job</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="AddBestJob.aspx"><i class="icon-eye fa-fw"></i> Add job</a>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/blog.jpg" alt="cover">
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Blog</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="AddBlog.aspx"><i class="icon-eye fa-fw"></i> Add Blog </a>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--<img src="~/images/welcome.jpg" class="img-responsive"/>-->
+                </div>
+
+
+                <div class="clearfix"></div>
+
+                <!-- customModal2 -->
+                <div class="modal" id="customModal2" data-transition="flipXIn" tabindex="-1" role="dialog" aria-labelledby="modalBasicLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body" style="padding: 0 12px">
+                                <div class="row">
+                                    <div class="clearfix">
+                                        <button type="button" class="btn btn-xs btn-icon pull-right" data-dismiss="modal" aria-hidden="true"><i class="icon_close fa-2x"></i></button>
+
+                                        <div class="modal-header" style="background-color:#fff;">
+                                            <h4 class="modal-title" id="modalBasicLabel">Reset Password</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group has-feedback">
+                                                <div class="input-group input-group-in">
+                                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                                    <input type="text" id="txtusername" class="form-control" placeholder="Username" runat="server" />
+                                                    <span class="form-control-feedback"></span>
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group has-feedback">
+                                                <div class="input-group input-group-in">
+                                                    <span class="input-group-addon"><i class="icon-key"></i></span>
+                                                    <input type="password" id="txtoldpassowrd" class="form-control" placeholder="Old Password" runat="server" />
+                                                    <span class="form-control-feedback"></span>
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group has-feedback">
+                                                <div class="input-group input-group-in">
+                                                    <span class="input-group-addon"><i class="icon-key"></i></span>
+                                                    <input type="password" id="txtnewpassword" class="form-control" placeholder="New Password" runat="server" />
+                                                    <span class="form-control-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group has-feedback">
+                                                <div class="input-group input-group-in">
+                                                    <span class="input-group-addon"><i class="icon-check"></i></span>
+                                                    <input type="password" id="txtconfirmpassword" class="form-control" placeholder="Confirm Password" runat="server" />
+                                                    <span class="form-control-feedback"></span>
+                                                </div>
+                                            </div><!-- /.form-group -->
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <input id="btnCancel" type="button" name="cancel" value="Cancel" class="btn btn-default" data-dismiss="modal" runat="server" />
+                                            <input id="btnlogin" type="submit" name="submit" value="Save Changes" class="btn btn-primary" runat="server" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                <!-- Template Setups -->
+                <div class="modal fade" id="templateSetup">
+                    <div class="modal-dialog">
+                        <!-- modal-content -->
+                        <div class="modal-content"></div>
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.templateSetup -->
+
+
+            </div><!-- /.content -->
+
+        </section><!-- /MAIN -->
+        <!-- ============================================
+        FOOTER SECTION
+        =============================================== -->
+        <footer class="footer-wrapper" role="contentinfo">
+            <div class="footer">
+                <div class="pull-right text-muted"><small>Currently v1.2</small></div>
+                <div>Wrapkit Template  &copy; 2015</div>
+            </div>
+        </footer><!-- /.FOOTER -->
+    </main><!-- /#MAIN -->
+    <!-- VENDORS : jQuery & Bootstrap -->
+    <script src="~/scripts/lib/vendor.js"></script>
+    <!-- END VENDORS -->
+    <!-- DEPENDENCIES : Required plugins -->
+    <script src="~/scripts/lib/dependencies.js"></script>
+    <!-- END DEPENDENCIES -->
+    <!-- WRAPKIT -->
+    <script src="~/scripts/lib/wrapkit.js"></script>
+    <!-- END WRAPKIT -->
+    <!-- WRAPKIT SETUPS -->
+    <script src="~/scripts/lib/wrapkit-setup.js"></script>
+    <!-- end WRAPKIT SETUPS -->
+    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+    <script src="~/scripts/lib/plugin-setups.js"></script>
+    <!-- END PLUGIN SETUPS -->
+    <!-- COMPONENTS -->
+    <!-- Morris.js + Raphael -->
+    <script src="~/scripts/lib/morris.bundle.js"></script>
+    <script src="~/scripts/lib/jquery.sparkline.js"></script>
+    <script src="~/scripts/lib/jquery.easypiechart.js"></script>
+    <!-- END COMPONENTS -->
+    <!-- DUMMY: Use for demo -->
+    <script src="~/scripts/lib/demo/dashboard1-demo.js"></script>
+
+    
+</body>
+</html>
+

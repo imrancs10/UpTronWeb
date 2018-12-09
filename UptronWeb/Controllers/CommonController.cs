@@ -4,15 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.Global;
-using UptronWeb.BAL.Masters;
-using UptronWeb.BAL.Commom;
 
 namespace UptronWeb.Controllers
 {
     public class CommonController : Controller
     {
-        CommonDetails _details = null;
-
         public string LoginResponse(Enums.LoginMessage inputMessage)
         {
             if (inputMessage == Enums.LoginMessage.InvalidCreadential)
@@ -47,18 +43,6 @@ namespace UptronWeb.Controllers
         {
             TempData["Alert_Message"] = message;
             TempData["Alert_Title"] = title;
-        }
-
-        public virtual JsonResult GetDepartments()
-        {
-            DepartmentDetails _details = new DepartmentDetails();
-            return Json(_details.DepartmentList(), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetDaysList()
-        {
-            _details = new CommonDetails();
-            return Json(_details.DaysList(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -45,15 +45,15 @@
     <link href="~/css/feedback.css" rel="stylesheet" />
     <link href="~/css/styletimeline.css" rel="stylesheet" />
     <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>-->
-    <script src="~/js/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
     <link href="#" rel="stylesheet" id="rtl_css">
     <link href="~/css/default.css" rel="stylesheet" id="option_color">
-
     <!--Slider Css-->
     <link href="~/css/slider/css/layers.css" rel="stylesheet" />
     <link href="~/css/slider/css/navigation.css" rel="stylesheet" />
     <link href="~/css/slider/css/settings.css" rel="stylesheet" />
     <link href="~/css/slider/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/scripts/App/Global/Utility.js"></script>
 </head>
 <body class="body-wrapper static">
     <div class="se-pre-con"></div>
@@ -1777,6 +1777,23 @@
             });
         });
         </script>-->
+
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
 </body>
 </html>
 
