@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UptronWeb.BAL;
+using UptronWeb.Models.JobPortal;
 
 namespace UptronWeb.Controllers
 {
@@ -87,6 +89,13 @@ namespace UptronWeb.Controllers
         public ActionResult JobPortal()
         {
             return View();
+        }
+        [HttpPost]
+        public JsonResult JobPortalSave(JobRegistrationModel model)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var result = detail.SaveJobPortal(model);
+            return Json(CrudResponse(result), JsonRequestBehavior.AllowGet);
         }
     }
 }

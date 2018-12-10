@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UptronWeb.BAL.Common;
 using UptronWeb.Global;
 
 namespace UptronWeb.Controllers
@@ -43,6 +44,20 @@ namespace UptronWeb.Controllers
         {
             TempData["Alert_Message"] = message;
             TempData["Alert_Title"] = title;
+        }
+
+        [HttpPost]
+        public JsonResult GetSates()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetStates());
+        }
+
+        [HttpPost]
+        public JsonResult GetCities(int stateId)
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetCities(stateId));
         }
     }
 }

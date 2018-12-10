@@ -27,5 +27,12 @@ namespace DataLayer
     
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<JobRegistration> JobRegistrations { get; set; }
+        public virtual DbSet<JobRegistrationQualification> JobRegistrationQualifications { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<JobRegistrationEmployement> JobRegistrationEmployements { get; set; }
+        public virtual DbSet<JobRegistrationLanguage> JobRegistrationLanguages { get; set; }
+        public virtual DbSet<JobRegistrationSkill> JobRegistrationSkills { get; set; }
     }
 }

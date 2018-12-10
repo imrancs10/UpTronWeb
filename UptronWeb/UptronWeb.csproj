@@ -170,6 +170,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BAL\Common\CommonDetails.cs" />
+    <Compile Include="BAL\JobPortal\JobRegistrationDetails.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
@@ -187,8 +189,8 @@
     <Compile Include="Global\UserData.cs" />
     <Compile Include="Global\Utility.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
-    <Compile Include="Models\Masters\DepartmentModel.cs" />
-    <Compile Include="Models\Masters\ScheduleModel.cs" />
+    <Compile Include="Models\JobPortal\JobRegistrationModel.cs" />
+    <Compile Include="Models\JobPortal\JobRegistrationSkillModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -540,12 +542,10 @@
     <Content Include="plugins\simple-pre-loader\images\loader-64x\Preloader_2.gif" />
     <Content Include="plugins\smoothscroll\SmoothScroll.min.js" />
     <Content Include="plugins\syotimer\jquery.syotimer.min.js" />
+    <Content Include="Scripts\App\General\JobPortalRegistration.js" />
     <Content Include="Scripts\App\Global\App.js" />
     <Content Include="Scripts\App\Global\Utility.js" />
     <Content Include="Scripts\App\Login\Login.js" />
-    <Content Include="Scripts\App\Masters\Department.js" />
-    <Content Include="Scripts\App\Masters\Doctors.js" />
-    <Content Include="Scripts\App\Masters\Schedule.js" />
     <Content Include="img\GO\CCTV GO .pdf" />
     <Content Include="img\GO\Hardware.pdf" />
     <Content Include="img\GO\Manpower GO.pdf" />
@@ -1032,7 +1032,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\Appointment.cshtml" />
@@ -1109,6 +1108,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="js\newsstickerscript\" />
+    <Folder Include="Models\Masters\" />
+    <Folder Include="Scripts\App\Masters\" />
     <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
