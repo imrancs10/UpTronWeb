@@ -1,4 +1,5 @@
 ﻿
+
 @{
     Layout = null;
 }
@@ -21,8 +22,10 @@
     <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="~/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+    <link href="~/css/services/servicestyle.css" rel="stylesheet" />
 
     <!-- PLUGINS CSS STYLE -->
     <link href="~/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -87,7 +90,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="time hidden-xs" id="datetime"><i class="fa fa-clock-o"></i> Saturday, September 8, 2018 7:17:04 PM</div>
+                                <div class="time hidden-xs" id="datetime"><i class="fa fa-clock-o"></i> Tuesday, November 20, 2018 7:17:04 AM</div>
                                 <ul id="textresizer">
                                     <!--<li class="hidden-xs"><a href="#" title="Sitemap">Sitemap</a></li>-->
                                     <li class="hidden-xs"><a href="#" title="Feedback">Feedback</a></li>
@@ -135,7 +138,8 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="~/Home/Index"><i class="fa fa-home"></i> Home</a></li>
-                                <li class="dropdown singleDrop active">
+                                <!--<li><a href="#">About Us</a></li>-->
+                                <li class=" dropdown singleDrop">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About US <i class="fa fa-caret-down"></i> </a>
                                     <ul class="dropdown-menu dropdown-menu-left">
                                         <li><a href="~/Home/AboutUS_Company">About Company</a></li>
@@ -143,7 +147,7 @@
                                         <li><a href="~/Home/AboutUS_Objective">Objective</a></li>
                                     </ul>
                                 </li>
-                                <li class=" dropdown singleDrop">
+                                <li class=" dropdown singleDrop active">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <i class="fa fa-caret-down"></i> </a>
                                     <ul class="dropdown-menu dropdown-menu-left">
                                         <li><a href="~/Home/Service_Hospital">Hospital Information System</a></li>
@@ -156,9 +160,9 @@
                                         <li><a href="~/Home/Service_Miscelleneous">Miscellaneous Services</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="~/Home/MajorProject">Major Projects</a></li>
-                                <li><a href="~/Home/Whatsnew">Whats New</a></li>
-                                <li><a href="~/Home/Contact">Contact Us</a></li>
+                                <li><a href="majorproject.html">Major Projects</a></li>
+                                <li><a href="comingpage.html">Whats New</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -185,251 +189,142 @@
 
 
             <!-- PAGE TITLE SECTION -->
-            <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg02.jpg);">
+            <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg-10.jpg);">
                 <div class="container">
                     <div class="pageTitle">
-                        <h1>Objective of the Company</h1>
+                        <h1>Training</h1>
                     </div>
                 </div>
             </section>
 
-            <!-- ABOUT SECTION -->
-            <!--<div class="secotionTitle" style="background: #f7f7f7;">
-                <h2><span>About Us</span></h2>
-              </div>-->
-            <!--<section class="container-fluid clearfix " >
-              <div class="aboutInner">
-                <div class="sepcialContainer">
-                  <div class="row">
-                    <div class="col-sm-6 col-xs-12 rightPadding">
-                      <div class="imagebox ">
-                        <img src="~/img/home/about.jpg" alt="Image About" class="~/img-responsive"/>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                      <div class="aboutInfo">
-                        <h2>About Uptron Powertronics </h2>
-                        <p>Uptron Powertronics Limited was incorporated under the name of UPTRON Limited on 1st Feb 1979 under company act of 1956 as a limited company. The company was subsequently renamed as Uptron Powertronics India Limited on 24th April 1984.</p>
-                        <p> Uptron Powertronics Limited is a Public Sector ISO 9001:2000 company under the administrative control of Department of Information Technology and Electronics, Government of Uttar Pradesh. Uptron Powertronics Limited is managed by the Board of directors under Chief Executive and Managing Director.</p>
-                          <p>Uptron Powertronics Limited was incorporated under the name of UPTRON Limited on 1st Feb 1979 under company act of 1956 as a limited company. </p>
-                        <a href="#" class="btn btn-primary first-btn" data-toggle="modal" data-target="#appoinmentModal">Read More...</a>
-                        <a href="#" class="">Read More...</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>-->
+
             <!-- END ABOUT SECTION -->
             <div class="example">
                 <ol class="breadcrumb">
                     <li><a href="~/Home/Index">Home</a></li>
-                    <li class="active">About Objective</li>
+                    <li class="active">Training</li>
                 </ol>
             </div>
-            <!-- BLOG SINGLE SECTION -->
             <!-- KEY FUNCTANIORIES & Services SECTION -->
             <section class="clearfix">
                 <div class="container">
                     <div class="timeLine">
                         <div class="row">
+
                             <!-- KEY FUNCTANIORIES SECTION -->
-                            <!--<div class="col-md-4">
-                                   <div class="secotionTitle">
-                                          <h2 class="bg" id="H1">Key Functionaries</h2>
-                                         </div>
-                                   <div class="tabbable tabTop">
-                                  <div class="row">
-                                  <div class="col-md-12 col-sm-12 col-xs-12  br-bottom">
-                                                  <div class="col-md-4 col-sm-4">
-                                                      <span class="photo">
-                                                          <img src="~/img/yogiji.jpg" alt="" class="~/img-sett"></span>
-                                                  </div>
-                                                  <div class="col-md-8 col-sm-8">
-                                                      <div class="key_title">
-                                                         <h3> Shri Yogi Adityanath</h3>
-                                                          <p>
-                                                              Hon'ble Chief Minister,<br> Uttar Pradesh</p>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                  </div>
-                                  <div class="row">
-                                  <div class="col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="col-md-4 col-sm-4">
-                                                      <span class="photo">
-                                                          <img src="~/img/dinesh.jpg" alt="" class="~/img-sett"></span>
-                                                  </div>
-                                                  <div class="col-md-8 col-sm-8">
-                                                      <div class="key_title">
-                                                          <h3>Shri Dinesh Sharma</h3>
-                                                          <p>
-                                                              Hon’ble Deputy Chief Minister <br />& Minister of IT & Electronics, <br> Uttar Pradesh</p>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                  </div>
-                                <div class="tab-content">
-                                  <div class="tab-pane active" id="Div1">
-                                    <div class="tabbable tabs-left row">
-                                      <ul class="nav nav-tabs col-sm-12 col-xs-12">
-                                        <li class="active"><a href="#braidstwist" data-toggle="tab" aria-expanded="false"><i class="fa fa-file"></i> Information Security Guidelines</a></li>
-                                        <li><a href="#haircolor" data-toggle="tab" aria-expanded="false"><i class="fa fa-align-right"></i> Important GO's & Circular </a></li>
-                                        <li class=""><a href="#hairextension" data-toggle="tab" aria-expanded="false"><i class="fa fa-clipboard"></i> E-Citizen</a></li>
-                                        <li class=""><a href="#hairextension" data-toggle="tab" aria-expanded="false"><i class="fa fa-bell-o"></i> How to associate with UPL</a></li>
-                                      </ul>
-
-                                    </div>
-                                  </div>
-
-                                </div>
-                              </div>
-                                        <div class="secotionTitle">
-                                          <h2 class="bg">News Updates</h2>
-                                         </div>
-                                        <div class="demo5 demof">
-                                          <ul>
-                                          <li>
-                                             <a href="#">Latest News</a>
-                                              <p>Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....</p>
-                                          </li>
-                                          <li class="odd"><a href="#">Latest News</a>
-                                          <p>Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....</p>
-                                          </li>
-                                          <li><a href="#">Latest News</a>
-                                          <p>Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....Coming Soon.....</p>
-                                          </li>
-                                      </ul>
-                                        </div>
-                                        <div class="panel-footer"> <p>Read More...</p></div>
-                            </div>-->
-                            <div class="col-md-3">
-                                <div class="blogSidebar">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">Important Links</div>
-                                        <div class="panel-body">
-                                            <ul class="list-unstyle categoryList">
-                                                <li><a href="#"><i class="fa fa-file"></i> Information Security Guidelines</a></li>
-                                                <li><a href="#"><i class="fa fa-align-right"></i> Important GO's & Circular</a></li>
-                                                <li><a href="#"><i class="fa fa-clipboard"></i> E-Citizen</a></li>
-                                                <li><a href="#"><i class="fa fa-bell-o"></i> How to associate with UPL</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-sm-3 col-xs-12">
                                 <div class="secotionTitle">
-                                    <h2 class="bg">News Updates</h2>
+                                    <h2 class="bg">Our Service</h2>
                                 </div>
-                                <div class="demo5 demof">
-                                    <ul>
-                                        <li>
+                                <div class="blogSidebar">
+                                    <div class="panel panel-default recentBlogPosts">
+                                        <div class="panel-body">
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-1.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Hospital">Hospital Information System</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-2.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Eprocurement">e-Procurement Services</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-3.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Manpower">Manpower Supply Services</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-4.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Software">Software, Hardware & Networking</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
 
-                                            <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                                        </li>
-                                        <li class="odd">
-                                            <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                                        </li>
-                                        <li>
-                                            <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                                        </li>
-                                    </ul>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-5.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_ITEnabled">IT Enabled Services</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-6.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Amc">Annual Maintenance Services</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-7.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Training">Workshop Training</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="blog-single-right-sidebar.html">
+                                                    <img class="media-object" src="~/img/blog/blog-new-8.jpg" alt="Image">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"><a href="~/Home/Service_Miscelleneous">Miscellaneous Services</a></h4>
+                                                    <h6>Read More...</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--<div class="panel-footer"> <p>Read More...</p></div>-->
                             </div>
                             <div class="col-lg-9">
                                 <div class="blogPost">
-                                    <h2>Objective of the Company</h2>
-                                    <p>I. The objects for which the Company is established are:</p>
-                                    <p> A) Main Objects of the Company to be pursued by the Company on its incorporation :</p>
-                                    <p>(1) To carry on all or any of the business of manufacturers, installers, maintainers, repairers of and dealers in electrical and electronic apparatus and instruments of every description including battery chargers. inverters, rectifiers, regulated power suppliers. automatic voltage regulators and other applied equipments of and in electronic components, radio, television and tele-communication requisites and supplies, including relays. transformers, electric accumulators, chokes, switches, lamps. printed circuits and generally wireless and electrical components, fittings, parts, apparatus, accessories and equipments of every kind.</p>
-                                    <p>(2) To manufacture, buy, import, export, put up, sell, use, install, hire, let on hire, repair, assemble, distribute or otherwise deal in or trade in telephone components, telegraphs (wireless or other) dynamos. engines, accumulators, transformers, condensers, capacitors, cables, resistances, amplifiers, transmitters, chokes, cables, wires, lamps, dry cells, batteries, torches lighters and all appliances, apparatus, machinery, goods, gadgets, accessories, articles or things which may hereafter be invented or connected with the generation, accumulation, distribution, supply or employment of electricity or any power, force or energy that can be used as substitute therefore including all cables, wires, or appliances for connecting apparatus at a distance with the other apparatus and including the formation, maintenance and alterations of exchange and Centres. </p>
-                                    <p>2(A) To undertake and carry on the business of manufacturer, installers, maintainers, repairers and dealers of fire fighting equipments security and surveillance related products and other related items. </p>
-                                    <p>2(B) To undertake business activities related to Software, development center, IT data center, Cloud services and others CAD / CAM training centre, manufacturing of electronics equipments / IT / ITES training. </p>
-                                    <p> (3) To carry on the business of electricians, electrical engineers, electrical contractors, and manufacturers of all kinds of electrical machinery telephonic or telegraphic apparatus of any kind.</p>
-                                    <p> (4) To carry on business works and activities  related to software development ,  Electronic  Data Processing Systems, Data Communication systems,  Hardware  Software, Networking,  Internet,  e-commerce. et-cetera </p>
-                                    <p> (5) To carry on business, Works and activities in the field of Information Technology and its enables services e.g. </p>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <div class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_2" aria-expanded="false">
-                                                    Value added IT Services
-                                                </div>
-                                            </h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h2>Training</h2>
+                                            <p>Training is teaching, or developing in oneself or others, any skills and knowledge that relate to specific useful competencies. Training has specific goals of improving one's capability, capacity, productivity and performance. It forms the core of apprenticeships and provides the backbone of content at institutes of technology (also known as technical colleges or polytechnics).</p>
+                                            <p>Training programs in this area develop specific skills or muscles, often with a view of peaking at a particular time. Some physical training programs focus on raising overall</p>
                                         </div>
-                                        <div id="collapse_3_2" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                            <div class="panel-body">
-                                                <p style="text-align: justify; font-size: 12px"></p>
-                                                <p> 1. Web enability Legacy systems</p>
-                                                <p> 2. E-Commerce/Extended Enterprises Application</p>
-                                                <p> 3. Standards-based Application integration</p>
-                                                <p> 4. Knowledge Management</p>
-                                                <p> 5. Conveyance Application</p>
+                                        <div class="col-md-6">
+                                            <img src="~/img/traning.jpg" />
+                                        </div>
 
-                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3 class="qua">Conducting Skill , Workshop training to officials, Staff and Workers.</h3>
+                                            <h3 class="qua">Imparted training to doctors and Support staff to Deptt. of Health.</h3>
+                                            <h3 class="qua">Training for Skill Development Courses.</h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3 class="qua">Training to officials of DUDA /SUDA.</h3>
+                                            <h3 class="qua">Imparted Knowledge in Deptt. of Labour.</h3>
                                         </div>
                                     </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <div class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_3" aria-expanded="false">
-                                                    Software Products
-                                                </div>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_3_3" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                            <div class="panel-body">
-                                                <p style="text-align: justify; font-size: 12px"></p>
-                                                <p> 1. Emerging Silver</p>
-                                                <p> 2. Productization</p>
-                                                <p> 3. Embedded Software </p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <div class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_4" aria-expanded="false">
-                                                    IT Enabled Services
-                                                </div>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_3_4" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                            <div class="panel-body">
-                                                <p style="text-align: justify; font-size: 12px"></p>
-                                                <p> 1. HR Services</p>
-                                                <p> 2. Remote Customer Interaction</p>
-                                                <p> 3. Data Search, Integration and Analysis</p>
-                                                <p> 4. Engineering and Design Services</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <div class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#collapse_3_5" aria-expanded="false">
-                                                    E-Business
-                                                </div>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse_3_5" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                            <div class="panel-body">
-                                                <p style="text-align: justify; font-size: 12px"></p>
-                                                <p> 1. Domestic to Domestic Business</p>
-                                                <p> 2. NRI oriented Business to Consumer</p>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p> (6) To undertake activities for Computer Education/Corporate Training and proliferation knowledge, know-how, know-why and information about the Information Technology.</p>
-                                    <p> The authorized share capital of the company is Rs 4,50,00,000 ( four crores fifty lakhs only) divided into 4,50,000 equity shares of Rs 100 each.</p>
-
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
             </section>
 
             <!-- PARTNER LOGO SECTION -->
@@ -479,20 +374,20 @@
                                     </div>
                                 </div>
                                 <!--<div class="col-sm-3 slide">
-                                  <div class="partnersLogo clearfix">
-                                    <img src="~/img/home/brand-2.png" alt="Image Partner">
-                                  </div>
-                                </div>
-                                <div class="col-sm-3 slide">
-                                  <div class="partnersLogo clearfix">
-                                    <img src="~/img/home/brand-3.png" alt="Image Partner">
-                                  </div>
-                                </div>
-                                <div class="col-sm-3 slide">
-                                  <div class="partnersLogo clearfix">
-                                    <img src="~/img/home/brand-4.png" alt="Image Partner">
-                                  </div>
-                                </div>-->
+                      <div class="partnersLogo clearfix">
+                        <img src="~/img/home/brand-2.png" alt="Image Partner">
+                      </div>
+                    </div>
+                    <div class="col-sm-3 slide">
+                      <div class="partnersLogo clearfix">
+                        <img src="~/img/home/brand-3.png" alt="Image Partner">
+                      </div>
+                    </div>
+                    <div class="col-sm-3 slide">
+                      <div class="partnersLogo clearfix">
+                        <img src="~/img/home/brand-4.png" alt="Image Partner">
+                      </div>
+                    </div>-->
                             </div>
                         </div>
                     </div>
@@ -511,8 +406,8 @@
                                 <div class="footerText">
                                     <a href="~/Home/Index" class="footerLogo"><img src="~/img/uptron-footerlogo.png" alt="Footer Logo" style="width:240px;"></a>
                                     <p>
-                                        Regd. Office: </br>
-                                        S-58, Industrial Area Site IV,  </br>
+                                        Regd. Office: <br />
+                                        S-58, Industrial Area Site IV,  </br/>
                                         Sahibabad, Ghaziabad, U.P. – 201010</br>
                                         Contact no – 0120-4561815<hr />
                                         Branch Office: </br>
@@ -610,12 +505,12 @@
                                     <li class="last leaf"><a href="contact-us.html" title="">Help</a></li>
                                 </ul>
                                 <!--<ul class="list-inline socialLink">
-                                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                                  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                </ul>-->
+                      <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    </ul>-->
                             </div>
                             <div class="col-sm-4 col-sm-pull-8 col-xs-12">
                                 <div class="copyRightText">
@@ -626,7 +521,6 @@
                     </div>
                 </div>
             </footer>
-
             <div class="modal fade modal-fullscreen" id="modalSmall" tabindex="-1" role="dialog" aria-labelledby="modalSmallLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -647,15 +541,15 @@
                             <p>UPTRON makes no representation or warranty as to the final terms and duration of any appointment obtained through this Site. You waive any claims against UPTRON for failure to find you such appointment or in relation to the terms or duration of any appointment.</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="btnTestSaveSmall" class="btn btn-primary first-btn" target="_blank" onclick="location.href = '~/Home/JobPortal';">Accept</button>
+                            <button type="button" id="btnTestRefreshSmall" class="btn btn-primary first-btn" target="_blank" onclick="location.href = 'jobportal.html';">Accept</button>
                             <button type="button" class="btn btn-primary first-btn" data-dismiss="modal">Close</button>
                             <!--<button type="button" id="btnTestRefreshSmall" class="btn btn-default">
-                    <span class="d-none d-md-inline">Reload Data</span>
-                    <span class="d-md-none">Reload</span>
-                </button>-->
-                            <!--<button type="button" id="btnTestSaveSmall" class="btn btn-danger first-btn">
-                    <span class="d-md-none">Close</span>
-                </button>-->
+                                <span class="d-none d-md-inline">Reload Data</span>
+                                <span class="d-md-none">Reload</span>
+                            </button>-->
+                            <button type="button" id="btnTestSaveSmall" class="btn btn-danger first-btn">
+                                <span class="d-md-none">Close</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -795,7 +689,7 @@
   	});
         </script>
 
-        <link href="options/animate.css" rel="stylesheet">
+        <link href="~/options/animate.css" rel="stylesheet">
 
         <!--<link href="options/optionswitch.css" rel="stylesheet">
         <script src="options/optionswitcher.js"></script>-->
