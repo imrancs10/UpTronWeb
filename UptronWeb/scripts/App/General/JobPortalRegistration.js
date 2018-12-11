@@ -57,8 +57,27 @@ function fillCity(stateId) {
 $('#btnSave').click(function () {
     var registrationJson = {
         Name: $('#txtName').val(),
+        fatherName: $('#txtfatherName').val(),
+        Mothername: $('#txtMotherName').val(),
+        DOB: $('#datepicker').val(),
         Gender: $('#Gender').val(),
+        MaritalStatus: $('#MaritalStatus').val(),
+        Religion: $('#Religion').val(),
+        IdentityType: $('#IdentityDetails').val(),
+        IdentityNo: $('#txtIdentityNo').val(),
+        MobileNo: $('#txtMobile').val(),
+        AlternateNo: $('#txtAlternate').val(),
         EmailId: $('#txtEmail').val(),
+        Pincode: $('#txtPinCode').val(),
+        CityId: $('#city').val(),
+        StateId: $('#state').val(),
+        Experience: $('#Experience').val(),
+        Disability: $('#disabilities').val(),
+        ExServiceMan: $('#ExServiceman').val(),
+        PersonHeight: $('#txtHeight').val(),
+        JobRegistrationLanguage: [
+            { Language: $('#LanguageDropdown').val()[0]}
+        ],
         JobRegistrationSkills: [
             { Skill: $("#SkillDropdown").val()[0] }
         ]

@@ -154,7 +154,7 @@
                                                     <label class="col-sm-4 control-label">Father Name <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtAge"   class="form-control" placeholder="Father Name" />
+                                                            <input type="text" id="txtfatherName" class="form-control" placeholder="Father Name" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-user"></i></span>
                                                             </span>
@@ -168,7 +168,7 @@
                                                     <label class="col-sm-4 control-label">Mother Name <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtHeight"   class="form-control" placeholder="Mother Name" />
+                                                            <input type="text" id="txtMotherName" class="form-control" placeholder="Mother Name" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-user"></i></span>
                                                             </span>
@@ -185,7 +185,7 @@
                                                     <label class="col-sm-4 control-label">Date Of Birth<span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input data-input="daterangepicker" data-single-date-picker="true" data-show-dropdowns="true" class="form-control" placeholder="(DD/MM/YYYY)" id="datepicker" />
+                                                            <input data-input="daterangepicker" data-single-date-picker="true" data-show-dropdowns="true" name="datepicker" class="form-control" placeholder="(DD/MM/YYYY)" id="datepicker" />
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                         </div>
                                                     </div>
@@ -213,7 +213,7 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Marital Status </label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="Select2" required  class="form-control required">
+                                                        <select name="MaritalStatus" id="MaritalStatus" required  class="form-control required">
                                                             <option value="">Select Marital Status</option>
                                                             <option value="NEVER_MARRIED">Never Married</option>
                                                             <option value="Married">Married</option>
@@ -228,8 +228,8 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Religion <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="SelectReligion"   class="form-control required">
-                                                            <option value="0">Select Religion</option>
+                                                        <select name="Religion" id="Religion" required  class="form-control required">
+                                                            <option value="">Select Religion</option>
                                                             <option value="HINDU">Hindu</option>
                                                             <option value="MUSLIM">Muslim</option>
                                                             <option value="CHRISTIAN">Christian</option>
@@ -251,12 +251,12 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Identity Details <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="Select3"   class="form-control required">
-                                                            <option value="0">Select Identity</option>
+                                                        <select name="IdentityDetails" id="IdentityDetails" required  class="form-control required">
+                                                            <option value="">Select Identity</option>
                                                             <option value="AadharCard">Aadhar Card</option>
                                                             <option value="PanCard">Pan Card</option>
                                                             <option value="VoterId">Voter Id</option>
-                                                            <option value="Dl">Driving Licence</option>
+                                                            <option value="Driving_Licence">Driving Licence</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -266,7 +266,7 @@
                                                     <label class="col-sm-4 control-label">Identity No <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="Text1"   class="form-control" placeholder="Identity No" />
+                                                            <input type="text" id="txtIdentityNo" name="txtIdentityNo" class="form-control" placeholder="Identity No" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-user"></i></span>
                                                             </span>
@@ -282,7 +282,7 @@
                                                     <label class="col-sm-4 control-label">Mobile No <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="Text2"   class="form-control" placeholder="Mobile No" />
+                                                            <input type="text" id="txtMobile" name="txtMobile" class="form-control" placeholder="Mobile No" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-mobile"></i></span>
                                                             </span>
@@ -296,7 +296,7 @@
                                                     <label class="col-sm-4 control-label">Alternate No <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="Text12"   class="form-control" placeholder="Alternate No" />
+                                                            <input type="text" id="txtAlternate" name="txtAlternate" class="form-control" placeholder="Alternate No" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-phone"></i></span>
                                                             </span>
@@ -312,7 +312,7 @@
                                                     <label class="col-sm-4 control-label">Email Id <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtEmail"   class="form-control" placeholder="Email Id" />
+                                                            <input type="text" id="txtEmail" name="txtEmail"  class="form-control" placeholder="Email Id" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-envelope"></i></span>
                                                             </span>
@@ -325,7 +325,7 @@
                                                     <label class="col-sm-4 control-label">Pin Code <span style="color:red;">*</span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="Text4"   class="form-control" placeholder="Pin Code" />
+                                                            <input type="text" id="txtPinCode"  name="txtPinCode" class="form-control" placeholder="Pin Code" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-edit"></i></span>
                                                             </span>
@@ -358,7 +358,7 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Upload Resume </label>
                                                     <div class="col-sm-8">
-                                                            <input type="file" name="file" />
+                                                            <input type="file" name="fileResume" />
                                                     </div>
                                                     <span style="color:red;">Upload Resume size should be or equal to 400 KB.</span>
                                                 </div>
@@ -367,7 +367,7 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Upload Image </label>
                                                     <div class="col-sm-8">
-                                                            <input type="file" name="file" />
+                                                            <input type="file" name="fileImage" />
                                                     </div>
                                                     <span style="color:red;">Upload Photo size should be or equal to  200 KB.</span>
                                                 </div>
@@ -400,20 +400,20 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select6"   class="form-control required">
-                                                                <option value="0">Select Qualification</option>
-                                                                <option value="PHD" selected="selected">High School</option>
+                                                            <select name="Qualification" id="Qualification" required  class="form-control required">
+                                                                <option value=" ">Select Qualification</option>
+                                                                <option value="HighSchool">High School</option>
                                                                 <option value="Seniorsecondary">Senior Secondary School</option>
                                                                 <option value="Bachelor’s">Bachelor’s Degree</option>
                                                                 <option value="Master’s">Master’s Degree</option>
-                                                                <option value="ePHD/BED">PHD / BED</option>
+                                                                <option value="PHD/BED">PHD / BED</option>
                                                             </select>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text5"   class="form-control" placeholder="Board/Institute/University" />
+                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -422,36 +422,36 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select7"   class="form-control required">
-                                                                <option value="0">Select Year</option>
-                                                                <option value="1990" selected="selected">1990</option>
+                                                            <select name="Year" id="Year" required class="form-control required">
+                                                                <option value="">Select Year</option>
+                                                                <option value="1990">1990</option>
                                                                 <option value="1991">1991</option>
                                                             </select>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select8"   class="form-control required">
-                                                                <option value="0">Select Percentage</option>
-                                                                <option value="90%" selected="selected">90%</option>
+                                                            <select name="Percentage" id="Percentage" required class="form-control required">
+                                                                <option value="">Select Percentage</option>
+                                                                <option value="90%">90%</option>
                                                                 <option value="95%">95%</option>
                                                             </select>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select9"   class="form-control required">
-                                                                <option value="0">Select Specialization</option>
-                                                                <option value="Computer" selected="selected">Computer</option>
+                                                            <select name="Specialization" id="Specialization" required class="form-control required">
+                                                                <option value="">Select Specialization</option>
+                                                                <option value="Computer">Computer</option>
                                                                 <option value="Accounts">Accounts</option>
                                                             </select>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select10"   class="form-control required">
-                                                                <option value="0">Select Course</option>
-                                                                <option value="MCA" selected="selected">MCA</option>
+                                                            <select name="Course" id="Course" required class="form-control required">
+                                                                <option value="">Select Course</option>
+                                                                <option value="MCA">MCA</option>
                                                                 <option value="BCA">BCA</option>
                                                             </select>
                                                         </div>
@@ -460,9 +460,9 @@
                                                 <tr>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select11"   class="form-control required">
-                                                                <option value="0">Select Qualification</option>
-                                                                <option value="PHD" selected="selected">PHD</option>
+                                                            <select name="AlternateQualification" id="AlternateQualification" required class="form-control required">
+                                                                <option value="">Select Qualification</option>
+                                                                <option value="PHD">PHD</option>
                                                                 <option value="B-ED">B-ED</option>
                                                             </select>
                                                         </div>
@@ -470,7 +470,7 @@
                                                     <td>
                                                         <div class="form-group mt-lg">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text6"   class="form-control" placeholder="Board/Institute/University" />
+                                                                <input type="text" id="Text6" class="form-control" placeholder="Board/Institute/University" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -715,7 +715,7 @@
                                                     <td>
                                                         <div class="form-group mt-lg">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text15"   class="form-control" placeholder="Name Of Organization" />
+                                                                <input type="text" id="txtOrganization" name="txtOrganization"  class="form-control" placeholder="Name Of Organization" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -725,7 +725,7 @@
                                                     <td>
                                                         <div class="form-group mt-lg">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text10"   class="form-control" placeholder="Post Held" />
+                                                                <input type="text" id="txtPostHeld" name="txtPostHeld"  class="form-control" placeholder="Post Held" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -736,18 +736,18 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group mt-lg">
-                                                                    <select name="filledby" id="Select32"   class="form-control required">
-                                                                        <option value="0">Select Month</option>
-                                                                        <option value="1990" selected="selected">1990</option>
+                                                                    <select name="FromMonth" id="FromMonth" required  class="form-control required">
+                                                                        <option value="">Select Month</option>
+                                                                        <option value="1990">1990</option>
                                                                         <option value="1991">1991</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group mt-lg">
-                                                                    <select name="filledby" id="Select31"   class="form-control required">
-                                                                        <option value="0">Select Year</option>
-                                                                        <option value="1990" selected="selected">1990</option>
+                                                                    <select name="FromYear" id="FromYear" required  class="form-control required">
+                                                                        <option value="">Select Year</option>
+                                                                        <option value="1990">1990</option>
                                                                         <option value="1991">1991</option>
                                                                     </select>
                                                                 </div>
@@ -758,18 +758,18 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group mt-lg">
-                                                                    <select name="filledby" id="Select33"   class="form-control required">
-                                                                        <option value="0">Select Month</option>
-                                                                        <option value="1990" selected="selected">1990</option>
+                                                                    <select name="ToMonth" id="ToMonth" required class="form-control required">
+                                                                        <option value="">Select Month</option>
+                                                                        <option value="1990">1990</option>
                                                                         <option value="1991">1991</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group mt-lg">
-                                                                    <select name="filledby" id="Select56"   class="form-control required">
-                                                                        <option value="0">Select Year</option>
-                                                                        <option value="1990" selected="selected">1990</option>
+                                                                    <select name="ToYear" id="ToYear" required class="form-control required">
+                                                                        <option value="">Select Year</option>
+                                                                        <option value="1990">1990</option>
                                                                         <option value="1991">1991</option>
                                                                     </select>
                                                                 </div>
@@ -778,9 +778,9 @@
                                                     </td>
                                                     <td>
                                                         <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select34"   class="form-control required">
-                                                                <option value="0">Select Industry type</option>
-                                                                <option value="Computer" selected="selected">Computer</option>
+                                                            <select name="Industry" id="Industry" required class="form-control required">
+                                                                <option value="">Select Industry type</option>
+                                                                <option value="Computer">Computer</option>
                                                                 <option value="Accounts">Accounts</option>
                                                             </select>
                                                         </div>
@@ -788,7 +788,7 @@
                                                     <td>
                                                         <div class="form-group mt-lg">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text16"   class="form-control" placeholder="Salary Drawn(PM)" />
+                                                                <input type="text" id="txtSalary" name="txtSalary" class="form-control" placeholder="Salary Drawn(PM)" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -808,7 +808,7 @@
                                                     <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <select class="form-control" id="Select36" multiple="multiple">
+                                                            <select class="form-control" id="LanguageDropdown" multiple="multiple">
                                                                 <option>English</option>
                                                                 <option>Hindi</option>
                                                                 <option>English (Intl.)</option>
@@ -836,7 +836,7 @@
 
                                                 <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
                                                     <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text13"   class="form-control" placeholder="Words per Minute to be populated">
+                                                        <input type="text" id="txtWords" name="txtWords" class="form-control" placeholder="Words per Minute to be populated">
                                                         <span class="input-group-addon">
                                                             <span class="icon"><i class="fa fa-user"></i></span>
                                                         </span>
@@ -850,9 +850,9 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Experience in Works </label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="Select35"   class="form-control required">
-                                                            <option value="0">Select Experience</option>
-                                                            <option value="1Years" selected="selected">1 Years</option>
+                                                        <select name="Experience" id="Experience" required  class="form-control required">
+                                                            <option value="">Select Experience</option>
+                                                            <option value="1Years">1 Years</option>
                                                             <option value="2Years">2 Years</option>
                                                             <option value="3Years">3 Years</option>
                                                             <option value="4Years">4 Years</option>
@@ -871,8 +871,9 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Are you Person with disabilities </label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="Select37"   class="form-control required">
-                                                            <option value="No" selected="selected">No</option>
+                                                        <select name="disabilities" id="disabilities" required class="form-control required">
+                                                            <option value="">Select Person disabilities</option>
+                                                            <option value="No">No</option>
                                                             <option value="Yes">Yes</option>
                                                         </select>
                                                     </div>
@@ -885,8 +886,9 @@
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
                                                     <div class="col-sm-8">
-                                                        <select name="filledby" id="Select38"   class="form-control required">
-                                                            <option value="No" selected="selected">No</option>
+                                                        <select name="ExServiceman" id="ExServiceman" required class="form-control required">
+                                                            <option value="">Select Ex-Serviceman</option>
+                                                            <option value="No">No</option>
                                                             <option value="Yes">Yes</option>
                                                         </select>
                                                     </div>
@@ -909,7 +911,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <div class="input-group input-group-icon">
-                                                                <input type="text" id="Text11"   class="form-control" placeholder="Height (in cm)" />
+                                                                <input type="text" id="s" name="txtHeight" class="form-control" placeholder="Height (in cm)" />
                                                                 <span class="input-group-addon">
                                                                     <span class="icon"><i class="fa fa-user"></i></span>
                                                                 </span>
@@ -920,11 +922,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Eye Sight</label>
+                                                    <label class="col-sm-4 control-label">Eye Sigpincodeht</label>
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <div class="nice-radio nice-radio-inline">
-                                                                <input class="radio-o" type="radio" name="niceRadioAlt" id="niceRadioAlt1" checked="checked">
+                                                                <input class="radio-o" type="radio" name="rdbEyeSightNormal" id="rdbEyeSightNormal" checked="checked">
                                                                 <label for="niceRadioAlt1">Normal</label>
                                                             </div>
                                                         </div>
@@ -932,7 +934,7 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <div class="nice-radio nice-radio-inline">
-                                                                <input class="radio-o" type="radio" name="niceRadioAlt" id="Radio1" checked="checked">
+                                                                <input class="radio-o" type="radio" name="rdbEyeSightCorrected" id="rdbEyeSightCorrected  " checked="checked">
                                                                 <label for="niceRadioAlt1">Corrected</label>
                                                             </div>
                                                         </div>

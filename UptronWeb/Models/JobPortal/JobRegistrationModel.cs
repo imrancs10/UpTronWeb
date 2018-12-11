@@ -10,6 +10,9 @@ namespace UptronWeb.Models.JobPortal
         public JobRegistrationModel()
         {
             this.JobRegistrationSkills = new List<JobRegistrationSkillModel>();
+            this.JobRegistrationEmployement = new List<JobRegistrationEmployementModel>();
+            this.JobRegistrationQualification = new List<JobRegistrationQualificationModel>();
+            this.JobRegistrationLanguage = new List<JobRegistrationLanguageModel>();
         }
 
         public int Id { get; set; }
@@ -36,5 +39,8 @@ namespace UptronWeb.Models.JobPortal
         public Nullable<decimal> PersonHeight { get; set; }
         public string EyeSight { get; set; }
         public List<JobRegistrationSkillModel> JobRegistrationSkills { get; set; }
+        public List<JobRegistrationEmployementModel> JobRegistrationEmployement { get; set; }
+        public List<JobRegistrationQualificationModel> JobRegistrationQualification { get; set; }
+        public List<JobRegistrationLanguageModel> JobRegistrationLanguage { get; set; }
     }
 }

@@ -189,7 +189,10 @@
     <Compile Include="Global\UserData.cs" />
     <Compile Include="Global\Utility.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
+    <Compile Include="Models\JobPortal\JobRegistrationEmployementModel.cs" />
+    <Compile Include="Models\JobPortal\JobRegistrationLanguageModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationModel.cs" />
+    <Compile Include="Models\JobPortal\JobRegistrationQualificationModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationSkillModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
