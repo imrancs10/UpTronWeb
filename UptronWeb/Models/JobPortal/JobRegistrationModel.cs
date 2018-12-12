@@ -19,7 +19,7 @@ namespace UptronWeb.Models.JobPortal
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        public Nullable<System.DateTime> DOB { get; set; }
+        public string DOB { get; set; }
         public string Gender { get; set; }
         public string MaritalStatus { get; set; }
         public string Religion { get; set; }
@@ -29,14 +29,14 @@ namespace UptronWeb.Models.JobPortal
         public string AlternateNo { get; set; }
         public string EmailId { get; set; }
         public string Pincode { get; set; }
-        public Nullable<int> CityId { get; set; }
-        public Nullable<int> StateId { get; set; }
+        public string CityId { get; set; }
+        public string StateId { get; set; }
         public byte[] Resume { get; set; }
         public byte[] ResumeImage { get; set; }
         public string Experience { get; set; }
-        public Nullable<bool> Disability { get; set; }
-        public Nullable<bool> ExServiceMan { get; set; }
-        public Nullable<decimal> PersonHeight { get; set; }
+        public string Disability { get; set; }
+        public string ExServiceMan { get; set; }
+        public string PersonHeight { get; set; }
         public string EyeSight { get; set; }
         public List<JobRegistrationSkillModel> JobRegistrationSkills { get; set; }
         public List<JobRegistrationEmployementModel> JobRegistrationEmployement { get; set; }

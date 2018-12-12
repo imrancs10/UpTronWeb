@@ -1,4 +1,12 @@
-﻿fillState(); 
+﻿//$(document).ready(function () {
+//    $("#datepicker").daterangepicker({
+//        locale: {
+//            format: 'DD/MMM/YYYY'
+//        }
+//    });
+//})
+
+fillState();
 function fillState() {
     let dropdown = $('#state');
     dropdown.empty();
@@ -75,13 +83,52 @@ $('#btnSave').click(function () {
         Disability: $('#disabilities').val(),
         ExServiceMan: $('#ExServiceman').val(),
         PersonHeight: $('#txtHeight').val(),
-        JobRegistrationLanguage: [
-            { Language: $('#LanguageDropdown').val()[0]}
-        ],
-        JobRegistrationSkills: [
-            { Skill: $("#SkillDropdown").val()[0] }
-        ]
+        JobRegistrationLanguage: [],
+        JobRegistrationSkills: [],
+        JobRegistrationEmployement: [],
+        JobRegistrationQualification: []
     };
+
+    var languages = $('#LanguageDropdown').val();
+    if (languages != null) {
+        $.each(languages, function (i, item) {
+            registrationJson.JobRegistrationLanguage.push({ Language: item });
+        });
+    }
+
+    var skills = $('#SkillDropdown').val();
+    if (skills != null) {
+        $.each(skills, function (i, item) {
+            registrationJson.JobRegistrationSkills.push({ Skill: item });
+        });
+    }
+
+    registrationJson.JobRegistrationEmployement.push(
+        {
+            OrganizationName: $('#txtOrganization').val(),
+            Post: $('#txtPostHeld').val(),
+            FromMonth: $('#FromMonth').val(),
+            FromYear: $('#FromYear').val(),
+            ToMonth: $('#ToMonth').val(),
+            ToYear: $('#ToYear').val(),
+            IndustryType: $('#Industry').val(),
+            Salary: $('#txtSalary').val()
+        });
+
+    var qualificationRow = $('#tableQualification tbody tr');
+    if (qualificationRow != null) {
+        $.each(qualificationRow, function (i, row) {
+            registrationJson.JobRegistrationQualification.push(
+                {
+                    Qualification: $('#Qualification').val(),
+                    Board: $('#txtUniversity').val(),
+                    YearOfPassing: $('#Year').val(),
+                    Marks: $('#Percentage').val(),
+                    Specialization: $('#Specialization').val(),
+                    CourseType: $('#Course').val(),
+                });
+        });
+    }
 
     $.ajax({
         dataType: 'json',
@@ -102,3 +149,11 @@ $('#btnSave').click(function () {
     });
 
 });
+
+function convertDateTimeFormat(dateInput) {
+    var todayTime = new Date();
+    var month = format(todayTime.getMonth() + 1);
+    var day = format(todayTime.getDate());
+    var year = format(todayTime.getFullYear());
+    return month + "/" + day + "/" + year;
+}
