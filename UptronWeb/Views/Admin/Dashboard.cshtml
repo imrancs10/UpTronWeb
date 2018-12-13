@@ -29,7 +29,7 @@
                 <!-- use .pull-*, couse we need this float on any screen size -->
                 <div class="pull-left">
                     <a class="navbar-brand" href="#" role="logo" aria-label="Logo">
-                        <img class="logo" src="../../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                        <img class="logo" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
                     </a>
                     <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
                         <i class="fa fa-bars"></i>
@@ -71,7 +71,7 @@
                     <div class="media-left">
                         <a href="Dashboard.aspx">
                             <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
-                            <img class="media-object img-circle" src="~/images/dummy/unknown-profile.jpg" alt="photo profile">
+                            <img class="media-object img-circle" src="../images/dummy/unknown-profile.jpg" alt="photo profile">
                         </a>
                     </div>
                     <div class="media-body">
@@ -86,164 +86,163 @@
                 <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
                     <li class="nav-item open active" role="presentation">
                         <a href="#" data-toggle="nav-child">
-                            <i class="nav-caret pull-right fa fa-angle-down"></i>
+                            @*<i class="nav-caret pull-right fa fa-angle-down"></i>*@
                             <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
                             <span class="nav-text">Dashboard</span>
                         </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
-                            <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
-                        </ul>
+                        @*<ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
+                <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
+            </ul>*@
                     </li>
 
                     <li class="divider"></li>
                     <li class="nav-header" role="presentation">GET STARTED</li>
                     <li class="nav-item" role="presentation">
-                        <a href="layout.html">
-                            <span class="nav-icon"><i class="fa fa-object-group"></i></span>
-                            <span class="nav-text">Layout</span>
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-home"></i></span>
+                            <span class="nav-text">Home Page</span>
                         </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            @*<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>*@
+                            <li class="nav-item" role="presentation">
+                                <a href="layout.html">
+                                    <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                                    <span class="nav-text">Home Slider</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                                    <span class="nav-text">News & Updates</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Upcoming Events</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Tenders</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Key Functionaries</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Director's Message</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">GO's and Circular</li>
                     <li class="nav-item" role="presentation">
-                        <a href="ecosystem.html">
-                            <span class="nav-icon"><i class="fa fa-cubes"></i></span>
-                            <span class="nav-text">Ecosystem</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="panels.html">
+                        <a href="#">
                             <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                            <span class="nav-text">Panels</span>
+                            <span class="nav-text">GO's &Aacute; Circular</span>
                         </a>
                     </li>
+                    <li class="divider"></li>
                     <!--<li class="nav-item open" role="presentation">
-                      <a href="#" data-toggle="nav-child"><i class="nav-caret pull-right fa fa-angle-down"></i>
-                        <span class="nav-icon"><i class="fa fa-align-left"></i></span>
-                        <span class="nav-text">Level Menu</span>
-                      </a>
-                      <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu" style="opacity: 1; display: block;">
-                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
-                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
-                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);">
-                          <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><i class="nav-caret pull-right fa fa-angle-right"></i><span class="nav-text">Node</span></a>
-                          <ul class="nav nav-child level-2 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
-                          </ul>
-                        </li>
-                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
-                      </ul>
-                    </li>-->
+      <a href="#" data-toggle="nav-child"><i class="nav-caret pull-right fa fa-angle-down"></i>
+        <span class="nav-icon"><i class="fa fa-align-left"></i></span>
+        <span class="nav-text">Level Menu</span>
+      </a>
+      <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu" style="opacity: 1; display: block;">
+        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
+        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
+        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);">
+          <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><i class="nav-caret pull-right fa fa-angle-right"></i><span class="nav-text">Node</span></a>
+          <ul class="nav nav-child level-2 nav-stacked nav-pills nav-teal" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
+          </ul>
+        </li>
+        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
+      </ul>
+    </li>-->
 
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">USER INTERFACES</li>
+                    <li class="nav-header" role="presentation">Portal Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
                             <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
-                            <span class="nav-text">Components</span>
+                            <span class="nav-text">Job Portals</span>
                         </a>
                         <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-grid.html"><span class="nav-text">Grids</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-type.html"><span class="nav-text">Type</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-button.html"><span class="nav-text">Buttons</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-icons.html"><span class="nav-text">Icons</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-modal.html"><span class="nav-text">Modal</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-tooltip-popover.html"><span class="nav-text">Tooltips &amp; Popovers</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-alert-callout.html"><span class="nav-text">Alerts &amp; Callout</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-progressbar.html"><span class="nav-text">Progress bar</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-label-badge.html"><span class="nav-text">Label &amp; Badge</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-navbar.html"><span class="nav-text">Navbar</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-nav.html"><span class="nav-text">Nav</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="component-tabs-collapse.html"><span class="nav-text">Tabs &amp; Collapse</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Job Portals Registration</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="#" data-toggle="nav-child">
-                            <i class="nav-caret pull-right fa fa-angle-right"></i>
-                            <span class="nav-icon"><i class="fa fa-check-square"></i></span>
-                            <span class="nav-text">Forms</span>
-                        </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-basic.html"><span class="nav-text">Basic Elements</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-advance.html"><span class="nav-text">Advance Elements</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-uploader.html"><span class="nav-text">Uploader</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-xeditable.html"><span class="nav-text">x-Editable</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-wizard.html"><span class="nav-text">Wizard</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-editor.html"><span class="nav-text">Editor</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-imagecropping.html"><span class="nav-text">Image Cropping</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="frm-validator.html"><span class="nav-text">Validator</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="#" data-toggle="nav-child">
-                            <i class="nav-caret pull-right fa fa-angle-right"></i>
-                            <span class="nav-icon"><i class="fa fa-line-chart"></i></span>
-                            <span class="nav-text">Charts</span>
-                        </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-js.html"><span class="nav-text">ChartJs</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-morris.html"><span class="nav-text">Morris</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="chart-inline.html"><span class="nav-text">Inline Charts</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="#" data-toggle="nav-child">
-                            <i class="nav-caret pull-right fa fa-angle-right"></i>
-                            <span class="nav-icon"><i class="fa fa-database"></i></span>
-                            <span class="nav-text">Tables</span>
-                        </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="table-basic.html"><span class="nav-text">Basic Table</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="table-datatables.html"><span class="nav-text">DataTables</span></a></li>
-                        </ul>
-                    </li>
-
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">DEVELOPMENT</li>
-                    <li class="nav-item" role="presentation">
-                        <a href="ui-kits.html">
-                            <span class="nav-icon"><i class="fa fa-cube"></i></span>
-                            <span class="nav-text">Widgets</span>
-                        </a>
-                    </li>
+                    <li class="nav-header" role="presentation">Services Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
-                            <span class="nav-icon"><i class="fa fa-plug"></i></span>
-                            <span class="nav-text">Plugins</span>
+                            <span class="nav-icon"><i class="fa fa-cloud"></i></span>
+                            <span class="nav-text">Our Services</span>
                         </a>
                         <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-animate.html"><span class="nav-text">Animated</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-bootbox.html"><span class="nav-text">Bootbox</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-calendar.html"><span class="nav-text">Calendar</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-maps.html"><span class="nav-text">Maps</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-nestable.html"><span class="nav-text">Nestable List</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-session-timeout.html"><span class="nav-text">Session Timeout</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-toastr.html"><span class="nav-text">Toastr</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="plugin-treeview.html"><span class="nav-text">Tree View</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Services</span></a></li>
                         </ul>
                     </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Partner Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
-                            <span class="nav-icon"><i class="fa fa-file-text-o"></i></span>
-                            <span class="nav-text">Pages</span>
+                            <span class="nav-icon"><i class="fa fa-users"></i></span>
+                            <span class="nav-text">Our Partner</span>
                         </a>
                         <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-signin.html"><span class="nav-text">Signin</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-locked.html"><span class="nav-text">Lock Screen</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-error.html"><span class="nav-text">Error Page</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="nav-text">Profile</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-inbox.html"><span class="nav-text">Inbox</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-timeline.html"><span class="nav-text">Timeline</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-gallery.html"><span class="nav-text">Gallery</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-pricing.html"><span class="nav-text">Pricing</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-invoice.html"><span class="nav-text">Invoice</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-search.html"><span class="nav-text">Search Result</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-help.html"><span class="nav-text">Help</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Partner Detail</span></a></li>
                         </ul>
                     </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Gallery Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-image"></i></span>
+                            <span class="nav-text">Our Gallery</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Enquiry Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
+                            <span class="nav-text">Our Enquiry</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Enquiry</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Feedback</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Contact Us</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Major Projects</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#">
+                            <span class="nav-icon"><i class="fa fa-anchor"></i></span>
+                            <span class="nav-text">Major Projects</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
                     <li class="collapse-item" role="presentation">
                         <a href="#" data-sidebar="toggleCollapse">
                             <i class="fa fa-angle-double-left"></i>
@@ -272,7 +271,7 @@
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
                                 @*<img class="embed-responsive-item" src="~/images/dummy/desk3.jpg" alt="cover" />*@
-                                <img class="embed-responsive-item"  src="../../images/dummy/desk3.jpg" />
+                                <img class="embed-responsive-item" src="../../images/dummy/desk3.jpg" />
 
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
@@ -280,66 +279,61 @@
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="Slider.aspx"><i class="icon-eye fa-fw"></i> Slider Change</a>
+                                        <a href="#"><i class="icon-eye fa-fw"></i> Slider Change</a>
                                     </div>
                                     <div>
-                                        <a href="AddBestJob.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Best Job</a>
-                                        <a href="AddInstitute.aspx"><i class="icon-star fa-fw"></i> Best Institute</a>
+                                        <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> News</a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Events</a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Tenders</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
-                                <img class="embed-responsive-item" src="~/images/dummy/rent.jpg" alt="cover" />
+                                <img class="embed-responsive-item" src="~/images/dummy/Circular.png" alt="cover">
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
-                                    <p class="lead"><a href="#">Room Rent</a></p>
+                                    <p class="lead"><a href="#">GO's and Circular</a></p>
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="AddRentName.aspx"> <i class="icon-eye fa-fw"></i>Add Rent Property </a>
+                                        <a href="#"><i class="icon-eye fa-fw"></i> Add GO's and Circular </a>
                                     </div>
-                                    <div>
-                                        <a href="AddRentArea.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Rent Location</a>
-                                        <a href="AddRentCategory.aspx"><i class="icon-star fa-fw"></i> Rent Category</a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
-                                <img class="embed-responsive-item" src="~/images/dummy/Products.jpg" alt="cover">
+                                <img class="embed-responsive-item" src="~/images/dummy/job.jpg" alt="cover" />
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
-                                    <p class="lead"><a href="#">Electronic Products</a></p>
+                                    <p class="lead"><a href="#">Job Portal</a></p>
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="AddProductDetail.aspx"><i class="icon-eye fa-fw"></i> Add Products </a>
+                                        <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> Job Registration List</a>
                                     </div>
                                     <div>
-                                        <a href="AddLatestProduct.aspx" class="mr-1x"><i class="icon-share fa-fw"></i> Latets Products</a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Send Message</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
-                                <img class="embed-responsive-item" src="~/images/dummy/institute.jpg" alt="cover">
+                                <img class="embed-responsive-item" src="~/images/dummy/services.jpg" alt="cover">
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
-                                    <p class="lead"><a href="#">Best Institute</a></p>
+                                    <p class="lead"><a href="#">Services</a></p>
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="AddInstitute.aspx"> <i class="icon-eye fa-fw"></i> Add Best Institute</a>
+                                        <a href="#"> <i class="icon-eye fa-fw"></i> Add Services</a>
                                     </div>
                                     <div>
                                     </div>
@@ -349,16 +343,18 @@
 
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
-                                <img class="embed-responsive-item" src="~/images/dummy/job.jpg" alt="cover">
+                                <img class="embed-responsive-item" src="~/images/dummy/enquiry.jpg" alt="cover">
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
-                                    <p class="lead"><a href="#">Best job</a></p>
+                                    <p class="lead"><a href="#">Enquiry</a></p>
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="AddBestJob.aspx"><i class="icon-eye fa-fw"></i> Add job</a>
+                                        <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> Enquiry List</a>
                                     </div>
                                     <div>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Contact Us </a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Feedback </a>
                                     </div>
                                 </div>
                             </div>
@@ -366,14 +362,14 @@
 
                         <div class="col-lg-4">
                             <div class="embed-responsive embed-responsive-16by9 text-light">
-                                <img class="embed-responsive-item" src="~/images/dummy/blog.jpg" alt="cover">
+                                <img class="embed-responsive-item" src="~/images/dummy/gallery.jpg" alt="cover">
                                 <div class="embed-overlay bg-grd-dark"></div>
                                 <div class="embed-content">
-                                    <p class="lead"><a href="#">Blog</a></p>
+                                    <p class="lead"><a href="#">Gallery</a></p>
                                 </div>
                                 <div class="embed-bar embed-bar-bottom">
                                     <div class="pull-right">
-                                        <a href="AddBlog.aspx"><i class="icon-eye fa-fw"></i> Add Blog </a>
+                                        <a href="AddBlog.aspx"><i class="icon-eye fa-fw"></i> Add Gallery </a>
                                     </div>
                                     <div>
                                     </div>
