@@ -62,16 +62,27 @@ namespace UptronWeb.BAL
                 {
                     registration.JobRegistrationEmployements.Add(new JobRegistrationEmployement()
                     {
+                        OrganizationName = emp.OrganizationName,
+                        Post = emp.Post,
                         FromMonth = emp.FromMonth,
-                        FromYear = emp.FromYear
+                        FromYear = emp.FromYear,
+                        ToMonth = emp.ToMonth,
+                        ToYear = emp.ToYear,
+                        IndustryType = emp.IndustryType,
+                        Salary = emp.Salary
                     });
                 }
                 foreach (JobRegistrationQualificationModel qualification in model.JobRegistrationQualification)
                 {
                     registration.JobRegistrationQualifications.Add(new JobRegistrationQualification()
                     {
+                        Qualification = qualification.Qualification,
                         Board = qualification.Board,
+                        YearOfPassing = qualification.YearOfPassing,
+                        Marks = qualification.Marks,
+                        Specialization = qualification.Specialization,
                         CourseType = qualification.CourseType
+
                     });
                 }
 
