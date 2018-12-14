@@ -40,6 +40,7 @@
           <Property Name="ExServiceMan" Type="bit" />
           <Property Name="PersonHeight" Type="decimal" Precision="18" Scale="2" />
           <Property Name="EyeSight" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -445,6 +446,7 @@
           <NavigationProperty Name="JobRegistrationEmployements" Relationship="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationEmployement" />
           <NavigationProperty Name="JobRegistrationLanguages" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationLanguage" />
           <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="JobRegistrationQualification">
           <Key>
@@ -628,6 +630,7 @@
           <EntitySetMapping Name="JobRegistrations">
             <EntityTypeMapping TypeName="UptronWebModel.JobRegistration">
               <MappingFragment StoreEntitySet="JobRegistration">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="EyeSight" ColumnName="EyeSight" />
                 <ScalarProperty Name="PersonHeight" ColumnName="PersonHeight" />
                 <ScalarProperty Name="ExServiceMan" ColumnName="ExServiceMan" />

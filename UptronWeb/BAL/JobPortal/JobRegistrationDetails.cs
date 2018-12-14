@@ -1,5 +1,6 @@
 ﻿using DataLayer;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using UptronWeb.Global;
@@ -10,6 +11,13 @@ namespace UptronWeb.BAL
     public class JobRegistrationDetails
     {
         private UptronWebEntities _db = null;
+
+        public List<JobRegistration> GetJobPortalList()
+        {
+            _db = new UptronWebEntities();
+            var list = _db.JobRegistrations.Where(x => x.IsActive == true).ToList();
+            return list;
+        }
 
         public Enums.CrudStatus SaveJobPortal(JobRegistrationModel model)
         {
@@ -39,6 +47,7 @@ namespace UptronWeb.BAL
                     ExServiceMan = model.ExServiceMan == "Yes" ? true : false,
                     PersonHeight = Convert.ToDecimal(model.PersonHeight),
                     EyeSight = model.EyeSight,
+                    IsActive = true
                     //DOB = Convert.ToDateTime(model.DOB)
                 };
 

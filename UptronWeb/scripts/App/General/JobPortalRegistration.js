@@ -63,6 +63,9 @@ function fillCity(stateId) {
 }
 
 $('#btnSave').click(function () {
+    //validation goes here
+
+
     var registrationJson = {
         Name: $('#txtName').val(),
         fatherName: $('#txtfatherName').val(),
@@ -89,6 +92,10 @@ $('#btnSave').click(function () {
         JobRegistrationQualification: []
     };
 
+    if ($('#rdbEyeSightNormal').prop('checked'))
+        registrationJson.EyeSight = $('#rdbEyeSightNormal').val();
+    else
+        registrationJson.EyeSight = $('#rdbEyeSightNormal').val();
     var languages = $('#LanguageDropdown').val();
     if (languages != null) {
         $.each(languages, function (i, item) {
@@ -103,29 +110,39 @@ $('#btnSave').click(function () {
         });
     }
 
-    registrationJson.JobRegistrationEmployement.push(
-        {
-            OrganizationName: $('#txtOrganization').val(),
-            Post: $('#txtPostHeld').val(),
-            FromMonth: $('#FromMonth').val(),
-            FromYear: $('#FromYear').val(),
-            ToMonth: $('#ToMonth').val(),
-            ToYear: $('#ToYear').val(),
-            IndustryType: $('#Industry').val(),
-            Salary: $('#txtSalary').val()
-        });
+    var organization = $('#txtOrganization').val();
+
+    if (organization !== '') {
+        registrationJson.JobRegistrationEmployement.push(
+            {
+                OrganizationName: organization,
+                Post: $('#txtPostHeld').val(),
+                FromMonth: $('#FromMonth').val(),
+                FromYear: $('#FromYear').val(),
+                ToMonth: $('#ToMonth').val(),
+                ToYear: $('#ToYear').val(),
+                IndustryType: $('#Industry').val(),
+                Salary: $('#txtSalary').val()
+            });
+    }
+   
 
     var qualificationRow = $('#tableQualification tbody tr');
-    if (qualificationRow != null) {
-        $.each(qualificationRow, function (i, row) {
+
+    var filledQualification = $.grep(qualificationRow, function (row) {
+        return $(row).find('#Qualification').val() !== "";
+    });
+
+    if (filledQualification != null) {
+        $.each(filledQualification, function (i, row) {
             registrationJson.JobRegistrationQualification.push(
                 {
-                    Qualification: $('#Qualification').val(),
-                    Board: $('#txtUniversity').val(),
-                    YearOfPassing: $('#Year').val(),
-                    Marks: $('#Percentage').val(),
-                    Specialization: $('#Specialization').val(),
-                    CourseType: $('#Course').val(),
+                    Qualification: $(row).find('#Qualification').val(),
+                    Board: $(row).find('#txtUniversity').val(),
+                    YearOfPassing: $(row).find('#Year').val(),
+                    Marks: $(row).find('#Percentage').val(),
+                    Specialization: $(row).find('#Specialization').val(),
+                    CourseType: $(row).find('#Course').val()
                 });
         });
     }

@@ -46,6 +46,7 @@ namespace DataLayer
         public Nullable<bool> ExServiceMan { get; set; }
         public Nullable<decimal> PersonHeight { get; set; }
         public string EyeSight { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
         public virtual City City { get; set; }
         public virtual State State { get; set; }
