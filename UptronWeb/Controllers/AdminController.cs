@@ -15,6 +15,14 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        
+        public ActionResult JobPortalRegistrationList()
+        {
+            return View();
+        }
+
+        public ActionResult JobPortalRegistrationViewDetail()
+        {
+            return View();
+        }
     }
 }

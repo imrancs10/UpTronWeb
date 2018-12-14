@@ -1134,6 +1134,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Whatsnew.cshtml" />
     <Content Include="Views\Home\JobPortal.cshtml" />
+    <Content Include="Views\Admin\JobPortalRegistrationList.cshtml" />
+    <Content Include="Views\Admin\JobPortalRegistrationViewDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

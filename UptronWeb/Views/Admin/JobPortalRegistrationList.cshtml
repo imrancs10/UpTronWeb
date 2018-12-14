@@ -1,0 +1,425 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
+    <title>Uptron Powertronics Limited</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/styles/bootstrap.css">
+    <link rel="stylesheet" href="~/styles/dependencies.css">
+    <link rel="stylesheet" href="~/styles/components.css">
+    <link rel="stylesheet" href="~/styles/wrapkit.css">
+    <link rel="stylesheet" href="~/styles/demo.css">
+</head>
+<body>
+    <main class="wrapkit-wrapper" id="wrapper">
+        <!-- ============================================
+        HEADER SECTION
+        =============================================== -->
+        <!-- navigation -->
+        <nav class="header navbar">
+            <div class="container-fluid">
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-left">
+                    <a class="navbar-brand" href="#" role="logo" aria-label="Logo">
+                        <img class="logo" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                    </a>
+                    <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
+                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-right" role="navigation">
+
+                    <div class="dropdown">
+
+                        <br />
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <label id="lblUserName1" "></label>
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a data-toggle="modal" data-target="#customModal2" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a id="A1" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span> Sign out</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div><!-- /.dropdown -->
+                </div><!-- /navigation -->
+
+            </div><!-- /.container-fluid -->
+        </nav><!-- /navigation -->
+        <!-- ============================================
+        SIDEBAR SECTION
+        =============================================== -->
+        <aside class="sidebar" role="complementary">
+
+            <!-- profile -->
+            <div class="sidebar-block">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="Dashboard.aspx">
+                            <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
+                            <img class="media-object img-circle" src="../images/dummy/unknown-profile.jpg" alt="photo profile">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading" id="lblUserName" ">  </h4>
+
+                    </div>
+                </div>
+            </div><!-- /.sidebar-block -->
+            <!-- /profile -->
+            <!-- /navigation -->
+            <div class="nav-wrapper">
+                <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
+                    <li class="nav-item open active" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            @*<i class="nav-caret pull-right fa fa-angle-down"></i>*@
+                            <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        @*<ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
+                                <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
+                            </ul>*@
+                    </li>
+
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">GET STARTED</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-home"></i></span>
+                            <span class="nav-text">Home Page</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            @*<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>*@
+                            <li class="nav-item" role="presentation">
+                                <a href="layout.html">
+                                    <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                                    <span class="nav-text">Home Slider</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                                    <span class="nav-text">News & Updates</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Upcoming Events</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Tenders</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Key Functionaries</span>
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="#">
+                                    <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                    <span class="nav-text">Director's Message</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">GO's and Circular</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#">
+                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                            <span class="nav-text">GO's &Aacute; Circular</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <!--<li class="nav-item open" role="presentation">
+                      <a href="#" data-toggle="nav-child"><i class="nav-caret pull-right fa fa-angle-down"></i>
+                        <span class="nav-icon"><i class="fa fa-align-left"></i></span>
+                        <span class="nav-text">Level Menu</span>
+                      </a>
+                      <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu" style="opacity: 1; display: block;">
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);">
+                          <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><i class="nav-caret pull-right fa fa-angle-right"></i><span class="nav-text">Node</span></a>
+                          <ul class="nav nav-child level-2 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
+                          </ul>
+                        </li>
+                        <li role="presentation" class="" style="opacity: 1; display: list-item; transform: translateY(0px);"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
+                      </ul>
+                    </li>-->
+
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Portal Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="nav-text">Job Portals</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Job Portals Registration</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Services Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-cloud"></i></span>
+                            <span class="nav-text">Our Services</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Services</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Partner Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-users"></i></span>
+                            <span class="nav-text">Our Partner</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Partner Detail</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Gallery Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-image"></i></span>
+                            <span class="nav-text">Our Gallery</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Enquiry Page</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
+                            <span class="nav-text">Our Enquiry</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Enquiry</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Feedback</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Contact Us</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">Major Projects</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#">
+                            <span class="nav-icon"><i class="fa fa-anchor"></i></span>
+                            <span class="nav-text">Major Projects</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="collapse-item" role="presentation">
+                        <a href="#" data-sidebar="toggleCollapse">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside><!-- /.SIDEBAR -->
+        <!-- ============================================
+        MAIN CONTENT SECTION
+        =============================================== -->
+        <section class="content-wrapper" role="main" ">
+            <div class="content">
+
+                <div class="content-bar">
+                    <ul class="breadcrumb breadcrumb-angle">
+                        <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                        <li class="active">Job Portal Registration list</li>
+                    </ul>
+                </div><!-- /.content-bar -->
+                <hr />
+
+                <div class="content-body">
+
+                    <div class="col-lg-12">
+                        <div class="featured-box featured-box-primary align-left mt-xlg">
+                            <div class="box-content">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr class="table-hover table-bordered bg-primary">
+                                                        <th colspan="8">Job Portal Registration List Detail</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="success">
+                                                        <th scope="col">Full Name</th>
+                                                        <th scope="col">Father Name</th>
+                                                        <th scope="col">DOB</th>
+                                                        <th scope="col">Mobile no.</th>
+                                                        <th scope="col">Email id</th>
+                                                        <th scope="col">Aadhar no.</th>
+                                                        <th scope="col">View Details</th>
+                                                        <th scope="col">Authorization</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Ashok Kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>vimal kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>01/01/1990</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>9308789584</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>abc@gmail.com</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>32785897598</span>
+                                                        </td>
+                                                        <td>
+                                                            <a id="lnkDetail" class="btn btn-primary" href="">View Detail</a>
+                                                        </td>
+                                                        <td align="center" valign="middle">
+                                                            <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Ashok Kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>vimal kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>01/01/1990</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>9308789584</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>abc@gmail.com</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>32785897598</span>
+                                                        </td>
+                                                        <td>
+                                                            <a id="lnkDetail" class="btn btn-primary" href="">View Detail</a>
+                                                        </td>
+                                                        <td align="center" valign="middle">
+                                                            <a id="lblPermitted" class="btn btn-primary" href="">Not Permitted</a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span>Ashok Kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>vimal kumar</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>01/01/1990</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>9308789584</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>abc@gmail.com</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>32785897598</span>
+                                                        </td>
+                                                        <td>
+                                                            <a id="lnkDetail" class="btn btn-primary" href="">View Detail</a>
+                                                        </td>
+                                                        <td align="center" valign="middle">
+                                                            <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+
+
+                <div class="clearfix"></div>
+
+            </div><!-- /.content -->
+
+        </section><!-- /MAIN -->
+        <!-- ============================================
+        FOOTER SECTION
+        =============================================== -->
+        <footer class="footer-wrapper" role="contentinfo">
+            <div class="footer">
+                <div class="pull-right text-muted"><small>Currently v1.2</small></div>
+                <div>Wrapkit Template  &copy; 2015</div>
+            </div>
+        </footer><!-- /.FOOTER -->
+    </main><!-- /#MAIN -->
+    <!-- VENDORS : jQuery & Bootstrap -->
+    <script src="~/scripts/lib/vendor.js"></script>
+    <!-- END VENDORS -->
+    <!-- DEPENDENCIES : Required plugins -->
+    <script src="~/scripts/lib/dependencies.js"></script>
+    <!-- END DEPENDENCIES -->
+    <!-- WRAPKIT -->
+    <script src="~/scripts/lib/wrapkit.js"></script>
+    <!-- END WRAPKIT -->
+    <!-- WRAPKIT SETUPS -->
+    <script src="~/scripts/lib/wrapkit-setup.js"></script>
+    <!-- end WRAPKIT SETUPS -->
+    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+    <script src="~/scripts/lib/plugin-setups.js"></script>
+    <!-- END PLUGIN SETUPS -->
+    <!-- COMPONENTS -->
+    <!-- Morris.js + Raphael -->
+    <script src="~/scripts/lib/morris.bundle.js"></script>
+    <script src="~/scripts/lib/jquery.sparkline.js"></script>
+    <script src="~/scripts/lib/jquery.easypiechart.js"></script>
+    <!-- END COMPONENTS -->
+    <!-- DUMMY: Use for demo -->
+    <script src="~/scripts/lib/demo/dashboard1-demo.js"></script>
+
+
+</body>
+</html>
+
