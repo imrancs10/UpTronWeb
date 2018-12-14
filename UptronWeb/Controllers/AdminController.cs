@@ -24,8 +24,11 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult JobPortalRegistrationViewDetail()
+        public ActionResult JobPortalRegistrationViewDetail(string registrationId)
         {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(registrationId));
+            ViewData["JobRegistrationDetail"] = registrationDetail;
             return View();
         }
     }

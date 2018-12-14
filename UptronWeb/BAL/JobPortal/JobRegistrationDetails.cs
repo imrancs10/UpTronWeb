@@ -11,7 +11,12 @@ namespace UptronWeb.BAL
     public class JobRegistrationDetails
     {
         private UptronWebEntities _db = null;
-
+        public JobRegistration GetJobPortalRegistrationById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var list = _db.JobRegistrations.Where(x => x.IsActive == true && x.Id == Id).FirstOrDefault();
+            return list;
+        }
         public List<JobRegistration> GetJobPortalList()
         {
             _db = new UptronWebEntities();

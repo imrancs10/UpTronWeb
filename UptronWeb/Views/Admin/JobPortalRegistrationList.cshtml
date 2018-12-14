@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<link href="~/Content/App/admin/uptronweb.css" rel="stylesheet" />
 <section class="content-wrapper" role="main">
     <div class="content">
         <div class="content-bar">
@@ -27,7 +27,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="success">
+                                            <tr class="success jobregistration">
                                                 <th scope="col">Full Name</th>
                                                 <th scope="col">Father Name</th>
                                                 <th scope="col">DOB</th>
@@ -63,7 +63,7 @@
                                                                 <span>@person.IdentityNo</span>
                                                             </td>
                                                             <td>
-                                                                <a id="lnkDetail" class="btn btn-primary" href="">View Detail</a>
+                                                                <a id="lnkDetail" class="btn btn-primary" href="JobPortalRegistrationViewDetail?registrationId=@person.Id">View Detail</a>
                                                             </td>
                                                             <td align="center" valign="middle">
                                                                 <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
@@ -74,7 +74,7 @@
                                                 else
                                                 {
                                                     <tr>
-                                                        <td>
+                                                        <td colspan="8">
                                                             <span>No Record Found</span>
                                                         </td>
                                                     </tr>

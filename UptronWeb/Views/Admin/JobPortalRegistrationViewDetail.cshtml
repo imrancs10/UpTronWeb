@@ -1,682 +1,442 @@
-﻿
+﻿@using DataLayer;
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<section class="content-wrapper" role="main">
-    <div class="content">
-        <div class="content-hero content-hero-lg">
-            <img class="content-hero-embed" src="../images/dummy/people4.jpg" alt="cover">
-            <div class="content-hero-overlay bg-grd-blue"></div>
-            <div class="content-hero-body">
-            </div>
-            <div class="content-hero-bar">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="float-bar clearfix">
-                            <div class="col-sm-8">
-                                <div class="visible-xs">
-                                    <h2 class="display-name media-heading text-teal"><i class="fa fa-user"></i> Full Name</h2>
-                                    <p class="text-muted mb-4x"><span class="mr-2x"><i class="fa fa-envelope"></i> abc@gmail.com</span> <span><i class="fa fa-mobile"></i> 93087895486</span></p>
-                                </div>
-                                <div class="hidden-xs">
-                                    <h1 class="media-heading text-light">Full Name</h1>
-                                    <p class="mb-4x text-light"><span class="mr-2x"><i class="fa fa-envelope"></i> abc@gmail.com</span> <span><i class="fa fa fa-mobile"></i> 93087895486</span></p>
-                                </div>
-                            </div><!-- /.media-body -->
-                        </div><!-- /.float-bar -->
-                    </div><!-- /.cols -->
+@{
+    var registration = ViewData["JobRegistrationDetail"] as JobRegistration;
+    if (registration != null)
+    {
+        <section class="content-wrapper" role="main">
+            <div class="content">
+                <div class="content-hero content-hero-lg">
+                    <img class="content-hero-embed" src="../images/dummy/people4.jpg" alt="cover">
+                    <div class="content-hero-overlay bg-grd-blue"></div>
+                    <div class="content-hero-body">
+                    </div>
+                    <div class="content-hero-bar">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="float-bar clearfix">
+                                    <div class="col-sm-8">
+                                        <div class="visible-xs">
+                                            <h2 class="display-name media-heading text-teal"><i class="fa fa-user"></i>@registration.Name</h2>
+                                            <p class="text-muted mb-4x"><span class="mr-2x"><i class="fa fa-envelope"></i>@registration.EmailId</span> <span><i class="fa fa-mobile"></i>@registration.MobileNo</span></p>
+                                        </div>
+                                        <div class="hidden-xs">
+                                            <h1 class="media-heading text-light">@registration.Name</h1>
+                                            <p class="mb-4x text-light"><span class="mr-2x"><i class="fa fa-envelope"></i>@registration.EmailId</span> <span><i class="fa fa fa-mobile"></i> @registration.MobileNo</span></p>
+                                        </div>
+                                    </div><!-- /.media-body -->
+                                </div><!-- /.float-bar -->
+                            </div><!-- /.cols -->
 
-                    <div class="col-lg-12">
-                        <h4 class="text-muted"><a href="#" aria-label="home"><i class="fa fa-home"></i></a> Job Portal Registration Detail</h4>
-                    </div><!-- /.cols -->
+                            <div class="col-lg-12">
+                                <h4 class="text-muted"><a href="#" aria-label="home"><i class="fa fa-home"></i></a> Job Portal Registration Detail</h4>
+                            </div><!-- /.cols -->
 
-                </div><!-- /.row -->
-            </div><!-- /.content-hero-bar -->
-        </div><!-- /.content-hero -->
-        <div class="content-body">
-
-            <!-- ============================================
-            LATEST POSTS LIST
-            =============================================== -->
-            <div class="panel" data-fill-color="true">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr class="table-hover table-bordered bg-primary">
-                                        <th colspan="8">Job Portal Registration List Detail</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <p>Full Name</p>
-                                                <span class="headline"><strong>Ram manoj kumar</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Father Name</p>
-                                                <span class="headline"><strong>Aman Kumar</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Mother Name</p>
-                                                <span class="headline"><strong>Sushmita Kumari</strong></span>
-                                            </div>
-                                        </div>
-                                        <hr class="col-md-10" />
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <p>Date of Birth</p>
-                                                <span class="headline"><strong>11/08/1988</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Gender</p>
-                                                <span class="headline"><strong>Mother Name</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Marital Status</p>
-                                                <span class="headline"><strong>Never married</strong></span>
-                                            </div>
-                                        </div>
-                                        <hr class="col-md-10" />
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <p>Religion</p>
-                                                <span class="headline"><strong>Hindu</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Identity Details</p>
-                                                <span class="headline"><strong>Aadhar card</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Identity Number</p>
-                                                <span class="headline"><strong>32789608457</strong></span>
-                                            </div>
-                                        </div>
-                                        <hr class="col-md-10" />
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <p>Mobile No</p>
-                                                <span class="headline"><strong>9308789654</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Alternate No</p>
-                                                <span class="headline"><strong>9162789689</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>Email Id</p>
-                                                <span class="headline"><strong>abc@gmail.com</strong></span>
-                                            </div>
-                                        </div>
-                                        <hr class="col-md-10" />
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-xs-4">
-                                                <p>Pin Code</p>
-                                                <span class="headline"><strong>110025</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>State Name</p>
-                                                <span class="headline"><strong>Delhi</strong></span>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <p>City Name</p>
-                                                <span class="headline"><strong>Delhi</strong></span>
-                                            </div>
-                                        </div>
-                                        <hr class="col-md-10" />
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div><!-- /.cols -->
-                            </div>
                         </div><!-- /.row -->
+                    </div><!-- /.content-hero-bar -->
+                </div><!-- /.content-hero -->
+                <div class="content-body">
 
-                    </div><!-- /.panel-body -->
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="bg-primary">
-                                            <th colspan="6">Qualification (Please Enter Highest to Lowest Qualification)</th>
-                                        </tr>
-                                        <tr class="active">
-                                            <th>Qualification</th>
-                                            <th>Board/Institute/University</th>
-                                            <th>Years Of Passing</th>
-                                            <th>% Marks</th>
-                                            <th>Specialization</th>
-                                            <th>Course type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select6" runat="server" class="form-control required">
-                                                        <option value="0">Select Qualification</option>
-                                                        <option value="PHD" selected="selected">High School</option>
-                                                        <option value="Seniorsecondary">Senior Secondary School</option>
-                                                        <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                        <option value="Master’s">Master’s Degree</option>
-                                                        <option value="ePHD/BED">PHD / BED</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text5" runat="server" class="form-control" placeholder="Board/Institute/University">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select7" runat="server" class="form-control required">
-                                                        <option value="0">Select Year</option>
-                                                        <option value="1990" selected="selected">1990</option>
-                                                        <option value="1991">1991</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select8" runat="server" class="form-control required">
-                                                        <option value="0">Select Percentage</option>
-                                                        <option value="90%" selected="selected">90%</option>
-                                                        <option value="95%">95%</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select9" runat="server" class="form-control required">
-                                                        <option value="0">Select Specialization</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select10" runat="server" class="form-control required">
-                                                        <option value="0">Select Course</option>
-                                                        <option value="MCA" selected="selected">MCA</option>
-                                                        <option value="BCA">BCA</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select11" runat="server" class="form-control required">
-                                                        <option value="0">Select Qualification</option>
-                                                        <option value="PHD" selected="selected">PHD</option>
-                                                        <option value="B-ED">B-ED</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text6" runat="server" class="form-control" placeholder="Board/Institute/University">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select12" runat="server" class="form-control required">
-                                                        <option value="0">Select Year</option>
-                                                        <option value="1990" selected="selected">1990</option>
-                                                        <option value="1991">1991</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select13" runat="server" class="form-control required">
-                                                        <option value="0">Select Percentage</option>
-                                                        <option value="90%" selected="selected">90%</option>
-                                                        <option value="95%">95%</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select14" runat="server" class="form-control required">
-                                                        <option value="0">Select Specialization</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select15" runat="server" class="form-control required">
-                                                        <option value="0">Select Course</option>
-                                                        <option value="MCA" selected="selected">MCA</option>
-                                                        <option value="BCA">BCA</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select16" runat="server" class="form-control required">
-                                                        <option value="0">Select Qualification</option>
-                                                        <option value="PHD" selected="selected">PHD</option>
-                                                        <option value="B-ED">B-ED</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text7" runat="server" class="form-control" placeholder="Board/Institute/University">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select17" runat="server" class="form-control required">
-                                                        <option value="0">Select Year</option>
-                                                        <option value="1990" selected="selected">1990</option>
-                                                        <option value="1991">1991</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select18" runat="server" class="form-control required">
-                                                        <option value="0">Select Percentage</option>
-                                                        <option value="90%" selected="selected">90%</option>
-                                                        <option value="95%">95%</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select19" runat="server" class="form-control required">
-                                                        <option value="0">Select Specialization</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select20" runat="server" class="form-control required">
-                                                        <option value="0">Select Course</option>
-                                                        <option value="MCA" selected="selected">MCA</option>
-                                                        <option value="BCA">BCA</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select21" runat="server" class="form-control required">
-                                                        <option value="0">Select Qualification</option>
-                                                        <option value="PHD" selected="selected">PHD</option>
-                                                        <option value="B-ED">B-ED</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text8" runat="server" class="form-control" placeholder="Board/Institute/University">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select22" runat="server" class="form-control required">
-                                                        <option value="0">Select Year</option>
-                                                        <option value="1990" selected="selected">1990</option>
-                                                        <option value="1991">1991</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select23" runat="server" class="form-control required">
-                                                        <option value="0">Select Percentage</option>
-                                                        <option value="90%" selected="selected">90%</option>
-                                                        <option value="95%">95%</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select24" runat="server" class="form-control required">
-                                                        <option value="0">Select Specialization</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select25" runat="server" class="form-control required">
-                                                        <option value="0">Select Course</option>
-                                                        <option value="MCA" selected="selected">MCA</option>
-                                                        <option value="BCA">BCA</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select26" runat="server" class="form-control required">
-                                                        <option value="0">Select Qualification</option>
-                                                        <option value="PHD" selected="selected">PHD</option>
-                                                        <option value="B-ED">B-ED</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text9" runat="server" class="form-control" placeholder="Board/Institute/University">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select27" runat="server" class="form-control required">
-                                                        <option value="0">Select Year</option>
-                                                        <option value="1990" selected="selected">1990</option>
-                                                        <option value="1991">1991</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select28" runat="server" class="form-control required">
-                                                        <option value="0">Select Percentage</option>
-                                                        <option value="90%" selected="selected">90%</option>
-                                                        <option value="95%">95%</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select29" runat="server" class="form-control required">
-                                                        <option value="0">Select Specialization</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select30" runat="server" class="form-control required">
-                                                        <option value="0">Select Course</option>
-                                                        <option value="MCA" selected="selected">MCA</option>
-                                                        <option value="BCA">BCA</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="bg-primary">
-                                            <th colspan="6">Present Employment Status</th>
-                                        </tr>
-                                        <tr class="active">
-                                            <th>Name Of Organization</th>
-                                            <th>Post Held</th>
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th>Industry type</th>
-                                            <th>Salary Drawn(PM)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text15" runat="server" class="form-control" placeholder="Name Of Organization">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text10" runat="server" class="form-control" placeholder="Post Held">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select32" runat="server" class="form-control required">
-                                                                <option value="0">Select Month</option>
-                                                                <option value="1990" selected="selected">1990</option>
-                                                                <option value="1991">1991</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select31" runat="server" class="form-control required">
-                                                                <option value="0">Select Year</option>
-                                                                <option value="1990" selected="selected">1990</option>
-                                                                <option value="1991">1991</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select33" runat="server" class="form-control required">
-                                                                <option value="0">Select Month</option>
-                                                                <option value="1990" selected="selected">1990</option>
-                                                                <option value="1991">1991</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <select name="filledby" id="Select56" runat="server" class="form-control required">
-                                                                <option value="0">Select Year</option>
-                                                                <option value="1990" selected="selected">1990</option>
-                                                                <option value="1991">1991</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <select name="filledby" id="Select34" runat="server" class="form-control required">
-                                                        <option value="0">Select Industry type</option>
-                                                        <option value="Computer" selected="selected">Computer</option>
-                                                        <option value="Accounts">Accounts</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="Text16" runat="server" class="form-control" placeholder="Salary Drawn(PM)">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select class="form-control" id="Select36" multiple="multiple">
-                                                    <option>English</option>
-                                                    <option>Hindi</option>
-                                                    <option>English (Intl.)</option>
-                                                    <option>Urdu</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-6 control-label">Skill Information(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <select class="form-control" id="inputMultiple" multiple="multiple">
-                                                    <option>Accountant</option>
-                                                    <option>Advocate</option>
-                                                    <option>Air Hostess</option>
-                                                    <option data-toggle="collapse" data-target="#field">Data Operator</option>
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
-                                        <div class="input-group input-group-icon">
-                                            <input type="text" id="Text13" runat="server" class="form-control" placeholder="Words per Minute to be populated">
-                                            <span class="input-group-addon">
-                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-4 control-label">Experience in Works </label>
-                                        <div class="col-sm-8">
-                                            <select name="filledby" id="Select35" runat="server" class="form-control required">
-                                                <option value="0">Select Experience</option>
-                                                <option value="1Years" selected="selected">1 Years</option>
-                                                <option value="2Years">2 Years</option>
-                                                <option value="3Years">3 Years</option>
-                                                <option value="4Years">4 Years</option>
-                                                <option value="5Years">5 Years</option>
-                                                <option value="6Years">6 Years</option>
-                                                <option value="7Years">7 Years</option>
-                                                <option value="8Years">8 Years</option>
-                                                <option value="9Years">9 Years</option>
-                                                <option value="10Years">10 Years</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-4 control-label">Are you Person with disabilities </label>
-                                        <div class="col-sm-8">
-                                            <select name="filledby" id="Select37" runat="server" class="form-control required">
-                                                <option value="No" selected="selected">No</option>
-                                                <option value="Yes">Yes</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
+                    <!-- ============================================
+                    LATEST POSTS LIST
+                    =============================================== -->
+                    <div class="panel" data-fill-color="true">
+                        <div class="panel-body">
+                            <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
-                                        <div class="col-sm-8">
-                                            <select name="filledby" id="Select38" runat="server" class="form-control required">
-                                                <option value="No" selected="selected">No</option>
-                                                <option value="Yes">Yes</option>
-                                            </select>
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr class="table-hover table-bordered bg-primary">
+                                                <th colspan="8">Job Portal Registration List Detail</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <p>Full Name</p>
+                                                        <span class="headline"><strong>@registration.Name</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Father Name</p>
+                                                        <span class="headline"><strong>@registration.FatherName</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Mother Name</p>
+                                                        <span class="headline"><strong>@registration.MotherName</strong></span>
+                                                    </div>
+                                                </div>
+                                                <hr class="col-md-10" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <p>Date of Birth</p>
+                                                        <span class="headline"><strong>@registration.DOB.Value.ToString("dd/MM/yyyy")</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Gender</p>
+                                                        <span class="headline"><strong>@registration.Gender</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Marital Status</p>
+                                                        <span class="headline"><strong>@registration.MaritalStatus</strong></span>
+                                                    </div>
+                                                </div>
+                                                <hr class="col-md-10" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <p>Religion</p>
+                                                        <span class="headline"><strong>@registration.Religion</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Identity Details</p>
+                                                        <span class="headline"><strong>@registration.IdentityType</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Identity Number</p>
+                                                        <span class="headline"><strong>@registration.IdentityNo</strong></span>
+                                                    </div>
+                                                </div>
+                                                <hr class="col-md-10" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <p>Mobile No</p>
+                                                        <span class="headline"><strong>@registration.MobileNo</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Alternate No</p>
+                                                        <span class="headline"><strong>@registration.AlternateNo</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>Email Id</p>
+                                                        <span class="headline"><strong>@registration.EmailId</strong></span>
+                                                    </div>
+                                                </div>
+                                                <hr class="col-md-10" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <p>Pin Code</p>
+                                                        <span class="headline"><strong>@registration.Pincode</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>State Name</p>
+                                                        <span class="headline"><strong>@registration.State.StateName</strong></span>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <p>City Name</p>
+                                                        <span class="headline"><strong>@registration.City.CityName</strong></span>
+                                                    </div>
+                                                </div>
+                                                <hr class="col-md-10" />
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div><!-- /.cols -->
+                                    </div>
+                                </div><!-- /.row -->
+
+                            </div><!-- /.panel-body -->
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="bg-primary">
+                                                    <th colspan="6">Qualification (Please Enter Highest to Lowest Qualification)</th>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th>Qualification</th>
+                                                    <th>Board/Institute/University</th>
+                                                    <th>Years Of Passing</th>
+                                                    <th>% Marks</th>
+                                                    <th>Specialization</th>
+                                                    <th>Course type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (registration.JobRegistrationQualifications.Any())
+                                                {
+                                                    foreach (var qualification in registration.JobRegistrationQualifications)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.Qualification</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.Board</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.YearOfPassing</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.Marks</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.Specialization</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@qualification.CourseType</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td colspan="6">
+                                                            No Qualification added
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="bg-primary">
+                                                    <th colspan="6">Present Employment Status</th>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th>Name Of Organization</th>
+                                                    <th>Post Held</th>
+                                                    <th>From</th>
+                                                    <th>To</th>
+                                                    <th>Industry type</th>
+                                                    <th>Salary Drawn(PM)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if (registration.JobRegistrationEmployements.Any())
+                                                {
+                                                    foreach (var employement in registration.JobRegistrationEmployements)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@employement.OrganizationName</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@employement.Post</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mt-lg">
+                                                                            <span class="headline"><strong>@employement.FromMonth</strong></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mt-lg">
+                                                                            <span class="headline"><strong>@employement.FromYear</strong></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mt-lg">
+                                                                            <span class="headline"><strong>@employement.ToMonth</strong></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mt-lg">
+                                                                            <span class="headline"><strong>@employement.ToYear</strong></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <span class="headline"><strong>@employement.IndustryType</strong></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@employement.Salary</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td colspan="6">
+                                                            No Employement detail added
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        @if (registration.JobRegistrationLanguages.Any())
+                                                        {
+                                                            string lan = string.Empty;
+                                                            foreach (var languages in registration.JobRegistrationLanguages)
+                                                            {
+                                                                lan += languages.Language + ", ";
+                                                            }
+                                                            lan = lan.Substring(0, lan.Length - 2);
+                                                            <span>@lan</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No Language added</span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-6 control-label">Skill Information(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        @if (registration.JobRegistrationSkills.Any())
+                                                        {
+                                                            string skl = string.Empty;
+                                                            foreach (var skill in registration.JobRegistrationSkills)
+                                                            {
+                                                                skl += @skill.Skill + ", ";
+                                                            }
+                                                            skl = skl.Substring(0, skl.Length - 2);
+                                                            <span>@skl</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No Skill added</span>
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
+                                                <div class="input-group input-group-icon">
+                                                    <span class="headline"><strong>@registration.Name</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">Experience in Works </label>
+                                                <div class="col-sm-8">
+                                                    <span class="headline"><strong>@registration.Experience</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">Are you Person with disabilities </label>
+                                                <div class="col-sm-8">
+                                                    <span class="headline"><strong>@registration.Disability</strong></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
+                                                <div class="col-sm-8">
+                                                    <span class="headline"><strong>@registration.ExServiceMan</strong></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div><!-- /.panel -->
+                        <div class="container">
                         </div>
-                    </div>
-                </div><!-- /.panel -->
+                    </div><!-- /.content-body -->
+                    <!-- Template Setups -->
+                    <div class="modal fade" id="templateSetup">
+                        <div class="modal-dialog">
+                            <!-- modal-content -->
+                            <div class="modal-content"></div>
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.templateSetup -->
+                </div><!-- /.content -->
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="content-wrapper" role="main">
+            <div class="content">
+                No Detail found
+            </div>
+        </section>
+    }
 
-                <div class="container">
+}
 
-                </div>
-
-            </div><!-- /.content-body -->
-            <!-- Template Setups -->
-            <div class="modal fade" id="templateSetup">
-                <div class="modal-dialog">
-                    <!-- modal-content -->
-                    <div class="modal-content"></div>
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.templateSetup -->
-
-
-        </div><!-- /.content -->
-    </div>
-</section>
