@@ -407,6 +407,13 @@
     <Content Include="img\gallery\event6.jpg" />
     <Content Include="img\gallery\event7.jpg" />
     <Content Include="img\gallery\event8.jpg" />
+    <Content Include="img\gallery\gallery01.jpeg" />
+    <Content Include="img\gallery\gallery02.jpeg" />
+    <Content Include="img\gallery\gallery03.jpeg" />
+    <Content Include="img\gallery\gallery04.jpeg" />
+    <Content Include="img\gallery\gallery05.jpeg" />
+    <Content Include="img\gallery\gallery06.jpeg" />
+    <Content Include="img\gallery\gallery07.jpeg" />
     <Content Include="img\gplus.png" />
     <Content Include="img\his.png" />
     <Content Include="img\home\brand-1.jpg" />
@@ -1138,6 +1145,7 @@
     <Content Include="Views\Admin\JobPortalRegistrationList.cshtml" />
     <Content Include="Views\Admin\JobPortalRegistrationViewDetail.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

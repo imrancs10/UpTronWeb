@@ -83,7 +83,7 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult Whatsnew()
+        public ActionResult Gallery()
         {
             return View();
         }
