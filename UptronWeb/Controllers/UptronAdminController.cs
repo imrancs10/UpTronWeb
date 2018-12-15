@@ -7,7 +7,7 @@ using UptronWeb.BAL.Login;
 
 namespace UptronWeb.Controllers
 {
-    public class AdminLoginController : CommonController
+    public class UptronAdminController : CommonController
     {
         // GET: Admin
         public ActionResult Login()

@@ -1,10 +1,13 @@
-﻿//$(document).ready(function () {
-//    $("#datepicker").daterangepicker({
-//        locale: {
-//            format: 'DD/MMM/YYYY'
-//        }
-//    });
-//})
+﻿$(document).ready(function () {
+    $('#DOB').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        stepMonths: true,
+        yearRange: "-100:+0",
+        dateFormat: 'dd/mm/yy',
+        maxDate: 0
+    });
+});
 
 fillState();
 function fillState() {
@@ -65,12 +68,11 @@ function fillCity(stateId) {
 $('#btnSave').click(function () {
     //validation goes here
 
-
     var registrationJson = {
         Name: $('#txtName').val(),
         fatherName: $('#txtfatherName').val(),
         Mothername: $('#txtMotherName').val(),
-        DOB: $('#datepicker').val(),
+        DOB: $('#DOB').val(),
         Gender: $('#Gender').val(),
         MaritalStatus: $('#MaritalStatus').val(),
         Religion: $('#Religion').val(),
@@ -125,7 +127,7 @@ $('#btnSave').click(function () {
                 Salary: $('#txtSalary').val()
             });
     }
-   
+
 
     var qualificationRow = $('#tableQualification tbody tr');
 
@@ -154,8 +156,7 @@ $('#btnSave').click(function () {
         data: JSON.stringify(registrationJson),
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            alert(data);
-            utility.alert.setAlert(utility.alert.alertType.info, data);
+            saveFiles();
         },
         failure: function (response) {
             alert(response);
@@ -166,6 +167,42 @@ $('#btnSave').click(function () {
     });
 
 });
+
+function saveFiles() {
+    //save files
+    if (window.FormData !== undefined) {
+        //resume
+        var fileUpload = $("#fileResume").get(0);
+        var files = fileUpload.files;
+        // Create FormData object  
+        var fileData = new FormData();
+        // Looping over all files and add it to FormData object  
+        fileData.append(files[0].name, files[0]);
+
+        //image
+        fileUpload = $("#fileImage").get(0);
+        files = fileUpload.files;
+        fileData.append(files[0].name, files[0]);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Home/JobPortalFileSave',
+            contentType: false, // Not to set any content header  
+            processData: false, // Not to process data  
+            data: fileData,
+            success: function (data) {
+                alert(data);
+                utility.alert.setAlert(utility.alert.alertType.info, data);
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+}
 
 function convertDateTimeFormat(dateInput) {
     var todayTime = new Date();

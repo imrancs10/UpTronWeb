@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web;
 using UptronWeb.Global;
 using UptronWeb.Models.JobPortal;
 
@@ -22,6 +23,20 @@ namespace UptronWeb.BAL
             _db = new UptronWebEntities();
             var list = _db.JobRegistrations.Where(x => x.IsActive == true).ToList();
             return list;
+        }
+
+        public Enums.CrudStatus UpdateJobPortal(JobRegistration registration)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            var data = _db.JobRegistrations.Where(x => x.IsActive == true && x.Id == registration.Id).FirstOrDefault();
+            if (data != null)
+            {
+                data.Resume = registration.Resume;
+                data.ResumeImage = registration.ResumeImage;
+                _effectRow = _db.SaveChanges();
+            }
+            return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
         }
 
         public Enums.CrudStatus SaveJobPortal(JobRegistrationModel model)
@@ -52,8 +67,8 @@ namespace UptronWeb.BAL
                     ExServiceMan = model.ExServiceMan == "Yes" ? true : false,
                     PersonHeight = Convert.ToDecimal(model.PersonHeight),
                     EyeSight = model.EyeSight,
-                    IsActive = true
-                    //DOB = Convert.ToDateTime(model.DOB)
+                    IsActive = true,
+                    DOB = Convert.ToDateTime(model.DOB)
                 };
 
                 foreach (JobRegistrationLanguageModel Language in model.JobRegistrationLanguage)
@@ -96,12 +111,12 @@ namespace UptronWeb.BAL
                         Marks = qualification.Marks,
                         Specialization = qualification.Specialization,
                         CourseType = qualification.CourseType
-
                     });
                 }
 
                 _db.Entry(registration).State = EntityState.Added;
                 _effectRow = _db.SaveChanges();
+                HttpContext.Current.Session["registrationId"] = registration.Id;
                 return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
             }
             else

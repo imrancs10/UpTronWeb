@@ -330,7 +330,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <div class="form-group mt-lg">
-                                                <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                <label class="col-sm-6 control-label">Language Known</label>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         @if (registration.JobRegistrationLanguages.Any())
@@ -353,7 +353,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mt-lg">
-                                                <label class="col-sm-6 control-label">Skill Information(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                <label class="col-sm-6 control-label">Skill Information</label>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         @if (registration.JobRegistrationSkills.Any())
@@ -371,7 +371,6 @@
                                                             <span>No Skill added</span>
                                                         }
                                                     </div>
-
                                                 </div>
                                             </div>
 
@@ -396,7 +395,17 @@
                                             <div class="form-group mt-lg">
                                                 <label class="col-sm-4 control-label">Are you Person with disabilities </label>
                                                 <div class="col-sm-8">
-                                                    <span class="headline"><strong>@registration.Disability</strong></span>
+                                                    @{
+                                                        if (registration.Disability == true)
+                                                        {
+                                                            <span>Yes</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No</span>
+                                                        }
+                                                    }
+
                                                 </div>
                                             </div>
                                         </div>
@@ -407,7 +416,16 @@
                                             <div class="form-group mt-lg">
                                                 <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
                                                 <div class="col-sm-8">
-                                                    <span class="headline"><strong>@registration.ExServiceMan</strong></span>
+                                                    @{
+                                                        if (registration.ExServiceMan == true)
+                                                        {
+                                                            <span>Yes</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No</span>
+                                                        }
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

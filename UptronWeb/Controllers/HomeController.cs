@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -90,12 +92,57 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public JsonResult JobPortalSave(JobRegistrationModel model)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
             var result = detail.SaveJobPortal(model);
             return Json(CrudResponse(result), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult JobPortalFileSave()
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            JobRegistration registration = new JobRegistration();
+            if (Request.Files.Count > 0)
+            {
+                try
+                {
+                    //  Get all files from Request object  
+                    HttpFileCollectionBase files = Request.Files;
+                    //Resume
+                    HttpPostedFileBase file = files[0];
+                    MemoryStream target = new MemoryStream();
+                    file.InputStream.CopyTo(target);
+                    byte[] data = target.ToArray();
+                    registration.Resume = data;
+
+                    //Image
+                    file = files[1];
+                    target = new MemoryStream();
+                    file.InputStream.CopyTo(target);
+                    data = target.ToArray();
+                    registration.ResumeImage = data;
+
+                    registration.Id = Convert.ToInt32(Session["registrationId"]);
+                    detail.UpdateJobPortal(registration);
+                    Session["registrationId"] = null;
+                    // Returns message that successfully uploaded  
+                    return Json("Registration for Job is successful.");
+                }
+                catch (Exception ex)
+                {
+                    return Json("Error occurred. Error details: " + ex.Message);
+                }
+            }
+            else
+            {
+                return Json("No files selected.");
+            }
+
+
         }
     }
 }
