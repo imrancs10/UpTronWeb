@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
@@ -30,6 +31,22 @@ namespace UptronWeb.Controllers
             var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(registrationId));
             ViewData["JobRegistrationDetail"] = registrationDetail;
             return View();
+        }
+
+        public ActionResult ViewResumePdf(int Id)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
+            var resumePdf = registrationDetail.Resume;
+            return File(resumePdf, "application/pdf");
+        }
+
+        public ActionResult ViewCandidateImage(int Id)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
+            var image = registrationDetail.ResumeImage;
+            return File(image, "application/jpeg");
         }
     }
 }
