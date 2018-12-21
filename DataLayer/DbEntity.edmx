@@ -13,6 +13,16 @@
           <Property Name="CityName" Type="varchar" MaxLength="500" />
           <Property Name="StateId" Type="int" />
         </EntityType>
+        <EntityType Name="GOCircular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GONumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="GODate" Type="datetime" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="GOFile" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="JobRegistration">
           <Key>
             <PropertyRef Name="Id" />
@@ -236,6 +246,7 @@
         </Association>
         <EntityContainer Name="UptronWebModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistration" EntityType="Self.JobRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationEmployement" EntityType="Self.JobRegistrationEmployement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationLanguage" EntityType="Self.JobRegistrationLanguage" Schema="dbo" store:Type="Tables" />
@@ -339,6 +350,7 @@
             <End Role="JobRegistration" EntitySet="JobRegistrations" />
             <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkills" />
           </AssociationSet>
+          <EntitySet Name="GOCirculars" EntityType="UptronWebModel.GOCircular" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -589,6 +601,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="GOCircular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GONumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GODate" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GOFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -713,6 +735,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GOCirculars">
+            <EntityTypeMapping TypeName="UptronWebModel.GOCircular">
+              <MappingFragment StoreEntitySet="GOCircular">
+                <ScalarProperty Name="GOFile" ColumnName="GOFile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="GODate" ColumnName="GODate" />
+                <ScalarProperty Name="GONumber" ColumnName="GONumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -755,6 +788,7 @@
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" />
+        <EntityTypeShape EntityType="UptronWebModel.GOCircular" Width="1.5" PointX="0.75" PointY="5.75" />
       </Diagram>
     </Diagrams>
   </Designer>
