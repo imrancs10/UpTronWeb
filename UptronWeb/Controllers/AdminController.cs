@@ -55,6 +55,13 @@ namespace UptronWeb.Controllers
             return File(image, "application/jpeg");
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Login", "UptronAdmin");
+        }
+
         public ActionResult GOCircularEntry ()
         {
             return View();
