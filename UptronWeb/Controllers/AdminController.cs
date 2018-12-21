@@ -48,5 +48,12 @@ namespace UptronWeb.Controllers
             var image = registrationDetail.ResumeImage;
             return File(image, "application/jpeg");
         }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Login", "UptronAdmin");
+        }
     }
 }
