@@ -6,12 +6,18 @@ using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
 using UptronWeb.BAL.Login;
+using UptronWeb.Global;
 
 namespace UptronWeb.Controllers
 {
     public class AdminController : CommonController
     {
         // GET: Admin
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
         public ActionResult Dashboard()
         {
             return View();
@@ -48,5 +54,20 @@ namespace UptronWeb.Controllers
             var image = registrationDetail.ResumeImage;
             return File(image, "application/jpeg");
         }
+
+        public ActionResult GOCircularEntry ()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SaveGOCircularDetail(string GoNumber,string Subject, string GoDate, HttpPostedFileBase GOFile)
+        {
+            byte[] fileAttachment = null;
+            fileAttachment = Utility.serilizeImagetoByte(GOFile, fileAttachment);
+
+            return RedirectToAction("GOCircularEntry");
+        }
+
+      
     }
 }

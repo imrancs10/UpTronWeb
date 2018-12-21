@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Helpers;
 
 namespace UptronWeb.Global
 {
@@ -21,6 +22,17 @@ namespace UptronWeb.Global
             foreach (byte b in GetHash(inputString))
                 sb.Append(b.ToString("X2"));
             return sb.ToString();
+        }
+
+        public static byte[] serilizeImagetoByte(HttpPostedFileBase file, byte[] fileBite)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                fileBite = new byte[file.ContentLength];
+                file.InputStream.Read(fileBite, 0, file.ContentLength);
+            }
+
+            return fileBite;
         }
     }
 }

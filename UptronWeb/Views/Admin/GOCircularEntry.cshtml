@@ -1,0 +1,113 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form action="SaveGOCircularDetail" method="post" enctype="multipart/form-data">
+    <section class="content-wrapper" role="main" style="height:700px;">
+        <div class="content">
+
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Ledger Entry</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Ledger Entry</h4></div>
+                            </div>
+                            <hr class="tall">
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-4 control-label">Go Number</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" id="GoNumber" name="GoNumber" class="form-control" rows="3" placeholder="Go No" />
+                                                <span class="input-group-addon">
+                                                    <span class="icon"><i class="fa fa-location-arrow"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-4 control-label">Go Date</label>
+                                            <div class="col-sm-8">
+                                                <div class="input-group input-group-in">
+                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    <input type="date" id="GoDate" name="GoDate" data-input="daterangepicker"
+                                                           data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required  />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-4 control-label">Subject</label>
+                                            <div class="col-sm-8">
+                                                <textarea type="text" id="Subject" name="Subject" class="form-control" rows="3" placeholder="Subject" />
+                                                <span class="input-group-addon">
+                                                    <span class="icon"><i class="fa fa-location-arrow"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="form-group mt-lg">
+                                            <div class="form-group">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">File</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="GOFile" id="GOFile" accept="application/pdf" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-5">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                    <span class="label-divider" id="Span1">or</span>
+                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.content -->
+
+        </div>
+    </section>
+</form>
+
