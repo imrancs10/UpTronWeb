@@ -1,11 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataLayer;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using UptronWeb.Global;
 
 namespace UptronWeb.BAL.Master
 {
     public class MasterBAL
     {
+        private UptronWebEntities _db = null;
+        public Enums.CrudStatus SaveGOCircluar(GOCircular goCircular)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            GOCircular _deptRow = _db.GOCirculars.Where(x => x.GONumber == goCircular.GONumber).FirstOrDefault();
+            if (_deptRow == null)
+            {
+                GOCircular circular = new GOCircular()
+                {
+                    GODate = goCircular.GODate,
+                    GOFile = goCircular.GOFile,
+                    GONumber = goCircular.GONumber,
+                    Subject = goCircular.Subject
+                };
+
+                _db.Entry(circular).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+            {
+                return Enums.CrudStatus.DataAlreadyExist;
+            }
+        }
     }
 }

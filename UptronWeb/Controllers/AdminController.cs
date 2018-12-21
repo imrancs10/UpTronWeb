@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
-using UptronWeb.BAL.Login;
+using UptronWeb.BAL.Master;
 using UptronWeb.Global;
 
 namespace UptronWeb.Controllers
@@ -18,15 +17,10 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-
         public ActionResult JobPortalRegistrationList()
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
-            var list = detail.GetJobPortalList();
+            List<JobRegistration> list = detail.GetJobPortalList();
             ViewData["JobList"] = list;
             return View();
         }
@@ -34,7 +28,7 @@ namespace UptronWeb.Controllers
         public ActionResult JobPortalRegistrationViewDetail(string registrationId)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
-            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(registrationId));
+            JobRegistration registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(registrationId));
             ViewData["JobRegistrationDetail"] = registrationDetail;
             return View();
         }
@@ -42,16 +36,16 @@ namespace UptronWeb.Controllers
         public ActionResult ViewResumePdf(int Id)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
-            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
-            var resumePdf = registrationDetail.Resume;
+            JobRegistration registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
+            byte[] resumePdf = registrationDetail.Resume;
             return File(resumePdf, "application/pdf");
         }
 
         public ActionResult ViewCandidateImage(int Id)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
-            var registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
-            var image = registrationDetail.ResumeImage;
+            JobRegistration registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
+            byte[] image = registrationDetail.ResumeImage;
             return File(image, "application/jpeg");
         }
 
@@ -62,19 +56,36 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login", "UptronAdmin");
         }
 
-        public ActionResult GOCircularEntry ()
+        public ActionResult GOCircularEntry()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult SaveGOCircularDetail(string GoNumber,string Subject, string GoDate, HttpPostedFileBase GOFile)
+        public ActionResult SaveGOCircularDetail(string GoNumber, string Subject, string GoDate, HttpPostedFileBase GOFile)
         {
             byte[] fileAttachment = null;
             fileAttachment = Utility.serilizeImagetoByte(GOFile, fileAttachment);
-
+            MasterBAL bal = new MasterBAL();
+            GOCircular goCircular = new GOCircular()
+            {
+                GODate = Convert.ToDateTime(GoDate),
+                GOFile = fileAttachment,
+                GONumber = GoNumber,
+                Subject = Subject
+            };
+            var result = bal.SaveGOCircluar(goCircular);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Data has been saved", "Go & Circular");
+            }
+            else
+            {
+                SetAlertMessage("Go No already exists", "Go & Circular");
+            }
+            
             return RedirectToAction("GOCircularEntry");
         }
 
-      
+
     }
 }
