@@ -94,6 +94,9 @@
     <Compile Include="State.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Tender.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

@@ -86,6 +86,42 @@ namespace UptronWeb.Controllers
             return RedirectToAction("GOCircularEntry");
         }
 
+        public ActionResult GOCircularView()
+        {
+            return View();
+        }
+        public ActionResult TenderEntry()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SaveTenderEntry(string TenderNumber, string TenderDate, string Subject, HttpPostedFileBase TenderFile)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(TenderFile, fileattachment);
+            MasterBAL bal = new MasterBAL();
+            Tender tender = new Tender()
+            {
+                TenderNumber = TenderNumber,
+                TenderDate = Convert.ToDateTime(TenderDate),
+                TenderFile = fileattachment,
+                Subject = Subject
 
+            };
+            var result = bal.SaveTender(tender);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Tender has been saved", "Tender");
+            }
+            else
+            {
+                SetAlertMessage("Tender number alreday exists");
+            }
+            return RedirectToAction("TenderEntry");
+        }
+        public ActionResult TenderView()
+        {
+            return View();
+        }
     }
 }

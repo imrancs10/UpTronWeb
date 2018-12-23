@@ -32,5 +32,29 @@ namespace UptronWeb.BAL.Master
                 return Enums.CrudStatus.DataAlreadyExist;
             }
         }
+
+        public Enums.CrudStatus SaveTender(Tender tender)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            Tender _deptRow = _db.Tenders.Where(x => x.TenderNumber == tender.TenderNumber).FirstOrDefault();
+            if (_deptRow == null)
+            {
+                Tender tenderlist = new Tender()
+                {
+                    TenderNumber = tender.TenderNumber,
+                    TenderDate = tender.TenderDate,
+                    TenderFile = tender.TenderFile,
+                    Subject = tender.Subject
+                };
+                _db.Entry(tenderlist).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+            {
+                return Enums.CrudStatus.DataAlreadyExist;
+            }
+        }
     }
 }

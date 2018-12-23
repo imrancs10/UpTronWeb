@@ -355,6 +355,7 @@
                                                 <label class="col-sm-6 control-label">Language Known</label>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+                                                        
                                                         @if (registration.JobRegistrationLanguages.Any())
                                                         {
                                                             string lan = string.Empty;
@@ -363,7 +364,7 @@
                                                                 lan += languages.Language + ", ";
                                                             }
                                                             lan = lan.Substring(0, lan.Length - 2);
-                                                            <span>@lan</span>
+                                                            <strong>@lan</strong>
                                                         }
                                                         else
                                                         {
@@ -386,7 +387,7 @@
                                                                 skl += @skill.Skill + ", ";
                                                             }
                                                             skl = skl.Substring(0, skl.Length - 2);
-                                                            <span>@skl</span>
+                                                            <strong>@skl</strong>
                                                         }
                                                         else
                                                         {
@@ -407,16 +408,16 @@
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <div class="form-group mt-lg">
-                                                <label class="col-sm-4 control-label">Experience in Works </label>
-                                                <div class="col-sm-8">
+                                                <label class="col-sm-6 control-label">Experience in Works </label>
+                                                <div class="col-sm-6">
                                                     <span class="headline"><strong>@registration.Experience</strong></span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group mt-lg">
-                                                <label class="col-sm-4 control-label">Are you Person with disabilities </label>
-                                                <div class="col-sm-8">
+                                                <label class="col-sm-6 control-label">Are you Person with disabilities </label>
+                                                <div class="col-sm-6">
                                                     @{
                                                         if (registration.Disability == true)
                                                         {
@@ -424,7 +425,7 @@
                                                         }
                                                         else
                                                         {
-                                                            <span>No</span>
+                                                            <strong>No</strong>
                                                         }
                                                     }
 
@@ -436,16 +437,16 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                             <div class="form-group mt-lg">
-                                                <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
-                                                <div class="col-sm-8">
+                                                <label class="col-sm-3 control-label">Are You Ex-Serviceman </label>
+                                                <div class="col-sm-3">
                                                     @{
                                                         if (registration.ExServiceMan == true)
                                                         {
-                                                            <span>Yes</span>
+                                                            <strong>Yes</strong>
                                                         }
                                                         else
                                                         {
-                                                            <span>No</span>
+                                                            <strong>No</strong>
                                                         }
                                                     }
                                                 </div>

@@ -2,14 +2,13 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<form action="SaveGOCircularDetail" method="post" enctype="multipart/form-data">
+<form action="SaveTenderEntry" method="post" enctype="multipart/form-data">
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
                 <ul class="breadcrumb breadcrumb-angle">
                     <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
-                    <li class="active">Go & Circular Entry</li>
+                    <li class="active">Tender Entry</li>
                 </ul>
             </div><!-- /.content-bar -->
             <hr />
@@ -21,17 +20,17 @@
                             <div class="row">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Go & Circular Entry</h4></div>
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Tender Entry</h4></div>
                                     </div>
                                     <hr class="tall">
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Go Number</label>
+                                                    <label class="col-sm-4 control-label">Tender Number</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="GoNumber" name="GoNumber" class="form-control" placeholder="Go Number" />
+                                                            <input type="text" id="TenderNumber" name="TenderNumber" class="form-control" placeholder="Tender Number" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-area-chart"></i></span>
                                                             </span>
@@ -41,11 +40,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Go Date</label>
+                                                    <label class="col-sm-4 control-label">Tender Date</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-in">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input type="date" id="GoDate" name="GoDate" data-input="daterangepicker"
+                                                            <input type="date" id="TenderDate" name="TenderDate" data-input="daterangepicker"
                                                                    data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required />
                                                         </div>
                                                     </div>
@@ -77,10 +76,10 @@
                                                 <div class="form-group mt-lg">
                                                     <div class="form-group">
                                                         <div class="form-group mt-lg">
-                                                            <label class="col-sm-4 control-label">Upload Circular </label>
+                                                            <label class="col-sm-4 control-label">Upload Tender </label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group input-group-icon">
-                                                                    <input type="file" name="GOFile" id="GOFile" accept="application/pdf" />
+                                                                    <input type="file" name="TenderFile" id="TenderFile" accept="application/pdf" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -93,23 +92,12 @@
                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                     <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
                                                     <span class="label-divider" id="Span1">or</span>
-                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                                    <a href="~/Admin/TenderEntry" class="btn btn-default">Reset</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br />
-                                    @*<div class="row">
-                                        <div class="col-md-5">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
-                                                <span class="label-divider" id="Span1">or</span>
-                                                <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
-                                            </div>
-                                        </div>
-                                    </div>*@
                                 </div>
                             </div>
                         </div>
@@ -121,4 +109,3 @@
         </div><!-- /.content -->
     </section>
 </form>
-

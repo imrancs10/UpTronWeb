@@ -1149,6 +1149,10 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Admin\GOCircularEntry.cshtml" />
+    <Content Include="Views\Admin\GOCircularView.cshtml" />
+    <Content Include="Views\Admin\TenderEntry.cshtml" />
+    <Content Include="Views\Admin\TenderView.cshtml" />
+    <Content Include="Views\Home\AboutUS_Tender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

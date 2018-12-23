@@ -53,7 +53,7 @@ a:hover {
 }
 b,
 strong {
-    font-weight: 700
+    font-weight: 600
 }
 dfn {
     font-style: italic
@@ -1034,7 +1034,7 @@ html {
 }
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.42857;
     color: rgba(22, 24, 27, .87);
     /*background-color: #F5F7FA*/
@@ -1208,7 +1208,7 @@ h6 small {
     font-size: 75%
 }
 p {
-    margin: 0 0 10px
+    margin: 0 0 5px
 }
 .lead {
     margin-bottom: 20px;
@@ -1218,7 +1218,7 @@ p {
 }
 @media (min-width: 768px) {
     .lead {
-        font-size: 21px
+        font-size: 18px
     }
 }
 .small,
@@ -2305,7 +2305,7 @@ th {
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px
+    margin-bottom: 5px
 }
 .table>tbody>tr>td,
 .table>tbody>tr>th,
@@ -2313,7 +2313,7 @@ th {
 .table>tfoot>tr>th,
 .table>thead>tr>td,
 .table>thead>tr>th {
-    padding: 15px;
+    padding: 8px;
     line-height: 1.42857;
     vertical-align: top;
     border-top: 1px solid rgba(22, 24, 27, .06)
@@ -3188,7 +3188,7 @@ fieldset[disabled] .btn-default:hover {
     background-color: rgba(22, 24, 27, .87)
 }
 .btn-primary {
-    color: rgba(22, 24, 27, .87);
+    color: #fff;
     background-color: #48CFAD;
     border-color: transparent
 }
@@ -3202,19 +3202,19 @@ fieldset[disabled] .btn-default:hover {
     background-color: #2fb593;
     border-color: transparent
 }
-.btn-primary.active.focus,
-.btn-primary.active:focus,
-.btn-primary.active:hover,
-.btn-primary:active.focus,
-.btn-primary:active:focus,
-.btn-primary:active:hover,
-.open>.btn-primary.dropdown-toggle.focus,
-.open>.btn-primary.dropdown-toggle:focus,
-.open>.btn-primary.dropdown-toggle:hover {
-    color: rgba(22, 24, 27, .87);
-    background-color: #28987c;
-    border-color: transparent
-}
+    .btn-primary.active.focus,
+    .btn-primary.active:focus,
+    .btn-primary.active:hover,
+    .btn-primary:active.focus,
+    .btn-primary:active:focus,
+    .btn-primary:active:hover,
+    .open > .btn-primary.dropdown-toggle.focus,
+    .open > .btn-primary.dropdown-toggle:focus,
+    .open > .btn-primary.dropdown-toggle:hover {
+        color: rgba(208, 210, 212, 0.87);
+        background-color: #28987c;
+        border-color: transparent
+    }
 .btn-primary.active,
 .btn-primary:active,
 .open>.btn-primary.dropdown-toggle {
@@ -5396,7 +5396,7 @@ button.list-group-item-danger.active:hover {
     border-radius: 2px
 }
 .panel-body {
-    padding: 12px
+    padding: 5px
 }
 .panel-body:after,
 .panel-body:before {
@@ -10986,9 +10986,9 @@ h1 {
 .h2,
 .headline,
 h2 {
-    font-size: 19px;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 32px
+    line-height: 10px
 }
 .h3,
 .title,
@@ -11000,7 +11000,7 @@ h3 {
 .h4,
 .subhead,
 h4 {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 24px
 }
@@ -11035,7 +11035,7 @@ h6 {
 }
 .table thead {
     color: rgba(22, 24, 27, .54);
-    font-size: 15px
+    font-size: 13px
 }
 .table thead td,
 .table thead th {
@@ -11317,7 +11317,7 @@ div.DTFC_LeftFootWrapper table {
 }
 .btn {
     font-weight: 500;
-    line-height: 20px
+    line-height: 15px
 }
 .btn.active.focus,
 .btn.active:focus,

@@ -28,6 +28,11 @@ namespace UptronWeb.Controllers
             return View();
         }
 
+        public ActionResult AboutUS_Tender()
+        {
+            return View();
+        }
+
         public ActionResult AboutUS_Objective()
         {
             return View();

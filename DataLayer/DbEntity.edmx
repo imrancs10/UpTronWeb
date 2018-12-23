@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityId" />
@@ -109,6 +109,16 @@
           </Key>
           <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StateName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenderNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenderDate" Type="datetime" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="500" />
+          <Property Name="TenderFile" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -254,6 +264,7 @@
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
@@ -351,6 +362,7 @@
             <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkills" />
           </AssociationSet>
           <EntitySet Name="GOCirculars" EntityType="UptronWebModel.GOCircular" />
+          <EntitySet Name="Tenders" EntityType="UptronWebModel.Tender" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -611,6 +623,16 @@
           <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="GOFile" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenderNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenderDate" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TenderFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -746,6 +768,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tenders">
+            <EntityTypeMapping TypeName="UptronWebModel.Tender">
+              <MappingFragment StoreEntitySet="Tender">
+                <ScalarProperty Name="TenderFile" ColumnName="TenderFile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="TenderDate" ColumnName="TenderDate" />
+                <ScalarProperty Name="TenderNumber" ColumnName="TenderNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -776,19 +809,20 @@
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster1" />
         <EntityTypeShape EntityType="UptronWebModel.City" Width="1.5" PointX="7.625" PointY="3.125" />
         <EntityTypeShape EntityType="UptronWebModel.JobRegistration" Width="1.5" PointX="9.875" PointY="1.125" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationQualification" Width="1.5" PointX="12.125" PointY="2.75" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationQualification" Width="1.875" PointX="12.125" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UptronWebModel.State" Width="1.5" PointX="5.375" PointY="3.25" />
         <AssociationConnector Association="UptronWebModel.FK_City_State" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistration_City" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistration_State" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" />
         <EntityTypeShape EntityType="UptronWebModel.JobRegistrationEmployement" Width="1.5" PointX="12.125" PointY="10.5" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationLanguage" Width="1.5" PointX="12.125" PointY="7.875" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationLanguage" Width="1.75" PointX="12.125" PointY="7.875" />
         <EntityTypeShape EntityType="UptronWebModel.JobRegistrationSkill" Width="1.5" PointX="12.125" PointY="14.375" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" />
         <EntityTypeShape EntityType="UptronWebModel.GOCircular" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Tender" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </Diagrams>
   </Designer>
