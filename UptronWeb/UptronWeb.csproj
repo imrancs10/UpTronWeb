@@ -1153,6 +1153,9 @@
     <Content Include="Views\Admin\TenderEntry.cshtml" />
     <Content Include="Views\Admin\TenderView.cshtml" />
     <Content Include="Views\Home\AboutUS_Tender.cshtml" />
+    <Content Include="Views\Home\GalleryDetail.cshtml" />
+    <Content Include="Views\Admin\PhotoGallery.cshtml" />
+    <Content Include="Views\Admin\GalleryCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -92,6 +92,10 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+        public ActionResult GalleryDetail()
+        {
+            return View();
+        }
 
         public ActionResult JobPortal()
         {
