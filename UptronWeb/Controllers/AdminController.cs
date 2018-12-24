@@ -56,18 +56,25 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login", "UptronAdmin");
         }
 
-        public ActionResult GOCircularEntry()
+        public ActionResult GOCircularEntry(int? Id)
         {
-            return View();
+            if (Id != null && Id > 0)
+            {
+                MasterBAL bal = new MasterBAL();
+                var result = bal.GetGOCircular(Id.Value);
+                return View(result);
+            }
+            return View(new GOCircular());
         }
         [HttpPost]
-        public ActionResult SaveGOCircularDetail(string GoNumber, string Subject, string GoDate, HttpPostedFileBase GOFile)
+        public ActionResult GOCircularEntry(string GoNumber, string Subject, string GoDate, HttpPostedFileBase GOFile, int Id)
         {
             byte[] fileAttachment = null;
             fileAttachment = Utility.serilizeImagetoByte(GOFile, fileAttachment);
             MasterBAL bal = new MasterBAL();
             GOCircular goCircular = new GOCircular()
             {
+                Id = Id,
                 GODate = Convert.ToDateTime(GoDate),
                 GOFile = fileAttachment,
                 GONumber = GoNumber,
@@ -82,20 +89,28 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("Go No already exists", "Go & Circular");
             }
-            
+
             return RedirectToAction("GOCircularEntry");
         }
 
         public ActionResult GOCircularView()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllCircularList();
+            return View(result);
+        }
+        public ActionResult DeleteGOCircular(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteGOCircular(Id);
+            return RedirectToAction("GOCircularView");
         }
         public ActionResult TenderEntry()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult SaveTenderEntry(string TenderNumber, string TenderDate, string Subject, HttpPostedFileBase TenderFile)
+        public ActionResult TenderEntry(string TenderNumber, string TenderDate, string Subject, HttpPostedFileBase TenderFile)
         {
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(TenderFile, fileattachment);
