@@ -132,5 +132,72 @@ namespace UptronWeb.BAL.Master
             var result = _db.GalleryPhotoMasters.Where(x => x.GalleryId == Id).ToList();
             return result;
         }
+        public Enums.CrudStatus SaveNewsAndUpdate(NewsUpdateMaster newsAndUpdate)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (newsAndUpdate.Id > 0)
+            {
+                var _deptRow = _db.NewsUpdateMasters.Where(x => x.Id == newsAndUpdate.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = newsAndUpdate.Id;
+                    _deptRow.IsActive = newsAndUpdate.IsActive;
+                    _deptRow.IsNew = newsAndUpdate.IsNew;
+                    _deptRow.ModifiedDate = newsAndUpdate.ModifiedDate;
+                    _deptRow.Title = newsAndUpdate.Title;
+                    if (newsAndUpdate.NewsFile != null)
+                        _deptRow.NewsFile = newsAndUpdate.NewsFile;
+
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.NewsUpdateMasters.Where(x => x.Title == newsAndUpdate.Title && x.IsActive == true).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(newsAndUpdate).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+        public List<NewsUpdateMaster> GetAllNewsUpdate()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.NewsUpdateMasters.ToList();
+            return result;
+        }
+        public List<NewsUpdateMaster> GetAllActiveNewsUpdate()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.NewsUpdateMasters.Where(x => x.IsActive == true).ToList();
+            return result;
+        }
+        public NewsUpdateMaster GetNewsUpdateById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
+            return result;
+        }
+        public bool DeleteNewsAndUpdate(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
+            _db.NewsUpdateMasters.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

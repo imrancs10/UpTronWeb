@@ -1,0 +1,233 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<NewsUpdateMaster>
+<form action="NewsAndUpdate" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id" />
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">News & events</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">News & events</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">News Title</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="NewsTitle" name="NewsTitle" class="form-control" placeholder="News Title" required  />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is New</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsNew" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive"  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">News File</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="NewsFile" id="NewsFile" accept="application/pdf" required/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/NewsAndUpdate" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="7">News Update View Detail</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th>Sl.no</th>
+                                                <th>Title</th>
+                                                <th>IsActive</th>
+                                                <th>IsNew</th>
+                                                <th>File</th>
+                                                <th>Publish Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var news in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.Title</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.IsActive</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.IsNew</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">
+                                                                        <a href="~/Home/ViewNewsFile/@news.Id" target="_blank">View File</a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">
+                                                                        @news.CreatedDate.Value.ToString("dd/MM/yyyy")
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditNews(@news.Id,'@news.Title','@(news.IsActive==true?1:0)','@(news.IsNew==true?1:0)')" href="#">Edit</a>
+                                                                    <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
+
+
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    var parts = document.location.href.split("/");
+    //    var Id = parts[parts.length - 1];
+    //    if (typeof Id !== typeof undefined && !isNaN(Id)) {
+    //        $('#NewsFile').addClass('hidden');
+    //        var html = "<a href='../../Home/ViewNewsFile/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
+    //        $(html).insertAfter('#NewsFile');
+    //    }
+    //});
+    function RemoveFile() {
+        $('#NewsFile').removeClass('hidden');
+        $('#NewsFile').parent().find('a').addClass('hidden');
+        $('#NewsFile').attr('required');
+        return false;
+    }
+    function EditNews(Id, title, isActive, isNew) {
+        $('#hiddenId').val(Id);
+        $('#btnSave').val('Update');
+        $('#NewsTitle').val(title);
+        $('[name=IsNew]').prop('checked', isNew == 1 ? true : false);
+        $('[name=IsActive]').prop('checked', isActive == 1 ? true : false);
+        $('#NewsFile').addClass('hidden');
+        $('#NewsFile').removeAttr('required');
+        var html = "<a href='../../Home/ViewNewsFile/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
+        $(html).insertAfter('#NewsFile');
+    }
+</script>

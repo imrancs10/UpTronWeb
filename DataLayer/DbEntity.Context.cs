@@ -38,5 +38,6 @@ namespace DataLayer
         public virtual DbSet<Tender> Tenders { get; set; }
         public virtual DbSet<GalleryMaster> GalleryMasters { get; set; }
         public virtual DbSet<GalleryPhotoMaster> GalleryPhotoMasters { get; set; }
+        public virtual DbSet<NewsUpdateMaster> NewsUpdateMasters { get; set; }
     }
 }

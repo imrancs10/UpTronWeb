@@ -113,6 +113,18 @@
           <Property Name="Skill" Type="varchar" MaxLength="50" />
           <Property Name="RegistrationId" Type="int" />
         </EntityType>
+        <EntityType Name="NewsUpdateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="NewsFile" Type="varbinary(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -293,6 +305,7 @@
           <EntitySet Name="JobRegistrationLanguage" EntityType="Self.JobRegistrationLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationQualification" EntityType="Self.JobRegistrationQualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
@@ -404,6 +417,7 @@
             <End Role="GalleryMaster" EntitySet="GalleryMasters" />
             <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
           </AssociationSet>
+          <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -705,6 +719,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NewsUpdateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="NewsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -870,6 +896,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NewsUpdateMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.NewsUpdateMaster">
+              <MappingFragment StoreEntitySet="NewsUpdateMaster">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="NewsFile" ColumnName="NewsFile" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -917,6 +956,7 @@
         <EntityTypeShape EntityType="UptronWebModel.GalleryMaster" Width="1.5" PointX="5.375" PointY="9" />
         <EntityTypeShape EntityType="UptronWebModel.GalleryPhotoMaster" Width="1.5" PointX="7.625" PointY="8.875" />
         <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
+        <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </Diagrams>
   </Designer>

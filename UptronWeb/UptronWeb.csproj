@@ -1164,7 +1164,7 @@
     <Content Include="Views\Home\GalleryDetail.cshtml" />
     <Content Include="Views\Admin\PhotoGallery.cshtml" />
     <Content Include="Views\Admin\GalleryCategory.cshtml" />
-    <Content Include="Views\Admin\NewsEvents.cshtml" />
+    <Content Include="Views\Admin\NewsAndUpdate.cshtml" />
     <Content Include="Views\Admin\UpcomingEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>

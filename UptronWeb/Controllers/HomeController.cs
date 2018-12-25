@@ -16,6 +16,9 @@ namespace UptronWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            MasterBAL bal = new MasterBAL();
+            var news = bal.GetAllActiveNewsUpdate();
+            ViewData["News"] = news;
             return View();
         }
 
@@ -160,6 +163,12 @@ namespace UptronWeb.Controllers
 
 
         }
-
+        public ActionResult ViewNewsFile(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetNewsUpdateById(Id);
+            byte[] fileByte = result.NewsFile;
+            return File(fileByte, "application/pdf");
+        }
     }
 }

@@ -217,14 +217,54 @@ namespace UptronWeb.Controllers
             return Json(result);
         }
 
-        public ActionResult NewsEvents()
+        public ActionResult NewsAndUpdate()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var news = bal.GetAllNewsUpdate();
+            return View(news);
+        }
+        [HttpPost]
+        public ActionResult NewsAndUpdate(string NewsTitle, string IsNew, string IsActive, HttpPostedFileBase NewsFile, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(NewsFile, fileattachment);
+            MasterBAL bal = new MasterBAL();
+            NewsUpdateMaster newsUpdate = new NewsUpdateMaster()
+            {
+                Title = NewsTitle,
+                IsActive = IsActive == "on" ? true : false,
+                IsNew = IsNew == "on" ? true : false,
+                Id = Id != null ? Id.Value : 0,
+            };
+            if (Id != null)
+                newsUpdate.ModifiedDate = DateTime.Now;
+            else
+                newsUpdate.CreatedDate = DateTime.Now;
+            if (NewsFile != null)
+                newsUpdate.NewsFile = fileattachment;
+
+            var result = bal.SaveNewsAndUpdate(newsUpdate);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("News Update has been saved", "News Update");
+            }
+            else
+            {
+                SetAlertMessage("News Update number alreday exists", "News Update");
+            }
+            var news = bal.GetAllNewsUpdate();
+            return View(news);
         }
 
         public ActionResult UpcomingEvents()
         {
             return View();
+        }
+        public ActionResult DeleteNewsAndUpdate(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteNewsAndUpdate(Id);
+            return RedirectToAction("NewsAndUpdate");
         }
     }
 }

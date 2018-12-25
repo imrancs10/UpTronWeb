@@ -93,6 +93,9 @@
     <Compile Include="JobRegistrationSkill.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="NewsUpdateMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
