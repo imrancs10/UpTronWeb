@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityId" />
@@ -12,6 +12,23 @@
           <Property Name="CityId" Type="int" Nullable="false" />
           <Property Name="CityName" Type="varchar" MaxLength="500" />
           <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="GalleryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GalleryName" Type="varchar" MaxLength="50" />
+          <Property Name="GalleryImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="GalleryPhotoMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GalleryId" Type="int" />
+          <Property Name="PhotoName" Type="varchar" MaxLength="500" />
+          <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="GOCircular">
           <Key>
@@ -146,6 +163,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
+          <End Role="GalleryMaster" Type="Self.GalleryMaster" Multiplicity="0..1" />
+          <End Role="GalleryPhotoMaster" Type="Self.GalleryPhotoMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GalleryMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GalleryPhotoMaster">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JobRegistration_City">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="*" />
@@ -256,6 +285,8 @@
         </Association>
         <EntityContainer Name="UptronWebModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistration" EntityType="Self.JobRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationEmployement" EntityType="Self.JobRegistrationEmployement" Schema="dbo" store:Type="Tables" />
@@ -269,6 +300,10 @@
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="Self.FK_GalleryPhotoMaster_GalleryMaster">
+            <End Role="GalleryMaster" EntitySet="GalleryMaster" />
+            <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMaster" />
           </AssociationSet>
           <AssociationSet Name="FK_JobRegistration_City" Association="Self.FK_JobRegistration_City">
             <End Role="City" EntitySet="City" />
@@ -363,6 +398,12 @@
           </AssociationSet>
           <EntitySet Name="GOCirculars" EntityType="UptronWebModel.GOCircular" />
           <EntitySet Name="Tenders" EntityType="UptronWebModel.Tender" />
+          <EntitySet Name="GalleryMasters" EntityType="UptronWebModel.GalleryMaster" />
+          <EntitySet Name="GalleryPhotoMasters" EntityType="UptronWebModel.GalleryPhotoMaster" />
+          <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster">
+            <End Role="GalleryMaster" EntitySet="GalleryMasters" />
+            <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -633,6 +674,37 @@
           <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="TenderFile" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="GalleryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GalleryImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="GalleryPhotoMasters" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryMaster" ToRole="GalleryPhotoMaster" />
+        </EntityType>
+        <EntityType Name="GalleryPhotoMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryId" Type="Int32" />
+          <Property Name="PhotoName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="GalleryMaster" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryPhotoMaster" ToRole="GalleryMaster" />
+        </EntityType>
+        <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
+          <End Type="UptronWebModel.GalleryMaster" Role="GalleryMaster" Multiplicity="0..1" />
+          <End Type="UptronWebModel.GalleryPhotoMaster" Role="GalleryPhotoMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GalleryMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GalleryPhotoMaster">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -779,6 +851,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="GalleryMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.GalleryMaster">
+              <MappingFragment StoreEntitySet="GalleryMaster">
+                <ScalarProperty Name="GalleryImage" ColumnName="GalleryImage" />
+                <ScalarProperty Name="GalleryName" ColumnName="GalleryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryPhotoMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.GalleryPhotoMaster">
+              <MappingFragment StoreEntitySet="GalleryPhotoMaster">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -823,6 +914,9 @@
         <AssociationConnector Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" />
         <EntityTypeShape EntityType="UptronWebModel.GOCircular" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="UptronWebModel.Tender" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="UptronWebModel.GalleryMaster" Width="1.5" PointX="5.375" PointY="9" />
+        <EntityTypeShape EntityType="UptronWebModel.GalleryPhotoMaster" Width="1.5" PointX="7.625" PointY="8.875" />
+        <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -1,9 +1,9 @@
-﻿
+﻿@using DataLayer;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@model List<GalleryMaster>
 <!-- PAGE TITLE SECTION -->
 <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg.jpg);">
     <div class="container">
@@ -72,16 +72,21 @@
                             <div class="row">
                                 <div class="col-sm-9">
                                     <div class="item active">
-                                                <div class="row galleryset">
+                                        <div class="row galleryset">
+                                            @{
+                                                foreach (var gallery in Model)
+                                                {
+                                                    var base64 = Convert.ToBase64String(gallery.GalleryImage);
+                                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
                                                     <div class="col-md-4 col-xs-12">
                                                         <div class="productImage isotopeSelector">
                                                             <figure>
-                                                                <img src="~/img/gallery/gallery01.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                                <img src="@imgsrc" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
                                                                 <div class="overlay-background">
                                                                     <div class="inner"></div>
                                                                 </div>
                                                                 <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery01.jpeg">
+                                                                    <a class="fancybox-pop" rel="portfolio-1" href="@imgsrc">
                                                                         <div class="overlayInfo">
                                                                             <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
                                                                         </div>
@@ -89,216 +94,138 @@
                                                                 </div>
                                                             </figure>
                                                             <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail/@gallery.Id">@gallery.GalleryName</a></h4>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-4 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery02.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery02.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                }
+                                            }
+                                        </div>
+                                        @*<div class="row" style="padding:25px;margin-left:-42px;margin-top: -20px;">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery04.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery03.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery03.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery04.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery03.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery03.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery03.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery03.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
-                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @*<div class="row" style="padding:25px;margin-left:-42px;margin-top: -20px;">
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery04.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery04.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery05.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery05.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery05.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery05.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery06.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery06.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
-                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row" style="padding:25px;margin-left:-42px;margin-top: -20px;">
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery06.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
                                                             </div>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery06.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3 col-xs-12">
-                                                        <div class="productImage isotopeSelector">
-                                                            <figure>
-                                                                <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
-                                                                <div class="overlay-background">
-                                                                    <div class="inner"></div>
-                                                                </div>
-                                                                <div class="overlay">
-                                                                    <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
-                                                                        <div class="overlayInfo">
-                                                                            <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </figure>
-                                                            <div class="event-details bg-white p-20">
-                                                                <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
+                                                </div>
                                             </div>
+                                            <div class="row" style="padding:25px;margin-left:-42px;margin-top: -20px;">
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
+                                                            </div>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
+                                                            </div>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-12">
+                                                    <div class="productImage isotopeSelector">
+                                                        <figure>
+                                                            <img src="~/img/gallery/gallery07.jpeg" alt="Image Gallery" class="img-responsive galimg" style="height:180px;">
+                                                            <div class="overlay-background">
+                                                                <div class="inner"></div>
+                                                            </div>
+                                                            <div class="overlay">
+                                                                <a class="fancybox-pop" rel="portfolio-1" href="~/img/gallery/gallery07.jpeg">
+                                                                    <div class="overlayInfo">
+                                                                        <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </figure>
+                                                        <div class="event-details bg-white p-20">
+                                                            <h4 class="text-thm pb-5"><a href="~/Home/GalleryDetail"> Hospital Information System</a></h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                    </div>
                                 </div>
                             </div>
                         </div>

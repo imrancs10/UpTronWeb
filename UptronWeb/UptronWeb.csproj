@@ -211,6 +211,7 @@
     <Content Include="css\feedback-old.css" />
     <Content Include="css\feedback.css" />
     <Content Include="css\font-awesome.css" />
+    <Content Include="css\jquery-ui.css" />
     <Content Include="css\noUiSlider\nouislider.min.css" />
     <Content Include="css\noUiSlider\nouislider.min.js" />
     <Content Include="css\OwlCarousel\owl.carousel.min.css" />
@@ -505,6 +506,7 @@
     <Content Include="js\frm-advance-demo.js" />
     <Content Include="js\google-map.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
+    <Content Include="js\jquery-ui.js" />
     <Content Include="js\jquery.easy-ticker.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\production.0092f269.min.js" />

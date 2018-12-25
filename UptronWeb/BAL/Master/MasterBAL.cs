@@ -88,5 +88,43 @@ namespace UptronWeb.BAL.Master
             var result = _db.GOCirculars.FirstOrDefault(x => x.Id == Id);
             return result;
         }
+        public Enums.CrudStatus SaveGalleryMaster(GalleryMaster gallery)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.GalleryMasters.Where(x => x.GalleryName == gallery.GalleryName).FirstOrDefault();
+            if (_deptRow == null)
+            {
+                _db.Entry(gallery).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+            {
+                return Enums.CrudStatus.DataAlreadyExist;
+            }
+        }
+        public List<GalleryMaster> GetAllGalleryName()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.GalleryMasters.ToList();
+            return result;
+        }
+        public Enums.CrudStatus SaveGalleryPhotoMaster(GalleryPhotoMaster galleryPhoto)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            var _deptRow = _db.GalleryPhotoMasters.Where(x => x.PhotoName == galleryPhoto.PhotoName).FirstOrDefault();
+            if (_deptRow == null)
+            {
+                _db.Entry(galleryPhoto).State = EntityState.Added;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+            {
+                return Enums.CrudStatus.DataAlreadyExist;
+            }
+        }
     }
 }

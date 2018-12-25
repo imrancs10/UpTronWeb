@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -62,19 +63,19 @@ namespace UptronWeb.Controllers
             {
                 MasterBAL bal = new MasterBAL();
                 var result = bal.GetGOCircular(Id.Value);
-                return View(result);
+                ViewData["GoCircular"] = result;
             }
-            return View(new GOCircular());
+            return View();
         }
         [HttpPost]
-        public ActionResult GOCircularEntry(string GoNumber, string Subject, string GoDate, HttpPostedFileBase GOFile, int Id)
+        public ActionResult GOCircularEntry(string GoNumber, string Subject, string GoDate, HttpPostedFileBase GOFile, int? Id)
         {
             byte[] fileAttachment = null;
             fileAttachment = Utility.serilizeImagetoByte(GOFile, fileAttachment);
             MasterBAL bal = new MasterBAL();
             GOCircular goCircular = new GOCircular()
             {
-                Id = Id,
+                Id = Id != null ? Id.Value : 0,
                 GODate = Convert.ToDateTime(GoDate),
                 GOFile = fileAttachment,
                 GONumber = GoNumber,
@@ -104,6 +105,13 @@ namespace UptronWeb.Controllers
             MasterBAL bal = new MasterBAL();
             var result = bal.DeleteGOCircular(Id);
             return RedirectToAction("GOCircularView");
+        }
+        public ActionResult ViewFileGoCircular(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetGOCircular(Id);
+            byte[] fileByte = result.GOFile;
+            return File(fileByte, "application/pdf");
         }
         public ActionResult TenderEntry()
         {
@@ -143,10 +151,68 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult GalleryCategory(string GalleryName, HttpPostedFileBase GalleryImage)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(GalleryImage, fileattachment);
+            MasterBAL bal = new MasterBAL();
+            GalleryMaster gallery = new GalleryMaster()
+            {
+                GalleryName = GalleryName,
+                GalleryImage = fileattachment
+
+            };
+            var result = bal.SaveGalleryMaster(gallery);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Gallery has been saved", "Tender");
+            }
+            else
+            {
+                SetAlertMessage("Gallery number alreday exists");
+            }
+            return View();
+        }
 
         public ActionResult PhotoGallery()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult PhotoGallery(string GalleryCategory, string PhotoName, HttpPostedFileBase GalleryPhotoFile)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(GalleryPhotoFile, fileattachment);
+            MasterBAL bal = new MasterBAL();
+            GalleryPhotoMaster galleryPhoto = new GalleryPhotoMaster()
+            {
+                GalleryId = Convert.ToInt32(GalleryCategory),
+                Photo = fileattachment,
+                PhotoName = PhotoName
+
+            };
+            var result = bal.SaveGalleryPhotoMaster(galleryPhoto);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Gallery has been saved", "Tender");
+            }
+            else
+            {
+                SetAlertMessage("Gallery number alreday exists");
+            }
+            return View();
+        }
+
+        public JsonResult GetGalleryDetail()
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = JsonConvert.SerializeObject(bal.GetAllGalleryName(), Formatting.Indented,
+                         new JsonSerializerSettings
+                         {
+                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                         });
+            return Json(result);
         }
     }
 }

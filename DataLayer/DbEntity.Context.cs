@@ -36,5 +36,7 @@ namespace DataLayer
         public virtual DbSet<JobRegistrationSkill> JobRegistrationSkills { get; set; }
         public virtual DbSet<GOCircular> GOCirculars { get; set; }
         public virtual DbSet<Tender> Tenders { get; set; }
+        public virtual DbSet<GalleryMaster> GalleryMasters { get; set; }
+        public virtual DbSet<GalleryPhotoMaster> GalleryPhotoMasters { get; set; }
     }
 }

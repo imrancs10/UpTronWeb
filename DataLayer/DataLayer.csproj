@@ -69,6 +69,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GalleryMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GalleryPhotoMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="GOCircular.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

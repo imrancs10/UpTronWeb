@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
+using UptronWeb.BAL.Master;
 using UptronWeb.Models.JobPortal;
 
 namespace UptronWeb.Controllers
@@ -25,7 +26,9 @@ namespace UptronWeb.Controllers
 
         public ActionResult AboutUS_Circular()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllCircularList();
+            return View(result);
         }
 
         public ActionResult AboutUS_Tender()
@@ -90,7 +93,9 @@ namespace UptronWeb.Controllers
 
         public ActionResult Gallery()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllGalleryName();
+            return View(result);
         }
         public ActionResult GalleryDetail()
         {

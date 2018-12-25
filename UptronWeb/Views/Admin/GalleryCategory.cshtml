@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<form>
+<form action="GalleryCategory" method="post" enctype="multipart/form-data">
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -27,10 +27,10 @@
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Gallery Category</label>
+                                                    <label class="col-sm-4 control-label">Gallery Name</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="GalleryCategory" name="GalleryCategory" class="form-control" placeholder="Gallery Category" />
+                                                            <input type="text" id="GalleryName" name="GalleryName" class="form-control" placeholder="Gallery Name" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-image"></i></span>
                                                             </span>
@@ -42,10 +42,10 @@
                                                 <div class="form-group mt-lg">
                                                     <div class="form-group">
                                                         <div class="form-group mt-lg">
-                                                            <label class="col-sm-4 control-label">Category Image </label>
+                                                            <label class="col-sm-4 control-label">Gallery Image </label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group input-group-icon">
-                                                                    <input type="file" name="GalleryCategoryFile" id="GalleryCategoryFile" />
+                                                                    <input type="file" name="GalleryImage" id="GalleryImage" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -53,19 +53,6 @@
                                                     <br />
                                                 </div>
                                             </div>
-                                            @*<div class="col-md-6">
-                                                    <div class="form-group mt-lg">
-                                                        <label class="col-sm-4 control-label">Gallery Category</label>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="GalleryCategory" name="GalleryCategory" class="form-control" placeholder="Gallery Category" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-image"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>*@
                                         </div>
                                     </div>
                                     <br />

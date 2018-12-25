@@ -1,10 +1,10 @@
-﻿
+﻿@using DataLayer;
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+@model List<GOCircular>
 <!-- PAGE TITLE SECTION -->
 <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg.jpg);">
     <div class="container">
@@ -62,66 +62,36 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="blogPost">
-                        <div class="table table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
+                        <div class="table table-responsive scrollbar-deep-purple bordered-deep-purple thin">
+                            <table class="table table-bordered table-hover table-striped tableBodyScroll" style="width:100%">
                                 <thead>
                                     <tr class="table-primary">
-                                        <th scope="col">संख्या</th>
-                                        <th scope="col">शासनादेश-संख्या</th>
-                                        <th scope="col">दिनांक</th>
-                                        <th scope="col">विषय</th>
-                                        <th scope="col">डाउनलोड</th>
+                                        <th scope="col" style="width:10%">संख्या</th>
+                                        <th scope="col" style="width:25%">शासनादेश-संख्या</th>
+                                        <th scope="col" style="width:20%">दिनांक</th>
+                                        <th scope="col" colspan="2" style="width:35%">विषय</th>
+                                        <th scope="col" style="width:10%">डाउनलोड</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">१</th>
-                                        <td>संख्या-585/78-2-2018/135आई. टी./2018</td>
-                                        <td>05 सितम्बर, 2018</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/Manpower%20GO.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280"><br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">२</th>
-                                        <td>संख्या-193/78-2-2015-25-आई. टी./2001</td>
-                                        <td>18 फरवरी, 2015</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/CCTV%20GO%20.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">३</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/Software.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">४</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/Software1.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">५</th>
-                                        <td>संख्या-1089/78-2-2005-81-इले0/99</td>
-                                        <td>22 जुलाई, 2005</td>
-                                        <td>सरकारी संयको / निगमों / निकायों / समितियों के कार्मिको एवं अध्यापकों का कंप्यूटर प्रशिक्षण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/TRAINING.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">६</th>
-                                        <td>संख्या-785/78-2-2004-25-आई. टी./2004</td>
-                                        <td>25 अगस्त, 2004</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="~/img/GO/Hardware.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="~/img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-
+                                    @{
+                                        int i = 1;
+                                        foreach (var goCircular in Model)
+                                        {
+                                            <tr>
+                                                <th scope="row" style="width:10%">@i.</th>
+                                                <td style="word-wrap:break-word;width:25%" >@goCircular.GONumber</td>
+                                                <td style="width:20%">@goCircular.GODate.Value.ToString("dd/MM/yyyy")</td>
+                                                <td colspan="2" style="word-wrap:break-word;width:35%">@goCircular.Subject</td>
+                                                <td class="views-field views-field-field-attached" data-label="Download" style="width:10%">
+                                                    <a href="~/Admin/ViewFileGoCircular/@goCircular.Id" target="_blank" style="color:#000;" type="application/pdf; length=2288280">
+                                                        <img alt="application/pdf" class="file-icon" style="height:50px;width:50px;margin-bottom:0px" src="~/img/pdfimage.png" title="PDF file.">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            i = i + 1;
+                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>
