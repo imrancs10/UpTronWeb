@@ -126,5 +126,11 @@ namespace UptronWeb.BAL.Master
                 return Enums.CrudStatus.DataAlreadyExist;
             }
         }
+        public List<GalleryPhotoMaster> GetAllGalleryPhotoByGalleryId(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.GalleryPhotoMasters.Where(x => x.GalleryId == Id).ToList();
+            return result;
+        }
     }
 }

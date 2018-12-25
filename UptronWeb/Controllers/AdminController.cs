@@ -207,7 +207,9 @@ namespace UptronWeb.Controllers
         public JsonResult GetGalleryDetail()
         {
             MasterBAL bal = new MasterBAL();
-            var result = JsonConvert.SerializeObject(bal.GetAllGalleryName(), Formatting.Indented,
+            var data = bal.GetAllGalleryName();
+            data.ForEach(x => x.GalleryImage = null);
+            var result = JsonConvert.SerializeObject(data, Formatting.Indented,
                          new JsonSerializerSettings
                          {
                              ReferenceLoopHandling = ReferenceLoopHandling.Ignore
