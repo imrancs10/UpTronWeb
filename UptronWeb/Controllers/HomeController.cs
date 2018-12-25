@@ -97,9 +97,11 @@ namespace UptronWeb.Controllers
             var result = bal.GetAllGalleryName();
             return View(result);
         }
-        public ActionResult GalleryDetail()
+        public ActionResult GalleryDetail(int Id)
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllGalleryPhotoByGalleryId(Id);
+            return View(result);
         }
 
         public ActionResult JobPortal()
