@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="~/styles/components.css">
     <link rel="stylesheet" href="~/styles/wrapkit.css">
     <link rel="stylesheet" href="~/styles/demo.css">
+    <link href="~/styles/pages.css" rel="stylesheet" />
+    
     <script src="~/js/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/App/Global/App.js"></script>
     <script src="~/scripts/App/Global/Utility.js"></script>
@@ -22,8 +24,8 @@
 <body>
     <main class="wrapkit-wrapper" id="wrapper">
         <!-- ============================================
-        HEADER SECTION
-        =============================================== -->
+    HEADER SECTION
+    =============================================== -->
         <!-- navigation -->
         <nav class="header navbar">
             <div class="container-fluid">
@@ -63,8 +65,8 @@
         </nav>
         <!-- /navigation -->
         <!-- ============================================
-        SIDEBAR SECTION
-        =============================================== -->
+    SIDEBAR SECTION
+    =============================================== -->
         <aside class="sidebar" role="complementary">
             <!-- profile -->
             <div class="sidebar-block">
@@ -113,13 +115,13 @@
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#">
+                                <a href="~/Admin/NewsEvents">
                                     <span class="nav-icon"><i class="fa fa-cubes"></i></span>
                                     <span class="nav-text">News & Updates</span>
                                 </a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#">
+                                <a href="~/Admin/UpcomingEvents">
                                     <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
                                     <span class="nav-text">Upcoming Events</span>
                                 </a>
@@ -139,7 +141,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">GO's and Circular</li>
                     <li class="nav-item" role="presentation">
                         <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -152,7 +153,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Tender</li>
                     <li class="nav-item" role="presentation">
                         <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -165,7 +165,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Portal Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -177,7 +176,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Services Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -189,7 +187,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Partner Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -201,7 +198,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Gallery Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -214,7 +210,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Enquiry Page</li>
                     <li class="nav-item" role="presentation">
                         <a href="#" data-toggle="nav-child">
                             <i class="nav-caret pull-right fa fa-angle-right"></i>
@@ -228,7 +223,6 @@
                         </ul>
                     </li>
                     <li class="divider"></li>
-                    <li class="nav-header" role="presentation">Major Projects</li>
                     <li class="nav-item" role="presentation">
                         <a href="#">
                             <span class="nav-icon"><i class="fa fa-anchor"></i></span>
@@ -253,64 +247,105 @@
                 <div>Wrapkit Template  &copy; 2015</div>
             </div>
         </footer><!-- /.FOOTER -->
-    </main>
-    <!-- /#MAIN -->
-    <!-- VENDORS : jQuery & Bootstrap -->
-    <script src="~/scripts/lib/vendor.js"></script>
-    <!-- END VENDORS -->
-    <!-- DEPENDENCIES : Required plugins -->
-    <script src="~/scripts/lib/dependencies.js"></script>
-    <!-- END DEPENDENCIES -->
-    <!-- WRAPKIT -->
-    <script src="~/scripts/lib/wrapkit.js"></script>
-    <!-- END WRAPKIT -->
-    <!-- WRAPKIT SETUPS -->
-    <script src="~/scripts/lib/wrapkit-setup.js"></script>
-    <!-- end WRAPKIT SETUPS -->
-    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
-    <script src="~/scripts/lib/plugin-setups.js"></script>
-    <!-- END PLUGIN SETUPS -->
-    <!-- COMPONENTS -->
-    <!-- Morris.js + Raphael -->
-    <script src="~/scripts/lib/morris.bundle.js"></script>
-    <script src="~/scripts/lib/jquery.sparkline.js"></script>
-    <script src="~/scripts/lib/jquery.easypiechart.js"></script>
-    <!-- END COMPONENTS -->
-    <!-- DUMMY: Use for demo -->
-    <script src="~/scripts/lib/demo/dashboard1-demo.js"></script>
-    @if (TempData["Alert_Title"] != null)
-    {
-        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
-            @if (TempData["Alert_Message"] != null)
-            {
-                <p>@TempData["Alert_Message"].ToString()</p>
-            }
-            else
-            {
-                <p>Success..!</p>
-            }
-        </div>
-    }
-    <div id="alertModel" style="display:none;" title="">
-        <p></p>
-    </div>
+        <!-- /#MAIN -->
+        <!-- VENDORS : jQuery & Bootstrap -->
+        <script src="~/scripts/lib/vendor.js"></script>
+        <!-- END VENDORS -->
+        <!-- DEPENDENCIES : Required plugins -->
+        <script src="~/scripts/lib/dependencies.js"></script>
+        <!-- END DEPENDENCIES -->
+        <!-- WRAPKIT -->
+        <script src="~/scripts/lib/wrapkit.js"></script>
+        <!-- END WRAPKIT -->
+        <!-- WRAPKIT SETUPS -->
+        <script src="~/scripts/lib/wrapkit-setup.js"></script>
+        <!-- end WRAPKIT SETUPS -->
+        <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+        <script src="~/scripts/lib/plugin-setups.js"></script>
+        <!-- END PLUGIN SETUPS -->
+        <!-- COMPONENTS -->
+        <!-- Morris.js + Raphael -->
+        <script src="~/Scripts/lib/typeahead.bundle.js"></script>
+        <script src="~/Scripts/lib/jquery.tagsinput.js"></script>
+        <script src="~/Scripts/lib/jquery.mask.js"></script>
+        <script src="~/Scripts/lib/select2.js"></script>
+        <script src="~/Scripts/lib/jquery.selectBoxit.js"></script>
+        <script src="~/Scripts/lib/moment.js"></script>
+        <script src="~/Scripts/lib/jquery-minicolors.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#dialog").dialog({
-                resizable: false,
-                height: "auto",
-                width: 400,
-                modal: true,
-                buttons: {
-                    "OK": function () {
-                        $(this).dialog("close");
-                    }
+        <script src="~/Scripts/lib/morris.bundle.js"></script>
+        <script src="~/Scripts/lib/jquery.sparkline.js"></script>
+        <script src="~/Scripts/lib/daterangepicker.js"></script>
+        <script src="~/Scripts/lib/jquery.easypiechart.js"></script>
+        <!-- END COMPONENTS -->
+        
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/chart-inline-demo.js"></script>
+
+        <script src="~/Scripts/lib/demo/frm-advance-demo.js"></script>
+
+        <!-- COMPONENTS -->
+        <script src="~/Scripts/lib/jquery.mixitup.js"></script>
+        <script src="~/Scripts/lib/imagesloaded.pkgd.js"></script>
+        <script src="~/Scripts/lib/photoswipe.pkgd.js"></script>
+        <!-- END COMPONENTS -->
+        <!-- COMPONENTS -->
+        <script src="~/Scripts/lib/fullcalendar.js"></script>
+        <script src="~/Scripts/lib/clndr.js"></script>
+        <!-- END COMPONENTS -->
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/plugin-calendar-demo.js"></script>
+        <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/fileinput.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/demo/page-gallery-demo.js"></script>
+
+        <!-- END COMPONENTS -->
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/plugin-calendar-demo.js"></script>
+        <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/fileinput.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/demo/page-gallery-demo.js"></script>
+
+
+        <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/summernote.js" type="text/javascript"></script>
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/frm-editor-demo.js" type="text/javascript"></script>
+
+        @if (TempData["Alert_Title"] != null)
+        {
+            <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+                @if (TempData["Alert_Message"] != null)
+                {
+                    <p>@TempData["Alert_Message"].ToString()</p>
                 }
-            });
-        })
-    </script>
-    <link href="~/css/jquery-ui.css" rel="stylesheet" />
-    <script src="~/js/jquery-ui.js"></script>
+                else
+                {
+                    <p>Success..!</p>
+                }
+            </div>
+        }
+        <div id="alertModel" style="display:none;" title="">
+            <p></p>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#dialog").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "OK": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            })
+        </script>
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        <script src="~/js/jquery-ui.js"></script>
+    </main>
 </body>
 </html>

@@ -604,10 +604,16 @@
     <Content Include="fonts\weathericons-regular-webfont.woff" />
     <Content Include="fonts\weathericons-regular-webfont.woff2" />
     <Content Include="fonts\weathericons-regular-webfontd41d.eot" />
+    <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\codemirror.css" />
+    <Content Include="Scripts\ckeditor\neo.css" />
+    <Content Include="Scripts\ckeditor\sample.js" />
+    <Content Include="Scripts\ckeditor\samples.css" />
     <Content Include="Scripts\lib\bootbox.js" />
     <Content Include="Scripts\lib\bootstrap-editable.js" />
     <Content Include="Scripts\lib\bootstrap-session-timeout.js" />
     <Content Include="Scripts\lib\chartjs.js" />
+    <Content Include="Scripts\lib\ckeditor.js" />
     <Content Include="Scripts\lib\clndr.js" />
     <Content Include="Scripts\lib\dataTables.bootstrap.js" />
     <Content Include="Scripts\lib\dataTables.tableTools.js" />
@@ -1158,6 +1164,8 @@
     <Content Include="Views\Home\GalleryDetail.cshtml" />
     <Content Include="Views\Admin\PhotoGallery.cshtml" />
     <Content Include="Views\Admin\GalleryCategory.cshtml" />
+    <Content Include="Views\Admin\NewsEvents.cshtml" />
+    <Content Include="Views\Admin\UpcomingEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

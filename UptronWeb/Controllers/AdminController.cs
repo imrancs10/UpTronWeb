@@ -214,5 +214,15 @@ namespace UptronWeb.Controllers
                          });
             return Json(result);
         }
+
+        public ActionResult NewsEvents()
+        {
+            return View();
+        }
+
+        public ActionResult UpcomingEvents()
+        {
+            return View();
+        }
     }
 }
