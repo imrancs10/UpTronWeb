@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
+using UptronWeb.BAL.Common;
 using UptronWeb.BAL.Master;
 using UptronWeb.Global;
 
@@ -293,10 +294,32 @@ namespace UptronWeb.Controllers
             return RedirectToAction("NewsAndUpdate");
         }
 
-        public ActionResult ContactEntry()
+        public ActionResult ContactUsDetail()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var list = bal.GetAllContactUsDetails();
+            return View(list);
+        }
+        public ActionResult ContactUsArchiveDetail()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var list = bal.GetAllContactUsArchiveDetails();
+            return View(list);
         }
 
+        public ActionResult ArchiveContactUs(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var status = bal.ArchiveContactUsDetails(Id);
+            if (status == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Contact Us detail is Archived");
+            }
+            else
+            {
+                SetAlertMessage("Contact Us detail is not Archived");
+            }
+            return RedirectToAction("ContactUsDetail");
+        }
     }
 }

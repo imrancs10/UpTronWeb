@@ -13,6 +13,18 @@
           <Property Name="CityName" Type="varchar" MaxLength="500" />
           <Property Name="StateId" Type="int" />
         </EntityType>
+        <EntityType Name="ContactUsDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Message" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsArchive" Type="bit" />
+        </EntityType>
         <EntityType Name="GalleryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -297,6 +309,7 @@
         </Association>
         <EntityContainer Name="UptronWebModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUsDetail" EntityType="Self.ContactUsDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
@@ -418,6 +431,7 @@
             <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
           </AssociationSet>
           <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
+          <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -731,6 +745,18 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="ContactUsDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -909,6 +935,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ContactUsDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.ContactUsDetail">
+              <MappingFragment StoreEntitySet="ContactUsDetail">
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -957,6 +996,7 @@
         <EntityTypeShape EntityType="UptronWebModel.GalleryPhotoMaster" Width="1.5" PointX="7.625" PointY="8.875" />
         <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
         <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="3.375" PointY="11.75" />
       </Diagram>
     </Diagrams>
   </Designer>

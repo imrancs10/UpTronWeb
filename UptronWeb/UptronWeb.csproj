@@ -170,6 +170,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BAL\Common\GeneralDetailBAL.cs" />
     <Compile Include="BAL\Common\CommonDetails.cs" />
     <Compile Include="BAL\JobPortal\JobRegistrationDetails.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
@@ -189,6 +190,23 @@
     </Compile>
     <Compile Include="Global\UserData.cs" />
     <Compile Include="Global\Utility.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\EmailService.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\IMessageSystem.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\ISendMessageStrategy.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\Message.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\SendMessageStrategyForEmail.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\SendMessageStrategyForSMS.cs" />
+    <Compile Include="Infrastructure\Adapter\Notification\SMSService.cs" />
+    <Compile Include="Infrastructure\Authentication\CustomAuthorize.cs" />
+    <Compile Include="Infrastructure\Authentication\CustomPrincipal.cs" />
+    <Compile Include="Infrastructure\Authentication\CustomPrincipalSerializeModel.cs" />
+    <Compile Include="Infrastructure\Authentication\ICustomPrincipal.cs" />
+    <Compile Include="Infrastructure\Utility\BaseViewPage.cs" />
+    <Compile Include="Infrastructure\Utility\CustomExceptionFilter.cs" />
+    <Compile Include="Infrastructure\Utility\EmailHelper.cs" />
+    <Compile Include="Infrastructure\Utility\MultipleButtonAttribute.cs" />
+    <Compile Include="Infrastructure\Utility\Serializer.cs" />
+    <Compile Include="Infrastructure\Utility\VerificationCodeGeneration.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationEmployementModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationLanguageModel.cs" />
@@ -556,6 +574,7 @@
     <Content Include="plugins\simple-pre-loader\images\loader-64x\Preloader_2.gif" />
     <Content Include="plugins\smoothscroll\SmoothScroll.min.js" />
     <Content Include="plugins\syotimer\jquery.syotimer.min.js" />
+    <Content Include="Scripts\App\General\HomeWeb.js" />
     <Content Include="Scripts\App\General\JobPortalRegistration.js" />
     <Content Include="Scripts\App\Global\App.js" />
     <Content Include="Scripts\App\Global\Utility.js" />
@@ -608,7 +627,6 @@
     <Content Include="Scripts\lib\bootstrap-editable.js" />
     <Content Include="Scripts\lib\bootstrap-session-timeout.js" />
     <Content Include="Scripts\lib\chartjs.js" />
-    <Content Include="Scripts\lib\ckeditor.js" />
     <Content Include="Scripts\lib\clndr.js" />
     <Content Include="Scripts\lib\dataTables.bootstrap.js" />
     <Content Include="Scripts\lib\dataTables.tableTools.js" />
@@ -1161,7 +1179,8 @@
     <Content Include="Views\Admin\GalleryCategory.cshtml" />
     <Content Include="Views\Admin\NewsAndUpdate.cshtml" />
     <Content Include="Views\Admin\UpcomingEvents.cshtml" />
-    <Content Include="Views\Admin\ContactEntry.cshtml" />
+    <Content Include="Views\Admin\ContactUsDetail.cshtml" />
+    <Content Include="Views\Admin\ContactUsArchiveDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -261,24 +261,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-offset-3 col-sm-offset-3 service-box1">
                     <div class="service-box-content">
                         <h3><a href="#">News & Updates</a></h3>
-                        <marquee behavior="scroll" width:100%; height="90" onMouseOver="this.setAttribute('scrollamount', 0, 0);this.stop();" OnMouseOut="this.setAttribute('scrollamount', 2, 0);this.start();" direction="up" scrollamount="1" scrolldelay="5" ;>
-                                @{
-                                    var newsList = ViewData["News"] as List<NewsUpdateMaster>;
-                                    foreach (var news in newsList)
-                                    {
-                                        <p>
-                                            @if (news.IsNew == true)
-                                            {
-                                                <img src="~/img/NewIcon.gif" style="padding-right:5px;" />
-                                            }
-                                            <a href="~/Home/ViewNewsFile/@news.Id" target='_blank'>
-                                                @news.Title
-                                                <img src="~/img/readmore.jpg" />
-                                            </a>
-                                        </p>
-                                        <hr />
-                                    }
-                                }
+                        <marquee id="newsUpdateMarquee" behavior="scroll" width="100%" height="90" onMouseOver="this.setAttribute('scrollamount', 0, 0);this.stop();" OnMouseOut="this.setAttribute('scrollamount', 2, 0);this.start();" direction="up" scrollamount="1" scrolldelay="5">
                         </marquee>
                     </div>
                     <div class="service-box-icon">
@@ -303,7 +286,7 @@
                     <div class="service-box-content">
                         <h3><a href="https://etender.up.nic.in/nicgep/app?component=%24DirectLink&page=FrontEndTendersByOrganisation&service=direct&session=T&sp=SQwS1ZHMBHOToDzkLBeDF%2FQ%3D%3D" target="_blank">Tenders</a></h3>
                         <p>
-                            <a href="https://etender.up.nic.in/nicgep/app?component=%24DirectLink&page=FrontEndTendersByOrganisation&service=direct&session=T&sp=SQwS1ZHMBHOToDzkLBeDF%2FQ%3D%3D" target="_blank">
+                            <a href="AboutUS_Tender" target="_blank">
                                 E-Tender Uttar Praesh <hr />UPL Tenders
                             </a>
                         </p>
@@ -791,3 +774,4 @@
     </div>
 </section>
 <!--END PARTNER LOGO SECTION -->
+<script src="~/Scripts/App/General/HomeWeb.js"></script>
