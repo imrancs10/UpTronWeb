@@ -113,12 +113,18 @@ namespace UptronWeb.Controllers
             byte[] fileByte = result.GOFile;
             return File(fileByte, "application/pdf");
         }
-        public ActionResult TenderEntry()
+        public ActionResult TenderEntry(int? Id)
         {
+            if (Id !=null && Id>0)
+            {
+                MasterBAL bal = new MasterBAL();
+                var result = bal.GetTender(Id.Value);
+                ViewData["Tenders"] = result;
+            }
             return View();
         }
         [HttpPost]
-        public ActionResult TenderEntry(string TenderNumber, string TenderDate, string Subject, HttpPostedFileBase TenderFile)
+        public ActionResult TenderEntry(string TenderNumber, string TenderDate, string Subject, HttpPostedFileBase TenderFile, int? Id)
         {
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(TenderFile, fileattachment);
@@ -144,7 +150,17 @@ namespace UptronWeb.Controllers
         }
         public ActionResult TenderView()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllTenderViewList();
+            return View(result);
+        }
+
+        public ActionResult ViewTenderFile(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetTender(Id);
+            byte[] fileByte = result.TenderFile;
+            return File(fileByte, "application/pdf");
         }
 
         public ActionResult GalleryCategory()

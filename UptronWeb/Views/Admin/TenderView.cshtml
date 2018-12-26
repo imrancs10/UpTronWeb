@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@model List<Tender>
 <section class="content-wrapper" role="main">
     <div class="content">
         <div class="content-bar">
@@ -25,62 +25,78 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr class="bg-primary">
-                                            <th colspan="6">Tender View Detail</th>
+                                            <th colspan="7">Tender View Detail</th>
                                         </tr>
                                         <tr class="active">
                                             <th>Sl.no</th>
                                             <th>Tender No.</th>
-                                            <th>Subject</th>
                                             <th>Tender Date</th>
+                                            <th>Subject</th>
+                                            <th>File</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>1.</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline">संख्या-585/78-2-2018/135आई. टी./2018</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline">2018-09-05</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline">कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <a id="lnkDetail" class="btn btn-primary" href="#">Edit</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <a id="lnkDetail" class="btn btn-primary" href="#">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @{
+                                            int i = 1;
+                                            foreach (Tender tender in Model)
+                                            {
+                                                <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center"><strong>@i</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">/@tender.TenderNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@tender.TenderDate.Value.ToString("dd/MM/yyyy")</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@tender.Subject</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <a href="ViewTenderFile/@tender.id" target="_blank">View File</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <a id="lnkEdit" class="btn btn-primary" href="TenderEntry/@tender.id">Edit</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <a id="lnkDelete" class="btn btn-primary" href="TenderEntry/@tender.id">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                i = i + 1;
+                                            }
+                                        }
+
                                     </tbody>
                                 </table>
                             </div>
@@ -100,3 +116,4 @@
         </div><!-- /.content -->
     </div>
 </section>
+

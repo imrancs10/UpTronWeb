@@ -43,31 +43,6 @@ namespace UptronWeb.BAL.Master
             }
 
         }
-
-        public Enums.CrudStatus SaveTender(Tender tender)
-        {
-            _db = new UptronWebEntities();
-            int _effectRow = 0;
-            Tender _deptRow = _db.Tenders.Where(x => x.TenderNumber == tender.TenderNumber).FirstOrDefault();
-            if (_deptRow == null)
-            {
-                Tender tenderlist = new Tender()
-                {
-                    TenderNumber = tender.TenderNumber,
-                    TenderDate = tender.TenderDate,
-                    TenderFile = tender.TenderFile,
-                    Subject = tender.Subject
-                };
-                _db.Entry(tenderlist).State = EntityState.Added;
-                _effectRow = _db.SaveChanges();
-                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
-            }
-            else
-            {
-                return Enums.CrudStatus.DataAlreadyExist;
-            }
-        }
-
         public List<GOCircular> GetAllCircularList()
         {
             _db = new UptronWebEntities();
@@ -86,6 +61,54 @@ namespace UptronWeb.BAL.Master
         {
             _db = new UptronWebEntities();
             var result = _db.GOCirculars.FirstOrDefault(x => x.Id == Id);
+            return result;
+        }
+        public Enums.CrudStatus SaveTender(Tender tender)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (tender.id > 0)
+            {
+                _db.Entry(tender).State = EntityState.Modified;
+                _effectRow = _db.SaveChanges();
+                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+            }
+            else
+            {
+                _effectRow = 0;
+                Tender _deptRow = _db.Tenders.Where(x => x.TenderNumber == tender.TenderNumber).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    Tender tenderlist = new Tender()
+                    {
+                        TenderNumber = tender.TenderNumber,
+                        TenderDate = tender.TenderDate,
+                        TenderFile = tender.TenderFile,
+                        Subject = tender.Subject
+                    };
+                    _db.Entry(tenderlist).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+            
+        }
+
+        public List<Tender> GetAllTenderViewList()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Tenders.ToList();
+            return result;
+        }
+
+        public Tender GetTender(int id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Tenders.FirstOrDefault(x => x.id == id);
             return result;
         }
         public Enums.CrudStatus SaveGalleryMaster(GalleryMaster gallery)

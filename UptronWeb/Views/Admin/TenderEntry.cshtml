@@ -2,7 +2,16 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@{
+    var tenderTemp = ViewData["Tenders"];
+    Tender tender = new Tender();
+    if (tenderTemp != null)
+    {
+        tender = tenderTemp as Tender;
+    }
+}
 <form action="TenderEntry" method="post" enctype="multipart/form-data">
+    <input type="hidden" value="@(tender!=null?tender.id.ToString():"")" name="Id" />
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -30,7 +39,7 @@
                                                     <label class="col-sm-4 control-label">Tender Number</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="TenderNumber" name="TenderNumber" class="form-control" placeholder="Tender Number" />
+                                                            <input type="text" id="TenderNumber" name="TenderNumber" class="form-control" placeholder="Tender Number" value="@tender.TenderNumber" />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-area-chart"></i></span>
                                                             </span>
@@ -45,7 +54,7 @@
                                                         <div class="input-group input-group-in">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                             <input type="date" id="TenderDate" name="TenderDate" data-input="daterangepicker"
-                                                                   data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required />
+                                                                   data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required value="@(tender.TenderDate!=null?tender.TenderDate.Value.ToString("yyyy-MM-dd"):"")" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -59,7 +68,7 @@
                                                     <label class="col-sm-2 control-label">Subject</label>
                                                     <div class="col-sm-10">
                                                         <div class="input-group input-group-icon">
-                                                            <textarea id="Subject" class="form-control" rows="4" placeholder="Subject" name="Subject"></textarea>
+                                                            <textarea id="Subject" class="form-control" rows="4" placeholder="Subject" name="Subject">@tender.Subject</textarea>
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-map"></i></span>
                                                             </span>
@@ -109,3 +118,20 @@
         </div><!-- /.content -->
     </section>
 </form>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var parts = document.location.href.split("/");
+        var Id = parts[parts.length - 1];
+        if (typeof Id !== typeof undefined && !isNaN(Id)) {
+            $('#TenderFile').addClass('hidden');
+            var html = "<a href='../ViewTenderFile/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
+            $(html).insertAfter('#TenderFile');
+        }
+    });
+    function RemoveFile() {
+        $('#TenderFile').removeClass('hidden');
+        $('#TenderFile').parent().find('a').addClass('hidden');
+        return false;
+    }
+</script>
