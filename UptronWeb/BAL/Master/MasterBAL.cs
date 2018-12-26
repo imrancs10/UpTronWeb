@@ -69,9 +69,24 @@ namespace UptronWeb.BAL.Master
             int _effectRow = 0;
             if (tender.id > 0)
             {
-                _db.Entry(tender).State = EntityState.Modified;
-                _effectRow = _db.SaveChanges();
-                return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                var _deptRow = _db.Tenders.Where(x => x.id == tender.id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.id = tender.id;
+                    _deptRow.Subject = tender.Subject;
+                    _deptRow.TenderDate= tender.TenderDate;
+                    _deptRow.TenderNumber = tender.TenderNumber;
+                    if (tender.TenderFile != null)
+                        _deptRow.TenderFile = tender.TenderFile;
+
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
             }
             else
             {
@@ -95,13 +110,13 @@ namespace UptronWeb.BAL.Master
                     return Enums.CrudStatus.DataAlreadyExist;
                 }
             }
-            
+
         }
 
         public List<Tender> GetAllTenderViewList()
         {
             _db = new UptronWebEntities();
-            var result = _db.Tenders.ToList();
+            var result = _db.Tenders.OrderBy(x => x.TenderDate).ToList();
             return result;
         }
 

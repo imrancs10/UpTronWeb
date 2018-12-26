@@ -36,7 +36,9 @@ namespace UptronWeb.Controllers
 
         public ActionResult AboutUS_Tender()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllTenderViewList();
+            return View(result);
         }
 
         public ActionResult AboutUS_Objective()

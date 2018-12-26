@@ -115,7 +115,7 @@ namespace UptronWeb.Controllers
         }
         public ActionResult TenderEntry(int? Id)
         {
-            if (Id !=null && Id>0)
+            if (Id != null && Id > 0)
             {
                 MasterBAL bal = new MasterBAL();
                 var result = bal.GetTender(Id.Value);
@@ -134,17 +134,23 @@ namespace UptronWeb.Controllers
                 TenderNumber = TenderNumber,
                 TenderDate = Convert.ToDateTime(TenderDate),
                 TenderFile = fileattachment,
-                Subject = Subject
-
+                Subject = Subject,
+                id = Id != null ? Id.Value : 0,
             };
+            if (TenderFile != null)
+                tender.TenderFile = fileattachment;
             var result = bal.SaveTender(tender);
             if (result == Enums.CrudStatus.Saved)
             {
                 SetAlertMessage("Tender has been saved", "Tender");
             }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Tender has been Updated", "Tender");
+            }
             else
             {
-                SetAlertMessage("Tender number alreday exists");
+                SetAlertMessage("Tender alreday exists");
             }
             return RedirectToAction("TenderEntry");
         }
@@ -264,9 +270,13 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("News Update has been saved", "News Update");
             }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("News Detail has been Updated", "News Update");
+            }
             else
             {
-                SetAlertMessage("News Update number alreday exists", "News Update");
+                SetAlertMessage("News & Update alreday exists", "News Update");
             }
             var news = bal.GetAllNewsUpdate();
             return View(news);
