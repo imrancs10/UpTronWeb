@@ -127,62 +127,69 @@
                                                 int i = 1;
                                                 foreach (var news in Model)
                                                 {
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline"><strong>@i.</strong></span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.Title</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.IsActive</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.IsNew</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">
-                                                                        <a href="~/Home/ViewNewsFile/@news.Id" target="_blank">View File</a>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">
-                                                                        @news.CreatedDate.Value.ToString("dd/MM/yyyy")
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditNews(@news.Id,'@news.Title','@(news.IsActive==true?1:0)','@(news.IsNew==true?1:0)')" href="#">Edit</a>
-                                                                    <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline"><strong>@i.</strong></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@news.Title</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@news.IsActive</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@news.IsNew</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">
+                                                                <a href="~/Home/ViewNewsFile/@news.Id" target="_blank">View File</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">
+                                                                @news.CreatedDate.Value.ToString("dd/MM/yyyy")
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                            <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditNews(@news.Id,'@news.Title','@(news.IsActive==true?1:0)','@(news.IsNew==true?1:0)')" href="#">Edit</a>
+                                                            <span class="label-divider" id="Span1">or</span>
+                                                            <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                @*<div class="form-group mt-lg">
+                                                    <div class="input-group input-group-icon">
+                                                        <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditNews(@news.Id,'@news.Title','@(news.IsActive==true?1:0)','@(news.IsNew==true?1:0)')" href="#">Edit</a>
+                                                        <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
+                                                    </div>
+                                                </div>*@
+                                            </tr>
                                                     i = i + 1;
                                                 }
                                             }

@@ -282,5 +282,11 @@ namespace UptronWeb.Controllers
             var result = bal.DeleteNewsAndUpdate(Id);
             return RedirectToAction("NewsAndUpdate");
         }
+
+        public ActionResult ContactEntry()
+        {
+            return View();
+        }
+
     }
 }

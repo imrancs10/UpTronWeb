@@ -1,0 +1,200 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<form action="GOCircularEntry" method="post" enctype="multipart/form-data">
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Contact Entry</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Contactr Entry</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Your Name" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Email Id</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="EmailId" name="EmailId" class="form-control" placeholder="Your Email Id" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Mobile No</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="MobileNo" name="MobileNo" class="form-control" placeholder="Your Mobile No" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Date</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <input type="date" id="GoDate" name="GoDate" data-input="daterangepicker"
+                                                                 data-single-date-picker="true" data-show-dropdowns="true" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-2 control-label">Message</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="input-group input-group-icon">
+                                                            <textarea id="Message" class="form-control" rows="4" placeholder="Your Message" name="Message"></textarea>
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-map"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-offset-5">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="col-md-12">
+                    <div class="panel" data-fill-color="true">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="bg-primary">
+                                                    <th colspan="6">Contact View Detail</th>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th>Sl.no</th>
+                                                    <th>Name</th>
+                                                    <th>Mobile</th>
+                                                    <th>Email</th>
+                                                    <th>Date</th>
+                                                    <th>Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="input-group input-group-icon">
+                                                                <span class="headline center"><strong>1</strong></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="input-group input-group-icon">
+                                                                <span class="headline center">Raman Kumar</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="input-group input-group-icon">
+                                                                <span class="headline center">9308789987</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="input-group input-group-icon">
+                                                                <span class="headline center">info@ramankumar.com</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="input-group input-group-icon">
+                                                                <span class="headline center">jbvsdjvbsdjvbdsjvbsdjvbsdvbdsm</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mt-lg">
+                                                            <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                <a href="~/Admin/GOCircularEntry" class="btn btn-primary">Edit</a>
+                                                                <span class="label-divider" id="Span1">or</span>
+                                                                <a href="~/Admin/GOCircularEntry" class="btn btn-danger">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.panel -->
+                        <div class="container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
