@@ -25,6 +25,17 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="IsArchive" Type="bit" />
         </EntityType>
+        <EntityType Name="DirectorMessageDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Designation" Type="varchar" MaxLength="100" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="GalleryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -310,6 +321,7 @@
         <EntityContainer Name="UptronWebModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactUsDetail" EntityType="Self.ContactUsDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DirectorMessageDetail" EntityType="Self.DirectorMessageDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
@@ -432,6 +444,7 @@
           </AssociationSet>
           <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
           <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
+          <EntitySet Name="DirectorMessageDetails" EntityType="UptronWebModel.DirectorMessageDetail" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -757,6 +770,17 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsArchive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="DirectorMessageDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -948,6 +972,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DirectorMessageDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.DirectorMessageDetail">
+              <MappingFragment StoreEntitySet="DirectorMessageDetail">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -997,6 +1033,7 @@
         <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
         <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="UptronWebModel.DirectorMessageDetail" Width="1.5" PointX="5.375" PointY="11.75" />
       </Diagram>
     </Diagrams>
   </Designer>

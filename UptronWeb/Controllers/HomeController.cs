@@ -15,6 +15,7 @@ using UptronWeb.Models.JobPortal;
 using UptronWeb.Infrastructure;
 using UptronWeb.Infrastructure.Utility;
 using System.Configuration;
+using UptronWeb.Models.Common;
 
 namespace UptronWeb.Controllers
 {
@@ -187,6 +188,22 @@ namespace UptronWeb.Controllers
                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                         });
             return Json(result);
+        }
+        public JsonResult GetDirectorMessage()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var director = bal.GetLatestDirectorMessageDetail();
+            var base64 = Convert.ToBase64String(director.Photo);
+            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            DirectorMessageModel model = new DirectorMessageModel()
+            {
+                Designation = director.Designation,
+                Id = director.Id,
+                Message = director.Message,
+                Name = director.Name,
+                Photo = imgsrc
+            };
+            return Json(model);
         }
         [HttpPost]
         public ActionResult Contact(string Name, string Email, string Phone, string Message)

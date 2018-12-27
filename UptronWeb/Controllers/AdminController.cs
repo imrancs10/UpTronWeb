@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
@@ -324,7 +325,45 @@ namespace UptronWeb.Controllers
 
         public ActionResult DirectorMessage()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var news = bal.GetAllDirectorMessageDetail();
+            return View(news);
+        }
+        [HttpPost]
+        public ActionResult DirectorMessage(string Directorname, string Directordesignation,
+                                            string Message, HttpPostedFileBase DirectorFile, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(DirectorFile, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            DirectorMessageDetail directorMessage = new DirectorMessageDetail()
+            {
+                Designation = Directordesignation,
+                Message = Message,
+                Name = Directorname,
+                Id = Id != null ? Id.Value : 0,
+            };
+            if (Id == null)
+                directorMessage.CreatedDate = DateTime.Now;
+
+            if (DirectorFile != null)
+                directorMessage.Photo = fileattachment;
+
+            var result = bal.SaveDirectorMessage(directorMessage);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Director Message has been saved", "News Update");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Director Message has been Updated", "News Update");
+            }
+            else
+            {
+                SetAlertMessage("Director Message alreday exists", "News Update");
+            }
+            var messages = bal.GetAllDirectorMessageDetail();
+            return View(messages);
         }
 
         public ActionResult KeyFunctionaries()

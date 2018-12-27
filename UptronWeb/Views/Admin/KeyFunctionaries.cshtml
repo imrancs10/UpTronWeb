@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<form>
+<form action="KeyFunctionaries" method="post" enctype="multipart/form-data">
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -42,7 +42,7 @@
                                                     <label class="col-sm-4 control-label">Location</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-in">
-                                                            <input type="text" id="Directordesignation" name="Directordesignation" class="form-control" placeholder="Director's Designation" required />
+                                                            <input type="text" id="Location" name="Location" class="form-control" placeholder="Location" required />
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-user-secret"></i></span>
                                                             </span>
@@ -79,7 +79,7 @@
                                                             <label class="col-sm-4 control-label">Upload Image </label>
                                                             <div class="col-sm-8">
                                                                 <div class="input-group input-group-icon">
-                                                                    <input type="file" name="FunctionariesFile" id="GOFile" required />
+                                                                    <input type="file" name="Photo" id="Photo" required />
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -134,7 +134,7 @@
     });
     function RemoveFile() {
         $('#TenderFile').removeClass('hidden');
-        $('#TenderFile').parent().find('a').addClass('hidden');
+        $('#TenderFile').parent().find('a').remove();
         $('#TenderFile').attr('required');
         return false;
     }

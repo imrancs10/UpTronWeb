@@ -208,6 +208,7 @@
     <Compile Include="Infrastructure\Utility\Serializer.cs" />
     <Compile Include="Infrastructure\Utility\VerificationCodeGeneration.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
+    <Compile Include="Models\Common\DirectorMessageModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationEmployementModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationLanguageModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationModel.cs" />
@@ -532,12 +533,6 @@
     <Content Include="js\timeLine.js" />
     <Content Include="js\timeLine.min.js" />
     <Content Include="js\zebra_datepicker.min.js" />
-    <Content Include="oldcode\about.html" />
-    <Content Include="oldcode\about2.html" />
-    <Content Include="oldcode\contact.html" />
-    <Content Include="oldcode\Copy of contact.html" />
-    <Content Include="oldcode\Copy of index.html" />
-    <Content Include="oldcode\index.html" />
     <Content Include="plugins\bootstrapthumbnail\bootstrap-thumbnail.css" />
     <Content Include="plugins\bootstrap\css\bootstrap.min.css" />
     <Content Include="plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
