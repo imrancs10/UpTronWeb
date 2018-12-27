@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<form>
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Major Project's</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Major Project's</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-2 control-label">Department's name</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="Departmentname" name="Departmentname" class="form-control" placeholder="Department's name" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-2 control-label">Work Description</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="input-group input-group-icon">
+                                                            <textarea id="WorkDescription" class="form-control" rows="5" placeholder="Work Description" name="WorkDescription" required></textarea>
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-map"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-5">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>

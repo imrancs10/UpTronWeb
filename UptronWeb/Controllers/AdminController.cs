@@ -321,5 +321,25 @@ namespace UptronWeb.Controllers
             }
             return RedirectToAction("ContactUsDetail");
         }
+
+        public ActionResult DirectorMessage()
+        {
+            return View();
+        }
+
+        public ActionResult KeyFunctionaries()
+        {
+            return View();
+        }
+
+        public ActionResult Partner()
+        {
+            return View();
+        }
+
+        public ActionResult Majorprojects()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,111 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<form>
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Director Message</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Director Message</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Director's name</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="Directorname" name="Directorname" class="form-control" placeholder="Director's name" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Director's Designation</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="Directordesignation" name="Directordesignation" class="form-control" placeholder="Director's Designation" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-2 control-label">Message</label>
+                                                    <div class="col-sm-10">
+                                                        <div class="input-group input-group-icon">
+                                                            <textarea id="Message" class="form-control" rows="5" placeholder="Director's Message" name="Message" required></textarea>
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-map"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <div class="form-group">
+                                                        <div class="form-group mt-lg">
+                                                            <label class="col-sm-4 control-label">Upload Director's Image </label>
+                                                            <div class="col-sm-8">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="file" name="DirectorFile" id="GOFile" required />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>s
+                                                    <br />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>

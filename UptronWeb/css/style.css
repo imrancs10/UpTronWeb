@@ -8131,7 +8131,31 @@ hr {
     border-color: #ccc;
 }*/
 
-.table-primary, .table-primary>td, .table-primary>th {
+.table-primary, .table-primary > td, .table-primary > th {
     background-color: #4d90fe;
     color: #fff;
+}
+
+a, a > img {
+    cursor: pointer;
+}
+
+
+.tbl-content {
+    height: 800px;
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
