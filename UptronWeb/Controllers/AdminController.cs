@@ -331,8 +331,15 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("Upcoming Events already Exists", "UpcomingEvents");
             }
-            return View(upcomingEvents);
+            var Events = bal.GetAllUpcomingEvents();
+            return View(Events);
+        }
 
+        public ActionResult DeleteUpcomingEvents(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteUpcomingEvents(Id);
+            return RedirectToAction("EventsUpcoming");
         }
         public ActionResult ContactUsDetail()
         {

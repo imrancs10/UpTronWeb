@@ -298,5 +298,14 @@ namespace UptronWeb.BAL.Master
             var result = _db.UpcomingEventsMasters.FirstOrDefault(x => x.Id == Id);
             return result;
         }
+
+        public bool DeleteUpcomingEvents(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.UpcomingEventsMasters.FirstOrDefault(x => x.Id == Id);
+            _db.UpcomingEventsMasters.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

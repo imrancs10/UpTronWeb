@@ -84,7 +84,7 @@
                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                     <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
                                                     <span class="label-divider" id="Span1">or</span>
-                                                    <a href="~/Admin/NewsAndUpdate" class="btn btn-default">Reset</a>
+                                                    <a href="~/Admin/EventsUpcoming" class="btn btn-default">Reset</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,9 +118,10 @@
                                             </thead>
                                             <tbody>
                                                 @{
+                                                    int i = 1;
                                                     foreach (var Upcomingevents in Model)
                                                     {
-                                                        int i = 1;
+
                                                         <tr>
                                                             <td>
                                                                 <div class="form-group mt-lg">
@@ -171,15 +172,17 @@
                                                             <td>
                                                                 <div class="form-group mt-lg">
                                                                     <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                                        <a id="lnkEdit" class="btn btn-primary" href="#">Edit</a>
+                                                                        <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditEvents(@Upcomingevents.Id, '@Upcomingevents.Title','@(Upcomingevents.IsActive==true?1:0)',
+                                                                                                                                              '@(Upcomingevents.IsNew==true?1:0)')" href="#">Edit</a>
                                                                         <span class="label-divider" id="Span1">or</span>
-                                                                        <a id="lnkDelete" class="btn btn-primary" href="#">Delete</a>
+                                                                        <a id="lnkDelete" class="btn btn-primary" href="DeleteUpcomingEvents/@Upcomingevents.Id">Delete</a>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         i = i + 1;
                                                     }
+
                                                 }
 
 
@@ -197,3 +200,25 @@
         </div><!-- /.content -->
     </section>
 </form>
+
+<script type="text/javascript">
+    function RemoveFile() {
+        $('#EventsFile').addClass('hidden');
+        $('#EventsFile').parent().find('a').remove;
+        $('#EventsFile').removeAttr('required');
+        return false;
+    }
+    function EditEvents(Id, title, IsActive, IsNew) {
+        $('#hiddenId').val(Id);
+        $('#EventsTitle').val(title);
+        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+        $('[name=IsNew]').prop('checked', IsNew == 1 ? true : false);
+        $('#btnSave').val('Update');
+        $('#EventsFile').addClass('hidden');
+        $('#EventsFile').removeAttr('required');
+        var html = "<a href='../../Home/ViewUpcomingEventsFile" + Id + "' target = '_blank'>View File</a><a href='javascript:void(0)' onclick ='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X<a/>";
+        $(html).insertAfter('#EventsFile');
+    }
+
+    
+</script>
