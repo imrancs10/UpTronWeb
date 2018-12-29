@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityId" />
@@ -172,6 +172,18 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="500" />
           <Property Name="TenderFile" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UpcomingEventsMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="EventsFile" Type="varbinary(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="UserMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -334,6 +346,7 @@
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
@@ -445,6 +458,7 @@
           <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
           <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
           <EntitySet Name="DirectorMessageDetails" EntityType="UptronWebModel.DirectorMessageDetail" />
+          <EntitySet Name="UpcomingEventsMasters" EntityType="UptronWebModel.UpcomingEventsMaster" />
         </EntityContainer>
         <EntityType Name="RoleMaster">
           <Key>
@@ -781,6 +795,18 @@
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="UpcomingEventsMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="EventsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -984,6 +1010,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UpcomingEventsMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.UpcomingEventsMaster">
+              <MappingFragment StoreEntitySet="UpcomingEventsMaster">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EventsFile" ColumnName="EventsFile" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1034,6 +1073,7 @@
         <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="3.375" PointY="11.75" />
         <EntityTypeShape EntityType="UptronWebModel.DirectorMessageDetail" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="UptronWebModel.UpcomingEventsMaster" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </Diagrams>
   </Designer>

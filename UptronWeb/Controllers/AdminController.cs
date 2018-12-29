@@ -284,10 +284,6 @@ namespace UptronWeb.Controllers
             return View(news);
         }
 
-        public ActionResult UpcomingEvents()
-        {
-            return View();
-        }
         public ActionResult DeleteNewsAndUpdate(int Id)
         {
             MasterBAL bal = new MasterBAL();
@@ -295,6 +291,49 @@ namespace UptronWeb.Controllers
             return RedirectToAction("NewsAndUpdate");
         }
 
+        public ActionResult EventsUpcoming()
+        {
+            MasterBAL bal = new MasterBAL();
+            var Events = bal.GetAllUpcomingEvents();
+            return View(Events);
+        }
+        [HttpPost]
+        public ActionResult EventsUpcoming(string EventsTitle, string IsNew, string IsActive, HttpPostedFileBase EventsFile, int? Id)
+        {
+            byte[] fileAttachment = null;
+            fileAttachment = Utility.serilizeImagetoByte(EventsFile, fileAttachment);
+            MasterBAL bal = new MasterBAL();
+            UpcomingEventsMaster upcomingEvents = new UpcomingEventsMaster()
+            {
+                Title = EventsTitle,
+                IsNew = IsNew == "on" ? true : false,
+                IsActive = IsActive == "on" ? true : false,
+                Id = Id != null ? Id.Value : 0
+            };
+            if (Id!=null)
+                upcomingEvents.ModifiedDate = DateTime.Now;
+            else
+                upcomingEvents.CreatedDate = DateTime.Now;
+            if (EventsFile !=null)
+            {
+                upcomingEvents.EventsFile = fileAttachment;
+            }
+            var result = bal.SaveEventsUpcoming(upcomingEvents);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Upcoming Events has been saved","UpcomingEvents");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Upcoming Events has been Updated", "UpcomingEvents");
+            }
+            else
+            {
+                SetAlertMessage("Upcoming Events already Exists", "UpcomingEvents");
+            }
+            return View(upcomingEvents);
+
+        }
         public ActionResult ContactUsDetail()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();

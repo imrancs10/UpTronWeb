@@ -112,6 +112,9 @@
     <Compile Include="Tender.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="UpcomingEventsMaster.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

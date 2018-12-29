@@ -189,6 +189,25 @@ namespace UptronWeb.Controllers
                         });
             return Json(result);
         }
+
+        public ActionResult ViewUpcomingEventsFile(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.GetAllUpcomingEventsById(Id);
+            byte[] fileByte = result.EventsFile;
+            return File(fileByte, "application/pdf");
+        }
+
+        public JsonResult GetUpcomingEventsList()
+        {
+            MasterBAL bal = new MasterBAL();
+            var Events = bal.GetAllActiveUpcomingEvents();
+            var result = JsonConvert.SerializeObject(Events, Formatting.Indented,
+                            new JsonSerializerSettings
+                            { ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+            return Json(result);
+        }
         public JsonResult GetDirectorMessage()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();

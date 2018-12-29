@@ -1,0 +1,199 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<UpcomingEventsMaster>
+<form action="EventsUpcoming" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id" />
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Upcoming Events</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Upcoming Events</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Events Title</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="EventsTitle" name="EventsTitle" class="form-control" placeholder="Events Title" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-6 control-label">Is New</label>
+                                                    <div class="col-sm-6">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsNew" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-6 control-label">Is Active</label>
+                                                    <div class="col-sm-6">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Events File</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="EventsFile" id="EventsFile" accept="application/pdf" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/NewsAndUpdate" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="panel" data-fill-color="true">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr class="bg-primary">
+                                                    <th colspan="7">News Update View Detail</th>
+                                                </tr>
+                                                <tr class="active">
+                                                    <th>Sl.no</th>
+                                                    <th>Title</th>
+                                                    <th>IsActive</th>
+                                                    <th>IsNew</th>
+                                                    <th>File</th>
+                                                    <th>Publish Date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    foreach (var Upcomingevents in Model)
+                                                    {
+                                                        int i = 1;
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline"><strong>@i.</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline">@Upcomingevents.Title</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline">@Upcomingevents.IsActive</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline">@Upcomingevents.IsNew</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline">
+                                                                            <a href="~/Home/ViewUpcomingEventsFile/@Upcomingevents.Id" target="_blank">View File</a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline">
+                                                                            @Upcomingevents.CreatedDate.Value.ToString("dd/MM/yyyy");
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                        <a id="lnkEdit" class="btn btn-primary" href="#">Edit</a>
+                                                                        <span class="label-divider" id="Span1">or</span>
+                                                                        <a id="lnkDelete" class="btn btn-primary" href="#">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        i = i + 1;
+                                                    }
+                                                }
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                        </div>
+                    </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>

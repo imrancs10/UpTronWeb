@@ -41,5 +41,6 @@ namespace DataLayer
         public virtual DbSet<NewsUpdateMaster> NewsUpdateMasters { get; set; }
         public virtual DbSet<ContactUsDetail> ContactUsDetails { get; set; }
         public virtual DbSet<DirectorMessageDetail> DirectorMessageDetails { get; set; }
+        public virtual DbSet<UpcomingEventsMaster> UpcomingEventsMasters { get; set; }
     }
 }

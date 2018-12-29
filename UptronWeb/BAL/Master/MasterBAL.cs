@@ -112,14 +112,12 @@ namespace UptronWeb.BAL.Master
             }
 
         }
-
         public List<Tender> GetAllTenderViewList()
         {
             _db = new UptronWebEntities();
             var result = _db.Tenders.OrderBy(x => x.TenderDate).ToList();
             return result;
         }
-
         public Tender GetTender(int id)
         {
             _db = new UptronWebEntities();
@@ -236,6 +234,69 @@ namespace UptronWeb.BAL.Master
             _db.NewsUpdateMasters.Remove(result);
             _db.SaveChanges();
             return true;
+        }
+
+        public Enums.CrudStatus SaveEventsUpcoming(UpcomingEventsMaster upcomingEvents)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (upcomingEvents.Id > 0)
+            {
+                var _deptRow = _db.UpcomingEventsMasters.Where(x => x.Id == upcomingEvents.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = upcomingEvents.Id;
+                    _deptRow.IsActive = upcomingEvents.IsActive;
+                    _deptRow.IsNew = upcomingEvents.IsNew;
+                    _deptRow.ModifiedDate = upcomingEvents.ModifiedDate;
+                    _deptRow.Title = upcomingEvents.Title;
+                    if (upcomingEvents.EventsFile != null)
+                        _deptRow.EventsFile = upcomingEvents.EventsFile;
+
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.UpcomingEventsMasters.Where(x => x.Title == upcomingEvents.Title && x.IsActive == true).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(upcomingEvents).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<UpcomingEventsMaster> GetAllUpcomingEvents()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.UpcomingEventsMasters.ToList();
+            return result;
+        }
+
+        public List<UpcomingEventsMaster> GetAllActiveUpcomingEvents()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.UpcomingEventsMasters.Where(x=>x.IsActive == true).ToList();
+            return result;
+        }
+
+        public UpcomingEventsMaster GetAllUpcomingEventsById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.UpcomingEventsMasters.FirstOrDefault(x => x.Id == Id);
+            return result;
         }
     }
 }
