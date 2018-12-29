@@ -125,6 +125,7 @@
         var parts = document.location.href.split("/");
         var Id = parts[parts.length - 1];
         if (typeof Id !== typeof undefined && !isNaN(Id)) {
+            $('#TenderFile').parent().find('a').remove();
             $('#TenderFile').addClass('hidden');
             var html = "<a href='../ViewTenderFile/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javasript:return RemoveFile()' style='color:red;padding-left:5px;'>X</a>";
             $(html).insertAfter('#TenderFile');

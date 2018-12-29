@@ -212,6 +212,7 @@
         return false;
     }
     function EditNews(Id, title, isActive, isNew) {
+        $('#NewsFile').parent().find('a').remove();
         $('#hiddenId').val(Id);
         $('#btnSave').val('Update');
         $('#NewsTitle').val(title);

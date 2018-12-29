@@ -210,6 +210,7 @@
         return false;
     }
     function EditDirectorDetail(Id, name, designation, message, imgsrc) {
+        $('#DirectorFile').parent().find('a').remove();
         $('#hiddenId').val(Id);
         $('#btnSave').val('Update');
         $('#Directorname').val(name);

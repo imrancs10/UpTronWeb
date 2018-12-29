@@ -204,11 +204,12 @@
 <script type="text/javascript">
     function RemoveFile() {
         $('#EventsFile').addClass('hidden');
-        $('#EventsFile').parent().find('a').remove;
+        $('#EventsFile').parent().find('a').remove();
         $('#EventsFile').removeAttr('required');
         return false;
     }
     function EditEvents(Id, title, IsActive, IsNew) {
+        $('#EventsFile').parent().find('a').remove();
         $('#hiddenId').val(Id);
         $('#EventsTitle').val(title);
         $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);

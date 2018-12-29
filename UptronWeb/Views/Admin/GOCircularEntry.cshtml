@@ -139,6 +139,7 @@
         var Id = parts[parts.length - 1];
         if (typeof Id !== typeof undefined && !isNaN(Id)) {
             $('#GOFile').addClass('hidden');
+            $('#GOFile').parent().find('a').remove();
             var html = "<a href='../ViewFileGoCircular/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
             $(html).insertAfter('#GOFile');
         }
