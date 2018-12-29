@@ -139,13 +139,22 @@ namespace UptronWeb.BAL.Common
                         {
                             var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
                             if (orderNo != null)
-                                _deptRow.OrderNumber = orderNo + 1;
+                                _deptRow.OrderNumber = _deptRow.OrderNumber;
                             else
                                 _deptRow.OrderNumber = 1;
                         }
                         else
                         {
-                            _deptRow.OrderNumber = serviceDetail.OrderNumber;
+                            var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                            if (orderNo != null)
+                            {
+                                if ((serviceDetail.OrderNumber - 1) == orderNo)
+                                    _deptRow.OrderNumber = serviceDetail.OrderNumber;
+                                else
+                                    _deptRow.OrderNumber = _deptRow.OrderNumber;
+                            }
+                            else
+                                _deptRow.OrderNumber = _deptRow.OrderNumber;
                         }
                     }
 
