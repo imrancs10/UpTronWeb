@@ -29,88 +29,9 @@
 
                 <!-- KEY FUNCTANIORIES SECTION -->
                 <div class="col-sm-3 col-xs-12">
-                    <div class="secotionTitle">
-                        <h2 class="bg">Our Service</h2>
-                    </div>
-                    <div class="blogSidebar">
-                        <div class="panel panel-default recentBlogPosts">
-                            <div class="panel-body">
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-1.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Hospital">Hospital Information System</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-2.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Eprocurement">e-Procurement Services</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-3.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Manpower">Manpower Supply Services</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-4.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Software">Software, Hardware & Networking</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-5.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_ITEnabled">IT Enabled Services</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-6.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Amc">Annual Maintenance Services</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-7.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Training">Workshop Training</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="media-left" href="blog-single-right-sidebar.html">
-                                        <img class="media-object" src="~/img/blog/blog-new-8.jpg" alt="Image">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="~/Home/Service_Miscelleneous">Miscellaneous Services</a></h4>
-                                        <h6>Read More...</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @{ 
+                        Html.RenderPartial("_OurServiceLinks");
+                    }
                 </div>
                 <div class="col-lg-9">
                     <div class="blogPost">

@@ -26,37 +26,9 @@
             <div class="row">
                 <!-- KEY FUNCTANIORIES SECTION -->
                 <div class="col-md-3">
-                    <div class="blogSidebar">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Important Links</div>
-                            <div class="panel-body">
-                                <ul class="list-unstyle categoryList">
-                                    <li><a href="#"><i class="fa fa-file"></i> Information Security Guidelines</a></li>
-                                    <li><a href="#"><i class="fa fa-align-right"></i> Important GO's & Circular</a></li>
-                                    <li><a href="#"><i class="fa fa-clipboard"></i> E-Citizen</a></li>
-                                    <li><a href="#"><i class="fa fa-bell-o"></i> How to associate with UPL</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="secotionTitle">
-                        <h2 class="bg">News Updates</h2>
-                    </div>
-                    <div class="demo5 demof">
-                        <ul>
-                            <li>
-
-                                <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                            </li>
-                            <li class="odd">
-                                <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                            </li>
-                            <li>
-                                <p><img src="~/img/NewIcon.gif" style="height:15px;width:40px;" /><a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<br /><img src="~/img/readmore.jpg" style="height:15px;width:40px;" /></a></p>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--<div class="panel-footer"> <p>Read More...</p></div>-->
+                    @{
+                        Html.RenderPartial("_ImportantLinksAndNewsUpdate");
+                    }
                 </div>
                 <div class="col-lg-9">
                     <div class="blogPost tbl-content">
@@ -96,119 +68,119 @@
                     </div>
 
                     @*<div class="blogPost scrollbar  tbl-content">
-                        <div class="table table-responsive scrollbar scrollbar-near-moon thin">
-                            <table class="table table-bordered table-hover table-striped" style="width:100%">
-                                <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">संख्या</th>
-                                        <th scope="col">शासनादेश-संख्या</th>
-                                        <th scope="col">दिनांक</th>
-                                        <th scope="col">विषय</th>
-                                        <th scope="col">डाउनलोड</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">१</th>
-                                        <td>संख्या-585/78-2-2018/135आई. टी./2018</td>
-                                        <td>05 सितम्बर, 2018</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Manpower%20GO.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280"><br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                            <div class="table table-responsive scrollbar scrollbar-near-moon thin">
+                                <table class="table table-bordered table-hover table-striped" style="width:100%">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th scope="col">संख्या</th>
+                                            <th scope="col">शासनादेश-संख्या</th>
+                                            <th scope="col">दिनांक</th>
+                                            <th scope="col">विषय</th>
+                                            <th scope="col">डाउनलोड</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">१</th>
+                                            <td>संख्या-585/78-2-2018/135आई. टी./2018</td>
+                                            <td>05 सितम्बर, 2018</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Manpower%20GO.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280"><br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">२</th>
-                                        <td>संख्या-193/78-2-2015-25-आई. टी./2001</td>
-                                        <td>18 फरवरी, 2015</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/CCTV%20GO%20.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">२</th>
+                                            <td>संख्या-193/78-2-2015-25-आई. टी./2001</td>
+                                            <td>18 फरवरी, 2015</td>
+                                            <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/CCTV%20GO%20.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">३</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">३</th>
+                                            <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
+                                            <td>19 जनवरी, 2006</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">४</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software1.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">४</th>
+                                            <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
+                                            <td>19 जनवरी, 2006</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software1.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">५</th>
-                                        <td>संख्या-1089/78-2-2005-81-इले0/99</td>
-                                        <td>22 जुलाई, 2005</td>
-                                        <td>सरकारी संयको / निगमों / निकायों / समितियों के कार्मिको एवं अध्यापकों का कंप्यूटर प्रशिक्षण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/TRAINING.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">५</th>
+                                            <td>संख्या-1089/78-2-2005-81-इले0/99</td>
+                                            <td>22 जुलाई, 2005</td>
+                                            <td>सरकारी संयको / निगमों / निकायों / समितियों के कार्मिको एवं अध्यापकों का कंप्यूटर प्रशिक्षण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/TRAINING.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">६</th>
-                                        <td>संख्या-785/78-2-2004-25-आई. टी./2004</td>
-                                        <td>25 अगस्त, 2004</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Hardware.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">१</th>
-                                        <td>संख्या-585/78-2-2018/135आई. टी./2018</td>
-                                        <td>05 सितम्बर, 2018</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Manpower%20GO.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280"><br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">६</th>
+                                            <td>संख्या-785/78-2-2004-25-आई. टी./2004</td>
+                                            <td>25 अगस्त, 2004</td>
+                                            <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Hardware.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">१</th>
+                                            <td>संख्या-585/78-2-2018/135आई. टी./2018</td>
+                                            <td>05 सितम्बर, 2018</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Manpower%20GO.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280"><br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">२</th>
-                                        <td>संख्या-193/78-2-2015-25-आई. टी./2001</td>
-                                        <td>18 फरवरी, 2015</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/CCTV%20GO%20.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">२</th>
+                                            <td>संख्या-193/78-2-2015-25-आई. टी./2001</td>
+                                            <td>18 फरवरी, 2015</td>
+                                            <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/CCTV%20GO%20.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">३</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">३</th>
+                                            <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
+                                            <td>19 जनवरी, 2006</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">४</th>
-                                        <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
-                                        <td>19 जनवरी, 2006</td>
-                                        <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software1.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">४</th>
+                                            <td>संख्या-137(1 /78-2-2006-11 आई. टी./2001</td>
+                                            <td>19 जनवरी, 2006</td>
+                                            <td>कंप्यूटर के एप्लीकेशन सॉफ्टवेयर क्रय / विक्रय का निर्धारण  </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Software1.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">५</th>
-                                        <td>संख्या-1089/78-2-2005-81-इले0/99</td>
-                                        <td>22 जुलाई, 2005</td>
-                                        <td>सरकारी संयको / निगमों / निकायों / समितियों के कार्मिको एवं अध्यापकों का कंप्यूटर प्रशिक्षण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/TRAINING.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">५</th>
+                                            <td>संख्या-1089/78-2-2005-81-इले0/99</td>
+                                            <td>22 जुलाई, 2005</td>
+                                            <td>सरकारी संयको / निगमों / निकायों / समितियों के कार्मिको एवं अध्यापकों का कंप्यूटर प्रशिक्षण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/TRAINING.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                    <tr>
-                                        <th scope="row">६</th>
-                                        <td>संख्या-785/78-2-2004-25-आई. टी./2004</td>
-                                        <td>25 अगस्त, 2004</td>
-                                        <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
-                                        <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Hardware.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">६</th>
+                                            <td>संख्या-785/78-2-2004-25-आई. टी./2004</td>
+                                            <td>25 अगस्त, 2004</td>
+                                            <td>कंप्यूटर क्रय प्रक्रिया का निर्धारण </td>
+                                            <td class="views-field views-field-field-attached" data-label="Download"><a href="img/GO/Hardware.pdf" target="_blank" style="color:#000;" type="application/pdf; length=2288280">Download<br /><img alt="application/pdf" class="file-icon" style="height:50px;width:50px;" src="img/pdfimage.png" title="PDF file."></a></td>
+                                        </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
 
-                    </div>*@
+                        </div>*@
                 </div>
 
             </div>
@@ -284,8 +256,8 @@
 </section>
 <!--END PARTNER LOGO SECTION -->
 <script type="text/javascript">
-    $(window).on("load resize ", function() {
-  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-  $('.tbl-header').css({'padding-right':scrollWidth});
-}).resize();
+    $(window).on("load resize ", function () {
+        var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+        $('.tbl-header').css({ 'padding-right': scrollWidth });
+    }).resize();
 </script>

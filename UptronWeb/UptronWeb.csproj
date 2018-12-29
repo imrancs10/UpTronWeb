@@ -1181,6 +1181,8 @@
     <Content Include="Views\Admin\Partner.cshtml" />
     <Content Include="Views\Admin\Majorprojects.cshtml" />
     <Content Include="Views\Admin\EventsUpcoming.cshtml" />
+    <Content Include="Views\Shared\_ImportantLinksAndNewsUpdate.cshtml" />
+    <Content Include="Views\Shared\_OurServiceLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
