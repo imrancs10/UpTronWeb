@@ -310,18 +310,18 @@ namespace UptronWeb.Controllers
                 IsActive = IsActive == "on" ? true : false,
                 Id = Id != null ? Id.Value : 0
             };
-            if (Id!=null)
+            if (Id != null)
                 upcomingEvents.ModifiedDate = DateTime.Now;
             else
                 upcomingEvents.CreatedDate = DateTime.Now;
-            if (EventsFile !=null)
+            if (EventsFile != null)
             {
                 upcomingEvents.EventsFile = fileAttachment;
             }
             var result = bal.SaveEventsUpcoming(upcomingEvents);
             if (result == Enums.CrudStatus.Saved)
             {
-                SetAlertMessage("Upcoming Events has been saved","UpcomingEvents");
+                SetAlertMessage("Upcoming Events has been saved", "UpcomingEvents");
             }
             else if (result == Enums.CrudStatus.Updated)
             {
@@ -426,5 +426,51 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+        public ActionResult Services()
+        {
+            var bal = new GeneralDetailBAL();
+            var news = bal.GetAllServiceDetail();
+            return View(news);
+        }
+        [HttpPost]
+        public ActionResult Services(string ServiceName, string ImageCaption, string OrderNumber, string IsActive, int? Id, HttpPostedFileBase SliderImage)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(SliderImage, fileattachment);
+            var bal = new GeneralDetailBAL();
+            ServiceDetail serviceDetail = new ServiceDetail()
+            {
+                Name = ServiceName,
+                Caption = ImageCaption,
+                IsActive = IsActive == "on" ? true : false,
+                Id = Id != null ? Id.Value : 0,
+            };
+            if (!string.IsNullOrEmpty(OrderNumber))
+                serviceDetail.OrderNumber = Convert.ToInt32(OrderNumber);
+            else
+                serviceDetail.OrderNumber = null;
+            if (Id == null)
+                serviceDetail.CreatedDate = DateTime.Now;
+                
+            if (SliderImage != null)
+                serviceDetail.Image = fileattachment;
+
+            var result = bal.SaveServiceDetail(serviceDetail);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Service Detail has been saved", "News Update");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Service Detail has been Updated", "News Update");
+            }
+            else
+            {
+                SetAlertMessage("Service Detail alreday exists", "News Update");
+            }
+            var news = bal.GetAllServiceDetail();
+            return View(news);
+        }
+
     }
 }

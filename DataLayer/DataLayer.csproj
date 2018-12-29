@@ -106,6 +106,9 @@
     <Compile Include="RoleMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="ServiceDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="State.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

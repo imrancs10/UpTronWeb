@@ -155,6 +155,19 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ServiceDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Caption" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="ServiceDescription" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="StateId" />
@@ -344,6 +357,7 @@
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceDetail" EntityType="Self.ServiceDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
@@ -398,8 +412,56 @@
     <edmx:ConceptualModels>
       <Schema Namespace="UptronWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UptronWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="UptronWebModel.City" />
+          <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
+          <EntitySet Name="DirectorMessageDetails" EntityType="UptronWebModel.DirectorMessageDetail" />
+          <EntitySet Name="GalleryMasters" EntityType="UptronWebModel.GalleryMaster" />
+          <EntitySet Name="GalleryPhotoMasters" EntityType="UptronWebModel.GalleryPhotoMaster" />
+          <EntitySet Name="GOCirculars" EntityType="UptronWebModel.GOCircular" />
+          <EntitySet Name="JobRegistrations" EntityType="UptronWebModel.JobRegistration" />
+          <EntitySet Name="JobRegistrationEmployements" EntityType="UptronWebModel.JobRegistrationEmployement" />
+          <EntitySet Name="JobRegistrationLanguages" EntityType="UptronWebModel.JobRegistrationLanguage" />
+          <EntitySet Name="JobRegistrationQualifications" EntityType="UptronWebModel.JobRegistrationQualification" />
+          <EntitySet Name="JobRegistrationSkills" EntityType="UptronWebModel.JobRegistrationSkill" />
+          <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
           <EntitySet Name="RoleMasters" EntityType="UptronWebModel.RoleMaster" />
+          <EntitySet Name="ServiceDetails" EntityType="UptronWebModel.ServiceDetail" />
+          <EntitySet Name="States" EntityType="UptronWebModel.State" />
+          <EntitySet Name="Tenders" EntityType="UptronWebModel.Tender" />
+          <EntitySet Name="UpcomingEventsMasters" EntityType="UptronWebModel.UpcomingEventsMaster" />
           <EntitySet Name="UserMasters" EntityType="UptronWebModel.UserMaster" />
+          <AssociationSet Name="FK_City_State" Association="UptronWebModel.FK_City_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistration_City" Association="UptronWebModel.FK_JobRegistration_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster">
+            <End Role="GalleryMaster" EntitySet="GalleryMasters" />
+            <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistration_State" Association="UptronWebModel.FK_JobRegistration_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistrationEmployement_JobRegistration" Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobRegistrationEmployement" EntitySet="JobRegistrationEmployements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistrationLanguage_JobRegistration" Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobRegistrationLanguage" EntitySet="JobRegistrationLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistrationQualification_JobRegistration" Association="UptronWebModel.FK_JobRegistrationQualification_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobRegistrationQualification" EntitySet="JobRegistrationQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistrationSkill_JobRegistration" Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkills" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserMaster_RoleMaster" Association="UptronWebModel.FK_UserMaster_RoleMaster">
             <End Role="RoleMaster" EntitySet="RoleMasters" />
             <End Role="UserMaster" EntitySet="UserMasters" />
@@ -412,54 +474,164 @@
             <End Role="UserMaster" EntitySet="UserMasters" />
             <End Role="UserMaster1" EntitySet="UserMasters" />
           </AssociationSet>
-          <EntitySet Name="Cities" EntityType="UptronWebModel.City" />
-          <EntitySet Name="JobRegistrations" EntityType="UptronWebModel.JobRegistration" />
-          <EntitySet Name="JobRegistrationQualifications" EntityType="UptronWebModel.JobRegistrationQualification" />
-          <EntitySet Name="States" EntityType="UptronWebModel.State" />
-          <AssociationSet Name="FK_City_State" Association="UptronWebModel.FK_City_State">
-            <End Role="State" EntitySet="States" />
-            <End Role="City" EntitySet="Cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistration_City" Association="UptronWebModel.FK_JobRegistration_City">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistration_State" Association="UptronWebModel.FK_JobRegistration_State">
-            <End Role="State" EntitySet="States" />
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationQualification_JobRegistration" Association="UptronWebModel.FK_JobRegistrationQualification_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-            <End Role="JobRegistrationQualification" EntitySet="JobRegistrationQualifications" />
-          </AssociationSet>
-          <EntitySet Name="JobRegistrationEmployements" EntityType="UptronWebModel.JobRegistrationEmployement" />
-          <EntitySet Name="JobRegistrationLanguages" EntityType="UptronWebModel.JobRegistrationLanguage" />
-          <EntitySet Name="JobRegistrationSkills" EntityType="UptronWebModel.JobRegistrationSkill" />
-          <AssociationSet Name="FK_JobRegistrationEmployement_JobRegistration" Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-            <End Role="JobRegistrationEmployement" EntitySet="JobRegistrationEmployements" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationLanguage_JobRegistration" Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-            <End Role="JobRegistrationLanguage" EntitySet="JobRegistrationLanguages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationSkill_JobRegistration" Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-            <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkills" />
-          </AssociationSet>
-          <EntitySet Name="GOCirculars" EntityType="UptronWebModel.GOCircular" />
-          <EntitySet Name="Tenders" EntityType="UptronWebModel.Tender" />
-          <EntitySet Name="GalleryMasters" EntityType="UptronWebModel.GalleryMaster" />
-          <EntitySet Name="GalleryPhotoMasters" EntityType="UptronWebModel.GalleryPhotoMaster" />
-          <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster">
-            <End Role="GalleryMaster" EntitySet="GalleryMasters" />
-            <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
-          </AssociationSet>
-          <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
-          <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
-          <EntitySet Name="DirectorMessageDetails" EntityType="UptronWebModel.DirectorMessageDetail" />
-          <EntitySet Name="UpcomingEventsMasters" EntityType="UptronWebModel.UpcomingEventsMaster" />
         </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_City_State" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="City" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="ContactUsDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DirectorMessageDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GalleryMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GalleryImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="GalleryPhotoMasters" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryMaster" ToRole="GalleryPhotoMaster" />
+        </EntityType>
+        <EntityType Name="GalleryPhotoMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryId" Type="Int32" />
+          <Property Name="PhotoName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="GalleryMaster" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryPhotoMaster" ToRole="GalleryMaster" />
+        </EntityType>
+        <EntityType Name="GOCircular">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GONumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GODate" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GOFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="JobRegistration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdentityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdentityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlternateNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Resume" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ResumeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disability" Type="Boolean" />
+          <Property Name="ExServiceMan" Type="Boolean" />
+          <Property Name="PersonHeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EyeSight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="City" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="JobRegistration" ToRole="City" />
+          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="JobRegistration" ToRole="State" />
+          <NavigationProperty Name="JobRegistrationEmployements" Relationship="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationEmployement" />
+          <NavigationProperty Name="JobRegistrationLanguages" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationLanguage" />
+          <NavigationProperty Name="JobRegistrationQualifications" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationQualification" />
+          <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
+        </EntityType>
+        <EntityType Name="JobRegistrationEmployement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FromMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FromYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndustryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" FromRole="JobRegistrationEmployement" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="JobRegistrationLanguage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistrationLanguage" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="JobRegistrationQualification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Board" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearOfPassing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CourseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistrationQualification" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="JobRegistrationSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Skill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistrationSkill" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="NewsUpdateMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="NewsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -467,6 +639,50 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserMasters" Relationship="UptronWebModel.FK_UserMaster_RoleMaster" FromRole="RoleMaster" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="ServiceDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Caption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="UptronWebModel.FK_City_State" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="State" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="Tender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenderNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenderDate" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TenderFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UpcomingEventsMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="EventsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -487,6 +703,102 @@
           <NavigationProperty Name="UserMaster11" Relationship="UptronWebModel.FK_UserMaster_UserMaster1" FromRole="UserMaster" ToRole="UserMaster1" />
           <NavigationProperty Name="UserMaster3" Relationship="UptronWebModel.FK_UserMaster_UserMaster1" FromRole="UserMaster1" ToRole="UserMaster" />
         </EntityType>
+        <Association Name="FK_City_State">
+          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="UptronWebModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistration_City">
+          <End Type="UptronWebModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="JobRegistration">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
+          <End Type="UptronWebModel.GalleryMaster" Role="GalleryMaster" Multiplicity="0..1" />
+          <End Type="UptronWebModel.GalleryPhotoMaster" Role="GalleryPhotoMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GalleryMaster">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GalleryPhotoMaster">
+              <PropertyRef Name="GalleryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistration_State">
+          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="JobRegistration">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistrationEmployement_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistrationEmployement" Role="JobRegistrationEmployement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobRegistrationEmployement">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistrationLanguage_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistrationLanguage" Role="JobRegistrationLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobRegistrationLanguage">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistrationQualification_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistrationQualification" Role="JobRegistrationQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobRegistrationQualification">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistrationSkill_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistrationSkill" Role="JobRegistrationSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobRegistrationSkill">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserMaster_RoleMaster">
           <End Type="UptronWebModel.RoleMaster" Role="RoleMaster" Multiplicity="0..1" />
           <End Type="UptronWebModel.UserMaster" Role="UserMaster" Multiplicity="*" />
@@ -523,325 +835,73 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="CityId" />
-          </Key>
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="StateId" Type="Int32" />
-          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_City_State" FromRole="City" ToRole="State" />
-          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="City" ToRole="JobRegistration" />
-        </EntityType>
-        <EntityType Name="JobRegistration">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Precision="3" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdentityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdentityNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AlternateNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CityId" Type="Int32" />
-          <Property Name="StateId" Type="Int32" />
-          <Property Name="Resume" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="ResumeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Disability" Type="Boolean" />
-          <Property Name="ExServiceMan" Type="Boolean" />
-          <Property Name="PersonHeight" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="EyeSight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="City" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="JobRegistration" ToRole="City" />
-          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="JobRegistration" ToRole="State" />
-          <NavigationProperty Name="JobRegistrationQualifications" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationQualification" />
-          <NavigationProperty Name="JobRegistrationEmployements" Relationship="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationEmployement" />
-          <NavigationProperty Name="JobRegistrationLanguages" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationLanguage" />
-          <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
-          <Property Name="IsActive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="JobRegistrationQualification">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegistrationId" Type="Int32" />
-          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Board" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="YearOfPassing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Specialization" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CourseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistrationQualification" ToRole="JobRegistration" />
-        </EntityType>
-        <EntityType Name="State">
-          <Key>
-            <PropertyRef Name="StateId" />
-          </Key>
-          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cities" Relationship="UptronWebModel.FK_City_State" FromRole="State" ToRole="City" />
-          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="State" ToRole="JobRegistration" />
-        </EntityType>
-        <Association Name="FK_City_State">
-          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
-          <End Type="UptronWebModel.City" Role="City" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="StateId" />
-            </Principal>
-            <Dependent Role="City">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistration_City">
-          <End Type="UptronWebModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="CityId" />
-            </Principal>
-            <Dependent Role="JobRegistration">
-              <PropertyRef Name="CityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistration_State">
-          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="StateId" />
-            </Principal>
-            <Dependent Role="JobRegistration">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationQualification_JobRegistration">
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistrationQualification" Role="JobRegistrationQualification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationQualification">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="JobRegistrationEmployement">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrganizationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FromMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FromYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ToMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ToYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IndustryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RegistrationId" Type="Int32" />
-          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" FromRole="JobRegistrationEmployement" ToRole="JobRegistration" />
-        </EntityType>
-        <EntityType Name="JobRegistrationLanguage">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RegistrationId" Type="Int32" />
-          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistrationLanguage" ToRole="JobRegistration" />
-        </EntityType>
-        <EntityType Name="JobRegistrationSkill">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Skill" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RegistrationId" Type="Int32" />
-          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistrationSkill" ToRole="JobRegistration" />
-        </EntityType>
-        <Association Name="FK_JobRegistrationEmployement_JobRegistration">
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistrationEmployement" Role="JobRegistrationEmployement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationEmployement">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationLanguage_JobRegistration">
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistrationLanguage" Role="JobRegistrationLanguage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationLanguage">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationSkill_JobRegistration">
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistrationSkill" Role="JobRegistrationSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationSkill">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="GOCircular">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GONumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="GODate" Type="DateTime" Precision="3" />
-          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="GOFile" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Tender">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenderNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TenderDate" Type="DateTime" Precision="3" />
-          <Property Name="Subject" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="TenderFile" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="GalleryMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GalleryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GalleryImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="GalleryPhotoMasters" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryMaster" ToRole="GalleryPhotoMaster" />
-        </EntityType>
-        <EntityType Name="GalleryPhotoMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GalleryId" Type="Int32" />
-          <Property Name="PhotoName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="GalleryMaster" Relationship="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" FromRole="GalleryPhotoMaster" ToRole="GalleryMaster" />
-        </EntityType>
-        <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
-          <End Type="UptronWebModel.GalleryMaster" Role="GalleryMaster" Multiplicity="0..1" />
-          <End Type="UptronWebModel.GalleryPhotoMaster" Role="GalleryPhotoMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GalleryMaster">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="GalleryPhotoMaster">
-              <PropertyRef Name="GalleryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="NewsUpdateMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="IsNew" Type="Boolean" />
-          <Property Name="NewsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="ContactUsDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="IsArchive" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="DirectorMessageDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Designation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="UpcomingEventsMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="IsNew" Type="Boolean" />
-          <Property Name="EventsFile" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UptronWebModelStoreContainer" CdmEntityContainer="UptronWebEntities">
-          <EntitySetMapping Name="RoleMasters">
-            <EntityTypeMapping TypeName="UptronWebModel.RoleMaster">
-              <MappingFragment StoreEntitySet="RoleMaster">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserMasters">
-            <EntityTypeMapping TypeName="UptronWebModel.UserMaster">
-              <MappingFragment StoreEntitySet="UserMaster">
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="UptronWebModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUsDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.ContactUsDetail">
+              <MappingFragment StoreEntitySet="ContactUsDetail">
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DirectorMessageDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.DirectorMessageDetail">
+              <MappingFragment StoreEntitySet="DirectorMessageDetail">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.GalleryMaster">
+              <MappingFragment StoreEntitySet="GalleryMaster">
+                <ScalarProperty Name="GalleryImage" ColumnName="GalleryImage" />
+                <ScalarProperty Name="GalleryName" ColumnName="GalleryName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryPhotoMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.GalleryPhotoMaster">
+              <MappingFragment StoreEntitySet="GalleryPhotoMaster">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
+                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GOCirculars">
+            <EntityTypeMapping TypeName="UptronWebModel.GOCircular">
+              <MappingFragment StoreEntitySet="GOCircular">
+                <ScalarProperty Name="GOFile" ColumnName="GOFile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="GODate" ColumnName="GODate" />
+                <ScalarProperty Name="GONumber" ColumnName="GONumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -875,28 +935,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="JobRegistrationQualifications">
-            <EntityTypeMapping TypeName="UptronWebModel.JobRegistrationQualification">
-              <MappingFragment StoreEntitySet="JobRegistrationQualification">
-                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
-                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
-                <ScalarProperty Name="Marks" ColumnName="Marks" />
-                <ScalarProperty Name="YearOfPassing" ColumnName="YearOfPassing" />
-                <ScalarProperty Name="Board" ColumnName="Board" />
-                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
-                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="States">
-            <EntityTypeMapping TypeName="UptronWebModel.State">
-              <MappingFragment StoreEntitySet="State">
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="JobRegistrationEmployements">
             <EntityTypeMapping TypeName="UptronWebModel.JobRegistrationEmployement">
               <MappingFragment StoreEntitySet="JobRegistrationEmployement">
@@ -922,52 +960,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="JobRegistrationQualifications">
+            <EntityTypeMapping TypeName="UptronWebModel.JobRegistrationQualification">
+              <MappingFragment StoreEntitySet="JobRegistrationQualification">
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="YearOfPassing" ColumnName="YearOfPassing" />
+                <ScalarProperty Name="Board" ColumnName="Board" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="JobRegistrationSkills">
             <EntityTypeMapping TypeName="UptronWebModel.JobRegistrationSkill">
               <MappingFragment StoreEntitySet="JobRegistrationSkill">
                 <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
                 <ScalarProperty Name="Skill" ColumnName="Skill" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GOCirculars">
-            <EntityTypeMapping TypeName="UptronWebModel.GOCircular">
-              <MappingFragment StoreEntitySet="GOCircular">
-                <ScalarProperty Name="GOFile" ColumnName="GOFile" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="GODate" ColumnName="GODate" />
-                <ScalarProperty Name="GONumber" ColumnName="GONumber" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tenders">
-            <EntityTypeMapping TypeName="UptronWebModel.Tender">
-              <MappingFragment StoreEntitySet="Tender">
-                <ScalarProperty Name="TenderFile" ColumnName="TenderFile" />
-                <ScalarProperty Name="Subject" ColumnName="Subject" />
-                <ScalarProperty Name="TenderDate" ColumnName="TenderDate" />
-                <ScalarProperty Name="TenderNumber" ColumnName="TenderNumber" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GalleryMasters">
-            <EntityTypeMapping TypeName="UptronWebModel.GalleryMaster">
-              <MappingFragment StoreEntitySet="GalleryMaster">
-                <ScalarProperty Name="GalleryImage" ColumnName="GalleryImage" />
-                <ScalarProperty Name="GalleryName" ColumnName="GalleryName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GalleryPhotoMasters">
-            <EntityTypeMapping TypeName="UptronWebModel.GalleryPhotoMaster">
-              <MappingFragment StoreEntitySet="GalleryPhotoMaster">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="PhotoName" ColumnName="PhotoName" />
-                <ScalarProperty Name="GalleryId" ColumnName="GalleryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -985,28 +996,44 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ContactUsDetails">
-            <EntityTypeMapping TypeName="UptronWebModel.ContactUsDetail">
-              <MappingFragment StoreEntitySet="ContactUsDetail">
-                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+          <EntitySetMapping Name="RoleMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.RoleMaster">
+              <MappingFragment StoreEntitySet="RoleMaster">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.ServiceDetail">
+              <MappingFragment StoreEntitySet="ServiceDetail">
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DirectorMessageDetails">
-            <EntityTypeMapping TypeName="UptronWebModel.DirectorMessageDetail">
-              <MappingFragment StoreEntitySet="DirectorMessageDetail">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Designation" ColumnName="Designation" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="UptronWebModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenders">
+            <EntityTypeMapping TypeName="UptronWebModel.Tender">
+              <MappingFragment StoreEntitySet="Tender">
+                <ScalarProperty Name="TenderFile" ColumnName="TenderFile" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="TenderDate" ColumnName="TenderDate" />
+                <ScalarProperty Name="TenderNumber" ColumnName="TenderNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1019,6 +1046,21 @@
                 <ScalarProperty Name="EventsFile" ColumnName="EventsFile" />
                 <ScalarProperty Name="IsNew" ColumnName="IsNew" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="UptronWebModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1046,34 +1088,35 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram DiagramId="96d87482f862457a932ad65ffd2427a1" Name="Diagram1">
-        <EntityTypeShape EntityType="UptronWebModel.RoleMaster" Width="1.5" PointX="0.75" PointY="2.125" />
-        <EntityTypeShape EntityType="UptronWebModel.UserMaster" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="UptronWebModel.City" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="UptronWebModel.DirectorMessageDetail" Width="1.5" PointX="9.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UptronWebModel.GalleryMaster" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="UptronWebModel.GalleryPhotoMaster" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="UptronWebModel.GOCircular" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistration" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationEmployement" Width="1.5" PointX="7.5" PointY="10" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationLanguage" Width="1.5" PointX="7.5" PointY="4.875" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationQualification" Width="1.5" PointX="7.5" PointY="1.375" />
+        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationSkill" Width="1.5" PointX="7.5" PointY="7.5" />
+        <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="UptronWebModel.RoleMaster" Width="1.5" PointX="9.75" PointY="2.125" />
+        <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="UptronWebModel.State" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="UptronWebModel.Tender" Width="1.5" PointX="11.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UptronWebModel.UpcomingEventsMaster" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="UptronWebModel.UserMaster" Width="1.5" PointX="12" PointY="1" />
+        <AssociationConnector Association="UptronWebModel.FK_City_State" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_City" />
+        <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_State" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_RoleMaster" />
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster" />
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster1" />
-        <EntityTypeShape EntityType="UptronWebModel.City" Width="1.5" PointX="7.625" PointY="3.125" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistration" Width="1.5" PointX="9.875" PointY="1.125" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationQualification" Width="1.875" PointX="12.125" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UptronWebModel.State" Width="1.5" PointX="5.375" PointY="3.25" />
-        <AssociationConnector Association="UptronWebModel.FK_City_State" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_City" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_State" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationEmployement" Width="1.5" PointX="12.125" PointY="10.5" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationLanguage" Width="1.75" PointX="12.125" PointY="7.875" />
-        <EntityTypeShape EntityType="UptronWebModel.JobRegistrationSkill" Width="1.5" PointX="12.125" PointY="14.375" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationEmployement_JobRegistration" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" />
-        <EntityTypeShape EntityType="UptronWebModel.GOCircular" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="UptronWebModel.Tender" Width="1.5" PointX="3.375" PointY="6.75" />
-        <EntityTypeShape EntityType="UptronWebModel.GalleryMaster" Width="1.5" PointX="5.375" PointY="9" />
-        <EntityTypeShape EntityType="UptronWebModel.GalleryPhotoMaster" Width="1.5" PointX="7.625" PointY="8.875" />
-        <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
-        <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="3.375" PointY="11.75" />
-        <EntityTypeShape EntityType="UptronWebModel.DirectorMessageDetail" Width="1.5" PointX="5.375" PointY="11.75" />
-        <EntityTypeShape EntityType="UptronWebModel.UpcomingEventsMaster" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </Diagrams>
   </Designer>

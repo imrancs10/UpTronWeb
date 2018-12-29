@@ -204,7 +204,8 @@ namespace UptronWeb.Controllers
             var Events = bal.GetAllActiveUpcomingEvents();
             var result = JsonConvert.SerializeObject(Events, Formatting.Indented,
                             new JsonSerializerSettings
-                            { ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                             });
             return Json(result);
         }
@@ -265,6 +266,22 @@ namespace UptronWeb.Controllers
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
                 sendMessageStrategy.SendMessages();
             });
+        }
+        public JsonResult GetServiceMenus()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var services = bal.GetAllServiceDetail();
+            services.ForEach(x => { x.Image = null; x.ServiceDescription = null; });
+            return Json(services);
+        }
+        public ActionResult Services(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var service = bal.GetServiceDetailById(Id);
+            var base64 = Convert.ToBase64String(service.Image);
+            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            service.Name = imgsrc; //it just a hack to pass image to view
+            return View(service);
         }
     }
 }

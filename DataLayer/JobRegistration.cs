@@ -17,9 +17,9 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public JobRegistration()
         {
-            this.JobRegistrationQualifications = new HashSet<JobRegistrationQualification>();
             this.JobRegistrationEmployements = new HashSet<JobRegistrationEmployement>();
             this.JobRegistrationLanguages = new HashSet<JobRegistrationLanguage>();
+            this.JobRegistrationQualifications = new HashSet<JobRegistrationQualification>();
             this.JobRegistrationSkills = new HashSet<JobRegistrationSkill>();
         }
     
@@ -51,11 +51,11 @@ namespace DataLayer
         public virtual City City { get; set; }
         public virtual State State { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobRegistrationQualification> JobRegistrationQualifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationEmployement> JobRegistrationEmployements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationLanguage> JobRegistrationLanguages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobRegistrationQualification> JobRegistrationQualifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationSkill> JobRegistrationSkills { get; set; }
     }

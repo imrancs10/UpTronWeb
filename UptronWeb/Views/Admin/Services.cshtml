@@ -1,0 +1,241 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<ServiceDetail>
+<form action="Services" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id" />
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Service Entry</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Service Entry</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Service Name</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="ServiceName" name="ServiceName" class="form-control" placeholder="Service Name" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Order No</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="OrderNumber" name="OrderNumber" class="form-control" placeholder="Order Number" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Slider Image</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="SliderImage" id="SliderImage" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Image Caption</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="ImageCaption" name="ImageCaption" class="form-control" placeholder="Image Caption" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/Services" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="7">Services View Detail</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th>Sl.no</th>
+                                                <th>Name</th>
+                                                <th>Caption</th>
+                                                <th>IsActive</th>
+                                                <th>OrderNumber</th>
+                                                <th>Slider Image</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var news in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.Name</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.Caption</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.IsActive</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.OrderNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">
+                                                                        <a href="~/Admin/ViewServiceImage/@news.Id" target="_blank">View Image</a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                    <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditService(@news.Id,'@news.Name','@news.Caption','@(news.IsActive==true?1:0)','@news.OrderNumber')" href="#">Edit</a>
+                                                                    <span class="label-divider" id="Span1">or</span>
+                                                                    <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
+
+
+
+<script type="text/javascript">
+    function RemoveFile() {
+        $('#SliderImage').removeClass('hidden');
+        $('#SliderImage').parent().find('a').remove();
+        $('#SliderImage').attr('required');
+        return false;
+    }
+    function EditService(Id, name, caption, isActive, orderNumber) {
+        $('#SliderImage').parent().find('a').remove();
+        $('#hiddenId').val(Id);
+        $('#btnSave').val('Update');
+        $('#ServiceName').val(name);
+        $('#ImageCaption').val(caption);
+        $('#OrderNumber').val(orderNumber);
+        $('[name=IsActive]').prop('checked', isActive == 1 ? true : false);
+        $('#SliderImage').addClass('hidden');
+        $('#SliderImage').removeAttr('required');
+        var html = "<a href='../../Admin/ViewServiceImage/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
+        $(html).insertAfter('#SliderImage');
+    }
+</script>
