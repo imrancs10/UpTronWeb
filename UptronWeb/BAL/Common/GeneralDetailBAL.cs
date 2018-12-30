@@ -122,41 +122,42 @@ namespace UptronWeb.BAL.Common
                     _deptRow.Name = serviceDetail.Name;
                     _deptRow.Caption = serviceDetail.Caption;
                     _deptRow.IsActive = serviceDetail.IsActive;
+                    _deptRow.OrderNumber = serviceDetail.OrderNumber;
                     if (serviceDetail.Image != null)
                         _deptRow.Image = serviceDetail.Image;
-                    if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
-                    {
-                        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                        if (orderNo != null)
-                            _deptRow.OrderNumber = orderNo + 1;
-                        else
-                            _deptRow.OrderNumber = 1;
-                    }
-                    else
-                    {
-                        var existingOrderNo = _db.ServiceDetails.Where(x => x.OrderNumber == serviceDetail.OrderNumber).FirstOrDefault();
-                        if (existingOrderNo != null)
-                        {
-                            var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                            if (orderNo != null)
-                                _deptRow.OrderNumber = _deptRow.OrderNumber;
-                            else
-                                _deptRow.OrderNumber = 1;
-                        }
-                        else
-                        {
-                            var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                            if (orderNo != null)
-                            {
-                                if ((serviceDetail.OrderNumber - 1) == orderNo)
-                                    _deptRow.OrderNumber = serviceDetail.OrderNumber;
-                                else
-                                    _deptRow.OrderNumber = _deptRow.OrderNumber;
-                            }
-                            else
-                                _deptRow.OrderNumber = _deptRow.OrderNumber;
-                        }
-                    }
+                                        //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
+                    //{
+                    //    var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //    if (orderNo != null)
+                    //        _deptRow.OrderNumber = orderNo + 1;
+                    //    else
+                    //        _deptRow.OrderNumber = 1;
+                    //}
+                    //else
+                    //{
+                    //    var existingOrderNo = _db.ServiceDetails.Where(x => x.OrderNumber == serviceDetail.OrderNumber).FirstOrDefault();
+                    //    if (existingOrderNo != null)
+                    //    {
+                    //        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //        if (orderNo != null)
+                    //            _deptRow.OrderNumber = _deptRow.OrderNumber;
+                    //        else
+                    //            _deptRow.OrderNumber = 1;
+                    //    }
+                    //    else
+                    //    {
+                    //        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //        if (orderNo != null)
+                    //        {
+                    //            if ((serviceDetail.OrderNumber - 1) == orderNo)
+                    //                _deptRow.OrderNumber = serviceDetail.OrderNumber;
+                    //            else
+                    //                _deptRow.OrderNumber = _deptRow.OrderNumber;
+                    //        }
+                    //        else
+                    //            _deptRow.OrderNumber = _deptRow.OrderNumber;
+                    //    }
+                    //}
 
                     _db.Entry(_deptRow).State = EntityState.Modified;
                     _effectRow = _db.SaveChanges();
@@ -172,39 +173,39 @@ namespace UptronWeb.BAL.Common
                 var _deptRow = _db.ServiceDetails.Where(x => x.Name == serviceDetail.Name).FirstOrDefault();
                 if (_deptRow == null)
                 {
-                    if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
-                    {
-                        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                        if (orderNo != null)
-                            serviceDetail.OrderNumber = orderNo + 1;
-                        else
-                            serviceDetail.OrderNumber = 1;
-                    }
-                    else
-                    {
-                        var existingOrderNo = _db.ServiceDetails.Where(x => x.OrderNumber == serviceDetail.OrderNumber).FirstOrDefault();
-                        if (existingOrderNo != null)
-                        {
-                            var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                            if (orderNo != null)
-                                serviceDetail.OrderNumber = orderNo + 1;
-                            else
-                                serviceDetail.OrderNumber = 1;
-                        }
-                        else
-                        {
-                            var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
-                            if (orderNo != null)
-                            {
-                                if ((serviceDetail.OrderNumber - 1) == orderNo)
-                                    serviceDetail.OrderNumber = serviceDetail.OrderNumber;
-                                else
-                                    serviceDetail.OrderNumber = orderNo + 1;
-                            }
-                            else
-                                serviceDetail.OrderNumber = 1;
-                        }
-                    }
+                                         //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
+                    //{
+                    //    var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //    if (orderNo != null)
+                    //        serviceDetail.OrderNumber = orderNo + 1;
+                    //    else
+                    //        serviceDetail.OrderNumber = 1;
+                    //}
+                    //else
+                    //{
+                    //    var existingOrderNo = _db.ServiceDetails.Where(x => x.OrderNumber == serviceDetail.OrderNumber).FirstOrDefault();
+                    //    if (existingOrderNo != null)
+                    //    {
+                    //        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //        if (orderNo != null)
+                    //            serviceDetail.OrderNumber = orderNo + 1;
+                    //        else
+                    //            serviceDetail.OrderNumber = 1;
+                    //    }
+                    //    else
+                    //    {
+                    //        var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
+                    //        if (orderNo != null)
+                    //        {
+                    //            if ((serviceDetail.OrderNumber - 1) == orderNo)
+                    //                serviceDetail.OrderNumber = serviceDetail.OrderNumber;
+                    //            else
+                    //                serviceDetail.OrderNumber = orderNo + 1;
+                    //        }
+                    //        else
+                    //            serviceDetail.OrderNumber = 1;
+                    //    }
+                    //}
                     _db.Entry(serviceDetail).State = EntityState.Added;
 
                     try
