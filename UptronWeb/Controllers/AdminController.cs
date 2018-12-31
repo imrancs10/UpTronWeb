@@ -435,6 +435,8 @@ namespace UptronWeb.Controllers
         [HttpPost]
         public ActionResult Services(string ServiceName, string ImageCaption, string OrderNumber, string IsActive, int? Id, HttpPostedFileBase SliderImage)
         {
+            HttpRequestBase request = ControllerContext.HttpContext.Request;
+            string ServicDescription = request.Unvalidated.Form.Get("ServicDescription");
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(SliderImage, fileattachment);
             var bal = new GeneralDetailBAL();
@@ -442,6 +444,7 @@ namespace UptronWeb.Controllers
             {
                 Name = ServiceName,
                 Caption = ImageCaption,
+                ServiceDescription = ServicDescription,
                 IsActive = IsActive == "on" ? true : false,
                 Id = Id != null ? Id.Value : 0,
             };
@@ -451,7 +454,7 @@ namespace UptronWeb.Controllers
                 serviceDetail.OrderNumber = null;
             if (Id == null)
                 serviceDetail.CreatedDate = DateTime.Now;
-                
+
             if (SliderImage != null)
                 serviceDetail.Image = fileattachment;
 

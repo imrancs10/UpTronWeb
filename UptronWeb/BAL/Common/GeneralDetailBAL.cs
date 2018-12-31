@@ -123,6 +123,7 @@ namespace UptronWeb.BAL.Common
                     _deptRow.Caption = serviceDetail.Caption;
                     _deptRow.IsActive = serviceDetail.IsActive;
                     _deptRow.OrderNumber = serviceDetail.OrderNumber;
+                    _deptRow.ServiceDescription = serviceDetail.ServiceDescription;
                     if (serviceDetail.Image != null)
                         _deptRow.Image = serviceDetail.Image;
                                         //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
