@@ -6,10 +6,13 @@ using System.Web.Mvc;
 
 namespace UptronWeb.Controllers
 {
-    public class UserAdminController : Controller
+    public class EmployeeController : Controller
     {
-        // GET: UserAdmin
-        public ActionResult UserDashboard()
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Dashboard()
         {
             return View();
         }
