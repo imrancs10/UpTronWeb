@@ -253,13 +253,14 @@
         return false;
     }
     function EditService(Id, name, caption, isActive, orderNumber, rowIndex) {
+        debugger
         $('#SliderImage').parent().find('a').remove();
         $('#hiddenId').val(Id);
         $('#btnSave').val('Update');
         $('#ServiceName').val(name);
         $('#ImageCaption').val(caption);
         $('#OrderNumber').val(orderNumber);
-        $('#ServicDescription').html($('.table-bordered tbody tr').eq(rowIndex - 1).find('td').eq(5).find('span').text());
+        CKEDITOR.instances['ServicDescription'].setData($('.table-bordered tbody tr').eq(rowIndex - 1).find('td').eq(5).find('span').text());
         $('[name=IsActive]').prop('checked', isActive == 1 ? true : false);
         $('#SliderImage').addClass('hidden');
         $('#SliderImage').removeAttr('required');
