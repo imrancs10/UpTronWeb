@@ -180,6 +180,8 @@
     <Compile Include="Controllers\UptronAdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -276,6 +278,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\bg.jpg" />
+    <Content Include="images\bguserlogin.jpg" />
     <Content Include="images\dummy\blog.jpg" />
     <Content Include="images\dummy\desk2.jpg" />
     <Content Include="images\dummy\desk3.jpg" />
@@ -1186,6 +1189,8 @@
     <Content Include="Views\Shared\_OurServiceLinks.cshtml" />
     <Content Include="Views\Admin\Services.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\UserLogin\Login.cshtml" />
+    <Content Include="Views\UserAdmin\UserDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
