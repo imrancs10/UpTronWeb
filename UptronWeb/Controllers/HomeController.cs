@@ -155,6 +155,8 @@ namespace UptronWeb.Controllers
                     registration.Id = Convert.ToInt32(Session["registrationId"]);
                     detail.UpdateJobPortal(registration);
                     Session["registrationId"] = null;
+                    //send mail for user credential
+                    //SendMailForJobPortal();
                     // Returns message that successfully uploaded  
                     return Json("Registration for Job is successful.");
                 }
@@ -250,8 +252,25 @@ namespace UptronWeb.Controllers
                 SetAlertMessage("Your Detail has not been sent");
             }
             return View();
+
         }
         private async Task SendMailForContactUs(string Name, string Email, string Phone, string Message)
+        {
+            await Task.Run(() =>
+            {
+                Message msg = new Message()
+                {
+                    MessageTo = ConfigurationManager.AppSettings["RecivingEmailAddress"].ToString(),
+                    MessageNameTo = ConfigurationManager.AppSettings["RecivingEmailName"].ToString(),
+                    Subject = "Contact Us Request",
+                    Body = EmailHelper.GetContactUsEmail(Name, Email, Phone, Message)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
+        }
+        private async Task SendMailForJobPortal(string Name, string Email, string Phone, string Message)
         {
             await Task.Run(() =>
             {

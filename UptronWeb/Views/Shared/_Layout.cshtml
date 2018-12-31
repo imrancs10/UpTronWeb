@@ -54,8 +54,8 @@
 </head>
 <body class="body-wrapper static">
     <script>
-        var getUrl = window.location;
-        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+        //var getUrl = window.location;
+        var baseUrl = window.location.origin;//getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
     </script>
     <div class="se-pre-con"></div>
     <div class="main-wrapper">
@@ -509,8 +509,8 @@
     <script>
         $(document).ready(function () {
             $('#btnAcceptModal').click(function () {
-                window.open(baseUrl + "/Home/JobPortal", '_blank');
                 $('#modalSmall').modal('hide');
+                window.open(baseUrl + "/Home/JobPortal", '_blank');
             });
 
             $("#dialog").dialog({
