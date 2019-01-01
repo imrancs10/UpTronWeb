@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Configuration;
 
 namespace UptronWeb.Infrastructure.Utility
 {
@@ -18,6 +19,17 @@ namespace UptronWeb.Infrastructure.Utility
             body += "<br/><b>Email</b>" + Email + "<br/><br/>";
             body += "<br/><b>Phone</b>" + Phone + "<br/><br/>";
             body += "<br/><b>Message</b>" + Message + "<br/><br/>";
+            body += "Thank You,<br/>";
+            body += "";
+            return body;
+        }
+        public static string GetJobRegistrationEmail(string Name, string Email)
+        {
+            string defaultPassword = ConfigurationManager.AppSettings["JobRegistrationDefaultPassword"].ToString();
+            string body = "Hi " + Name + "<br/><br/>";
+            body += Name + "Your registration is successful. Here is your Login detail<br/>";
+            body += "<br/><b>User Name</b>" + Email + "<br/><br/>";
+            body += "<br/><b>Password</b>" + defaultPassword + "<br/><br/>";
             body += "Thank You,<br/>";
             body += "";
             return body;

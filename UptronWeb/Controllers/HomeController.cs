@@ -123,7 +123,10 @@ namespace UptronWeb.Controllers
         public JsonResult JobPortalSave(JobRegistrationModel model)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
+            model.Password = Convert.ToString(ConfigurationManager.AppSettings["JobRegistrationDefaultPassword"]);
             var result = detail.SaveJobPortal(model);
+            //send mail for user credential
+            SendMailForJobPortal(model.Name, model.EmailId);
             return Json(CrudResponse(result), JsonRequestBehavior.AllowGet);
         }
 
@@ -155,8 +158,6 @@ namespace UptronWeb.Controllers
                     registration.Id = Convert.ToInt32(Session["registrationId"]);
                     detail.UpdateJobPortal(registration);
                     Session["registrationId"] = null;
-                    //send mail for user credential
-                    //SendMailForJobPortal();
                     // Returns message that successfully uploaded  
                     return Json("Registration for Job is successful.");
                 }
@@ -169,8 +170,22 @@ namespace UptronWeb.Controllers
             {
                 return Json("No files selected.");
             }
+        }
+        private async Task SendMailForJobPortal(string Name, string Email)
+        {
+            await Task.Run(() =>
+            {
+                Message msg = new Message()
+                {
+                    MessageTo = Email,
+                    MessageNameTo = Name,
+                    Subject = "Uptron Job Registration",
+                    Body = EmailHelper.GetJobRegistrationEmail(Name, Email)
+                };
 
-
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
         }
         public ActionResult ViewNewsFile(int Id)
         {
@@ -255,22 +270,6 @@ namespace UptronWeb.Controllers
 
         }
         private async Task SendMailForContactUs(string Name, string Email, string Phone, string Message)
-        {
-            await Task.Run(() =>
-            {
-                Message msg = new Message()
-                {
-                    MessageTo = ConfigurationManager.AppSettings["RecivingEmailAddress"].ToString(),
-                    MessageNameTo = ConfigurationManager.AppSettings["RecivingEmailName"].ToString(),
-                    Subject = "Contact Us Request",
-                    Body = EmailHelper.GetContactUsEmail(Name, Email, Phone, Message)
-                };
-
-                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
-                sendMessageStrategy.SendMessages();
-            });
-        }
-        private async Task SendMailForJobPortal(string Name, string Email, string Phone, string Message)
         {
             await Task.Run(() =>
             {

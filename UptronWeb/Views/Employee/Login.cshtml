@@ -3,7 +3,7 @@
     Layout = null;
 }
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <meta lang="en" />
 <head>
@@ -94,7 +94,7 @@
                             <hr />
                         </div>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <div class="signin-wrapper">
                             <div class="tab-content">
@@ -102,24 +102,24 @@
                                     <img src="../images/logo/brand-text-dark.png" alt="Demon International" style="height:90px;width:270px;">
                                 </p>
                                 <div class="tab-pane fade in active" id="Div1">
-                                    <form id="Form1" role="form">
+                                    <form id="Form1" role="form" action="CheckLogin" method="post">
                                         <p class="lead">Login to User account</p>
                                         <div class="form-group">
                                             <div class="input-group input-group-in">
                                                 <span class="input-group-addon"><i class="icon-user"></i></span>
-                                                <input id="Text1" class="form-control" placeholder="Username" runat="server" type="text" />
+                                                <input id="UserName" class="form-control" placeholder="Username" name="UserName" type="text" />
                                             </div>
                                         </div><!-- /.form-group -->
                                         <div class="form-group">
                                             <div class="input-group input-group-in">
                                                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                                <input id="Password1" class="form-control" placeholder="Password" runat="server" type="password" />
+                                                <input id="Password" name="Password" class="form-control" placeholder="Password" type="password" />
 
                                             </div>
                                         </div><!-- /.form-group -->
                                         <div class="form-group clearfix">
                                             <div class="animated-hue pull-right">
-                                                <input id="Submit1" type="submit" name="submit" value="SignIn" class="btn btn-primary" />
+                                                <input id="Submit" type="submit" name="submit" value="SignIn" class="btn btn-primary" />
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="nice-checkbox nice-checkbox-inline">

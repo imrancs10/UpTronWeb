@@ -68,6 +68,7 @@ namespace UptronWeb.BAL
                     PersonHeight = Convert.ToDecimal(model.PersonHeight),
                     EyeSight = model.EyeSight,
                     IsActive = true,
+                    Password = model.Password,
                     DOB = Convert.ToDateTime(model.DOB)
                 };
 

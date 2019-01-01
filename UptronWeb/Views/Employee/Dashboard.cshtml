@@ -1,466 +1,296 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
 
-<!DOCTYPE html>
-<html class="no-js">
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
-    <title>Uptron Powertronics Limited</title>
-    <meta name="theme-color" content="#ffffff">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="~/styles/bootstrap.css">
-
-    <link rel="stylesheet" href="~/styles/dependencies.css">
-
-    <link rel="stylesheet" href="~/styles/wrapkit.css">
-</head>
-<body>
-    <main class="wrapkit-wrapper" id="wrapper">
-        <!-- ============================================
-        HEADER SECTION
-        =============================================== -->
-        <!-- navigation -->
-        <nav class="header navbar">
-            <div class="container-fluid">
-                <!-- use .pull-*, couse we need this float on any screen size -->
-                <div class="pull-left">
-                    <a class="navbar-brand" href="index.html" role="logo" aria-label="Logo">
-                        <img class="logo" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
-                    </a>
-                    <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
-                        <i class="fa fa-bars"></i>
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                </div>
-                <!-- use .pull-*, couse we need this float on any screen size -->
-                <div class="pull-right" role="navigation">
-
-                    <div class="dropdown">
-
-                        <br />
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <label id="lblUserName1"></label>
-                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
-                            <li class="divider"></li>
-                            <li role="presentation"><a data-toggle="modal" data-target="#customModal2" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
-                            <li class="divider"></li>
-                            <li role="presentation"><a id="A1" role="menuitem" tabindex="-1" href="~/UptronAdmin/Login"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out</a></li>
-                            <li class="divider"></li>
-                        </ul>
-                    </div><!-- /.dropdown -->
-                </div><!-- /navigation -->
-                
-            </div><!-- /.container-fluid -->
-        </nav><!-- /navigation -->
-        <!-- ============================================
-        SIDEBAR SECTION
-        =============================================== -->
-        <aside class="sidebar" role="complementary">
-            <!-- profile -->
-            <div class="sidebar-block">
-                <div class="media">
-                    <div class="media-left">
-                        <a href="page-profile.html">
-                            <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="" data-original-title="available"></span>
-                            <img class="media-object img-circle" src="../images/dummy/uifaces14.jpg" alt="photo profile">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Emma Greene</h4>
-                        <p class="text-muted">
-                            <small>Graphic Designer</small>
-                        </p>
-                    </div>
-                </div>
-            </div><!-- /.sidebar-block -->
-            <!-- /navigation -->
-            <div class="nav-wrapper">
-                <ul class="nav nav-stacked" role="navigation">
-                    @*<li class="nav-item open active" role="presentation">
-                        <a href="#" data-toggle="nav-child">
-                            <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
-                            <span class="nav-text">Dashboard</span>
-                        </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
-                            <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
-                        </ul>
-                    </li>*@
-                    <li class="nav-header" role="presentation">GET STARTED</li>
-                    <li class="nav-item" role="presentation">
-                        <a href="layout.html">
-                            <span class="nav-icon"><i class="fa fa-object-group"></i></span>
-                            <span class="nav-text">Profile</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="ecosystem.html">
-                            <span class="nav-icon"><i class="fa fa-cubes"></i></span>
-                            <span class="nav-text">Report</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="panels.html">
-                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                            <span class="nav-text">Panels</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a href="#" data-toggle="nav-child">
-                            <span class="nav-icon"><i class="fa fa-align-left"></i></span>
-                            <span class="nav-text">Level Menu</span>
-                        </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
-                            <li role="presentation">
-                                <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><span class="nav-text">Node</span></a>
-                                <ul class="nav nav-child level-2 nav-stacked nav-pills" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
-                                </ul>
-                            </li> <!-- /node -->
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>
-                    <li class="nav-header" role="presentation">DEVELOPMENT</li>
-                </ul>
+<!-- ============================================
+MAIN CONTENT SECTION
+=============================================== -->
+<section class="content-wrapper" role="main">
+    <div class="content">
+        <div class="content-hero content-hero-lg">
+            <img class="content-hero-embed" src="../images/dummy/people4.jpg" alt="cover">
+            <div class="content-hero-overlay bg-grd-blue"></div>
+            <div class="content-hero-body">
             </div>
-        </aside><!-- /.SIDEBAR -->
-        <!-- ============================================
-        MAIN CONTENT SECTION
-        =============================================== -->
-        <section class="content-wrapper" role="main">
-            <div class="content">
-                <div class="content-hero content-hero-lg">
-                    <img class="content-hero-embed" src="../images/dummy/people4.jpg" alt="cover">
-                    <div class="content-hero-overlay bg-grd-blue"></div>
-                    <div class="content-hero-body">
-                    </div>
-                    <div class="content-hero-bar">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="float-bar clearfix">
-                                    <div class="float-bar-brand">
-                                        <a class="kit-avatar kit-avatar-128 no-padding border-white" href="#">
-                                            <img alt="cover" src="../images/dummy/uifaces22.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <div class="visible-xs">
-                                            <h1 class="display-name media-heading text-teal">Donald Barnes</h1>
-                                            <p class="text-muted mb-4x"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
-                                        </div>
-                                        <div class="hidden-xs">
-                                            <h1 class="media-heading text-light">Donald Barnes</h1>
-                                            <p class="mb-4x text-light"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
-                                        </div>
-                                    </div><!-- /.media-body -->
-                                </div><!-- /.float-bar -->
-                            </div><!-- /.cols -->
-
-                            <div class="col-lg-6">
-                                <h4 class="text-muted">Achievement</h4>
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <span class="headline"><strong>68</strong></span>
-                                        <p>Posts</p>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <span class="headline"><strong>23</strong></span>
-                                        <p>Projects</p>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <span class="headline"><strong>1,2K</strong></span>
-                                        <p>Followers</p>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <span class="headline"><strong>26K</strong></span>
-                                        <p>Sales</p>
-                                    </div>
+            <div class="content-hero-bar">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="float-bar clearfix">
+                            <div class="float-bar-brand">
+                                <a class="kit-avatar kit-avatar-128 no-padding border-white" href="#">
+                                    <img alt="cover" src="../images/dummy/uifaces22.jpg">
+                                </a>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="visible-xs">
+                                    <h1 class="display-name media-heading text-teal">Donald Barnes</h1>
+                                    <p class="text-muted mb-4x"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
                                 </div>
-                            </div><!-- /.cols -->
-                        </div><!-- /.row -->
-                    </div><!-- /.content-hero-bar -->
-                </div><!-- /.content-hero -->
+                                <div class="hidden-xs">
+                                    <h1 class="media-heading text-light">Donald Barnes</h1>
+                                    <p class="mb-4x text-light"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
+                                </div>
+                            </div><!-- /.media-body -->
+                        </div><!-- /.float-bar -->
+                    </div><!-- /.cols -->
+
+                    <div class="col-lg-6">
+                        <h4 class="text-muted">Achievement</h4>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <span class="headline"><strong>68</strong></span>
+                                <p>Posts</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <span class="headline"><strong>23</strong></span>
+                                <p>Projects</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <span class="headline"><strong>1,2K</strong></span>
+                                <p>Followers</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <span class="headline"><strong>26K</strong></span>
+                                <p>Sales</p>
+                            </div>
+                        </div>
+                    </div><!-- /.cols -->
+                </div><!-- /.row -->
+            </div><!-- /.content-hero-bar -->
+        </div><!-- /.content-hero -->
 
 
-                <div class="content-body">
+        <div class="content-body">
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <br />
+                    <!-- ============================================
+                    PROJECTS LIST
+                    =============================================== -->
 
                     <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <br />
-                            <!-- ============================================
-              PROJECTS LIST
-              =============================================== -->
-
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <div class="kit-avatar kit-avatar-42 kit-avatar-square no-border">
-                                                        <img class="media-object" src="../images/logo/brand.png" alt="project brand">
-                                                    </div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">Wrapkit Admin Template</h3>
-                                                    <p class="help-block">Progress in 72% - Last update 8h</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-teal" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
-                                                <span class="sr-only">72% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <span class="fa-stack fa-2x">
-                                                        <i class="fa fa-circle fa-stack-2x text-blue"></i>
-                                                        <i class="fa fa-cube fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">Smart Paper</h3>
-                                                    <p class="help-block">Progress in 46% - Last update 2d</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-blue" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%">
-                                                <span class="sr-only">46% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <span class="fa-stack fa-2x">
-                                                        <i class="fa fa-circle fa-stack-2x text-cyan"></i>
-                                                        <i class="icon-rocket fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">Stilearn Re-design</h3>
-                                                    <p class="help-block">Progress in 89% - Last update 1w</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-cyan" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%">
-                                                <span class="sr-only">89% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <span class="fa-stack fa-2x">
-                                                        <i class="fa fa-circle fa-stack-2x text-violet"></i>
-                                                        <i class="icon-diamond fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">Syrena Project</h3>
-                                                    <p class="help-block">Progress in 54% - Last update 1d</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-violet" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%">
-                                                <span class="sr-only">54% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <span class="fa-stack fa-2x">
-                                                        <i class="fa fa-circle fa-stack-2x text-red"></i>
-                                                        <i class="fa fa-ticket fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">Booking App</h3>
-                                                    <p class="help-block">Progress in 96% - Last update 1h</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-red" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" style="width: 96%">
-                                                <span class="sr-only">96% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-
-                                <div class="col-lg-4 col-md-6 col-sm-6">
-                                    <div class="panel fade in panel-default" data-init-panel="true">
-                                        <div class="panel-body">
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <span class="fa-stack fa-2x">
-                                                        <i class="fa fa-circle fa-stack-2x text-orange"></i>
-                                                        <i class="icon-vector fa-stack-1x fa-inverse"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h3 class="media-heading">SVG Icon Bundle</h3>
-                                                    <p class="help-block">Progress in 99% - Last update 3d</p>
-                                                </div><!-- /.media -body-->
-                                            </div><!-- /.media -->
-                                        </div><!-- /.panel-body -->
-
-                                        <div class="progress progress-xs no-radius no-margin">
-                                            <div class="progress-bar bg-grd-orange" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">
-                                                <span class="sr-only">99% Complete</span>
-                                            </div>
-                                        </div><!-- /.progress -->
-                                    </div><!-- /.panel -->
-                                </div><!-- /.cols -->
-                            </div><!-- /.row -->
-                            <p class="help-block text-right pb-4x mb-4x">
-                                <a href="#" class="btn btn-icon btn-default"><span class="text-muted">View All Projects <i class="fa fa-angle-double-right"></i></span></a>
-                            </p>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="embed-responsive embed-responsive-16by9 text-light">
-                                        @*<img class="embed-responsive-item" src="~/images/dummy/desk3.jpg" alt="cover" />*@
-                                        <img class="embed-responsive-item" src="../../images/dummy/desk3.jpg" />
-
-                                        <div class="embed-overlay bg-grd-dark"></div>
-                                        <div class="embed-content">
-                                            <p class="lead"><a href="#">Home Page</a></p>
-                                        </div>
-                                        <div class="embed-bar embed-bar-bottom">
-                                            <div class="pull-right">
-                                                <a href="#"><i class="icon-eye fa-fw"></i> Slider Change</a>
-                                            </div>
-                                            <div>
-                                                <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> News</a>
-                                                <a href="#"><i class="icon-star fa-fw"></i> Events</a>
-                                                <a href="#"><i class="icon-star fa-fw"></i> Tenders</a>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="kit-avatar kit-avatar-42 kit-avatar-square no-border">
+                                                <img class="media-object" src="../images/logo/brand.png" alt="project brand">
                                             </div>
                                         </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">Wrapkit Admin Template</h3>
+                                            <p class="help-block">Progress in 72% - Last update 8h</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-teal" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%">
+                                        <span class="sr-only">72% Complete</span>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="embed-responsive embed-responsive-16by9 text-light">
-                                        <img class="embed-responsive-item" src="~/images/dummy/Circular.png" alt="cover">
-                                        <div class="embed-overlay bg-grd-dark"></div>
-                                        <div class="embed-content">
-                                            <p class="lead"><a href="#">GO's and Circular</a></p>
-                                        </div>
-                                        <div class="embed-bar embed-bar-bottom">
-                                            <div class="pull-right">
-                                                <a href="#"><i class="icon-eye fa-fw"></i> Add GO's and Circular </a>
-                                            </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
 
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fa fa-circle fa-stack-2x text-blue"></i>
+                                                <i class="fa fa-cube fa-stack-1x fa-inverse"></i>
+                                            </span>
                                         </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">Smart Paper</h3>
+                                            <p class="help-block">Progress in 46% - Last update 2d</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-blue" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%">
+                                        <span class="sr-only">46% Complete</span>
                                     </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fa fa-circle fa-stack-2x text-cyan"></i>
+                                                <i class="icon-rocket fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">Stilearn Re-design</h3>
+                                            <p class="help-block">Progress in 89% - Last update 1w</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-cyan" role="progressbar" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100" style="width: 89%">
+                                        <span class="sr-only">89% Complete</span>
+                                    </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fa fa-circle fa-stack-2x text-violet"></i>
+                                                <i class="icon-diamond fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">Syrena Project</h3>
+                                            <p class="help-block">Progress in 54% - Last update 1d</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-violet" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%">
+                                        <span class="sr-only">54% Complete</span>
+                                    </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fa fa-circle fa-stack-2x text-red"></i>
+                                                <i class="fa fa-ticket fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">Booking App</h3>
+                                            <p class="help-block">Progress in 96% - Last update 1h</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-red" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" style="width: 96%">
+                                        <span class="sr-only">96% Complete</span>
+                                    </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="panel fade in panel-default" data-init-panel="true">
+                                <div class="panel-body">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fa fa-circle fa-stack-2x text-orange"></i>
+                                                <i class="icon-vector fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading">SVG Icon Bundle</h3>
+                                            <p class="help-block">Progress in 99% - Last update 3d</p>
+                                        </div><!-- /.media -body-->
+                                    </div><!-- /.media -->
+                                </div><!-- /.panel-body -->
+
+                                <div class="progress progress-xs no-radius no-margin">
+                                    <div class="progress-bar bg-grd-orange" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">
+                                        <span class="sr-only">99% Complete</span>
+                                    </div>
+                                </div><!-- /.progress -->
+                            </div><!-- /.panel -->
+                        </div><!-- /.cols -->
+                    </div><!-- /.row -->
+                    <p class="help-block text-right pb-4x mb-4x">
+                        <a href="#" class="btn btn-icon btn-default"><span class="text-muted">View All Projects <i class="fa fa-angle-double-right"></i></span></a>
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                @*<img class="embed-responsive-item" src="~/images/dummy/desk3.jpg" alt="cover" />*@
+                                <img class="embed-responsive-item" src="../../images/dummy/desk3.jpg" />
+
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Home Page</a></p>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="embed-responsive embed-responsive-16by9 text-light">
-                                        <img class="embed-responsive-item" src="~/images/dummy/job.jpg" alt="cover" />
-                                        <div class="embed-overlay bg-grd-dark"></div>
-                                        <div class="embed-content">
-                                            <p class="lead"><a href="#">Job Portal</a></p>
-                                        </div>
-                                        <div class="embed-bar embed-bar-bottom">
-                                            <div class="pull-right">
-                                                <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> Job Registration List</a>
-                                            </div>
-                                            <div>
-                                                <a href="#"><i class="icon-star fa-fw"></i> Send Message</a>
-                                            </div>
-                                        </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="#"><i class="icon-eye fa-fw"></i> Slider Change</a>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> News</a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Events</a>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Tenders</a>
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                    </div><!-- /Row -->
-                </div><!-- /.content-body -->
-                <!-- Template Setups -->
-                <div class="modal fade" id="templateSetup">
-                    <div class="modal-dialog">
-                        <!-- modal-content -->
-                        <div class="modal-content"></div>
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.templateSetup -->
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/Circular.png" alt="cover">
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">GO's and Circular</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="#"><i class="icon-eye fa-fw"></i> Add GO's and Circular </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-16by9 text-light">
+                                <img class="embed-responsive-item" src="~/images/dummy/job.jpg" alt="cover" />
+                                <div class="embed-overlay bg-grd-dark"></div>
+                                <div class="embed-content">
+                                    <p class="lead"><a href="#">Job Portal</a></p>
+                                </div>
+                                <div class="embed-bar embed-bar-bottom">
+                                    <div class="pull-right">
+                                        <a href="#" class="mr-1x"><i class="icon-share fa-fw"></i> Job Registration List</a>
+                                    </div>
+                                    <div>
+                                        <a href="#"><i class="icon-star fa-fw"></i> Send Message</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div><!-- /Row -->
+        </div><!-- /.content-body -->
+        <!-- Template Setups -->
+        <div class="modal fade" id="templateSetup">
+            <div class="modal-dialog">
+                <!-- modal-content -->
+                <div class="modal-content"></div>
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.templateSetup -->
 
 
-            </div><!-- /.content -->
-        </section><!-- /MAIN -->
-        <!-- ============================================
-        FOOTER SECTION
-        =============================================== -->
-        <footer class="footer-wrapper" role="contentinfo">
-            <div class="footer">
-                <div class="pull-right text-muted"><small>Currently v1.2</small></div>
-                <div>Wrapkit Template  &copy; 2015</div>
-            </div>
-        </footer><!-- /.FOOTER -->
-
-    </main><!-- /#MAIN -->
-    <!-- VENDORS : jQuery & Bootstrap -->
-    <script src="~/Scripts/lib/vendor.js"></script>
-    <!-- END VENDORS -->
-    <!-- DEPENDENCIES : Required plugins -->
-    <script src="~/Scripts/lib/dependencies.js"></script>
-    <!-- END DEPENDENCIES -->
-    <!-- WRAPKIT -->
-    <script src="~/Scripts/lib/wrapkit.js"></script>
-    <!-- END WRAPKIT -->
-    <!-- WRAPKIT SETUPS -->
-    <script src="~/Scripts/lib/wrapkit-setup.js"></script>
-    <!-- end WRAPKIT SETUPS -->
-    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
-    <script src="~/Scripts/lib/plugin-setups.js"></script>
-    <!-- END PLUGIN SETUPS -->
-    <!-- DUMMY: Use for demo -->
-    <script type="text/javascript">
-        (function () {
-            'use strict';
-
-            window.sidebar.setMode('horizontal');
-        })(window);
-    </script>
-
-</body>
-</html>
+    </div><!-- /.content -->
+</section>
+<!-- /MAIN -->

@@ -91,6 +91,7 @@
           <Property Name="PersonHeight" Type="decimal" Precision="18" Scale="2" />
           <Property Name="EyeSight" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -163,10 +164,10 @@
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="Caption" Type="varchar" MaxLength="100" />
-          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderNumber" Type="int" />
           <Property Name="ServiceDescription" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -571,6 +572,7 @@
           <NavigationProperty Name="JobRegistrationLanguages" Relationship="UptronWebModel.FK_JobRegistrationLanguage_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationLanguage" />
           <NavigationProperty Name="JobRegistrationQualifications" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationQualification" />
           <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -908,6 +910,7 @@
           <EntitySetMapping Name="JobRegistrations">
             <EntityTypeMapping TypeName="UptronWebModel.JobRegistration">
               <MappingFragment StoreEntitySet="JobRegistration">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="EyeSight" ColumnName="EyeSight" />
                 <ScalarProperty Name="PersonHeight" ColumnName="PersonHeight" />

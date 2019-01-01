@@ -1,0 +1,175 @@
+﻿@using UptronWeb.Global
+
+<!DOCTYPE html>
+<html class="no-js">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes">
+    <title>Uptron Powertronics Limited</title>
+    <meta name="theme-color" content="#ffffff">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="~/styles/bootstrap.css">
+
+    <link rel="stylesheet" href="~/styles/dependencies.css">
+
+    <link rel="stylesheet" href="~/styles/wrapkit.css">
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <main class="wrapkit-wrapper" id="wrapper">
+        <!-- ============================================
+        HEADER SECTION
+        =============================================== -->
+        <!-- navigation -->
+        <nav class="header navbar">
+            <div class="container-fluid">
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-left">
+                    <a class="navbar-brand" href="index.html" role="logo" aria-label="Logo">
+                        <img class="logo" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                    </a>
+                    <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
+                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-right" role="navigation">
+
+                    <div class="dropdown">
+
+                        <br />
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <label id="lblUserName1"></label>
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a data-toggle="modal" data-target="#customModal2" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a id="A1" role="menuitem" tabindex="-1" href="~/UptronAdmin/Login"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div><!-- /.dropdown -->
+                </div><!-- /navigation -->
+
+            </div><!-- /.container-fluid -->
+        </nav><!-- /navigation -->
+        <!-- ============================================
+        SIDEBAR SECTION
+        =============================================== -->
+        <aside class="sidebar" role="complementary">
+            <!-- profile -->
+            <div class="sidebar-block">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="page-profile.html">
+                            <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="" data-original-title="available"></span>
+                            <img class="media-object img-circle" src="../images/dummy/uifaces14.jpg" alt="photo profile">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Emma Greene</h4>
+                        <p class="text-muted">
+                            <small>Graphic Designer</small>
+                        </p>
+                    </div>
+                </div>
+            </div><!-- /.sidebar-block -->
+            <!-- /navigation -->
+            <div class="nav-wrapper">
+                <ul class="nav nav-stacked" role="navigation">
+                    @*<li class="nav-item open active" role="presentation">
+                            <a href="#" data-toggle="nav-child">
+                                <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                            <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
+                                <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
+                            </ul>
+                        </li>*@
+                    <li class="nav-header" role="presentation">GET STARTED</li>
+                    <li class="nav-item" role="presentation">
+                        <a href="layout.html">
+                            <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                            <span class="nav-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="ecosystem.html">
+                            <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                            <span class="nav-text">Report</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="panels.html">
+                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                            <span class="nav-text">Panels</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <span class="nav-icon"><i class="fa fa-align-left"></i></span>
+                            <span class="nav-text">Level Menu</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><span class="nav-text">Node</span></a>
+                                <ul class="nav nav-child level-2 nav-stacked nav-pills" role="menu">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
+                                </ul>
+                            </li> <!-- /node -->
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">DEVELOPMENT</li>
+                </ul>
+            </div>
+        </aside><!-- /.SIDEBAR -->
+    @RenderBody()
+        <!-- ============================================
+        FOOTER SECTION
+        =============================================== -->
+        <footer class="footer-wrapper" role="contentinfo">
+            <div class="footer">
+                <div class="pull-right text-muted"><small>Currently v1.2</small></div>
+                <div>Wrapkit Template  &copy; 2015</div>
+            </div>
+        </footer><!-- /.FOOTER -->
+
+    </main><!-- /#MAIN -->
+    <!-- VENDORS : jQuery & Bootstrap -->
+    <script src="~/Scripts/lib/vendor.js"></script>
+    <!-- END VENDORS -->
+    <!-- DEPENDENCIES : Required plugins -->
+    <script src="~/Scripts/lib/dependencies.js"></script>
+    <!-- END DEPENDENCIES -->
+    <!-- WRAPKIT -->
+    <script src="~/Scripts/lib/wrapkit.js"></script>
+    <!-- END WRAPKIT -->
+    <!-- WRAPKIT SETUPS -->
+    <script src="~/Scripts/lib/wrapkit-setup.js"></script>
+    <!-- end WRAPKIT SETUPS -->
+    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+    <script src="~/Scripts/lib/plugin-setups.js"></script>
+    <!-- END PLUGIN SETUPS -->
+    <!-- DUMMY: Use for demo -->
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+
+            window.sidebar.setMode('horizontal');
+        })(window);
+    </script>
+
+</body>
+</html>

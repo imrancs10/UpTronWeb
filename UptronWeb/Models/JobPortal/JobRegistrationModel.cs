@@ -38,6 +38,7 @@ namespace UptronWeb.Models.JobPortal
         public string ExServiceMan { get; set; }
         public string PersonHeight { get; set; }
         public string EyeSight { get; set; }
+        public string Password { get; set; }
         public List<JobRegistrationSkillModel> JobRegistrationSkills { get; set; }
         public List<JobRegistrationEmployementModel> JobRegistrationEmployement { get; set; }
         public List<JobRegistrationQualificationModel> JobRegistrationQualification { get; set; }

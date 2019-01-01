@@ -173,6 +173,7 @@
     <Compile Include="BAL\Common\GeneralDetailBAL.cs" />
     <Compile Include="BAL\Common\CommonDetails.cs" />
     <Compile Include="BAL\JobPortal\JobRegistrationDetails.cs" />
+    <Compile Include="BAL\JobPortal\EmployeeDetails.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
     <Compile Include="BAL\Master\MasterBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -1530,6 +1531,7 @@
     <Content Include="Views\Employee\Login.cshtml" />
     <Content Include="Views\Employee\Dashboard.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
