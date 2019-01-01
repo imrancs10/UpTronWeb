@@ -177,6 +177,7 @@
     <Compile Include="BAL\Login\LoginDetails.cs" />
     <Compile Include="BAL\Master\MasterBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EmployeeProfileController.cs" />
     <Compile Include="Controllers\EventsUpcoming.cs" />
     <Compile Include="Controllers\UptronAdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
@@ -1532,6 +1533,7 @@
     <Content Include="Views\Employee\Dashboard.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Views\EmployeeProfile\EmployeeProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
