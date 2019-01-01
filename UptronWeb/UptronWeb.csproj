@@ -1498,14 +1498,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
-    <Content Include="Views\Home\Service_Hospital.cshtml" />
-    <Content Include="Views\Home\Service_Eprocurement.cshtml" />
-    <Content Include="Views\Home\Service_Manpower.cshtml" />
-    <Content Include="Views\Home\Service_Software.cshtml" />
-    <Content Include="Views\Home\Service_ITEnabled.cshtml" />
-    <Content Include="Views\Home\Service_Amc.cshtml" />
-    <Content Include="Views\Home\Service_Training.cshtml" />
-    <Content Include="Views\Home\Service_Miscelleneous.cshtml" />
     <Content Include="Views\Home\MajorProject.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Whatsnew.cshtml" />
