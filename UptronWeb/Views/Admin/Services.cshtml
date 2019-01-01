@@ -263,7 +263,7 @@
         $('[name=IsActive]').prop('checked', isActive == 1 ? true : false);
         $('#SliderImage').addClass('hidden');
         $('#SliderImage').removeAttr('required');
-        var html = "<a href='../../Admin/ViewServiceImage/" + Id + "' target='_blank'>View File</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
+        var html = "<a href='../../Admin/ViewServiceImage/" + Id + "' target='_blank'>View Image</a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
         $(html).insertAfter('#SliderImage');
     }
 </script>

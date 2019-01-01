@@ -41,7 +41,9 @@ namespace UptronWeb.Controllers
             JobRegistrationDetails detail = new JobRegistrationDetails();
             JobRegistration registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
             byte[] resumePdf = registrationDetail.Resume;
-            return File(resumePdf, "application/pdf");
+            if (resumePdf != null)
+                return File(resumePdf, "application/pdf");
+            return null;
         }
 
         public ActionResult ViewCandidateImage(int Id)
@@ -49,7 +51,7 @@ namespace UptronWeb.Controllers
             JobRegistrationDetails detail = new JobRegistrationDetails();
             JobRegistration registrationDetail = detail.GetJobPortalRegistrationById(Convert.ToInt32(Id));
             byte[] image = registrationDetail.ResumeImage;
-            return File(image, "application/jpeg");
+            return File(image, "image/jpg");
         }
 
         public ActionResult Logout()
@@ -474,6 +476,12 @@ namespace UptronWeb.Controllers
             var news = bal.GetAllServiceDetail();
             return View(news);
         }
-
+        public ActionResult ViewServiceImage(int Id)
+        {
+            var bal = new GeneralDetailBAL();
+            var result = bal.GetServiceDetailById(Id);
+            byte[] fileByte = result.Image;
+            return File(fileByte, "image/jpg");
+        }
     }
 }
