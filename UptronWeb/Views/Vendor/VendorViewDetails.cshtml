@@ -1,8 +1,9 @@
-﻿
+﻿@using DataLayer;
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@model List<VendorDetail>
 
 <form>
     <section class="content-wrapper" role="main">
@@ -34,141 +35,12 @@
                 <div class="panel" data-fill-color="true">
                     <div class="panel-body">
                         <div class="col-md-12">
-                            <div class="profile">
-                                <div class="row">
-                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                        <div class="thumbnail">
-                                            <img src="~/img/alok2.jpg" alt="profile-image">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered" style="white-space:nowrap">
-                                                        <thead>
-                                                            <tr class="bg-primary">
-                                                                <th colspan="15">Vendor Detail</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><label class="col-sm-4 control-label">Vendor Name </label></td>
-                                                                <td><span class="headline"><strong>Amarnath Kumar jha</strong></span></td>
-
-                                                                <td><label class="col-sm-4 control-label">Vendor Id </label></td>
-                                                                <td><span class="headline"><strong>UPL7895</strong></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><label class="col-sm-4 control-label">Contact Person</label></td>
-                                                                <td><span class="headline"><strong>Amarnath Kumar jha</strong></span></td>
-
-                                                                <td><label class="col-sm-4 control-label">Phone no</label></td>
-                                                                <td><span class="headline"><strong>9308789654</strong></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><label class="col-sm-4 control-label">Form Type</label></td>
-                                                                <td><span class="headline"><strong>It Technology</strong></span></td>
-
-                                                                <td><label class="col-sm-4 control-label">Business Type</label></td>
-                                                                <td><span class="headline"><strong>Software</strong></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><label class="col-sm-4 control-label">Gst No</label></td>
-                                                                <td><span class="headline"><strong>3278598689</strong></span></td>
-
-                                                                <td><label class="col-sm-4 control-label">Pan no</label></td>
-                                                                <td><span class="headline"><strong>DDDA979</strong></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><label class="col-sm-4 control-label">Date</label></td>
-                                                                <td><span class="headline"><strong>01/02/2019</strong></span></td>
-
-                                                                <td><label class="col-sm-4 control-label">Address</label></td>
-                                                                <td><span class="headline"><strong>G-86, Abulfazal Enclave</strong></span></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @*<div class="col-md-10 col-sm-9 col-xs-12">
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Vendor Name </label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>Amarnath Kumar jha</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Vendor ID </label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>UPL7896</strong></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Contact Person</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>Amarnath Kumar jha</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Mobile Number</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>9308789654</strong></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Firm Type</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>IT Technology</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Business Type</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>Software Company</strong></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">GST Number</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>ASD897989</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">PAN Number</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>ADER79989</strong></span>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Stream Type</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>It Company</strong></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <label class="col-sm-4 control-label">Full Address</label>
-                                                <div class="col-sm-8">
-                                                    <span class="headline"><strong>G-86, Abul Fazal Enclave</strong></span>
-                                                </div>
-                                            </div>
-                                        </div>*@
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
                             <div class="row">
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="bg-primary">
-                                                <th colspan="15">Vendor Detail</th>
+                                                <th colspan="11">Vendor Detail</th>
                                             </tr>
                                             <tr class="active">
                                                 <th>Sl.no</th>
@@ -179,118 +51,111 @@
                                                 <th>Type of Firm</th>
                                                 <th>Type of Business</th>
                                                 <th>Gst No</th>
-                                                <th>Pan no</th>
-                                                <th>View File</th>
-                                                <th>Date</th>
+                                                <th>Registration Date</th>
                                                 <th>Address</th>
-                                                <th colspan="2">Action</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline"><strong>1.</strong></span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">asfaass</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">45465</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">vassaaa</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">98789135489</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">It Technology</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">Software</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">3278598689</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">DDDA979</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <img src="~/img/alok2.jpg" alt="profile-image" style="height:80px;">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">02/01/2019</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="input-group input-group-icon">
-                                                            <span class="headline">G-86, Abulfazal Enclave</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                            <a id="lnkEdit" class="btn btn-primary" href="#">Approved</a>
-                                                            @*<span class="label-divider" id="Span1">or</span>
-                                                                <a id="lnkDelete" class="btn btn-primary" href="#">Not Approved</a>*@
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group mt-lg">
-                                                        <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                            <a id="lnkEdit" class="btn btn-primary" href="#">Not Approved</a>
-                                                            @*<span class="label-divider" id="Span1">or</span>
-                                                                <a id="lnkDelete" class="btn btn-primary" href="#">Not Approved</a>*@
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @{
+                                                int i = 1;
+                                                foreach (var news in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.VendorName</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.VendorCode</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.ContactPerson</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.PhoneNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.TypeofFirm</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.TypeOfBusiness</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.GSTNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.CreatedDate.Value.ToString("dd/MM/yyyy")</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@news.FullAddress</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x">
+                                                                    <a id="lnkEdit" class="btn btn-primary" href="~/Vendor/VendorStatusChange/@news.Id">
+                                                                        @{
+                                                                            string linkText = string.Empty;
+                                                                            if (news.Permitted == true)
+                                                                            {
+                                                                                linkText = "Not Approve";
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                linkText = "Approve";
+                                                                            }
+                                                                        }
+                                                                        @linkText
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
                                         </tbody>
                                     </table>
                                 </div>

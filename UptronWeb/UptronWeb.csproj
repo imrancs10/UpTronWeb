@@ -176,8 +176,8 @@
     <Compile Include="BAL\JobPortal\EmployeeDetails.cs" />
     <Compile Include="BAL\Login\LoginDetails.cs" />
     <Compile Include="BAL\Master\MasterBAL.cs" />
+    <Compile Include="BAL\Vendor\VendorDetailBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\EventsUpcoming.cs" />
     <Compile Include="Controllers\UptronAdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

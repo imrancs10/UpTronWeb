@@ -71,218 +71,180 @@
                 <li class="active">Vendor</li>
             </ol>
         </div>
-        <!-- KEY FUNCTANIORIES & Services SECTION -->
-        <section class="clearfix">
-            <div class="container">
-                <div class="timeLine">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!--<img src="img/uptronlogo.png" class="img-responsive"/>
-                                <hr />-->
-                                <h2>Vendor REGISTRATION FORM</h2>
+        <form method="post" action="VendorEntry">
+            <section class="clearfix">
+                <div class="container">
+                    <div class="timeLine">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Vendor REGISTRATION FORM</h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <!-- KEY FUNCTANIORIES SECTION -->
-                        <div class="col-lg-12">
-                            <div class="featured-box featured-box-primary align-left mt-xlg">
-                                <div class="box-content">
-                                    <div class="row">
-                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Vendor REGISTRATION Form</h4></div>
-                                    </div>
-                                    <hr class="tall">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Vendor Name </label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtVendorName" class="form-control" placeholder="Vendor Name" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                                            </span>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="featured-box featured-box-primary align-left mt-xlg">
+                                    <div class="box-content">
+                                        <div class="row">
+                                            <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Vendor REGISTRATION Form</h4></div>
+                                        </div>
+                                        <hr class="tall">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Vendor Name </label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtVendorName" name="txtVendorName" class="form-control" placeholder="Vendor Name" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                                </span>
+                                                            </div>
+                                                            <p>(Please don't use any prefix such as shri or Dr)</p>
                                                         </div>
-                                                        <p>(Please don't use any prefix such as shri or Dr)</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Vendor Id </label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtVendorId" class="form-control" placeholder="Vendor Id" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                                            </span>
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Vendor Code </label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtVendorCode" name="txtVendorCode" class="form-control" placeholder="Vendor Id" readonly value="@ViewData["VendorCode"]" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Contact Person</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtContactPerson" name="txtContactPerson" class="form-control" placeholder="Contact Person" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Contact Person</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtContactPerson" name="txtContactPerson" class="form-control" placeholder="Contact Person" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-mobile"></i></span>
-                                                            </span>
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Phone No </label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtPhone" name="txtPhone" class="form-control" placeholder="Mobile No" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Mobile No </label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtMobile" name="txtMobile" class="form-control" placeholder="Mobile No" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-mobile"></i></span>
-                                                            </span>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Type of Firm</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtTypeofFirm" name="txtTypeofFirm" class="form-control" placeholder="Type of Firm" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Type of Business<span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtTypeofBusiness" name="txtTypeofBusiness" class="form-control" placeholder="Type of Business" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-edit"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Type of Firm</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtTypeofFirm" name="txtTypeofFirm" class="form-control" placeholder="Type of Firm" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
-                                                            </span>
+                                            <div class="form-group">
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">GST No.</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtGSTNo" name="txtGSTNo" class="form-control" placeholder="GST No" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Type of Stream</label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtTypeofStream" name="txtTypeofStream" class="form-control" placeholder="Type of Stream" required />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Type of Business<span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtTypeofBusiness" name="txtTypeofBusiness" class="form-control" placeholder="Type of Business" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-edit"></i></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">GST No.</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtGSTNo" name="txtGSTNo" class="form-control" placeholder="GST No" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Pan no<span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtPanno" name="txtPanno" class="form-control" placeholder="Pan no" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-edit"></i></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Type of Stream</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtTypeofStream" name="txtTypeofStream" class="form-control" placeholder="Type of Stream" required/>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Full Address<span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <textarea id="txtAddress" class="form-control" rows="5" placeholder="Full Address" name="txtAddress" required></textarea>
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-map"></i></span>
-                                                            </span>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Full Address<span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <textarea id="txtAddress" class="form-control" rows="5" placeholder="Full Address" name="txtAddress" required></textarea>
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-map"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Upload Resume </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="file" name="fileResume" id="fileResume" accept="application/pdf" />
-                                                    </div>
-                                                    <span style="color:red;">Upload Resume size should be or equal to 400 KB.</span>
+                                        <br />
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary" />
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <input id="btncancel" type="submit" value="Reset" name="reset" class="btn btn-default" style="background:#000;padding:10px;" />
                                                 </div>
                                             </div>
                                         </div>
-
-                                    </div>
-                                    <br />
-                                    
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary" />
-                                                <span class="label-divider" id="Span1">or</span>
-                                                <input id="btncancel" type="submit" value="Reset" name="reset" class="btn btn-default" style="background:#000;padding:10px;" />
-                                            </div>
-                                            <asp:HiddenField ID="HiddenField1" />
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-3">
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
+            </section>
+        </form>
     </div>
 
     <!-- JAVASCRIPTS -->
@@ -296,8 +258,8 @@
     <script src="~/plugins/smoothscroll/SmoothScroll.min.js"></script>
     <script src="~/plugins/datepicker/bootstrap-datepicker.min.js"></script>
     <script src="~/plugins/syotimer/jquery.syotimer.min.js"></script>
-    <script src="~/Scripts/App/Global/Utility.js"></script>
-    <script src="~/Scripts/App/General/JobPortalRegistration.js"></script>
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/scripts/App/Global/Utility.js"></script>
 </body>
 </html>
 

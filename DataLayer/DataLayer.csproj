@@ -121,6 +121,9 @@
     <Compile Include="UserMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="VendorDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DbEntity.edmx">

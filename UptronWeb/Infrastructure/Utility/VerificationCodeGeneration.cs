@@ -12,6 +12,7 @@ namespace UptronWeb.Infrastructure.Utility
         private const string Chars = "1234567890";
         private const int LengthDeviceVerification = 6;
         private const int LengthSerialNumber = 8;
+        private const int LengthVendorCode = 4;
         private const int LengthResetCode = 64;
         private const string LongChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!$()*@[]_{|}";
         private static readonly Random srRandom = new Random();
@@ -25,6 +26,13 @@ namespace UptronWeb.Infrastructure.Utility
             string code = new string(Enumerable.Repeat(Chars, LengthSerialNumber)
               .Select(s => s[srRandom.Next(s.Length)]).ToArray());
             return code + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
+        }
+
+        public static string GetVendorCode()
+        {
+            string code = new string(Enumerable.Repeat(Chars, LengthVendorCode)
+              .Select(s => s[srRandom.Next(s.Length)]).ToArray());
+            return "UPL/" + code;
         }
 
         public static string GetGeneratedResetCode()

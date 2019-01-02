@@ -212,6 +212,25 @@
           <Property Name="CreatedBy" Type="int" />
           <Property Name="ModifiedBy" Type="int" />
         </EntityType>
+        <EntityType Name="VendorDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorCode" Type="varchar" MaxLength="50" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="TypeofFirm" Type="varchar" MaxLength="100" />
+          <Property Name="TypeOfBusiness" Type="varchar" MaxLength="100" />
+          <Property Name="GSTNumber" Type="varchar" MaxLength="50" />
+          <Property Name="TypeofStream" Type="varchar" MaxLength="100" />
+          <Property Name="FullAddress" Type="varchar" MaxLength="500" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="100" />
+          <Property Name="Permitted" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_City_State">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
@@ -363,6 +382,7 @@
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorDetail" EntityType="Self.VendorDetail" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
@@ -475,6 +495,7 @@
             <End Role="UserMaster" EntitySet="UserMasters" />
             <End Role="UserMaster1" EntitySet="UserMasters" />
           </AssociationSet>
+          <EntitySet Name="VendorDetails" EntityType="UptronWebModel.VendorDetail" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -837,6 +858,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="VendorDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeofFirm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TypeOfBusiness" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GSTNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TypeofStream" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Permitted" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1068,6 +1108,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VendorDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.VendorDetail">
+              <MappingFragment StoreEntitySet="VendorDetail">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Permitted" ColumnName="Permitted" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="TypeofStream" ColumnName="TypeofStream" />
+                <ScalarProperty Name="GSTNumber" ColumnName="GSTNumber" />
+                <ScalarProperty Name="TypeOfBusiness" ColumnName="TypeOfBusiness" />
+                <ScalarProperty Name="TypeofFirm" ColumnName="TypeofFirm" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1120,6 +1180,7 @@
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_RoleMaster" />
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster" />
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster1" />
+        <EntityTypeShape EntityType="UptronWebModel.VendorDetail" Width="1.5" PointX="10.375" PointY="12.75" />
       </Diagram>
     </Diagrams>
   </Designer>
