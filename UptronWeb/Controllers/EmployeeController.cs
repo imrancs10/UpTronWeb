@@ -37,5 +37,14 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult EmployeeResignation()
+        {
+            return View();
+        }
+        public ActionResult EmployeeSlip()
+        {
+            return View();
+        }
     }
 }

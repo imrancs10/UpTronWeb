@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<form>
+
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active center">Salary Slip </li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body" style="height:400px;">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Company Name</label>
+                                                        <div class="col-md-8">
+                                                            <select name="VendorName" id="VendorName" required class="form-control required"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Joining Date</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            <input type="date" id="GoDate" name="GoDate" data-input="daterangepicker"
+                                                                   data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">Salary Slip</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-icon">
+                                                        <input type="file" name="SalarySlip" id="SalarySlip" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">PF Slip</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-icon">
+                                                        <input type="file" name="PFSlip" id="PFSlip" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group mt-lg">
+                                                <label class="col-sm-4 control-label">ESI Slip</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group input-group-icon">
+                                                        <input type="file" name="ESISlip" id="ESISlip" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-offset-5">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    @*<div class="row">
+                                            <div class="col-md-5">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
