@@ -50,11 +50,11 @@ namespace UptronWeb.Controllers
             var result = bal.SaveVendorDetail(vendor);
             if (result == Enums.CrudStatus.Saved)
             {
-                SetAlertMessage("Vendor has been registered", "Tender");
+                SetAlertMessage("Vendor has been registered", "Vendor");
             }
             else
             {
-                SetAlertMessage("vendor is not registered");
+                SetAlertMessage("vendor is not registered", "Vendor");
             }
             return RedirectToAction("VendorEntry");
         }
@@ -74,7 +74,7 @@ namespace UptronWeb.Controllers
             }
             else
             {
-                SetAlertMessage("Vendor status has not been updated");
+                SetAlertMessage("Vendor status has not been updated", "Vendor");
             }
             return RedirectToAction("VendorViewDetails");
         }
