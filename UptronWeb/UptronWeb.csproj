@@ -177,12 +177,12 @@
     <Compile Include="BAL\Login\LoginDetails.cs" />
     <Compile Include="BAL\Master\MasterBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\EmployeeProfileController.cs" />
     <Compile Include="Controllers\EventsUpcoming.cs" />
     <Compile Include="Controllers\UptronAdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1533,7 +1533,9 @@
     <Content Include="Views\Employee\Dashboard.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Html.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
-    <Content Include="Views\EmployeeProfile\EmployeeProfile.cshtml" />
+    <Content Include="Views\Employee\EmployeeProfile.cshtml" />
+    <Content Include="Views\Vendor\VendorEntry.cshtml" />
+    <Content Include="Views\Vendor\VendorViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

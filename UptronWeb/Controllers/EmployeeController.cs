@@ -32,5 +32,10 @@ namespace UptronWeb.Controllers
                 SetAlertMessage("Invalid Login credentials", "Login Response");
             return RedirectToAction("Login");
         }
+
+        public ActionResult EmployeeProfile()
+        {
+            return View();
+        }
     }
 }

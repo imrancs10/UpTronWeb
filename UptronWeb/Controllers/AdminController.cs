@@ -483,5 +483,6 @@ namespace UptronWeb.Controllers
             byte[] fileByte = result.Image;
             return File(fileByte, "image/jpg");
         }
+
     }
 }
