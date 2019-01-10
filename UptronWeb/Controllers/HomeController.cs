@@ -51,46 +51,6 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult Service_Hospital()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Eprocurement()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Manpower()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Software()
-        {
-            return View();
-        }
-
-        public ActionResult Service_ITEnabled()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Amc()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Training()
-        {
-            return View();
-        }
-
-        public ActionResult Service_Miscelleneous()
-        {
-            return View();
-        }
-
         public ActionResult MajorProject()
         {
             return View();
