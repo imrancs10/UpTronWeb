@@ -144,10 +144,10 @@ namespace UptronWeb.BAL.Common
             var result = _db.Partners.ToList();
             return result;
         }
-        public Partner GetLatestPartnerDetail()
+        public List<Partner> GetLatestPartnerDetail()
         {
             _db = new UptronWebEntities();
-            var result = _db.Partners.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            var result = _db.Partners.OrderByDescending(x => x.CreatedDate).ToList();
             return result;
         }
         public List<ServiceDetail> GetAllServiceDetail()
