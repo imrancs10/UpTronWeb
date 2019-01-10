@@ -96,6 +96,60 @@ namespace UptronWeb.BAL.Common
             var result = _db.DirectorMessageDetails.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
             return result;
         }
+
+        public Enums.CrudStatus SavePartner(Partner partner)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (partner.Id > 0)
+            {
+                var _deptRow = _db.Partners.Where(x => x.Id == partner.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = partner.Id;
+                    _deptRow.CreatedDate = partner.CreatedDate;
+                    _deptRow.PartnerName = partner.PartnerName;
+                    _deptRow.PartnerUrl = partner.PartnerUrl;
+                    if (partner.PartnerImage != null)
+                        _deptRow.PartnerImage = partner.PartnerImage;
+
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Partners.Where(x => x.PartnerName == partner.PartnerName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(partner).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Partner> GetAllPartnerDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Partners.ToList();
+            return result;
+        }
+        public Partner GetLatestPartnerDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Partners.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            return result;
+        }
         public List<ServiceDetail> GetAllServiceDetail()
         {
             _db = new UptronWebEntities();
