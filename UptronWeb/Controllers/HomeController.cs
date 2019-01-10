@@ -202,6 +202,22 @@ namespace UptronWeb.Controllers
             };
             return Json(model);
         }
+        public JsonResult GetPartnerList()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var partner = bal.GetLatestPartnerDetail();
+            var base64 = Convert.ToBase64String(partner.PartnerImage);
+            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            Partner model = new Partner()
+            {
+                PartnerName = partner.PartnerName,
+                Id = partner.Id,
+                PartnerUrl = partner.PartnerUrl,
+                PartnerImage  = imgsrc
+            };
+            return Json(model);
+        }
+
         [HttpPost]
         public ActionResult Contact(string Name, string Email, string Phone, string Message)
         {

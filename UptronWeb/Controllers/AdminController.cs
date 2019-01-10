@@ -421,9 +421,46 @@ namespace UptronWeb.Controllers
 
         public ActionResult Partner()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var partner = bal.GetAllPartnerDetail();
+            return View(partner);
         }
 
+        [HttpPost]
+        public ActionResult Partner(string Partnername, string PartnerUrl, HttpPostedFileBase PartnerFile, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(PartnerFile, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            Partner partner = new Partner
+            {
+                PartnerName = Partnername,
+                PartnerUrl = PartnerUrl,
+                Id = Id != null ? Id.Value : 0,
+            };
+
+            if (Id == null)
+                partner.CreatedDate = DateTime.Now;
+
+            if (PartnerFile != null)
+                partner.PartnerImage = fileattachment;
+
+            var result = bal.SavePartner(partner);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Partner has been saved", "Partner Added");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Partner has been Updated", "Partner Update");
+            }
+            else
+            {
+                SetAlertMessage("Partner alreday exists", "Partner Update");
+            }
+            var messages = bal.GetAllPartnerDetail();
+            return View(messages);
+        }
         public ActionResult Majorprojects()
         {
             return View();
