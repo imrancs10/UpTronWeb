@@ -112,32 +112,34 @@ function fillPartner() {
         success: function (data) {
             int = 1;
             var htmlDOM = '';
-            $.each(data, function (index, Item) {
-                //htmlDOM += '<div class="col-sm-3 slide">' +
-                //    '<div class="partnersLogo clearfix">' +
-                //    '<img src="' + Item.PartnerImage + '" alt="Image Partner">' +
-                //    '</div>' +
-                //    '</div>';
-                if (index === 0) {
-                    htmlDOM += '<div class="carousel-item col-md-3 active">';
+            var lengthPartner = data.length;
+            var loopCount = 1;
+            if (lengthPartner > 6) {
+                loopCount = Math.ceil(lengthPartner / 6);
+            }
+            var index = 0;
+            for (var i = 0; i < loopCount; i++) {
+                if (i === 0) {
+                    htmlDOM += '<div class="item active"><div class="row">';
                 }
                 else {
-                    htmlDOM += '<div class="carousel-item col-md-3 ">';
+                    htmlDOM += '<div class="item"><div class="row">';
                 }
-                htmlDOM += '<div class="panel panel-default">' +
-                    '<div class="panel-thumbnail">' +
-                    '<a href="#" title="image 3" class="thumb">' +
-                    '<img class="" src="' + Item.PartnerImage + '"  alt="Partner slide">' +
-                    '</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-            });
 
-            //$('#PartnerDiv').html(htmlDOM);
-            $('#carouselExample').carousel({
-                interval: 2000
-            });
+                for (var j = 0; j < 6; j++) {
+                    if (index < lengthPartner) {
+                        htmlDOM += '<div class="col-sm-2 col-xs-12">' +
+                            '<div class="partnersLogo clearfix">' +
+                            '<img src="' + data[index].PartnerImage + '" alt="Image Partner">' +
+                            '</div>' +
+                            '</div>';
+                        index++;
+                    }
+                }
+                htmlDOM += '</div></div>';
+            }
+
+            $('#PartnerDiv').html(htmlDOM);
         },
         failure: function (response) {
             alert(response);
@@ -147,24 +149,4 @@ function fillPartner() {
         }
     });
 }
-
-$('#carouselExample').on('slide.bs.carousel', function (e) {
-    var $e = $(e.relatedTarget);
-    var idx = $e.index();
-    var itemsPerSlide = 4;
-    var totalItems = $('.carousel-item').length;
-
-    if (idx >= totalItems - (itemsPerSlide - 1)) {
-        var it = itemsPerSlide - (totalItems - idx);
-        for (var i = 0; i < it; i++) {
-            // append slides to end
-            if (e.direction === "left") {
-                $('.carousel-item').eq(i).appendTo('.carousel-inner');
-            }
-            else {
-                $('.carousel-item').eq(0).appendTo('.carousel-inner');
-            }
-        }
-    }
-});
 

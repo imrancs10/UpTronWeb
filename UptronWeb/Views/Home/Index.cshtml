@@ -1,5 +1,7 @@
 ﻿@using DataLayer;
 @{
+    /**/
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -275,8 +277,8 @@
                         <h3><a href="#">Upcoming Events</a></h3>
                         <marquee id="UpcomingEventsMarquee" behavior="scroll" width:100%; height="90" onMouseOver="this.setAttribute('scrollamount', 0, 0);this.stop();" OnMouseOut="this.setAttribute('scrollamount', 2, 0);this.start();" direction="up" scrollamount="1" scrolldelay="5" ;>
                             @*<div class="border">
-                                <p><img src="~/img/NewIcon.gif" />&nbsp;&nbsp;<a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<img src="~/img/readmore.jpg" /></a></p>
-                            </div>*@
+                                    <p><img src="~/img/NewIcon.gif" />&nbsp;&nbsp;<a href="~/img/UPL_BusinessMeet 2018-11-02 11.29.10.pdf" target='_blank'>Business Associate Meet with UPL at 5th Nov 2018<img src="~/img/readmore.jpg" /></a></p>
+                                </div>*@
                         </marquee>
                     </div>
                     <div class="service-box-icon">
@@ -436,19 +438,19 @@
                                 <div class="row">
                                     <div class="col-lg-4 reviewInner" id="divDirectorMessage">
                                         @*<div class="col-xs-3">
-                                            <div class="reviewImage">
-                                                <img src="~/img/rakesh.jpg" alt="Dr. Rakesh Varma" class="img-responsive">
+                                                <div class="reviewImage">
+                                                    <img src="~/img/rakesh.jpg" alt="Dr. Rakesh Varma" class="img-responsive">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xs-9">
-                                            <div class="reviewInfo">
-                                                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                                <p>I take this opportunity to thank our valued customers, whose continued patronage and confidence in our products inspires us to extend the best of our services.</p>
-                                                <h3>Dr. Rakesh Varma</h3>
-                                                <h4>Managing Director</h4>
-                                                <a href="#" style="color:#337ab7">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>*@
+                                            <div class="col-xs-9">
+                                                <div class="reviewInfo">
+                                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                                    <p>I take this opportunity to thank our valued customers, whose continued patronage and confidence in our products inspires us to extend the best of our services.</p>
+                                                    <h3>Dr. Rakesh Varma</h3>
+                                                    <h4>Managing Director</h4>
+                                                    <a href="#" style="color:#337ab7">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>*@
                                     </div>
                                 </div>
                             </div>
@@ -495,12 +497,6 @@
         <div class="row">
             <div class="col-xs-12">
                 <div id="productSlider" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#productSlider" data-slide-to="0" class="active"></li>
-                        <li data-target="#productSlider" data-slide-to="1" class=""></li>
-                    </ol>
-
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
@@ -587,7 +583,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="item">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12">
@@ -674,7 +669,6 @@
                         </div>
 
                     </div>
-
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
                         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
@@ -691,85 +685,110 @@
 </section>
 <!-- End MAJOR Projects SECTION -->
 <!-- PARTNER LOGO SECTION -->
-<section class="clearfix brandArea client-bg">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="owl-carousel partnersLogoSlider">
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-1.jpg" alt="Image Partner">
+<div class="container">
+    <div class="secotionTitle col-lg-12">
+        <h2 class="bg">Our Partners</h2>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="pertnerSlider" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox" id="PartnerDiv">
+                    @*<div class="item active">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-1.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-2.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-3.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-4.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-5.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-6.jpg" alt="Image Partner">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-2.jpg" alt="Image Partner">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-7.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-8.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-9.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brandn-10.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brand-1.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brand-2.jpg" alt="Image Partner">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-3.jpg" alt="Image Partner">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brand-3.jpg" alt="Image Partner">
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="partnersLogo clearfix">
+                                    <img src="~/img/home/brand-4.jpg" alt="Image Partner">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-4.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-5.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-6.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-7.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-8.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-9.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brandn-10.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brand-1.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brand-2.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brand-3.jpg" alt="Image Partner">
-                        </div>
-                    </div>
-                    <div class="col-sm-3 slide">
-                        <div class="partnersLogo clearfix">
-                            <img src="~/img/home/brand-4.jpg" alt="Image Partner">
-                        </div>
-                    </div>
+                    </div>*@
                 </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#pertnerSlider" role="button" data-slide="prev">
+                    <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#pertnerSlider" role="button" data-slide="next">
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     </div>
-</section>
+</div>
 <!--END PARTNER LOGO SECTION -->
 <script src="~/Scripts/App/General/HomeWeb.js"></script>

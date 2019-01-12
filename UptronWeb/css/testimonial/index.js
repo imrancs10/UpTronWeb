@@ -49,14 +49,16 @@ window.onload = function () {
             playSlide(currentSlide += 1);
         }, testimSpeed)
     }
-
-    testimLeftArrow.addEventListener("click", function () {
-        playSlide(currentSlide -= 1);
-    })
-
-    testimRightArrow.addEventListener("click", function () {
-        playSlide(currentSlide += 1);
-    })
+    if (testimLeftArrow != null) {
+        testimLeftArrow.addEventListener("click", function () {
+            playSlide(currentSlide -= 1);
+        })
+    }
+    if (testimRightArrow != null) {
+        testimRightArrow.addEventListener("click", function () {
+            playSlide(currentSlide += 1);
+        })
+    }
 
     for (var l = 0; l < testimDots.length; l++) {
         testimDots[l].addEventListener("click", function () {
