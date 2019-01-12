@@ -202,21 +202,6 @@ namespace UptronWeb.Controllers
             };
             return Json(model);
         }
-        public JsonResult GetPartnerList()
-        {
-            GeneralDetailBAL bal = new GeneralDetailBAL();
-            var partner = bal.GetLatestPartnerDetail();
-            var base64 = Convert.ToBase64String(partner.PartnerImage);
-            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-            Partner model = new Partner()
-            {
-                PartnerName = partner.PartnerName,
-                Id = partner.Id,
-                PartnerUrl = partner.PartnerUrl,
-                PartnerImage  = imgsrc
-            };
-            return Json(model);
-        }
 
         [HttpPost]
         public ActionResult Contact(string Name, string Email, string Phone, string Message)
@@ -276,6 +261,28 @@ namespace UptronWeb.Controllers
             var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
             service.Name = imgsrc; //it just a hack to pass image to view
             return View(service);
+        }
+
+        public JsonResult GetPartnerList()
+        {
+                        GeneralDetailBAL bal = new GeneralDetailBAL();
+            var partners = bal.GetLatestPartnerDetail();
+            List<PartnerModel> modelList = new List<PartnerModel>();
+            partners.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.PartnerImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                modelList.Add(new PartnerModel()
+                {
+                    PartnerName = x.PartnerName,
+                    Id = x.Id,
+                    PartnerUrl = x.PartnerUrl,
+                    PartnerImage = imgsrc
+
+                });
+            });
+
+            return Json(modelList, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -15,13 +15,15 @@ jQuery(document).ready(function () {
                     navigation.animate({
                         'margin-top': original.nav_top
                     }, {
-                        duration: 300,
-                        queue: false,
-                        complete: function () {
-                            header_area.css('height', 'auto');
-                        }
-                    });
-                } else if (!main_area.hasClass('bb-fixed-header') && $(this).width() > 750 && $(this).scrollTop() > header_area.offset().top + header_area.height() - parseInt($('html').css('margin-top'), 10)) {
+                            duration: 300,
+                            queue: false,
+                            complete: function () {
+                                header_area.css('height', 'auto');
+                            }
+                        });
+                } else if (!main_area.hasClass('bb-fixed-header')
+                    && $(this).width() > 750
+                    && $(this).scrollTop() > typeof header_area.offset() !== typeof undefined ? header_area.offset().top : 0 + header_area.height() - parseInt($('html').css('margin-top'), 10)) {
                     header_area.css('height', header_area.height());
                     main_area.css({
                         'opacity': '0'
