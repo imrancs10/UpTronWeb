@@ -282,10 +282,13 @@
     <Content Include="images\bg.jpg" />
     <Content Include="images\bguserlogin.jpg" />
     <Content Include="images\dummy\blog.jpg" />
+    <Content Include="images\dummy\Circular.png" />
     <Content Include="images\dummy\desk2.jpg" />
     <Content Include="images\dummy\desk3.jpg" />
     <Content Include="images\dummy\desk4.jpg" />
+    <Content Include="images\dummy\enquiry.jpg" />
     <Content Include="images\dummy\flower.jpg" />
+    <Content Include="images\dummy\gallery.jpg" />
     <Content Include="images\dummy\institute.jpg" />
     <Content Include="images\dummy\job.jpg" />
     <Content Include="images\dummy\people1.jpg" />
@@ -297,6 +300,7 @@
     <Content Include="images\dummy\Products.jpg" />
     <Content Include="images\dummy\profile.jpg" />
     <Content Include="images\dummy\rent.jpg" />
+    <Content Include="images\dummy\services.jpg" />
     <Content Include="images\dummy\trianglify1.svg" />
     <Content Include="images\dummy\trianglify5.svg" />
     <Content Include="images\dummy\trianglify6.svg" />
