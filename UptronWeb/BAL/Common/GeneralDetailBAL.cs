@@ -291,5 +291,56 @@ namespace UptronWeb.BAL.Common
                 }
             }
         }
+
+        public Enums.CrudStatus SaveKeyFunctionaries(KeyFunctionary keyfunctionary)
+        {
+            _db = new UptronWebEntities();
+            int _effecttRow = 0;
+            if (keyfunctionary.Id > 0)
+            {
+                var _deptRow = _db.KeyFunctionaries.Where(x => x.Id == keyfunctionary.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = keyfunctionary.Id;
+                    _deptRow.Name = keyfunctionary.Name;
+                    _deptRow.Designation = keyfunctionary.Designation;
+                    _deptRow.Location = keyfunctionary.Location;
+                    if (keyfunctionary.Image != null)
+                    {
+                        _deptRow.Image = keyfunctionary.Image;
+                    }
+                    _db.Entry(_deptRow).State = EntityState.Added;
+                    _effecttRow = _db.SaveChanges();
+                    return _effecttRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.KeyFunctionaries.Where(x => x.Name == keyfunctionary.Name).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(keyfunctionary).State = EntityState.Added;
+                    _effecttRow = _db.SaveChanges();
+                    return _effecttRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<KeyFunctionary> GetAllFunctionarieDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.KeyFunctionaries.OrderByDescending(x => x.CreatedDate).ToList();
+            return result;
+        }
+
+
     }
 }

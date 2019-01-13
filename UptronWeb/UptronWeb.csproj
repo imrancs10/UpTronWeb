@@ -178,6 +178,7 @@
     <Compile Include="BAL\Master\MasterBAL.cs" />
     <Compile Include="BAL\Vendor\VendorDetailBAL.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\KeyFunctionaries.cs" />
     <Compile Include="Controllers\UptronAdminController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Infrastructure\Utility\Serializer.cs" />
     <Compile Include="Infrastructure\Utility\VerificationCodeGeneration.cs" />
     <Compile Include="Models\Common\CommonModel.cs" />
+    <Compile Include="Models\Common\KeyFunctionaryModel.cs" />
     <Compile Include="Models\Common\PartnerModel.cs" />
     <Compile Include="Models\Common\DirectorMessageModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationEmployementModel.cs" />

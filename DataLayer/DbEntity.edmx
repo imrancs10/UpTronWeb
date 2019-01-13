@@ -137,6 +137,17 @@
           <Property Name="Skill" Type="varchar" MaxLength="50" />
           <Property Name="RegistrationId" Type="int" />
         </EntityType>
+        <EntityType Name="KeyFunctionaries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Designation" Type="varchar" MaxLength="500" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="NewsUpdateMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -385,6 +396,7 @@
           <EntitySet Name="JobRegistrationLanguage" EntityType="Self.JobRegistrationLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationQualification" EntityType="Self.JobRegistrationQualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KeyFunctionaries" EntityType="Self.KeyFunctionaries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
@@ -508,6 +520,7 @@
           </AssociationSet>
           <EntitySet Name="VendorDetails" EntityType="UptronWebModel.VendorDetail" />
           <EntitySet Name="Partners" EntityType="UptronWebModel.Partner" />
+          <EntitySet Name="KeyFunctionaries" EntityType="UptronWebModel.KeyFunctionary" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -899,6 +912,17 @@
           <Property Name="PartnerUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="KeyFunctionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1161,6 +1185,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KeyFunctionaries">
+            <EntityTypeMapping TypeName="UptronWebModel.KeyFunctionary">
+              <MappingFragment StoreEntitySet="KeyFunctionaries">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1215,6 +1251,7 @@
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster1" />
         <EntityTypeShape EntityType="UptronWebModel.VendorDetail" Width="1.5" PointX="10.375" PointY="12.75" />
         <EntityTypeShape EntityType="UptronWebModel.Partner" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="UptronWebModel.KeyFunctionary" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </Diagrams>
   </Designer>

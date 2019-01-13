@@ -416,7 +416,46 @@ namespace UptronWeb.Controllers
 
         public ActionResult KeyFunctionaries()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var functinaries = bal.GetAllFunctionarieDetail();
+            return View(functinaries);
+        }
+        [HttpPost]
+        public ActionResult KeyFunctionaries(string name,string Location, string Designation, HttpPostedFileBase keyfunctionariesFile, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(keyfunctionariesFile, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            KeyFunctionary keyFunctionaries = new KeyFunctionary()
+            {
+                Name = name,
+                Location = Location,
+                Designation = Designation,
+                Id = Id != null ? Id.Value : 0,
+            };
+            if (Id == null)
+            {
+                keyFunctionaries.CreatedDate = DateTime.Now;
+            }
+            if (keyfunctionariesFile != null)
+            {
+                keyFunctionaries.Image = fileattachment;
+            }
+            var result = bal.SaveKeyFunctionaries(keyFunctionaries);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Key Functionaries Has been Saved", "Key Functionaries Saved");
+            }
+            else if(result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Key Functionaries has been Updated", "Key Functionaries Updated");
+            }
+            else
+            {
+                SetAlertMessage("Key Functionaries has been Already Exists", "Key Functionaries Exists");
+            }
+            var message = bal.GetAllFunctionarieDetail();
+            return View(message);
         }
 
         public ActionResult Partner()

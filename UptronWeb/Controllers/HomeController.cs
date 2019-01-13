@@ -262,7 +262,6 @@ namespace UptronWeb.Controllers
             service.Name = imgsrc; //it just a hack to pass image to view
             return View(service);
         }
-
         public JsonResult GetPartnerList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();

@@ -45,5 +45,6 @@ namespace DataLayer
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<VendorDetail> VendorDetails { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
+        public virtual DbSet<KeyFunctionary> KeyFunctionaries { get; set; }
     }
 }
