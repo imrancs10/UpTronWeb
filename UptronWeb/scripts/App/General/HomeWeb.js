@@ -3,6 +3,7 @@
     fillDirectorMessage();
     fillUpcomingEvents();
     fillPartner();
+    fillService();
 });
 
 function fillNewsAndUpdate() {
@@ -130,7 +131,55 @@ function fillPartner() {
                     if (index < lengthPartner) {
                         htmlDOM += '<div class="col-sm-2 col-xs-12">' +
                             '<div class="partnersLogo clearfix">' +
-                            '<img src="' + data[index].PartnerImage + '" alt="Image Partner">' +
+                            '<img src="' + data[index].PartnerImage + '" alt="Image Partner" style="height:110px;width:225px;">' +
+                            '</div>' +
+                            '</div>';
+                        index++;
+                    }
+                }
+                htmlDOM += '</div></div>';
+            }
+
+            $('#PartnerDiv').html(htmlDOM);
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
+function fillService() {
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Home/GetPartnerList',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            int = 1;
+            var htmlDOM = '';
+            var lengthPartner = data.length;
+            var loopCount = 1;
+            if (lengthPartner > 6) {
+                loopCount = Math.ceil(lengthPartner / 6);
+            }
+            var index = 0;
+            for (var i = 0; i < loopCount; i++) {
+                if (i === 0) {
+                    htmlDOM += '<div class="item active"><div class="row">';
+                }
+                else {
+                    htmlDOM += '<div class="item"><div class="row">';
+                }
+
+                for (var j = 0; j < 6; j++) {
+                    if (index < lengthPartner) {
+                        htmlDOM += '<div class="col-sm-2 col-xs-12">' +
+                            '<div class="partnersLogo clearfix">' +
+                            '<img src="' + data[index].PartnerImage + '" alt="Image Partner" style="height:110px;width:225px;">' +
                             '</div>' +
                             '</div>';
                         index++;

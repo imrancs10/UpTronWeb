@@ -265,7 +265,7 @@ namespace UptronWeb.Controllers
 
         public JsonResult GetPartnerList()
         {
-                        GeneralDetailBAL bal = new GeneralDetailBAL();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
             var partners = bal.GetLatestPartnerDetail();
             List<PartnerModel> modelList = new List<PartnerModel>();
             partners.ForEach(x =>

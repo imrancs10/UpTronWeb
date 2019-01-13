@@ -3515,7 +3515,7 @@ textarea.form-control {
     text-align: center!important;
 }
 .brandArea .slide .partnersLogo img {
-    width: auto;
+    /*width: auto;*/
     margin: 0 auto;
     line-height: 115px;
 }
@@ -8142,7 +8142,7 @@ a, a > img {
 
 
 .tbl-content {
-    height: 800px;
+    height: 500px;
     overflow-x: auto;
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);

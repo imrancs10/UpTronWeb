@@ -15,8 +15,8 @@
 }
 .roadmap.roadmap--orientation-auto .roadmap__events{
     position:relative;
-    width:-webkit-calc(100% - 200px);
-    width:calc(100% - 200px);
+    width:-webkit-calc(100% - 225px);
+    width:calc(100% - 225px);
     margin:0 auto;
     padding:200px 0
 }
