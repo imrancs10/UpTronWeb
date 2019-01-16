@@ -284,32 +284,32 @@ namespace UptronWeb.Controllers
             return Json(modelList, JsonRequestBehavior.AllowGet);
         }
 
-        //public JsonResult GetKeyFunctionariesList()
-        //{
-        //    GeneralDetailBAL bal = new GeneralDetailBAL();
-        //    var keyfunctionaries = bal.GetAllFunctionariesList();
-        //    List<KeyFunctionaryModel> keyFunctionariesmodelList = new List<KeyFunctionaryModel>();
-        //    keyfunctionaries.ForEach(x =>
-        //    {
-        //        var base64 = Convert.ToBase64String(x.Image);
-        //        var imgsrc = string.Format("data.image/jpg, {0}", base64);
-        //        keyFunctionariesmodelList.Add(new KeyFunctionaryModel()
-        //        {
-        //            Id = x.Id,
-        //            Image = imgsrc,
-        //            Name = x.Name,
-        //            Designation = x.Designation,
-        //            Location = x.Location
-        //        });
-        //    });
-        //    return Json(keyFunctionariesmodelList, JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult GetKeyFunctionariesList()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var keyfunctionaries = bal.GetAllFunctionariesList();
+            List<KeyFunctionaryModel> keyFunctionariesmodelList = new List<KeyFunctionaryModel>();
+            keyfunctionaries.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.Image);
+                var imgsrc = string.Format("data.image/jpg, {0}", base64);
+                keyFunctionariesmodelList.Add(new KeyFunctionaryModel()
+                {
+                    Id = x.Id,
+                    Image = imgsrc,
+                    Name = x.Name,
+                    Designation = x.Designation,
+                    Location = x.Location
+                });
+            });
+            return Json(keyFunctionariesmodelList, JsonRequestBehavior.AllowGet);
+        }
 
 
         public JsonResult GetFunctionariesList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var functionaries = bal.GetAllFunctionariesList();
+            var functionaries = bal.GetAllFunctionarieDetail();
             var result = JsonConvert.SerializeObject(functionaries, Formatting.Indented,
                             new JsonSerializerSettings
                             {

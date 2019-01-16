@@ -61,6 +61,7 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login", "UptronAdmin");
         }
 
+
         public ActionResult GOCircularEntry(int? Id)
         {
             if (Id != null && Id > 0)
@@ -97,7 +98,6 @@ namespace UptronWeb.Controllers
 
             return RedirectToAction("GOCircularEntry");
         }
-
         public ActionResult GOCircularView()
         {
             MasterBAL bal = new MasterBAL();
@@ -117,6 +117,8 @@ namespace UptronWeb.Controllers
             byte[] fileByte = result.GOFile;
             return File(fileByte, "application/pdf");
         }
+
+
         public ActionResult TenderEntry(int? Id)
         {
             if (Id != null && Id > 0)
@@ -164,7 +166,6 @@ namespace UptronWeb.Controllers
             var result = bal.GetAllTenderViewList();
             return View(result);
         }
-
         public ActionResult ViewTenderFile(int Id)
         {
             MasterBAL bal = new MasterBAL();
@@ -172,6 +173,8 @@ namespace UptronWeb.Controllers
             byte[] fileByte = result.TenderFile;
             return File(fileByte, "application/pdf");
         }
+
+
 
         public ActionResult GalleryCategory()
         {
@@ -200,7 +203,6 @@ namespace UptronWeb.Controllers
             }
             return View();
         }
-
         public ActionResult PhotoGallery()
         {
             return View();
@@ -229,7 +231,6 @@ namespace UptronWeb.Controllers
             }
             return View();
         }
-
         public JsonResult GetGalleryDetail()
         {
             MasterBAL bal = new MasterBAL();
@@ -242,6 +243,7 @@ namespace UptronWeb.Controllers
                          });
             return Json(result);
         }
+
 
         public ActionResult NewsAndUpdate()
         {
@@ -285,13 +287,13 @@ namespace UptronWeb.Controllers
             var news = bal.GetAllNewsUpdate();
             return View(news);
         }
-
         public ActionResult DeleteNewsAndUpdate(int Id)
         {
             MasterBAL bal = new MasterBAL();
             var result = bal.DeleteNewsAndUpdate(Id);
             return RedirectToAction("NewsAndUpdate");
         }
+
 
         public ActionResult EventsUpcoming()
         {
@@ -336,13 +338,14 @@ namespace UptronWeb.Controllers
             var Events = bal.GetAllUpcomingEvents();
             return View(Events);
         }
-
         public ActionResult DeleteUpcomingEvents(int Id)
         {
             MasterBAL bal = new MasterBAL();
             var result = bal.DeleteUpcomingEvents(Id);
             return RedirectToAction("EventsUpcoming");
         }
+
+
         public ActionResult ContactUsDetail()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -355,7 +358,6 @@ namespace UptronWeb.Controllers
             var list = bal.GetAllContactUsArchiveDetails();
             return View(list);
         }
-
         public ActionResult ArchiveContactUs(int Id)
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -370,6 +372,7 @@ namespace UptronWeb.Controllers
             }
             return RedirectToAction("ContactUsDetail");
         }
+
 
         public ActionResult DirectorMessage()
         {
@@ -413,6 +416,7 @@ namespace UptronWeb.Controllers
             var messages = bal.GetAllDirectorMessageDetail();
             return View(messages);
         }
+
 
         public ActionResult KeyFunctionaries()
         {
@@ -458,13 +462,13 @@ namespace UptronWeb.Controllers
             return View(message);
         }
 
+
         public ActionResult Partner()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var partner = bal.GetAllPartnerDetail();
             return View(partner);
         }
-
         [HttpPost]
         public ActionResult Partner(string Partnername, string PartnerUrl, HttpPostedFileBase PartnerFile, int? Id)
         {
@@ -500,10 +504,14 @@ namespace UptronWeb.Controllers
             var messages = bal.GetAllPartnerDetail();
             return View(messages);
         }
+
+
         public ActionResult Majorprojects()
         {
             return View();
         }
+
+
         public ActionResult Services()
         {
             var bal = new GeneralDetailBAL();
@@ -559,6 +567,8 @@ namespace UptronWeb.Controllers
             byte[] fileByte = result.Image;
             return File(fileByte, "image/jpg");
         }
+
+
 
     }
 }
