@@ -1545,6 +1545,7 @@
     <Content Include="Views\Vendor\VendorViewDetails.cshtml" />
     <Content Include="Views\Employee\EmployeeResignation.cshtml" />
     <Content Include="Views\Employee\EmployeeSlip.cshtml" />
+    <Content Include="Views\Admin\Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

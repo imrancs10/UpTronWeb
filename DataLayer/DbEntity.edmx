@@ -190,6 +190,20 @@
           <Property Name="ServiceDescription" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderName" Type="varchar" MaxLength="250" />
+          <Property Name="Caption1" Type="varchar" MaxLength="250" />
+          <Property Name="Caption2" Type="varchar" MaxLength="250" />
+          <Property Name="CaptionAuthor" Type="varchar" MaxLength="150" />
+          <Property Name="SliderImage" Type="varbinary(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="OrderNumber" Type="int" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="StateId" />
@@ -401,6 +415,7 @@
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceDetail" EntityType="Self.ServiceDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
@@ -521,6 +536,7 @@
           <EntitySet Name="VendorDetails" EntityType="UptronWebModel.VendorDetail" />
           <EntitySet Name="Partners" EntityType="UptronWebModel.Partner" />
           <EntitySet Name="KeyFunctionaries" EntityType="UptronWebModel.KeyFunctionary" />
+          <EntitySet Name="Sliders" EntityType="UptronWebModel.Slider" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -923,6 +939,20 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Caption1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Caption2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CaptionAuthor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SliderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderNumber" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1197,6 +1227,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="UptronWebModel.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SliderImage" ColumnName="SliderImage" />
+                <ScalarProperty Name="CaptionAuthor" ColumnName="CaptionAuthor" />
+                <ScalarProperty Name="Caption2" ColumnName="Caption2" />
+                <ScalarProperty Name="Caption1" ColumnName="Caption1" />
+                <ScalarProperty Name="SliderName" ColumnName="SliderName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1252,6 +1297,7 @@
         <EntityTypeShape EntityType="UptronWebModel.VendorDetail" Width="1.5" PointX="10.375" PointY="12.75" />
         <EntityTypeShape EntityType="UptronWebModel.Partner" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="UptronWebModel.KeyFunctionary" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Slider" Width="1.5" PointX="14.375" PointY="3.75" />
       </Diagram>
     </Diagrams>
   </Designer>

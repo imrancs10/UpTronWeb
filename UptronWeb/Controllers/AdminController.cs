@@ -569,6 +569,65 @@ namespace UptronWeb.Controllers
         }
 
 
+        public ActionResult Slider()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.GetAllSliderDetail();
+            return View(result);
+        }
 
+        [HttpPost]
+        public ActionResult Slider(string SliderName, string Caption1, string Caption2, string CaptionAuthor, 
+                                   string OrderNumber, string IsActive, HttpPostedFileBase SliderFile, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(SliderFile, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            Slider slider = new Slider()
+            {
+                SliderName = SliderName,
+                Caption1 = Caption1,
+                Caption2 = Caption2,
+                CaptionAuthor = CaptionAuthor,
+                IsActive = IsActive == "on" ? true : false,
+                Id = Id!=null?Id.Value : 0
+            };
+            if (!string.IsNullOrEmpty(OrderNumber))
+                slider.OrderNumber = Convert.ToInt32(OrderNumber);
+            else
+                slider.OrderNumber = null;
+            if (Id == null)
+            {
+                slider.CreatedDate = DateTime.Now;
+            }
+            if (SliderFile!=null)
+            {
+                slider.SliderImage = fileattachment;
+            }
+            var result = bal.SaveSliderDetail(slider);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Slider has been Saved", "Slider Saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Slider has been Updated", "Slider updated");
+            }
+            else
+            {
+                SetAlertMessage("Slider Already Exists", "Slider Exists");
+            }
+
+            var message = bal.GetAllSliderDetail();
+            return View(message);
+        }
+
+        public ActionResult ViewSliderImage(int Id)
+        {
+            var bal = new GeneralDetailBAL();
+            var result = bal.GetSliderDetailById(Id);
+            byte[] fileByte = result.SliderImage;
+            return File(fileByte, "image/jpg");
+        }
     }
 }

@@ -346,6 +346,64 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
+        public Enums.CrudStatus SaveSliderDetail(Slider slider)
+        {
+            _db = new UptronWebEntities();
+            int _effetRow = 0;
+            if (slider.Id > 0)
+            {
+                var _deptRow = _db.Sliders.Where(x => x.Id == slider.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = slider.Id;
+                    _deptRow.SliderName = slider.SliderName;
+                    _deptRow.Caption1 = slider.Caption1;
+                    _deptRow.Caption2 = slider.Caption2;
+                    _deptRow.CaptionAuthor = slider.CaptionAuthor;
+                    _deptRow.IsActive = slider.IsActive;
+                    _deptRow.OrderNumber = slider.OrderNumber;
+                    _deptRow.CreatedDate = slider.CreatedDate;
+                    if (slider.SliderImage!=null)
+                    {
+                        _deptRow.SliderImage = slider.SliderImage;
+                    }
+                    _db.Entry(slider).State = EntityState.Modified;
+                    _effetRow = _db.SaveChanges();
+                    return _effetRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Sliders.Where(x => x.SliderName == slider.SliderName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(slider).State = EntityState.Added;
+                    _effetRow = _db.SaveChanges();
+                    return _effetRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
 
+        }
+
+        public List<Slider> GetAllSliderDetail ()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Sliders.ToList();
+            return result;
+        }
+        public Slider GetSliderDetailById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Sliders.Where(x => x.Id == Id).FirstOrDefault();
+            return result;
+        }
     }
 }

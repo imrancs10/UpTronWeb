@@ -115,6 +115,9 @@
     <Compile Include="ServiceDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Slider.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="State.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
