@@ -333,7 +333,12 @@ namespace UptronWeb.BAL.Common
                 }
             }
         }
-
+        public List<KeyFunctionary> GetAllFunctionariesList()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.KeyFunctionaries.ToList();
+            return result;
+        }
         public List<KeyFunctionary> GetAllFunctionarieDetail()
         {
             _db = new UptronWebEntities();
