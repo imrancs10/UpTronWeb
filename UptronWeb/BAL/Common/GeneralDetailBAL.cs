@@ -180,7 +180,7 @@ namespace UptronWeb.BAL.Common
                     _deptRow.ServiceDescription = serviceDetail.ServiceDescription;
                     if (serviceDetail.Image != null)
                         _deptRow.Image = serviceDetail.Image;
-                                        //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
+                    //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
                     //{
                     //    var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
                     //    if (orderNo != null)
@@ -228,7 +228,7 @@ namespace UptronWeb.BAL.Common
                 var _deptRow = _db.ServiceDetails.Where(x => x.Name == serviceDetail.Name).FirstOrDefault();
                 if (_deptRow == null)
                 {
-                                         //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
+                    //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
                     //{
                     //    var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
                     //    if (orderNo != null)
@@ -339,10 +339,10 @@ namespace UptronWeb.BAL.Common
             var result = _db.KeyFunctionaries.ToList();
             return result;
         }
-        public List<KeyFunctionary> GetAllFunctionarieDetail()
+        public List<KeyFunctionary> GetAllFunctionarieDetailLatestTwo()
         {
             _db = new UptronWebEntities();
-            var result = _db.KeyFunctionaries.OrderByDescending(x => x.CreatedDate).ToList();
+            var result = _db.KeyFunctionaries.OrderByDescending(x => x.CreatedDate).Take(2).ToList();
             return result;
         }
 
@@ -372,7 +372,7 @@ namespace UptronWeb.BAL.Common
                     _deptRow.IsActive = slider.IsActive;
                     _deptRow.OrderNumber = slider.OrderNumber;
                     _deptRow.CreatedDate = slider.CreatedDate;
-                    if (slider.SliderImage!=null)
+                    if (slider.SliderImage != null)
                     {
                         _deptRow.SliderImage = slider.SliderImage;
                     }
@@ -438,7 +438,7 @@ namespace UptronWeb.BAL.Common
         public List<Slider> GetAllActiveSliderDetail()
         {
             _db = new UptronWebEntities();
-            var result = _db.Sliders.Where(x => x.IsActive == true).ToList();
+            var result = _db.Sliders.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).ToList();
             return result;
         }
 

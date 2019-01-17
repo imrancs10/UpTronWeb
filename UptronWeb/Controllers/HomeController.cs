@@ -290,12 +290,12 @@ namespace UptronWeb.Controllers
         public JsonResult GetKeyFunctionariesList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var keyfunctionaries = bal.GetAllFunctionariesList();
+            var keyfunctionaries = bal.GetAllFunctionarieDetailLatestTwo();
             List<KeyFunctionaryModel> keyFunctionariesmodelList = new List<KeyFunctionaryModel>();
             keyfunctionaries.ForEach(x =>
             {
                 var base64 = Convert.ToBase64String(x.Image);
-                var imgsrc = string.Format("data.image/jpg, {0}", base64);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
                 keyFunctionariesmodelList.Add(new KeyFunctionaryModel()
                 {
                     Id = x.Id,
@@ -307,29 +307,42 @@ namespace UptronWeb.Controllers
             });
             return Json(keyFunctionariesmodelList, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetFunctionariesList()
-        {
-            GeneralDetailBAL bal = new GeneralDetailBAL();
-            var functionaries = bal.GetAllFunctionarieDetail();
-            var result = JsonConvert.SerializeObject(functionaries, Formatting.Indented,
-                            new JsonSerializerSettings
-                            {
-                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                            });
-            return Json(result);
-        }
+        //public JsonResult GetFunctionariesList()
+        //{
+        //    GeneralDetailBAL bal = new GeneralDetailBAL();
+        //    var functionaries = bal.GetAllFunctionarieDetailLatestTwo();
+            
+        //    var base64 = Convert.ToBase64String(director.Photo);
+        //    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+        //    var result = JsonConvert.SerializeObject(functionaries, Formatting.Indented,
+        //                    new JsonSerializerSettings
+        //                    {
+        //                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        //                    });
+        //    return Json(result);
+        //}
 
 
         public JsonResult GetAllSliderDetailList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var slider = bal.GetAllActiveSliderDetail();
-            var result = JsonConvert.SerializeObject(slider, Formatting.Indented,
-                            new JsonSerializerSettings
-                            {
-                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                            });
-            return Json(result);
+            var sliders = bal.GetAllActiveSliderDetail();
+            List<SliderModel> slidermodelList = new List<SliderModel>();
+            sliders.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.SliderImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                slidermodelList.Add(new SliderModel()
+                {
+                    Id = x.Id,
+                    SliderImage = imgsrc,
+                    SliderName = x.SliderName,
+                    Caption1 = x.Caption1,
+                    Caption2 = x.Caption2,
+                    CaptionAuthor=x.CaptionAuthor,
+                });
+            });
+            return Json(slidermodelList, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Enquiry()

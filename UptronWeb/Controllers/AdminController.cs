@@ -421,7 +421,7 @@ namespace UptronWeb.Controllers
         public ActionResult KeyFunctionaries()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var functinaries = bal.GetAllFunctionarieDetail();
+            var functinaries = bal.GetAllFunctionariesList();
             return View(functinaries);
         }
         [HttpPost]
@@ -458,7 +458,7 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("Key Functionaries has been Already Exists", "Key Functionaries Exists");
             }
-            var message = bal.GetAllFunctionarieDetail();
+            var message = bal.GetAllFunctionarieDetailLatestTwo();
             return View(message);
         }
 

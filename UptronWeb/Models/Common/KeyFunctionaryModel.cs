@@ -12,6 +12,6 @@ namespace UptronWeb.Models.Common
         public string Designation { get; set; }
         public string Location { get; set; }
         public string Image { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }
