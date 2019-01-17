@@ -35,7 +35,7 @@ namespace UptronWeb.Infrastructure.Utility
             return body;
         }
 
-        public static string GetQuickEnquiryEmail(string Name, string Mobile, string Email, string EnquiryMessage)
+        public static string GetQuickEnquiryEmail(string Name, string Email, string Mobile, string EnquiryMessage)
         {
             string body = "Hi Admin<br/><br/>";
             body += Name + " has been request through Quick Enquiry, details are as below.<br/>";
