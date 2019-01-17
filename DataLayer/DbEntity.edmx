@@ -196,9 +196,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SliderName" Type="varchar" MaxLength="250" />
-          <Property Name="Caption1" Type="varchar" MaxLength="250" />
-          <Property Name="Caption2" Type="varchar" MaxLength="250" />
-          <Property Name="CaptionAuthor" Type="varchar" MaxLength="150" />
+          <Property Name="Caption1" Type="nvarchar" MaxLength="250" />
+          <Property Name="Caption2" Type="nvarchar" MaxLength="250" />
+          <Property Name="CaptionAuthor" Type="nvarchar" MaxLength="250" />
           <Property Name="SliderImage" Type="varbinary(max)" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
@@ -945,9 +945,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SliderName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Caption1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Caption2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="CaptionAuthor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Caption1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Caption2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CaptionAuthor" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SliderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />

@@ -216,6 +216,7 @@
     <Compile Include="Models\Common\KeyFunctionaryModel.cs" />
     <Compile Include="Models\Common\PartnerModel.cs" />
     <Compile Include="Models\Common\DirectorMessageModel.cs" />
+    <Compile Include="Models\Common\SliderModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationEmployementModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationLanguageModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationModel.cs" />

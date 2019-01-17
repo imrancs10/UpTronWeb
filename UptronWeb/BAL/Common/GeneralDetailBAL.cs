@@ -309,7 +309,7 @@ namespace UptronWeb.BAL.Common
                     {
                         _deptRow.Image = keyfunctionary.Image;
                     }
-                    _db.Entry(_deptRow).State = EntityState.Added;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
                     _effecttRow = _db.SaveChanges();
                     return _effecttRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
                 }
@@ -346,6 +346,15 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
+        public bool DeleteKeyFunctionariesById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.KeyFunctionaries.Where(x => x.Id == Id).FirstOrDefault();
+            _db.KeyFunctionaries.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
         public Enums.CrudStatus SaveSliderDetail(Slider slider)
         {
             _db = new UptronWebEntities();
@@ -367,7 +376,7 @@ namespace UptronWeb.BAL.Common
                     {
                         _deptRow.SliderImage = slider.SliderImage;
                     }
-                    _db.Entry(slider).State = EntityState.Modified;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
                     _effetRow = _db.SaveChanges();
                     return _effetRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
                 }
@@ -382,7 +391,27 @@ namespace UptronWeb.BAL.Common
                 if (_deptRow == null)
                 {
                     _db.Entry(slider).State = EntityState.Added;
-                    _effetRow = _db.SaveChanges();
+                    try
+                    {
+                        _effetRow = _db.SaveChanges();
+                    }
+                    catch (DbEntityValidationException dbEx)
+                    {
+                        Exception raise = dbEx;
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                string message = string.Format("{0}:{1}",
+                                    validationErrors.Entry.Entity.ToString(),
+                                    validationError.ErrorMessage);
+                                // raise a new exception nesting  
+                                // the current instance as InnerException  
+                                raise = new InvalidOperationException(message, raise);
+                            }
+                        }
+                        throw raise;
+                    }
                     return _effetRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
                 }
                 else
@@ -393,7 +422,7 @@ namespace UptronWeb.BAL.Common
 
         }
 
-        public List<Slider> GetAllSliderDetail ()
+        public List<Slider> GetAllSliderDetail()
         {
             _db = new UptronWebEntities();
             var result = _db.Sliders.ToList();
@@ -404,6 +433,22 @@ namespace UptronWeb.BAL.Common
             _db = new UptronWebEntities();
             var result = _db.Sliders.Where(x => x.Id == Id).FirstOrDefault();
             return result;
+        }
+
+        public List<Slider> GetAllActiveSliderDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Sliders.Where(x => x.IsActive == true).ToList();
+            return result;
+        }
+
+        public bool DeleteSliderById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Sliders.FirstOrDefault(x => x.Id == Id);
+            _db.Sliders.Remove(result);
+            _db.SaveChanges();
+            return true;
         }
     }
 }

@@ -462,6 +462,12 @@ namespace UptronWeb.Controllers
             return View(message);
         }
 
+        public ActionResult DeleteKeyFunctionaries(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeleteKeyFunctionariesById(Id);
+            return RedirectToAction("KeyFunctionaries");
+        }
 
         public ActionResult Partner()
         {
@@ -597,9 +603,7 @@ namespace UptronWeb.Controllers
             else
                 slider.OrderNumber = null;
             if (Id == null)
-            {
                 slider.CreatedDate = DateTime.Now;
-            }
             if (SliderFile!=null)
             {
                 slider.SliderImage = fileattachment;
@@ -628,6 +632,13 @@ namespace UptronWeb.Controllers
             var result = bal.GetSliderDetailById(Id);
             byte[] fileByte = result.SliderImage;
             return File(fileByte, "image/jpg");
+        }
+
+        public ActionResult DeleteSlider(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeleteSliderById(Id);
+            return RedirectToAction("Slider");
         }
     }
 }

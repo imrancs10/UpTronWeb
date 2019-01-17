@@ -304,8 +304,6 @@ namespace UptronWeb.Controllers
             });
             return Json(keyFunctionariesmodelList, JsonRequestBehavior.AllowGet);
         }
-
-
         public JsonResult GetFunctionariesList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -317,5 +315,19 @@ namespace UptronWeb.Controllers
                             });
             return Json(result);
         }
+
+
+        public JsonResult GetAllSliderDetailList()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var slider = bal.GetAllActiveSliderDetail();
+            var result = JsonConvert.SerializeObject(slider, Formatting.Indented,
+                            new JsonSerializerSettings
+                            {
+                                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                            });
+            return Json(result);
+        }
+
     }
 }
