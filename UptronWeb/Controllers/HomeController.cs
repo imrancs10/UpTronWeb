@@ -56,10 +56,7 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            return View();
-        }
+        
 
         public ActionResult Gallery()
         {
@@ -203,6 +200,10 @@ namespace UptronWeb.Controllers
             return Json(model);
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
         [HttpPost]
         public ActionResult Contact(string Name, string Email, string Phone, string Message)
         {
@@ -246,6 +247,8 @@ namespace UptronWeb.Controllers
                 sendMessageStrategy.SendMessages();
             });
         }
+
+
         public JsonResult GetServiceMenus()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -329,5 +332,52 @@ namespace UptronWeb.Controllers
             return Json(result);
         }
 
+        public ActionResult Enquiry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Enquiry(string Name, string Mobile, string Email, string EnquiryMessage)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            QuickEnquiry quickenquiry = new QuickEnquiry()
+            {
+                Name = Name,
+                Mobile = Mobile,
+                Email = Email,
+                Enquiry = EnquiryMessage,
+                IsArchive = false,
+                CreatedDate = DateTime.Now
+            };
+            var result = bal.SaveQuickEnquiry(quickenquiry);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SendMailForQuickEnquiry(Name, Email, Mobile, EnquiryMessage);
+                SetAlertMessage("Your Enquiry Has been Saved and mail to Admin", "Enquiry Saved");
+            }
+            else
+            {
+                SetAlertMessage("Enquiry has not been Saved", "Not Saveds");
+            }
+            return RedirectToAction("Index");
+        }
+
+        private async Task SendMailForQuickEnquiry(string Name, string Mobile, string Email, string EnquiryMessage)
+        {
+            await Task.Run(() =>
+            {
+                Message msg = new Message()
+                {
+                    MessageTo = ConfigurationManager.AppSettings["RecivingEmailAddress"].ToString(),
+                    MessageNameTo = ConfigurationManager.AppSettings["RecivingEmailName"].ToString(),
+                    Subject = "Quick Enquiry Request",
+                    Body = EmailHelper.GetQuickEnquiryEmail(Name,Mobile,Email,EnquiryMessage)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
+        }
     }
 }

@@ -450,5 +450,38 @@ namespace UptronWeb.BAL.Common
             _db.SaveChanges();
             return true;
         }
+
+        public Enums.CrudStatus SaveQuickEnquiry(QuickEnquiry quickEnquiry)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            _db.Entry(quickEnquiry).State = EntityState.Added;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+
+        public List<QuickEnquiry> GetAllQuickEnquiryDetails()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.QuickEnquiries.Where(x => x.IsArchive == false).ToList();
+            return result;
+        }
+        public List<QuickEnquiry> GetAllQuickEnquiryArchiveDetails()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.QuickEnquiries.Where(x => x.IsArchive == true).ToList();
+            return result;
+        }
+        public Enums.CrudStatus ArchiveQuickEnquiryDetails(int Id)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            var result = _db.QuickEnquiries.Where(x => x.Id == Id).FirstOrDefault();
+            result.IsArchive = true;
+            _db.Entry(result).State = EntityState.Modified;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+        }
+
     }
 }

@@ -170,6 +170,18 @@
           <Property Name="PartnerUrl" Type="nvarchar" MaxLength="150" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="QuickEnquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="Enquiry" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsArchive" Type="bit" />
+        </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -413,6 +425,7 @@
           <EntitySet Name="KeyFunctionaries" EntityType="Self.KeyFunctionaries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuickEnquiry" EntityType="Self.QuickEnquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceDetail" EntityType="Self.ServiceDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
@@ -537,6 +550,7 @@
           <EntitySet Name="Partners" EntityType="UptronWebModel.Partner" />
           <EntitySet Name="KeyFunctionaries" EntityType="UptronWebModel.KeyFunctionary" />
           <EntitySet Name="Sliders" EntityType="UptronWebModel.Slider" />
+          <EntitySet Name="QuickEnquiries" EntityType="UptronWebModel.QuickEnquiry" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -953,6 +967,18 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="OrderNumber" Type="Int32" />
         </EntityType>
+        <EntityType Name="QuickEnquiry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Enquiry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsArchive" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1242,6 +1268,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="QuickEnquiries">
+            <EntityTypeMapping TypeName="UptronWebModel.QuickEnquiry">
+              <MappingFragment StoreEntitySet="QuickEnquiry">
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Enquiry" ColumnName="Enquiry" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1298,6 +1337,7 @@
         <EntityTypeShape EntityType="UptronWebModel.Partner" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="UptronWebModel.KeyFunctionary" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="UptronWebModel.Slider" Width="1.5" PointX="14.375" PointY="3.75" />
+        <EntityTypeShape EntityType="UptronWebModel.QuickEnquiry" Width="1.5" PointX="14.375" PointY="7.75" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -5,7 +5,7 @@
     fillPartner();
     fillFunctionaries();
     fillNewsUpdateList();
-    fillSliderList();
+    //fillSliderList();
 });
 
 function fillNewsAndUpdate() {
@@ -223,6 +223,7 @@ function fillNewsUpdateList() {
         }
     });
 }
+
 function fillSliderList() {
     $.ajax({
         dataType: 'json',

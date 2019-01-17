@@ -640,5 +640,33 @@ namespace UptronWeb.Controllers
             var result = bal.DeleteSliderById(Id);
             return RedirectToAction("Slider");
         }
+
+
+        public ActionResult QuickEnquiryDetail()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var list = bal.GetAllQuickEnquiryDetails();
+            return View(list);
+        }
+        public ActionResult QuickEnquiryArchiveDetail()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var list = bal.GetAllQuickEnquiryArchiveDetails();
+            return View(list);
+        }
+        public ActionResult ArchiveQuickEnquiry(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var status = bal.ArchiveQuickEnquiryDetails(Id);
+            if (status == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Quick Enquiry detail is Archived");
+            }
+            else
+            {
+                SetAlertMessage("Quick Enquiry detail is not Archived");
+            }
+            return RedirectToAction("QuickEnquiryDetail");
+        }
     }
 }
