@@ -156,6 +156,12 @@ namespace UptronWeb.BAL.Common
             var result = _db.ServiceDetails.OrderBy(x => x.OrderNumber).ToList();
             return result;
         }
+        public List<ServiceDetail> GetAllActiveServiceDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.ServiceDetails.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).ToList();
+            return result;
+        }
         public ServiceDetail GetServiceDetailById(int Id)
         {
             _db = new UptronWebEntities();

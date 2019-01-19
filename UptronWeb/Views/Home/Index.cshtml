@@ -1,10 +1,15 @@
 ﻿@using DataLayer;
+@using UptronWeb.Models;
 @{
     /**/
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .overlayInfo > h4 {
+        cursor: pointer;
+    }
+</style>
 <!-- MAIN SLIDER -->
 <section class="home5_revolution_slider">
     <div class="tp-banner-container rev_slider_wrapper fullwidthbanner-container">
@@ -487,31 +492,129 @@
 </section>
 <!-- END WHY UPTRON SECTION -->
 <!-- MAJOR Projects SECTION -->
+@*<section class="clearfix productSection">
+        <div class="container">
+            <div class="secotionTitle col-lg-12">
+                <h2 class="bg">Our Services</h2>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="serviceSlider" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox" id="ServiceDiv">
+                        </div>
+                        <a class="left carousel-control" href="#serviceSlider" role="button" data-slide="prev">
+                            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#serviceSlider" role="button" data-slide="next">
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
 <section class="clearfix productSection">
-
     <div class="container">
         <div class="secotionTitle col-lg-12">
             <h2 class="bg">Our Services</h2>
         </div>
-        <!-- <div class="secotionTitle">
-           <h2>Our Major Projects </h2>
-         </div>-->
         <div class="row">
             <div class="col-xs-12">
-                <div id="productSlider" class="carousel slide" data-ride="carousel">
+                <div id="serviceSlider" class="carousel slide" data-ride="carousel">
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox" id="ServiceDiv">
+                    <div class="carousel-inner" role="listbox">
+                        @{
+                            var serviceList = ViewData["ServiceSlider"] as List<ServiceModel>;
+                            if (serviceList.Any())
+                            {
+                                int lengthPartner = serviceList.Count;
+                                int loopCount = 1;
+                                int index = 0;
+                                if (lengthPartner > 4)
+                                {
+                                    loopCount = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(lengthPartner / 4)));
+                                }
+                                for (int i = 0; i < loopCount; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <div class="item active">
+                                            <div class="row">
+                                                @for (int j = 0; j < 4; j++)
+                                                {
+                                                    if (index < lengthPartner)
+                                                    {
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <div class="productImage isotopeSelector">
+                                                                <figure>
+                                                                    <img src="@serviceList[index].SliderImage" alt="Image Gallery" class="img-responsive">
+                                                                    <div class="overlay-background">
+                                                                        <div class="inner"></div>
+                                                                    </div>
+                                                                    <div class="overlay">
+                                                                        <a class="fancybox-pop" rel="portfolio-1" href="@serviceList[index].SliderImage">
+                                                                            <div class="overlayInfo">
+                                                                                <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </figure>
+                                                                <div class="event-details bg-white p-20">
+                                                                    <h4 class="text-thm pb-5">
+                                                                        <a href="/Home/Services?Id=@serviceList[index].Id"> @serviceList[index].Name</a>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        index++;
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
 
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <div class="row">
+                                                @for (int j = 0; j < 4; j++)
+                                                {
+                                                    if (index < lengthPartner)
+                                                    {
+                                                        <div class="col-sm-3 col-xs-12">
+                                                            <div class="productImage isotopeSelector">
+                                                                <figure>
+                                                                    <img src="@serviceList[index].SliderImage" alt="Image Gallery" class="img-responsive">
+                                                                    <div class="overlay-background">
+                                                                        <div class="inner"></div>
+                                                                    </div>
+                                                                    <div class="overlay">
+                                                                        <a class="fancybox-pop" rel="portfolio-1" href="@serviceList[index].SliderImage">
+                                                                            <div class="overlayInfo">
+                                                                                <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </figure>
+                                                                <div class="event-details bg-white p-20">
+                                                                    <h4 class="text-thm pb-5">
+                                                                        <a href="/Home/Services?Id=@serviceList[index].Id"> @serviceList[index].Name</a>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        index++;
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
                     </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#productSlider" role="button" data-slide="prev">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#productSlider" role="button" data-slide="next">
-                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
         </div>
@@ -528,4 +631,4 @@
     Html.RenderPartial("_Footer");
 }
 
-<script src="~/Scripts/App/General/Services.js"></script>
+<script src="~/Scripts/App/General/HomeWeb.js"></script>

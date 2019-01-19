@@ -25,6 +25,21 @@ namespace UptronWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var services = bal.GetAllActiveServiceDetail();
+            List<ServiceModel> modelList = new List<ServiceModel>();
+            services.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.SliderImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                modelList.Add(new ServiceModel()
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    SliderImage = imgsrc,
+                });
+            });
+            ViewData["ServiceSlider"] = modelList;
             return View();
         }
 
@@ -57,7 +72,7 @@ namespace UptronWeb.Controllers
             return View();
         }
 
-        
+
 
         public ActionResult Gallery()
         {
@@ -270,22 +285,17 @@ namespace UptronWeb.Controllers
         public JsonResult GetAllServiceSliderList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var services = bal.GetAllServiceDetail();
+            var services = bal.GetAllActiveServiceDetail();
             List<ServiceModel> modelList = new List<ServiceModel>();
             services.ForEach(x =>
             {
                 var base64 = Convert.ToBase64String(x.SliderImage);
                 var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                modelList.Add(new ServiceDetail()
+                modelList.Add(new ServiceModel()
                 {
                     Name = x.Name,
                     Id = x.Id,
                     SliderImage = imgsrc,
-                    PageHeaderImage = x.PageHeaderImage,
-                    OrderNumber = x.OrderNumber,
-                    IsActive = x.IsActive,
-                    Caption = x.Caption,
-                    ServiceDescription = x.ServiceDescription
                 });
             });
 
@@ -337,7 +347,7 @@ namespace UptronWeb.Controllers
         //{
         //    GeneralDetailBAL bal = new GeneralDetailBAL();
         //    var functionaries = bal.GetAllFunctionarieDetailLatestTwo();
-            
+
         //    var base64 = Convert.ToBase64String(director.Photo);
         //    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
         //    var result = JsonConvert.SerializeObject(functionaries, Formatting.Indented,
@@ -365,7 +375,7 @@ namespace UptronWeb.Controllers
                     SliderName = x.SliderName,
                     Caption1 = x.Caption1,
                     Caption2 = x.Caption2,
-                    CaptionAuthor=x.CaptionAuthor,
+                    CaptionAuthor = x.CaptionAuthor,
                 });
             });
             return Json(slidermodelList, JsonRequestBehavior.AllowGet);
@@ -411,7 +421,7 @@ namespace UptronWeb.Controllers
                     MessageTo = ConfigurationManager.AppSettings["RecivingEmailAddress"].ToString(),
                     MessageNameTo = ConfigurationManager.AppSettings["RecivingEmailName"].ToString(),
                     Subject = "Quick Enquiry Request",
-                    Body = EmailHelper.GetQuickEnquiryEmail(Name,Mobile,Email,EnquiryMessage)
+                    Body = EmailHelper.GetQuickEnquiryEmail(Name, Mobile, Email, EnquiryMessage)
                 };
 
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
