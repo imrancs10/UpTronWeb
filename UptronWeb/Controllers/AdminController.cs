@@ -525,12 +525,15 @@ namespace UptronWeb.Controllers
             return View(news);
         }
         [HttpPost]
-        public ActionResult Services(string ServiceName, string ImageCaption, string OrderNumber, string IsActive, int? Id, HttpPostedFileBase SliderImage)
+        public ActionResult Services(string ServiceName, string ImageCaption, string OrderNumber, string IsActive, int? Id, HttpPostedFileBase PageHeaderImage, HttpPostedFileBase SliderImage)
         {
             HttpRequestBase request = ControllerContext.HttpContext.Request;
             string ServicDescription = request.Unvalidated.Form.Get("ServicDescription");
             byte[] fileattachment = null;
-            fileattachment = Utility.serilizeImagetoByte(SliderImage, fileattachment);
+            fileattachment = Utility.serilizeImagetoByte(PageHeaderImage, fileattachment);
+
+            byte[] fileattachment1 = null;
+            fileattachment1 = Utility.serilizeImagetoByte(SliderImage, fileattachment1);
             var bal = new GeneralDetailBAL();
             ServiceDetail serviceDetail = new ServiceDetail()
             {
@@ -547,8 +550,11 @@ namespace UptronWeb.Controllers
             if (Id == null)
                 serviceDetail.CreatedDate = DateTime.Now;
 
+            if (PageHeaderImage != null)
+                serviceDetail.PageHeaderImage = fileattachment;
+
             if (SliderImage != null)
-                serviceDetail.Image = fileattachment;
+                serviceDetail.SliderImage = fileattachment1;
 
             var result = bal.SaveServiceDetail(serviceDetail);
             if (result == Enums.CrudStatus.Saved)
@@ -570,11 +576,16 @@ namespace UptronWeb.Controllers
         {
             var bal = new GeneralDetailBAL();
             var result = bal.GetServiceDetailById(Id);
-            byte[] fileByte = result.Image;
+            byte[] fileByte = result.PageHeaderImage;
             return File(fileByte, "image/jpg");
         }
 
-
+        public ActionResult DeleteServiceById(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeleteService(Id);
+            return RedirectToAction("Services");
+        }
         public ActionResult Slider()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();

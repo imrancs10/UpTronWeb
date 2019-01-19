@@ -38,7 +38,6 @@ namespace DataLayer
         public virtual DbSet<JobRegistrationSkill> JobRegistrationSkills { get; set; }
         public virtual DbSet<NewsUpdateMaster> NewsUpdateMasters { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
-        public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Tender> Tenders { get; set; }
         public virtual DbSet<UpcomingEventsMaster> UpcomingEventsMasters { get; set; }
@@ -48,5 +47,6 @@ namespace DataLayer
         public virtual DbSet<KeyFunctionary> KeyFunctionaries { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<QuickEnquiry> QuickEnquiries { get; set; }
+        public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
     }
 }

@@ -16,6 +16,7 @@ using UptronWeb.Infrastructure;
 using UptronWeb.Infrastructure.Utility;
 using System.Configuration;
 using UptronWeb.Models.Common;
+using UptronWeb.Models;
 
 namespace UptronWeb.Controllers
 {
@@ -253,17 +254,42 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var services = bal.GetAllServiceDetail();
-            services.ForEach(x => { x.Image = null; x.ServiceDescription = null; });
+            services.ForEach(x => { x.PageHeaderImage = null; x.SliderImage = null; x.ServiceDescription = null; });
             return Json(services);
         }
         public ActionResult Services(int Id)
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var service = bal.GetServiceDetailById(Id);
-            var base64 = Convert.ToBase64String(service.Image);
+            var base64 = Convert.ToBase64String(service.PageHeaderImage);
             var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
             service.Name = imgsrc; //it just a hack to pass image to view
             return View(service);
+        }
+
+        public JsonResult GetAllServiceSliderList()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var services = bal.GetAllServiceDetail();
+            List<ServiceDetail> modelList = new List<ServiceDetail>();
+            services.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.SliderImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                modelList.Add(new ServiceDetail()
+                {
+                    Name = x.Name,
+                    Id = x.Id,
+                    SliderImage = x.SliderImage,
+                    PageHeaderImage = x.PageHeaderImage,
+                    OrderNumber = x.OrderNumber,
+                    IsActive = x.IsActive,
+                    Caption = x.Caption,
+                    ServiceDescription = x.ServiceDescription
+                });
+            });
+
+            return Json(modelList, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetPartnerList()
         {

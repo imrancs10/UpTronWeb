@@ -16,11 +16,12 @@ namespace DataLayer
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public byte[] Image { get; set; }
+        public byte[] PageHeaderImage { get; set; }
+        public byte[] SliderImage { get; set; }
         public string Caption { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<int> OrderNumber { get; set; }
         public string ServiceDescription { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     }
 }

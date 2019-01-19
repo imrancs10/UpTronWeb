@@ -52,7 +52,7 @@
                                         {
                                             <tr>
                                                 <th scope="row" style="width:10%">@i.</th>
-                                                <td style="word-wrap:break-word;width:25%" >@goCircular.GONumber</td>
+                                                <td style="word-wrap:break-word;width:25%">@goCircular.GONumber</td>
                                                 <td style="width:20%">@goCircular.GODate.Value.ToString("dd/MM/yyyy")</td>
                                                 <td colspan="2" style="word-wrap:break-word;width:35%">@goCircular.Subject</td>
                                                 <td class="views-field views-field-field-attached" data-label="Download" style="width:10%">
@@ -74,4 +74,14 @@
         </div>
     </div>
 </section>
+
+<!-- Partner Section -->
+@{
+    Html.RenderPartial("_Partner");
+}
+
+<!-- Footer Section -->
+@{
+    Html.RenderPartial("_Footer");
+}
 

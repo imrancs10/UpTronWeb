@@ -178,8 +178,11 @@ namespace UptronWeb.BAL.Common
                     _deptRow.IsActive = serviceDetail.IsActive;
                     _deptRow.OrderNumber = serviceDetail.OrderNumber;
                     _deptRow.ServiceDescription = serviceDetail.ServiceDescription;
-                    if (serviceDetail.Image != null)
-                        _deptRow.Image = serviceDetail.Image;
+                    if (serviceDetail.PageHeaderImage != null)
+                        _deptRow.PageHeaderImage = serviceDetail.PageHeaderImage;
+
+                    if (serviceDetail.SliderImage != null)
+                        _deptRow.SliderImage = serviceDetail.SliderImage;
                     //if (serviceDetail.OrderNumber == null || serviceDetail.OrderNumber == 0)
                     //{
                     //    var orderNo = _db.ServiceDetails.Max(p => p.OrderNumber);
@@ -292,6 +295,14 @@ namespace UptronWeb.BAL.Common
             }
         }
 
+        public bool DeleteService(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.ServiceDetails.FirstOrDefault(x => x.Id == Id);
+            _db.ServiceDetails.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
         public Enums.CrudStatus SaveKeyFunctionaries(KeyFunctionary keyfunctionary)
         {
             _db = new UptronWebEntities();

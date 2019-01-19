@@ -195,7 +195,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
-          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="PageHeaderImage" Type="varbinary(max)" />
+          <Property Name="SliderImage" Type="varbinary(max)" />
           <Property Name="Caption" Type="varchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderNumber" Type="int" />
@@ -497,7 +498,6 @@
           <EntitySet Name="JobRegistrationSkills" EntityType="UptronWebModel.JobRegistrationSkill" />
           <EntitySet Name="NewsUpdateMasters" EntityType="UptronWebModel.NewsUpdateMaster" />
           <EntitySet Name="RoleMasters" EntityType="UptronWebModel.RoleMaster" />
-          <EntitySet Name="ServiceDetails" EntityType="UptronWebModel.ServiceDetail" />
           <EntitySet Name="States" EntityType="UptronWebModel.State" />
           <EntitySet Name="Tenders" EntityType="UptronWebModel.Tender" />
           <EntitySet Name="UpcomingEventsMasters" EntityType="UptronWebModel.UpcomingEventsMaster" />
@@ -551,6 +551,7 @@
           <EntitySet Name="KeyFunctionaries" EntityType="UptronWebModel.KeyFunctionary" />
           <EntitySet Name="Sliders" EntityType="UptronWebModel.Slider" />
           <EntitySet Name="QuickEnquiries" EntityType="UptronWebModel.QuickEnquiry" />
+          <EntitySet Name="ServiceDetails" EntityType="UptronWebModel.ServiceDetail" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -717,19 +718,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserMasters" Relationship="UptronWebModel.FK_UserMaster_RoleMaster" FromRole="RoleMaster" ToRole="UserMaster" />
-        </EntityType>
-        <EntityType Name="ServiceDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Caption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="OrderNumber" Type="Int32" />
-          <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -979,6 +967,20 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="IsArchive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="ServiceDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PageHeaderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SliderImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Caption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1149,20 +1151,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ServiceDetails">
-            <EntityTypeMapping TypeName="UptronWebModel.ServiceDetail">
-              <MappingFragment StoreEntitySet="ServiceDetail">
-                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
-                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Caption" ColumnName="Caption" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="States">
             <EntityTypeMapping TypeName="UptronWebModel.State">
               <MappingFragment StoreEntitySet="State">
@@ -1281,6 +1269,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ServiceDetails">
+            <EntityTypeMapping TypeName="UptronWebModel.ServiceDetail">
+              <MappingFragment StoreEntitySet="ServiceDetail">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="SliderImage" ColumnName="SliderImage" />
+                <ScalarProperty Name="PageHeaderImage" ColumnName="PageHeaderImage" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1317,7 +1320,6 @@
         <EntityTypeShape EntityType="UptronWebModel.JobRegistrationSkill" Width="1.5" PointX="7.5" PointY="7.5" />
         <EntityTypeShape EntityType="UptronWebModel.NewsUpdateMaster" Width="1.5" PointX="2.75" PointY="11.75" />
         <EntityTypeShape EntityType="UptronWebModel.RoleMaster" Width="1.5" PointX="9.75" PointY="2.125" />
-        <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="4.75" PointY="11.75" />
         <EntityTypeShape EntityType="UptronWebModel.State" Width="1.5" PointX="0.75" PointY="6.375" />
         <EntityTypeShape EntityType="UptronWebModel.Tender" Width="1.5" PointX="11.75" PointY="5.75" />
         <EntityTypeShape EntityType="UptronWebModel.UpcomingEventsMaster" Width="1.5" PointX="11.75" PointY="8.75" />
@@ -1338,6 +1340,7 @@
         <EntityTypeShape EntityType="UptronWebModel.KeyFunctionary" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="UptronWebModel.Slider" Width="1.5" PointX="14.375" PointY="3.75" />
         <EntityTypeShape EntityType="UptronWebModel.QuickEnquiry" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="5.375" PointY="14.75" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -60,20 +60,34 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <label class="col-sm-4 control-label">Image Caption</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="checkbox" name="IsActive" required />
+                                                            <input type="text" id="ImageCaption" name="ImageCaption" class="form-control" placeholder="Image Caption" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                     <br />
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Page Header Image</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="PageHeaderImage" id="PageHeaderImage" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
                                                 <div class="form-group mt-lg">
                                                     <label class="col-sm-4 control-label">Slider Image</label>
                                                     <div class="col-sm-8">
@@ -83,15 +97,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Image Caption</label>
+                                                    <label class="col-sm-4 control-label">Is Active</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="text" id="ImageCaption" name="ImageCaption" class="form-control" placeholder="Image Caption" required />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
-                                                            </span>
+                                                            <input type="checkbox" name="IsActive" required />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -145,7 +156,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="bg-primary">
-                                                <th colspan="8">Services View Detail</th>
+                                                <th colspan="9">Services View Detail</th>
                                             </tr>
                                             <tr class="active">
                                                 <th>Sl.no</th>
@@ -154,6 +165,7 @@
                                                 <th>IsActive</th>
                                                 <th>OrderNumber</th>
                                                 <th class="hidden">Service Description</th>
+                                                <th>Page Haeder Image</th>
                                                 <th>Slider Image</th>
                                                 <th>Action</th>
                                             </tr>
@@ -161,70 +173,83 @@
                                         <tbody>
                                             @{
                                                 int i = 1;
-                                                foreach (var news in Model)
+                                                foreach (var service in Model)
                                                 {
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline"><strong>@i.</strong></span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.Name</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.Caption</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.IsActive</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.OrderNumber</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="hidden">
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.ServiceDescription</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">
-                                                                        <a href="~/Admin/ViewServiceImage/@news.Id" target="_blank">View Image</a>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                                    <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditService(@news.Id,'@news.Name','@news.Caption','@(news.IsActive==true?1:0)','@news.OrderNumber','@i')" href="#">Edit</a>
-                                                                    <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline"><strong>@i.</strong></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@service.Name</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@service.Caption</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@service.IsActive</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@service.OrderNumber</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="hidden">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">@service.ServiceDescription</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">
+                                                                <a href="~/Admin/ViewServiceImage/@service.Id" target="_blank">View Image</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline">
+                                                                @{
+                                                                    var base64 = Convert.ToBase64String(service.SliderImage);
+                                                                    var imgsrc = string.Format("data:image/jpg; base64, {0}", base64);
+                                                                    <img src="@imgsrc" alt="Service Slider Image" class="img-responsive" style="height:100px; width:100px;" />
+                                                                }
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group mt-lg">
+                                                        <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                            <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditService(@service.Id,'@service.Name','@service.Caption','@(service.IsActive==true?1:0)','@service.OrderNumber','@i')" href="#">Edit</a>
+                                                            <span class="label-divider" id="Span1">or</span>
+                                                            <a id="lnkDelete" class="btn btn-danger" href="DeleteServiceById/@service.Id">Delete</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                                     i = i + 1;
                                                 }
                                             }

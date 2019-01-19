@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    fillSliderList();
+    //fillSliderList();
     fillNewsAndUpdate();
     fillDirectorMessage();
     fillUpcomingEvents();
@@ -166,12 +166,12 @@ function fillFunctionaries() {
             $.each(data, function (i, item) {
                 htmlDOM += '<div class="row">' +
                     '<div class="col-md-12 col-sm-12 col-xs-12  br-bottom" >' +
-                    '<div class="col-md-4 col-sm-4">' +
-                    '<span class="photo" style="margin-left: -15px;">' +
-                    '<img src="' + item.Image + '" alt="' + item.Name + '" class="img-responsive" />' +
+                    '<div class="col-md-5 col-sm-5">' +
+                    '<span class="photo">' +
+                    '<img src="' + item.Image + '" alt="' + item.Name + '" class="img-responsive" style="height:130px;"/>' +
                     '</span>' +
                     '</div>' +
-                    '<div class="col-md-8 col-sm-8">' +
+                    '<div class="col-md-7 col-sm-7">' +
                     '<div class="key_title">' +
                     '<h3> ' + item.Name + '</h3>' +
                     '<p>' + item.Designation + ',<br /> ' + item.Location + '</p>' +
