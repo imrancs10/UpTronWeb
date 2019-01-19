@@ -2,7 +2,9 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@model List<GalleryMaster>
 <form action="GalleryCategory" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id" />
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -63,7 +65,7 @@
                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                     <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
                                                     <span class="label-divider" id="Span1">or</span>
-                                                    <a href="~/Admin/TenderEntry" class="btn btn-default">Reset</a>
+                                                    <a href="~/Admin/GalleryCategory" class="btn btn-default">Reset</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,8 +77,107 @@
                     </div>
                     <br />
                 </div>
+
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="4">Gallery Category</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th style="width:10%">Sl.no</th>
+                                                <th style="width:30%">Gallery Name</th>
+                                                <th style="width:30%">Gallery Image</th>
+                                                <th style="width:30%">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var gallerycategory in Model)
+                                                {
+                                                    <tr>
+                                                        <td style="width:10%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:30%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@gallerycategory.GalleryName</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:30%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <div class="headline center">
+                                                                        <div class="partnersLogo clearfix">
+                                                                            @{
+                                                                                var base64 = Convert.ToBase64String(gallerycategory.GalleryImage);
+                                                                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                                                                <img src="@imgsrc" alt="Image Partner" class="img-responsive galimg" style="height:100px; width:100px;" />
+                                                                            }
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:30%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                    <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditGalleryCategory(@gallerycategory.Id,'@gallerycategory.GalleryName','@imgsrc')">Edit</a>
+                                                                    <span class="label-divider" id="Span1">or</span>
+                                                                    <a href="#" class="btn btn-danger">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div><!-- /.content -->
     </section>
 </form>
+
+<script type="text/javascript">
+    function RemoveFile() {
+        $('#GalleryImage').removeClass('hidden');
+        $('#GalleryImage').parent().find('a').remove();
+        $('#GalleryImage').attr('required');
+        return false;
+    }
+
+    function EditGalleryCategory(Id, GalleryName, imgsrc) {
+        $('#GalleryImage').parent().find('a').remove();
+        $('#hiddenId').val(Id);
+        $('#btnSave').val('Update');
+        $('#GalleryName').val(GalleryName);
+        $('#GalleryImage').addClass('hidden');
+        $('#GalleryImage').removeAttr('required');
+
+        var html = "<a><img src='" + imgsrc + "' alt='gallery Image Category' class='img-responsive galimg' style='height:100px;width:100px;'/></a><a href='javascript:void(0)' onclick='javascript:return RemoveFile()' style='color:red;padding-left:7px;'>X</a>";
+        $(html).insertAfter('#GalleryImage');
+    }
+</script>

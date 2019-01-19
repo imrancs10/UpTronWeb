@@ -178,7 +178,9 @@ namespace UptronWeb.Controllers
 
         public ActionResult GalleryCategory()
         {
-            return View();
+            MasterBAL bal = new MasterBAL();
+            var gallerycategory = bal.GetAllGalleryName();
+            return View(gallerycategory);
         }
         [HttpPost]
         public ActionResult GalleryCategory(string GalleryName, HttpPostedFileBase GalleryImage)
