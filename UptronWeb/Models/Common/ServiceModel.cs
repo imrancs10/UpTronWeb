@@ -15,6 +15,6 @@ namespace UptronWeb.Models
         public string IsActive { get; set; }
         public int OrderNumber { get; set; }
         public string ServiceDescription { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }
