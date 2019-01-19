@@ -271,7 +271,7 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var services = bal.GetAllServiceDetail();
-            List<ServiceDetail> modelList = new List<ServiceDetail>();
+            List<ServiceModel> modelList = new List<ServiceModel>();
             services.ForEach(x =>
             {
                 var base64 = Convert.ToBase64String(x.SliderImage);
@@ -280,7 +280,7 @@ namespace UptronWeb.Controllers
                 {
                     Name = x.Name,
                     Id = x.Id,
-                    SliderImage = x.SliderImage,
+                    SliderImage = imgsrc,
                     PageHeaderImage = x.PageHeaderImage,
                     OrderNumber = x.OrderNumber,
                     IsActive = x.IsActive,

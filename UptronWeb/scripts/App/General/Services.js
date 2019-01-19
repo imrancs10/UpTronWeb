@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     fillServiceMenu();
-    //fillServiceSlider();
-    //fillLeftServices();
+    fillServiceSlider();
+    fillLeftServices();
 });
 
 function fillServiceMenu() {
