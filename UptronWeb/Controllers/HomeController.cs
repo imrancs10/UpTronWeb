@@ -27,6 +27,7 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var services = bal.GetAllActiveServiceDetail();
+            var sliders = bal.GetAllActiveSliderDetail();
             List<ServiceModel> modelList = new List<ServiceModel>();
             services.ForEach(x =>
             {
@@ -40,7 +41,24 @@ namespace UptronWeb.Controllers
                 });
             });
             ViewData["ServiceSlider"] = modelList;
+            List<SliderModel> slidermodelList = new List<SliderModel>();
+            sliders.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.SliderImage);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                slidermodelList.Add(new SliderModel()
+                {
+                    Id = x.Id,
+                    SliderImage = imgsrc,
+                    SliderName = x.SliderName,
+                    Caption1 = x.Caption1,
+                    Caption2 = x.Caption2,
+                    CaptionAuthor = x.CaptionAuthor,
+                });
+            });
+            ViewData["Slider"] = slidermodelList;
             return View();
+
         }
 
         public ActionResult AboutUS_Company()
@@ -71,8 +89,6 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
-
-
 
         public ActionResult Gallery()
         {
