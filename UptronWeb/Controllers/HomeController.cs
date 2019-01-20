@@ -103,6 +103,25 @@ namespace UptronWeb.Controllers
             return View(result);
         }
 
+        public JsonResult GetAllGalleryMasterList()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var services = bal.GetAllGalleryListLatestnine();
+            List<GalleryPhotoMasterModel> GalleryMasterList = new List<GalleryPhotoMasterModel>();
+            services.ForEach(x =>
+            {
+                var base64 = Convert.ToBase64String(x.Photo);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                GalleryMasterList.Add(new GalleryPhotoMasterModel()
+                {
+                    PhotoName = x.PhotoName,
+                    Id = x.Id,
+                    Photo = imgsrc,
+                });
+            });
+
+            return Json(GalleryMasterList, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult JobPortal()
         {
             return View();
@@ -317,6 +336,8 @@ namespace UptronWeb.Controllers
 
             return Json(modelList, JsonRequestBehavior.AllowGet);
         }
+
+        
         public JsonResult GetPartnerList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();

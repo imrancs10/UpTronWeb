@@ -380,21 +380,21 @@
                                                         <div class="col-sm-3 col-xs-12">
                                                             <div class="productImage isotopeSelector">
                                                                 <figure>
-                                                                    <img src="@serviceList[index].SliderImage" alt="Image Gallery" class="img-responsive">
-                                                                    <div class="overlay-background">
+                                                                    <a href="/Home/Services?Id=@serviceList[index].Id"> <img src="@serviceList[index].SliderImage" alt="Image Gallery" class="img-responsive"></a>
+                                                                    @*<div class="overlay-background">
                                                                         <div class="inner"></div>
-                                                                    </div>
-                                                                    <div class="overlay">
-                                                                        <a class="fancybox-pop" rel="portfolio-1" href="@serviceList[index].SliderImage">
+                                                                    </div>*@
+                                                                    @*<div class="overlay">
+                                                                        <span class="fancybox-pop" style="color:#000;" rel="portfolio-1" href="@serviceList[index].SliderImage">
                                                                             <div class="overlayInfo">
                                                                                 <h4><i class="fa fa-plus" aria-hidden="true"></i> <br></h4>
                                                                             </div>
-                                                                        </a>
-                                                                    </div>
+                                                                        </span>
+                                                                    </div>*@
                                                                 </figure>
                                                                 <div class="event-details bg-white p-20">
                                                                     <h4 class="text-thm pb-5">
-                                                                        <a href="/Home/Services?Id=@serviceList[index].Id"> @serviceList[index].Name</a>
+                                                                        <a href="/Home/Services?Id=@serviceList[index].Id" style="color:#000;"> @serviceList[index].Name</a>
                                                                     </h4>
                                                                 </div>
                                                             </div>

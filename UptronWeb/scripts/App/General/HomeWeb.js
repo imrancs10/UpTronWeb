@@ -7,6 +7,7 @@
     fillFunctionaries();
     fillNewsUpdateList();
     //fillServiceSlider();
+    fillFooterImage();
 });
 
 function fillNewsAndUpdate() {
@@ -373,6 +374,32 @@ function fillServiceSlider() {
         },
         error: function (response) {
             alert(response.responseText);
+        }
+    });
+}
+
+function fillFooterImage() {
+    $.ajax({
+        dataType: 'Json',
+        type: 'POST',
+        async: true,
+        url: '/Home/GetAllGalleryMasterList',
+        contentType: 'Application/Json; charset = utf-8',
+        success: function (data) {
+            var htmlDOM = '';
+            $.each(data, function (i, item) {
+                htmlDOM += '<div class="col-xs-4">' +
+                    //'<a href="' + /Home/Services ? Id = item.Id + '" style="background-image: url(' + item.Photo + ');"></a>' +
+                    '<a href="" style="background-image: url(' + item.Photo + ');"></a>' +
+                    '</div>'; 
+            });
+            $('#FooterDiv').html(htmlDOM);
+        },
+        failure: function(response) {
+            alert(response);
+        },
+        Error: function (response) {
+            alert(response, responseText);
         }
     });
 }

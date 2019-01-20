@@ -452,6 +452,13 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
+        public List<GalleryPhotoMaster> GetAllGalleryListLatestnine()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.GalleryPhotoMasters.Take(9).ToList();
+            return result;
+        }
+
         public List<Slider> GetAllActiveSliderDetail()
         {
             _db = new UptronWebEntities();
