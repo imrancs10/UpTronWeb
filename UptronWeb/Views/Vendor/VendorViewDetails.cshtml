@@ -135,20 +135,26 @@
                                                         <td>
                                                             <div class="form-group mt-lg">
                                                                 <div class="btn-divider mr-2x mb-1x">
-                                                                    <a id="lnkEdit" class="btn btn-primary" href="~/Vendor/VendorStatusChange/@news.Id">
-                                                                        @{
-                                                                            string linkText = string.Empty;
-                                                                            if (news.Permitted == true)
-                                                                            {
-                                                                                linkText = "Not Approve";
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                linkText = "Approve";
-                                                                            }
+
+                                                                    @{
+                                                                        //string linkText = string.Empty;
+                                                                        if (news.Permitted == true)
+                                                                        {
+                                                                            <a id="lnkEdit" class="btn btn-danger" href="~/Vendor/VendorStatusChange/@news.Id">
+                                                                                Not Approve
+                                                                            </a>
+                                                                            //linkText = "Not Approve";
                                                                         }
-                                                                        @linkText
-                                                                    </a>
+                                                                        else
+                                                                        {
+                                                                            //linkText = "Approve";
+                                                                            <a id="lnkEdit" class="btn btn-primary" href="~/Vendor/VendorStatusChange/@news.Id">
+                                                                                Approve
+                                                                            </a>
+                                                                        }
+                                                                    }
+                                                                    @*@linkText*@
+
                                                                 </div>
                                                             </div>
                                                         </td>

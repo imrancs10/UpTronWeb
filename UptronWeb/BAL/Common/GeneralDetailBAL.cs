@@ -452,10 +452,10 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
-        public List<GalleryPhotoMaster> GetAllGalleryListLatestnine()
+        public List<GalleryMaster> GetAllGalleryListLatestnine()
         {
             _db = new UptronWebEntities();
-            var result = _db.GalleryPhotoMasters.Take(9).ToList();
+            var result = _db.GalleryMasters.Take(9).ToList();
             return result;
         }
 

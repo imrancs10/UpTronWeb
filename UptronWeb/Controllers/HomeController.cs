@@ -109,16 +109,16 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var services = bal.GetAllGalleryListLatestnine();
-            List<GalleryPhotoMasterModel> GalleryMasterList = new List<GalleryPhotoMasterModel>();
+            List<GalleryMasterModel> GalleryMasterList = new List<GalleryMasterModel>();
             services.ForEach(x =>
             {
-                var base64 = Convert.ToBase64String(x.Photo);
+                var base64 = Convert.ToBase64String(x.GalleryImage);
                 var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                GalleryMasterList.Add(new GalleryPhotoMasterModel()
+                GalleryMasterList.Add(new GalleryMasterModel()
                 {
-                    PhotoName = x.PhotoName,
+                    GalleryName = x.GalleryName,
                     Id = x.Id,
-                    Photo = imgsrc,
+                    GalleryImage = imgsrc,
                 });
             });
 
@@ -210,6 +210,18 @@ namespace UptronWeb.Controllers
             MasterBAL bal = new MasterBAL();
             var news = bal.GetAllActiveNewsUpdate();
             var result = JsonConvert.SerializeObject(news, Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
+            return Json(result);
+        }
+
+        public JsonResult GetAllMajorProjects()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var projects = bal.GetAllMajorProjects();
+            var result = JsonConvert.SerializeObject(projects, Formatting.Indented,
                         new JsonSerializerSettings
                         {
                             ReferenceLoopHandling = ReferenceLoopHandling.Ignore

@@ -390,12 +390,12 @@ function fillFooterImage() {
             $.each(data, function (i, item) {
                 htmlDOM += '<div class="col-xs-4">' +
                     //'<a href="' + /Home/Services ? Id = item.Id + '" style="background-image: url(' + item.Photo + ');"></a>' +
-                    '<a href="" style="background-image: url(' + item.Photo + ');"></a>' +
-                    '</div>'; 
+                    '<a href="/Home/GalleryDetail/' + item.Id + '" style="background-image: url(' + item.GalleryImage + ');"></a>' +
+                    '</div>';
             });
             $('#FooterDiv').html(htmlDOM);
         },
-        failure: function(response) {
+        failure: function (response) {
             alert(response);
         },
         Error: function (response) {
