@@ -1,9 +1,8 @@
-﻿
+﻿@using DataLayer;
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+@model List<MajorProject>
 <!-- PAGE TITLE SECTION -->
 <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg.jpg);">
     <div class="container">
@@ -124,182 +123,190 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr class="bg-primary">
-                                    <th>Sl No.</th>
-                                    <th>Name of Department/Organization</th>
-                                    <th>Work Description</th>
+                                    <th style="width:10%">Sl No.</th>
+                                    <th style="width:45%">Name of Department/Organization</th>
+                                    <th style="width:45%">Work Description</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Mandi Parishad, Lucknow</td>
-                                    <td>Data Centre AMC and connectivity</td>
-                                </tr>
-                                <tr>
-                                    <td>2.</td>
-                                    <td>Greater Noida Industrial Development Authority, Greater Noida (G B Nagar)</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>3.</td>
-                                    <td>UPSRTC</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>4.</td>
-                                    <td>Dr. Ram Manohar Lohiya Institute of Medical Sciences, Lucknow</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>5.</td>
-                                    <td>Govt Medical College - Kanuaj</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>6.</td>
-                                    <td>Govt Medical College – Meerut, Agra</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>7.</td>
-                                    <td>Govt Medical College – Azamgarh</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>8.</td>
-                                    <td>Govt Medical College – Allahabad</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>9.</td>
-                                    <td>Govt Medical College – Banda</td>
-                                    <td>Turnkey projects</td>
-                                </tr>
-                                <tr>
-                                    <td>10.</td>
-                                    <td>Health Department </td>
-                                    <td>Examination & Evaluation</td>
-                                </tr>
-                                <tr>
-                                    <td>11.</td>
-                                    <td>WAPCOS (Republic of Senegal, Africa)</td>
-                                    <td>GIS solution</td>
-                                </tr>
-                                <tr>
-                                    <td>12.</td>
-                                    <td>Ghaziabad Development Authority</td>
-                                    <td>GIS solution</td>
-                                </tr>
-                                <tr>
-                                    <td>13.</td>
-                                    <td>Employee State Insurance Corporation (ESIC)</td>
-                                    <td>e-procurement solutions</td>
-                                </tr>
-                                <tr>
-                                    <td>14.</td>
-                                    <td>Footwear Design Development Institute (FDDI)</td>
-                                    <td>e-procurement solutions</td>
-                                </tr>
-                                <tr>
-                                    <td>15.</td>
-                                    <td>National Institute of Management Technology (NIFT)</td>
-                                    <td>e-procurement solutions</td>
-                                </tr>
-                                <tr>
-                                    <td>16.</td>
-                                    <td>UP Prisons </td>
-                                    <td>Surveillance services</td>
-                                </tr>
-                                <tr>
-                                    <td>17.</td>
-                                    <td>Zila Basic Siksha Adhikari, Ghazipur</td>
-                                    <td>Kiosk Setup</td>
-                                </tr>
-                                <tr>
-                                    <td>18.</td>
-                                    <td>MVVNL</td>
-                                    <td>Manpower, Software (Inventory Management) and VANs for Collection of Bills</td>
-                                </tr>
-                                <tr>
-                                    <td>19. </td>
-                                    <td>Ayush</td>
-                                    <td>Manpower Supply</td>
-                                </tr>
-                                <tr>
-                                    <td>20.</td>
-                                    <td>UP Police </td>
-                                    <td>Hardware & Software</td>
-                                </tr>
-                                <tr>
-                                    <td>21.</td>
-                                    <td>UP Technical Board, Kanpur</td>
-                                    <td>Hardware Supply</td>
-                                </tr>
-                                <tr>
-                                    <td>22.</td>
-                                    <td>C. S.J.M. university, Kanpur</td>
-                                    <td>Development and maintenance of various application modules</td>
-                                </tr>
-                                <tr>
-                                    <td>23.</td>
-                                    <td>Chaudhary Charan Singh University, Meerut</td>
-                                    <td>Software development and connectivity</td>
-                                </tr>
-                                <tr>
-                                    <td>24.</td>
-                                    <td>Mid Day Meal</td>
-                                    <td>Software development</td>
-                                </tr>
-                                <tr>
-                                    <td>25.</td>
-                                    <td>UP Forest Corporation, Lucknow</td>
-                                    <td>Development of Application Software</td>
-                                </tr>
-                                <tr>
-                                    <td>26.</td>
-                                    <td>Deptt. of Mining</td>
-                                    <td>Software development and connectivity</td>
-                                </tr>
-                                <tr>
-                                    <td>27.</td>
-                                    <td>Lucknow Metro</td>
-                                    <td>Manpower</td>
-                                </tr>
-                                <tr>
-                                    <td>28.</td>
-                                    <td>Centre for E-governance</td>
-                                    <td>Manpower</td>
-                                </tr>
-                                <tr>
-                                    <td>29.</td>
-                                    <td>BSNL – Aligarh, Moradabad</td>
-                                    <td>SMPS Power Plant AMC</td>
-                                </tr>
-                                <tr>
-                                    <td>30.</td>
-                                    <td>BNSL – Firozpur</td>
-                                    <td>SMPS Power Plant AMC</td>
-                                </tr>
-                                <tr>
-                                    <td>31.</td>
-                                    <td>BSNL – Patiala, ludhiana</td>
-                                    <td>SMPS Power Plant AMC</td>
-                                </tr>
-                                <tr>
-                                    <td>32.</td>
-                                    <td>BSNL – North East States</td>
-                                    <td>Repairing of C-Dot Card</td>
-                                </tr>
-                                <tr>
-                                    <td>33.</td>
-                                    <td>BSNL – Leh & Laddakh</td>
-                                    <td>Repairing of C-Dot Card</td>
-                                </tr>
-                                <tr>
-                                    <td>34.</td>
-                                    <td>BSNL - Silchar</td>
-                                    <td>Supply of AVR</td>
-                                </tr>
+                                @{
+                                    int i = 1;
+                                    foreach (var majorprojects in Model)
+                                    {
+                                        <tr>
+                                            <td style="width:10%">@i.</td>
+                                            <td style="width:45%">@majorprojects.DepartmentName</td>
+                                            <td style="width:45%">@majorprojects.WorkDescription</td>
+                                        </tr>
+                                        i = i + 1;
+                                    }
+                                }
+
+                                @*<tr>
+                                        <td>2.</td>
+                                        <td>Greater Noida Industrial Development Authority, Greater Noida (G B Nagar)</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>UPSRTC</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Dr. Ram Manohar Lohiya Institute of Medical Sciences, Lucknow</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                        <td>Govt Medical College - Kanuaj</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6.</td>
+                                        <td>Govt Medical College – Meerut, Agra</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7.</td>
+                                        <td>Govt Medical College – Azamgarh</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8.</td>
+                                        <td>Govt Medical College – Allahabad</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9.</td>
+                                        <td>Govt Medical College – Banda</td>
+                                        <td>Turnkey projects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10.</td>
+                                        <td>Health Department </td>
+                                        <td>Examination & Evaluation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11.</td>
+                                        <td>WAPCOS (Republic of Senegal, Africa)</td>
+                                        <td>GIS solution</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.</td>
+                                        <td>Ghaziabad Development Authority</td>
+                                        <td>GIS solution</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13.</td>
+                                        <td>Employee State Insurance Corporation (ESIC)</td>
+                                        <td>e-procurement solutions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14.</td>
+                                        <td>Footwear Design Development Institute (FDDI)</td>
+                                        <td>e-procurement solutions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15.</td>
+                                        <td>National Institute of Management Technology (NIFT)</td>
+                                        <td>e-procurement solutions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16.</td>
+                                        <td>UP Prisons </td>
+                                        <td>Surveillance services</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17.</td>
+                                        <td>Zila Basic Siksha Adhikari, Ghazipur</td>
+                                        <td>Kiosk Setup</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18.</td>
+                                        <td>MVVNL</td>
+                                        <td>Manpower, Software (Inventory Management) and VANs for Collection of Bills</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19. </td>
+                                        <td>Ayush</td>
+                                        <td>Manpower Supply</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20.</td>
+                                        <td>UP Police </td>
+                                        <td>Hardware & Software</td>
+                                    </tr>
+                                    <tr>
+                                        <td>21.</td>
+                                        <td>UP Technical Board, Kanpur</td>
+                                        <td>Hardware Supply</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22.</td>
+                                        <td>C. S.J.M. university, Kanpur</td>
+                                        <td>Development and maintenance of various application modules</td>
+                                    </tr>
+                                    <tr>
+                                        <td>23.</td>
+                                        <td>Chaudhary Charan Singh University, Meerut</td>
+                                        <td>Software development and connectivity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>24.</td>
+                                        <td>Mid Day Meal</td>
+                                        <td>Software development</td>
+                                    </tr>
+                                    <tr>
+                                        <td>25.</td>
+                                        <td>UP Forest Corporation, Lucknow</td>
+                                        <td>Development of Application Software</td>
+                                    </tr>
+                                    <tr>
+                                        <td>26.</td>
+                                        <td>Deptt. of Mining</td>
+                                        <td>Software development and connectivity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>27.</td>
+                                        <td>Lucknow Metro</td>
+                                        <td>Manpower</td>
+                                    </tr>
+                                    <tr>
+                                        <td>28.</td>
+                                        <td>Centre for E-governance</td>
+                                        <td>Manpower</td>
+                                    </tr>
+                                    <tr>
+                                        <td>29.</td>
+                                        <td>BSNL – Aligarh, Moradabad</td>
+                                        <td>SMPS Power Plant AMC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>30.</td>
+                                        <td>BNSL – Firozpur</td>
+                                        <td>SMPS Power Plant AMC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>31.</td>
+                                        <td>BSNL – Patiala, ludhiana</td>
+                                        <td>SMPS Power Plant AMC</td>
+                                    </tr>
+                                    <tr>
+                                        <td>32.</td>
+                                        <td>BSNL – North East States</td>
+                                        <td>Repairing of C-Dot Card</td>
+                                    </tr>
+                                    <tr>
+                                        <td>33.</td>
+                                        <td>BSNL – Leh & Laddakh</td>
+                                        <td>Repairing of C-Dot Card</td>
+                                    </tr>
+                                    <tr>
+                                        <td>34.</td>
+                                        <td>BSNL - Silchar</td>
+                                        <td>Supply of AVR</td>
+                                    </tr>*@
 
                             </tbody>
                         </table>

@@ -87,7 +87,9 @@ namespace UptronWeb.Controllers
 
         public ActionResult MajorProject()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.GetAllMajorProjects();
+            return View(result);
         }
 
         public ActionResult Gallery()
