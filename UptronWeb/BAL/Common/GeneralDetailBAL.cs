@@ -507,5 +507,63 @@ namespace UptronWeb.BAL.Common
             return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
         }
 
+        public Enums.CrudStatus SaveMajorprojects(MajorProject majorprojects)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (majorprojects.ID > 0)
+            {
+                var _deptRow = _db.MajorProjects.Where(x => x.ID == majorprojects.ID).FirstOrDefault();
+                if (_deptRow!=null)
+                {
+                    _deptRow.ID = majorprojects.ID;
+                    _deptRow.Title = majorprojects.Title;
+                    _deptRow.DepartmentName = majorprojects.DepartmentName;
+                    _deptRow.OrderNumber = majorprojects.OrderNumber;
+                    _deptRow.IsActive = majorprojects.IsActive;
+                    _deptRow.WorkDescription = majorprojects.WorkDescription;
+                    if (_deptRow.Image!=null)
+                        _deptRow.Image = majorprojects.Image;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound; 
+                }
+            }
+            else
+            {
+                var _deptRow = _db.MajorProjects.Where(x => x.DepartmentName == majorprojects.DepartmentName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(majorprojects).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+                
+            }
+        }
+        
+        public List<MajorProject> GetAllMajorProjects()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.MajorProjects.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).ToList();
+            return result;
+        }
+
+        public bool DeleteMajorProjects(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.MajorProjects.FirstOrDefault(x => x.ID == Id);
+            _db.MajorProjects.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

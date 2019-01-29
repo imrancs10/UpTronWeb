@@ -483,7 +483,7 @@ namespace UptronWeb.Controllers
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(PartnerFile, fileattachment);
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            Partner partner = new Partner
+            Partner partner = new Partner()
             {
                 PartnerName = Partnername,
                 PartnerUrl = PartnerUrl,
@@ -516,10 +516,58 @@ namespace UptronWeb.Controllers
 
         public ActionResult Majorprojects()
         {
-            return View();
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var majorprojects = bal.GetAllMajorProjects();
+            return View(majorprojects);
         }
 
+        [HttpPost]
+        public ActionResult Majorprojects(string DepartmentTitle, string Departmentname, string OrderNumber, string IsActive, string WorkDescription, HttpPostedFileBase ProjectsImage, int? Id)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(ProjectsImage, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            MajorProject majorprojects = new MajorProject()
+            {
+                Title = DepartmentTitle,
+                DepartmentName = Departmentname,
+                IsActive = IsActive == "on" ? true : false,
+                WorkDescription = WorkDescription,
+                ID = Id != null ? Id.Value : 0,
+            };
+            if (!string.IsNullOrEmpty(OrderNumber))
+                majorprojects.OrderNumber = Convert.ToInt32(OrderNumber);
+            else
+                majorprojects.OrderNumber = null;
 
+            if (Id == null)
+                majorprojects.Createddate = DateTime.Now;
+            if (ProjectsImage!=null)
+            {
+                majorprojects.Image = fileattachment;
+            }
+            var result = bal.SaveMajorprojects(majorprojects);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Major Projects has beed saved", "Major Projects saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Major Projects has been Updated", "Major Projects updated");
+            }
+            else
+            {
+                SetAlertMessage("Major Projects data already exists", "Major Projects Exists");
+            }
+            var Projects = bal.GetAllMajorProjects();
+            return View(Projects);
+        }
+        public ActionResult DeleteMajorProjectsById(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeleteMajorProjects(Id);
+            return RedirectToAction("Majorprojects");
+        }
         public ActionResult Services()
         {
             var bal = new GeneralDetailBAL();

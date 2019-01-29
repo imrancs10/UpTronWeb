@@ -148,6 +148,19 @@
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="MajorProjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="250" />
+          <Property Name="WorkDescription" Type="nvarchar(max)" />
+          <Property Name="Image" Type="varbinary" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+        </EntityType>
         <EntityType Name="NewsUpdateMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -424,6 +437,7 @@
           <EntitySet Name="JobRegistrationQualification" EntityType="Self.JobRegistrationQualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KeyFunctionaries" EntityType="Self.KeyFunctionaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MajorProjects" EntityType="Self.MajorProjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuickEnquiry" EntityType="Self.QuickEnquiry" Schema="dbo" store:Type="Tables" />
@@ -552,6 +566,7 @@
           <EntitySet Name="Sliders" EntityType="UptronWebModel.Slider" />
           <EntitySet Name="QuickEnquiries" EntityType="UptronWebModel.QuickEnquiry" />
           <EntitySet Name="ServiceDetails" EntityType="UptronWebModel.ServiceDetail" />
+          <EntitySet Name="MajorProjects" EntityType="UptronWebModel.MajorProject" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -981,6 +996,19 @@
           <Property Name="ServiceDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="MajorProject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="WorkDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1284,6 +1312,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MajorProjects">
+            <EntityTypeMapping TypeName="UptronWebModel.MajorProject">
+              <MappingFragment StoreEntitySet="MajorProjects">
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="WorkDescription" ColumnName="WorkDescription" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1341,6 +1383,7 @@
         <EntityTypeShape EntityType="UptronWebModel.Slider" Width="1.5" PointX="14.375" PointY="3.75" />
         <EntityTypeShape EntityType="UptronWebModel.QuickEnquiry" Width="1.5" PointX="14.375" PointY="7.75" />
         <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="UptronWebModel.MajorProject" Width="1.5" PointX="7.375" PointY="14.75" />
       </Diagram>
     </Diagrams>
   </Designer>

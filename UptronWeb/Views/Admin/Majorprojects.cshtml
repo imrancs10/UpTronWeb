@@ -1,7 +1,10 @@
-﻿@{
+﻿@using DataLayer;
+@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<form>
+@model List<MajorProject>
+<form action="Majorprojects" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id"/>
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -24,10 +27,25 @@
                                     <hr class="tall">
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-2 control-label">Department's name</label>
+                                                    <label class="col-sm-2 control-label">Department's Title</label>
                                                     <div class="col-sm-10">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="DepartmentTitle" name="DepartmentTitle" class="form-control" placeholder="Department's Title" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Department's name</label>
+                                                    <div class="col-sm-8">
                                                         <div class="input-group input-group-in">
                                                             <input type="text" id="Departmentname" name="Departmentname" class="form-control" placeholder="Department's name" required />
                                                             <span class="input-group-addon">
@@ -41,15 +59,53 @@
                                     </div>
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-2 control-label">Work Description</label>
-                                                    <div class="col-sm-10">
+                                                    <label class="col-sm-4 control-label">Order No</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="number" id="OrderNumber" name="OrderNumber" class="form-control" placeholder="Order Number" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Work Description</label>
+                                                    <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
                                                             <textarea id="WorkDescription" class="form-control" rows="5" placeholder="Work Description" name="WorkDescription" required></textarea>
                                                             <span class="input-group-addon">
                                                                 <span class="icon"><i class="fa fa-map"></i></span>
                                                             </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">MajorProjects Image</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="file" name="ProjectsImage" id="ProjectsImage" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,8 +132,126 @@
                     </div>
                     <br />
                 </div>
+
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="7">Major Projects View Detail</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th>Sl.no</th>
+                                                <th>Title</th>
+                                                <th>Department Name</th>
+                                                <th>IsActive</th>
+                                                <th>OrderNumber</th>
+                                                <th>Work Description</th>
+                                                @*<th class="hidden">Major Projects Image</th>*@
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var majorprojects in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@majorprojects.Title</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@majorprojects.DepartmentName</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@majorprojects.IsActive</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@majorprojects.OrderNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@majorprojects.WorkDescription</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        @*<td class="hidden">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">
+                                                                        @{
+                                                                            var base64 = Convert.ToBase64String(majorprojects.Image);
+                                                                            var imgsrc = string.Format("data:Image/jpg; base64, {0}", base64);
+                                                                            <img src="@imgsrc" alt="major Projects Image" class="img-responsive" style="height:100px; width:100px;" />
+                                                                        }
+
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </td>*@
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                    <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditMajorProjects(@majorprojects.ID, '@majorprojects.Title','@majorprojects.DepartmentName','@(majorprojects.IsActive==true ? 1 : 0)','@majorprojects.OrderNumber','@majorprojects.WorkDescription')">Edit</a>
+                                                                    <span class="label-divider" id="Span1">or</span>
+                                                                    <a id="lnkDelete" class="btn btn-danger" href="DeleteMajorProjectsById/@majorprojects.ID">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div><!-- /.content -->
     </section>
 </form>
+
+<script type="text/javascript">
+    function EditMajorProjects(ID, Title, DepartmentName, IsActive, OrderNumber, WorkDescription) {
+        $('#hiddenId').val(ID);
+        $('#btnSave').val('Update');
+        $('#DepartmentTitle').val(Title);
+        $('#Departmentname').val(DepartmentName);
+        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+        $('#OrderNumber').val(OrderNumber);
+        $('#WorkDescription').val(WorkDescription);
+    }
+</script>

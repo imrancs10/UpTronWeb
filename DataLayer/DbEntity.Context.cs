@@ -48,5 +48,6 @@ namespace DataLayer
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<QuickEnquiry> QuickEnquiries { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
+        public virtual DbSet<MajorProject> MajorProjects { get; set; }
     }
 }

@@ -102,6 +102,9 @@
     <Compile Include="KeyFunctionary.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="MajorProject.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="NewsUpdateMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
