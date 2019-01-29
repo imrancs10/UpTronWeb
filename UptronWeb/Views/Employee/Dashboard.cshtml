@@ -1,7 +1,8 @@
-﻿
+﻿@using DataLayer
 @{
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
+@model JobRegistration
 
 <!-- ============================================
 MAIN CONTENT SECTION
@@ -19,16 +20,24 @@ MAIN CONTENT SECTION
                         <div class="float-bar clearfix">
                             <div class="float-bar-brand">
                                 <a class="kit-avatar kit-avatar-128 no-padding border-white" href="#">
-                                    <img alt="cover" src="../images/dummy/uifaces22.jpg">
+                                    @{
+                                        string imgsrc = "../images/dummy/uifaces22.jpg";
+                                        if (Model.ResumeImage != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(Model.ResumeImage);
+                                            imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                        }
+                                    }
+                                    <img alt="cover" src="@imgsrc">
                                 </a>
                             </div>
                             <div class="col-sm-8">
                                 <div class="visible-xs">
-                                    <h1 class="display-name media-heading text-teal">Donald Barnes</h1>
+                                    <h1 class="display-name media-heading text-teal">@Model.Name</h1>
                                     <p class="text-muted mb-4x"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
                                 </div>
                                 <div class="hidden-xs">
-                                    <h1 class="media-heading text-light">Donald Barnes</h1>
+                                    <h1 class="media-heading text-light">@Model.Name</h1>
                                     <p class="mb-4x text-light"><span class="mr-2x">Senior UI Design</span> <span><i class="fa fa-map-marker fa-fw"></i> San Francisco, CA</span></p>
                                 </div>
                             </div><!-- /.media-body -->

@@ -1,5 +1,5 @@
 ﻿@using UptronWeb.Global
-
+@using UptronWeb.Infrastructure.Authentication;
 <!DOCTYPE html>
 <html>
 <meta lang="en" />
@@ -23,6 +23,8 @@
     @RenderSection("scripts", required: false)
 </head>
 <body>
+    @*@if ((User as CustomPrincipal) != null)
+        {*@
     <main class="wrapkit-wrapper">
         <!-- navigation -->
         <nav class="header navbar">
@@ -297,7 +299,6 @@
         @*<script src="~/Scripts/lib/daterangepicker.js"></script>*@
         <script src="~/Scripts/lib/jquery.easypiechart.js"></script>
         <!-- END COMPONENTS -->
-
         <!-- DUMMY: Use for demo -->
         <script src="~/Scripts/lib/demo/chart-inline-demo.js"></script>
 
@@ -310,7 +311,7 @@
         <!-- END COMPONENTS -->
         <!-- COMPONENTS -->
         @*<script src="~/Scripts/lib/fullcalendar.js"></script>
-        <script src="~/Scripts/lib/clndr.js"></script>*@
+            <script src="~/Scripts/lib/clndr.js"></script>*@
         <!-- END COMPONENTS -->
         <!-- DUMMY: Use for demo -->
         @*<script src="~/Scripts/lib/demo/plugin-calendar-demo.js"></script>*@
@@ -359,5 +360,6 @@
         <link href="~/css/jquery-ui.css" rel="stylesheet" />
         <script src="~/js/jquery-ui.js"></script>
     </main>
+    //}
 </body>
 </html>

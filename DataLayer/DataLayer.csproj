@@ -84,6 +84,9 @@
     <Compile Include="GOCircular.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobDocumentUpload.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobRegistration.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -97,6 +100,9 @@
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="JobRegistrationSkill.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobResignation.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="KeyFunctionary.cs">

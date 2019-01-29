@@ -21,6 +21,8 @@ namespace DataLayer
             this.JobRegistrationLanguages = new HashSet<JobRegistrationLanguage>();
             this.JobRegistrationQualifications = new HashSet<JobRegistrationQualification>();
             this.JobRegistrationSkills = new HashSet<JobRegistrationSkill>();
+            this.JobDocumentUploads = new HashSet<JobDocumentUpload>();
+            this.JobResignations = new HashSet<JobResignation>();
         }
     
         public int Id { get; set; }
@@ -59,5 +61,9 @@ namespace DataLayer
         public virtual ICollection<JobRegistrationQualification> JobRegistrationQualifications { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationSkill> JobRegistrationSkills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobResignation> JobResignations { get; set; }
     }
 }

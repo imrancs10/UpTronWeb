@@ -63,6 +63,19 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="500" />
           <Property Name="GOFile" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="JobDocumentUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="JoiningDate" Type="datetime" />
+          <Property Name="SalarySlip" Type="varbinary(max)" />
+          <Property Name="PFSlip" Type="varbinary(max)" />
+          <Property Name="ESISlip" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="JobRegistrationId" Type="int" />
+        </EntityType>
         <EntityType Name="JobRegistration">
           <Key>
             <PropertyRef Name="Id" />
@@ -136,6 +149,17 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Skill" Type="varchar" MaxLength="50" />
           <Property Name="RegistrationId" Type="int" />
+        </EntityType>
+        <EntityType Name="JobResignation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="ResignationDate" Type="datetime" />
+          <Property Name="ResignationReason" Type="varchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="JobRegistrationId" Type="int" />
         </EntityType>
         <EntityType Name="KeyFunctionaries">
           <Key>
@@ -316,6 +340,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobDocumentUpload_JobRegistration">
+          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
+          <End Role="JobDocumentUpload" Type="Self.JobDocumentUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobDocumentUpload">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JobRegistration_City">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="*" />
@@ -388,6 +424,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobResignation_JobRegistration">
+          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
+          <End Role="JobResignation" Type="Self.JobResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobResignation">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserMaster_RoleMaster">
           <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="0..1" />
           <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
@@ -431,11 +479,13 @@
           <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobDocumentUpload" EntityType="Self.JobDocumentUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistration" EntityType="Self.JobRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationEmployement" EntityType="Self.JobRegistrationEmployement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationLanguage" EntityType="Self.JobRegistrationLanguage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationQualification" EntityType="Self.JobRegistrationQualification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobResignation" EntityType="Self.JobResignation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KeyFunctionaries" EntityType="Self.KeyFunctionaries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MajorProjects" EntityType="Self.MajorProjects" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
@@ -456,6 +506,10 @@
           <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="Self.FK_GalleryPhotoMaster_GalleryMaster">
             <End Role="GalleryMaster" EntitySet="GalleryMaster" />
             <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDocumentUpload_JobRegistration" Association="Self.FK_JobDocumentUpload_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistration" />
+            <End Role="JobDocumentUpload" EntitySet="JobDocumentUpload" />
           </AssociationSet>
           <AssociationSet Name="FK_JobRegistration_City" Association="Self.FK_JobRegistration_City">
             <End Role="City" EntitySet="City" />
@@ -480,6 +534,10 @@
           <AssociationSet Name="FK_JobRegistrationSkill_JobRegistration" Association="Self.FK_JobRegistrationSkill_JobRegistration">
             <End Role="JobRegistration" EntitySet="JobRegistration" />
             <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResignation_JobRegistration" Association="Self.FK_JobResignation_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistration" />
+            <End Role="JobResignation" EntitySet="JobResignation" />
           </AssociationSet>
           <AssociationSet Name="FK_UserMaster_RoleMaster" Association="Self.FK_UserMaster_RoleMaster">
             <End Role="RoleMaster" EntitySet="RoleMaster" />
@@ -567,6 +625,16 @@
           <EntitySet Name="QuickEnquiries" EntityType="UptronWebModel.QuickEnquiry" />
           <EntitySet Name="ServiceDetails" EntityType="UptronWebModel.ServiceDetail" />
           <EntitySet Name="MajorProjects" EntityType="UptronWebModel.MajorProject" />
+          <EntitySet Name="JobDocumentUploads" EntityType="UptronWebModel.JobDocumentUpload" />
+          <EntitySet Name="JobResignations" EntityType="UptronWebModel.JobResignation" />
+          <AssociationSet Name="FK_JobDocumentUpload_JobRegistration" Association="UptronWebModel.FK_JobDocumentUpload_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobDocumentUpload" EntitySet="JobDocumentUploads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResignation_JobRegistration" Association="UptronWebModel.FK_JobResignation_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobResignation" EntitySet="JobResignations" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -665,6 +733,8 @@
           <NavigationProperty Name="JobRegistrationQualifications" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationQualification" />
           <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_JobRegistration" FromRole="JobRegistration" ToRole="JobDocumentUpload" />
+          <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_JobRegistration" FromRole="JobRegistration" ToRole="JobResignation" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -1009,6 +1079,56 @@
           <Property Name="OrderNumber" Type="Int32" />
           <Property Name="Createddate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="JobDocumentUpload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="JoiningDate" Type="DateTime" Precision="3" />
+          <Property Name="SalarySlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PFSlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ESISlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="JobRegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobDocumentUpload_JobRegistration" FromRole="JobDocumentUpload" ToRole="JobRegistration" />
+        </EntityType>
+        <EntityType Name="JobResignation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="ResignationDate" Type="DateTime" Precision="3" />
+          <Property Name="ResignationReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="JobRegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobResignation_JobRegistration" FromRole="JobResignation" ToRole="JobRegistration" />
+        </EntityType>
+        <Association Name="FK_JobDocumentUpload_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobDocumentUpload" Role="JobDocumentUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobDocumentUpload">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResignation_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobResignation" Role="JobResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobResignation">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1326,6 +1446,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="JobDocumentUploads">
+            <EntityTypeMapping TypeName="UptronWebModel.JobDocumentUpload">
+              <MappingFragment StoreEntitySet="JobDocumentUpload">
+                <ScalarProperty Name="JobRegistrationId" ColumnName="JobRegistrationId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ESISlip" ColumnName="ESISlip" />
+                <ScalarProperty Name="PFSlip" ColumnName="PFSlip" />
+                <ScalarProperty Name="SalarySlip" ColumnName="SalarySlip" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobResignations">
+            <EntityTypeMapping TypeName="UptronWebModel.JobResignation">
+              <MappingFragment StoreEntitySet="JobResignation">
+                <ScalarProperty Name="JobRegistrationId" ColumnName="JobRegistrationId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ResignationReason" ColumnName="ResignationReason" />
+                <ScalarProperty Name="ResignationDate" ColumnName="ResignationDate" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1384,6 +1530,10 @@
         <EntityTypeShape EntityType="UptronWebModel.QuickEnquiry" Width="1.5" PointX="14.375" PointY="7.75" />
         <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="5.375" PointY="14.75" />
         <EntityTypeShape EntityType="UptronWebModel.MajorProject" Width="1.5" PointX="7.375" PointY="14.75" />
+        <EntityTypeShape EntityType="UptronWebModel.JobDocumentUpload" Width="1.5" PointX="7.5" PointY="21.75" />
+        <EntityTypeShape EntityType="UptronWebModel.JobResignation" Width="1.5" PointX="7.5" PointY="18.625" />
+        <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_JobResignation_JobRegistration" />
       </Diagram>
     </Diagrams>
   </Designer>

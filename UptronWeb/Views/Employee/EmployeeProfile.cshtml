@@ -1,8 +1,8 @@
-﻿
+﻿@using DataLayer
 @{
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
-
+@model JobRegistration
 
 <section class="content-wrapper" role="main">
     <div class="content">
@@ -17,17 +17,25 @@
                         <div class="float-bar clearfix">
                             <div class="float-bar-brand">
                                 <a class="kit-avatar kit-avatar-128 no-padding border-white" href="#">
-                                    <img alt="cover" src="../images/dummy/uifaces22.jpg">
+                                    @{
+                                        string imgsrc = "../images/dummy/uifaces22.jpg";
+                                        if (Model.ResumeImage != null)
+                                        {
+                                            var base64 = Convert.ToBase64String(Model.ResumeImage);
+                                            imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                        }
+                                    }
+                                    <img alt="cover" src="@imgsrc">
                                 </a>
                             </div>
                             <div class="col-sm-8">
                                 <div class="visible-xs">
-                                    <h2 class="display-name media-heading text-teal"><i class="fa fa-user"></i>Neyaz Ahmad</h2>
-                                    <p class="text-muted mb-4x"><span class="mr-2x"><i class="fa fa-envelope"></i>neyazahmad001@gmail.com</span> <span><i class="fa fa-mobile"></i> 9308557590</span></p>
+                                    <h2 class="display-name media-heading text-teal"><i class="fa fa-user"></i>@Model.Name</h2>
+                                    <p class="text-muted mb-4x"><span class="mr-2x"><i class="fa fa-envelope"></i>@Model.EmailId</span> <span><i class="fa fa-mobile"></i> @Model.MobileNo</span></p>
                                 </div>
                                 <div class="hidden-xs">
-                                    <h1 class="media-heading text-light">Neyaz Ahmad</h1>
-                                    <p class="mb-4x text-light"><span class="mr-2x"><i class="fa fa-envelope"></i>neyazahmad001@gmail.com</span> <span><i class="fa fa fa-mobile"></i> 9308557590</span></p>
+                                    <h1 class="media-heading text-light">@Model.Name</h1>
+                                    <p class="mb-4x text-light"><span class="mr-2x"><i class="fa fa-envelope"></i>@Model.EmailId</span> <span><i class="fa fa fa-mobile"></i> @Model.MobileNo</span></p>
                                 </div>
                             </div><!-- /.media-body -->
                         </div><!-- /.float-bar -->
@@ -61,173 +69,59 @@
                                             <tbody>
                                                 <tr>
                                                     <td><label control-label">Full Name</label></td>
-                                                    <td><span class="headline"><strong>Amarnath Kumar jha</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.Name</strong></span></td>
 
                                                     <td><label control-label">Father Name</label></td>
-                                                    <td><span class="headline"><strong>Aman Kumar Jha</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.FatherName</strong></span></td>
 
                                                     <td><label control-label">Mother Name</label></td>
-                                                    <td><span class="headline"><strong>Kesri Devi</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.MotherName</strong></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label control-label">Date of Birth</label></td>
-                                                    <td><span class="headline"><strong>11/08/1990</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.DOB.Value.ToString("dd/MM/yyyy")</strong></span></td>
 
                                                     <td><label control-label">Gender</label></td>
-                                                    <td><span class="headline"><strong>Male</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.Gender</strong></span></td>
 
                                                     <td><label control-label">Marital Status</label></td>
-                                                    <td><span class="headline"><strong>NEVER_MARRIED</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.MaritalStatus</strong></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label control-label">Religion</label></td>
-                                                    <td><span class="headline"><strong>MUSLIM</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.Religion</strong></span></td>
 
                                                     <td><label control-label">Identity Details</label></td>
-                                                    <td><span class="headline"><strong>AadharCard</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.IdentityType</strong></span></td>
 
                                                     <td><label control-label">Identity Number</label></td>
-                                                    <td><span class="headline"><strong>4565645645677</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.IdentityNo</strong></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label control-label">Mobile No</label></td>
-                                                    <td><span class="headline"><strong>9035887955</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.MobileNo</strong></span></td>
 
                                                     <td><label control-label">Alternate No</label></td>
-                                                    <td><span class="headline"><strong>7646545456</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.AlternateNo</strong></span></td>
 
                                                     <td><label control-label">Email Id</label></td>
-                                                    <td><span class="headline"><strong>add@gmail.com</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.EmailId</strong></span></td>
                                                 </tr>
                                                 <tr>
                                                     <td><label control-label">Pin Code</label></td>
-                                                    <td><span class="headline"><strong>800004</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.Pincode</strong></span></td>
 
                                                     <td><label control-label">State Name</label></td>
-                                                    <td><span class="headline"><strong>Andhra Pradesh</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.State.StateName</strong></span></td>
 
                                                     <td><label control-label">City Name</label></td>
-                                                    <td><span class="headline"><strong>Adilabad</strong></span></td>
+                                                    <td><span class="headline"><strong>@Model.City.CityName</strong></span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-
-
-                            @*<div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Full Name</p>
-                            <span class="headline"><strong>Neyaz Ahmad</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Father Name</p>
-                            <span class="headline"><strong>dvdvd</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Mother Name</p>
-                            <span class="headline"><strong>vdsvdsvs</strong></span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Date of Birth</p>
-                            <span class="headline"><strong>11/08/1990</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Gender</p>
-                            <span class="headline"><strong>Male</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Marital Status</p>
-                            <span class="headline"><strong>Never Married</strong></span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Religion</p>
-                            <span class="headline"><strong>Muslim</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Identity Details</p>
-                            <span class="headline"><strong>Aadhar</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Identity Number</p>
-                            <span class="headline"><strong>445644654</strong></span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Mobile No</p>
-                            <span class="headline"><strong>9308557590</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Alternate No</p>
-                            <span class="headline"><strong>9162171163</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>Email Id</p>
-                            <span class="headline"><strong>neyazahmad001@gmail.com</strong></span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <p>Pin Code</p>
-                            <span class="headline"><strong>800004</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>State Name</p>
-                            <span class="headline"><strong>Bihar</strong></span>
-                        </div>
-                        <div class="col-xs-4">
-                            <p>City Name</p>
-                            <span class="headline"><strong>Patna</strong></span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <p>Resume</p>
-                            <span class="headline">
-                                <strong>
-                                    <a href="#" id="_view" target="_blank" class="btn btn-primary">View</a>
-                                </strong>
-                            </span>
-                        </div>
-                        <div class="col-xs-6">
-                            <p>Image</p>
-                            <span class="headline">
-                                <strong>
-                                    <a href="#" id="_view" target="_blank" class="btn btn-primary">View</a>
-                                </strong>
-                            </span>
-                        </div>
-                    </div>
-                    <hr class="col-md-10" />
-                    <div class="clearfix"></div>
-                </div>*@
                         </div>
                     </div><!-- /.panel-body -->
                     <div class="col-md-12">
@@ -248,58 +142,66 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>fdfvdvdv</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>zxvxvxz</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>zxvzxvzxvzxvzxv</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>svvs</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>svsvs</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>zsvsvsv</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="6">
-                                                No Qualification added
-                                            </td>
-                                        </tr>
-
+                                        @{
+                                            if (Model.JobRegistrationQualifications.Count > 0)
+                                            {
+                                                foreach (var qualification in Model.JobRegistrationQualifications)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.Qualification</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.Board</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.YearOfPassing</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.Marks</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.Specialization</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@qualification.CourseType</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="6">
+                                                        No Qualification added
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -323,68 +225,79 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>vxvv</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>zxvzxvxz</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <span class="headline"><strong>zxvzxvzx</strong></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <span class="headline"><strong>zxvzxvzx</strong></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <span class="headline"><strong>zxvzxvzx</strong></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-lg">
-                                                            <span class="headline"><strong>zvdv</strong></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <span class="headline"><strong>zxvzxv</strong></span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline"><strong>zxvzxvzxv</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @{
+                                            if (Model.JobRegistrationEmployements.Count > 0)
+                                            {
+                                                foreach (var employement in Model.JobRegistrationEmployements)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@employement.OrganizationName</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@employement.Post</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        <span class="headline"><strong>@employement.FromMonth</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        <span class="headline"><strong>@employement.FromYear</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        <span class="headline"><strong>@employement.ToMonth</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        <span class="headline"><strong>@employement.ToYear</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <span class="headline"><strong>@employement.IndustryType</strong></span>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@employement.Salary</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="6">
+                                                        No Employement detail added
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
 
-                                        <tr>
-                                            <td colspan="6">
-                                                No Employement detail added
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -402,89 +315,94 @@
                                     <tbody>
                                         <tr>
                                             <td><label control-label">Language Known</label></td>
-                                            <td><span class="headline"><strong>English , Hindi</strong></span></td>
+                                            <td>
+                                                <span class="headline">
+                                                    <strong>
+                                                        @if (Model.JobRegistrationLanguages.Any())
+                                                        {
+                                                            string lan = string.Empty;
+                                                            foreach (var languages in Model.JobRegistrationLanguages)
+                                                            {
+                                                                lan += languages.Language + ", ";
+                                                            }
+                                                            lan = lan.Substring(0, lan.Length - 2);
+                                                            <strong>@lan</strong>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No Language added</span>
+                                                        }
+                                                    </strong>
+                                                </span>
+                                            </td>
 
                                             <td><label control-label">Skill Information</label></td>
-                                            <td><span class="headline"><strong>No Skill added</strong></span></td>
+                                            <td>
+                                                <span class="headline">
+                                                    <strong>
+                                                        @if (Model.JobRegistrationSkills.Any())
+                                                        {
+                                                            string skl = string.Empty;
+                                                            foreach (var skill in Model.JobRegistrationSkills)
+                                                            {
+                                                                skl += @skill.Skill + ", ";
+                                                            }
+                                                            skl = skl.Substring(0, skl.Length - 2);
+                                                            <strong>@skl</strong>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>No Skill added</span>
+                                                        }
+                                                    </strong>
+                                                </span>
+                                            </td>
 
                                             <td><label control-label">Experience in Works</label></td>
-                                            <td><span class="headline"><strong>3 Yrs Experience</strong></span></td>
+                                            <td><span class="headline"><strong>@Model.Experience</strong></span></td>
                                         </tr>
                                         <tr>
                                             <td><label control-label">Are you Person with disabilities</label></td>
-                                            <td><span class="headline"><strong>No</strong></span></td>
+                                            <td>
+                                                <span class="headline">
+                                                    <strong>
+                                                        @{
+                                                            if (Model.Disability == true)
+                                                            {
+                                                                <span>Yes</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong>No</strong>
+                                                            }
+                                                        }
+                                                    </strong>
+                                                </span>
+                                            </td>
 
                                             <td><label control-label">Are You Ex-Serviceman</label></td>
-                                            <td><span class="headline"><strong>No</strong></span></td>
+                                            <td>
+                                                <span class="headline">
+                                                    <strong>
+                                                        @{
+                                                            if (Model.ExServiceMan == true)
+                                                            {
+                                                                <strong>Yes</strong>
+                                                            }
+                                                            else
+                                                            {
+                                                                <strong>No</strong>
+                                                            }
+                                                        }
+                                                    </strong>
+                                                </span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    @*<div class="col-md-12">
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-6">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-6 control-label">Language Known</label>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <strong>English , Hindi</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-6 control-label">Skill Information</label>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                        <span>No Skill added</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
-                            <div class="input-group input-group-icon">
-                                <span class="headline"><strong>xzczxcxz</strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-6">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-6 control-label">Experience in Works </label>
-                            <div class="col-sm-6">
-                                <span class="headline"><strong>Experience</strong></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-6 control-label">Are you Person with disabilities </label>
-                            <div class="col-sm-6">
-                                        <span>Yes</span>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <div class="form-group mt-lg">
-                            <label class="col-sm-3 control-label">Are You Ex-Serviceman </label>
-                            <div class="col-sm-3">
-                                        <strong>Yes</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
                 </div><!-- /.panel -->
                 <div class="container">
                 </div>
@@ -499,10 +417,3 @@
         </div><!-- /.content -->
     </div>
 </section>
-   
-<section class="content-wrapper" role="main">
-    <div class="content">
-        No Detail found
-    </div>
-</section>
-   

@@ -49,5 +49,7 @@ namespace DataLayer
         public virtual DbSet<QuickEnquiry> QuickEnquiries { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
         public virtual DbSet<MajorProject> MajorProjects { get; set; }
+        public virtual DbSet<JobDocumentUpload> JobDocumentUploads { get; set; }
+        public virtual DbSet<JobResignation> JobResignations { get; set; }
     }
 }

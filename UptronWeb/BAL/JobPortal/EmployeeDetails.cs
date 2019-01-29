@@ -18,14 +18,14 @@ namespace UptronWeb.BAL.Login
         /// <param name="UserName">Username</param>
         /// <param name="Password">Password</param>
         /// <returns>Enums</returns>
-        public bool CheckEmployeeLogin(string UserName, string Password)
+        public JobRegistration CheckEmployeeLogin(string UserName, string Password)
         {
             _db = new UptronWebEntities();
             var result = _db.JobRegistrations.Where(x => x.EmailId == UserName && x.Password == Password && x.IsActive == true).FirstOrDefault();
             if (result != null)
-                return true;
+                return result;
             else
-                return false;
+                return null;
         }
     }
 }
