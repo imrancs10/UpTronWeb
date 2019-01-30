@@ -59,5 +59,12 @@ namespace UptronWeb.Controllers
             CommonDetails _details = new CommonDetails();
             return Json(_details.GetCities(stateId));
         }
+
+        [HttpPost]
+        public JsonResult GetVendor()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetVendor());
+        }
     }
 }

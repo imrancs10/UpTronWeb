@@ -78,5 +78,6 @@ namespace UptronWeb.Controllers
             }
             return RedirectToAction("VendorViewDetails");
         }
+        
     }
 }

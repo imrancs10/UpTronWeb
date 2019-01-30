@@ -7,9 +7,11 @@
         dateFormat: 'dd/mm/yy',
         maxDate: 0
     });
+    
 });
 
 fillState();
+
 function fillState() {
     let dropdown = $('#state');
     dropdown.empty();
@@ -210,4 +212,31 @@ function convertDateTimeFormat(dateInput) {
     var day = format(todayTime.getDate());
     var year = format(todayTime.getFullYear());
     return month + "/" + day + "/" + year;
+}
+
+fillVendor();
+function fillVendor() {
+    debugger
+    let dropdown = $('#Vendor');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Common/GetVendor',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.VendorName));
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
 }

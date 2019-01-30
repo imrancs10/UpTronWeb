@@ -26,6 +26,7 @@ namespace UptronWeb.BAL.Vendor
             var result = _db.VendorDetails.ToList();
             return result;
         }
+
         public VendorDetail GetVendorDetailByVendorCode(string vendorCode)
         {
             _db = new UptronWebEntities();
@@ -42,5 +43,7 @@ namespace UptronWeb.BAL.Vendor
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
         }
+
+        
     }
 }

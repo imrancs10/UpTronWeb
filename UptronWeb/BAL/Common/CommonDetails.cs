@@ -25,5 +25,12 @@ namespace UptronWeb.BAL.Common
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Cities.Where(x => x.StateId == stateId).ToList();
         }
+
+        public List<VendorDetail> GetVendor()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.VendorDetails.ToList();
+        }
     }
 }

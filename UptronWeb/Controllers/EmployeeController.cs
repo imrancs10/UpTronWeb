@@ -41,6 +41,7 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login");
         }
 
+        
         public ActionResult EmployeeProfile()
         {
             var user = User as CustomPrincipal;
