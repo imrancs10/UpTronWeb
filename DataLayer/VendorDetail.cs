@@ -14,6 +14,13 @@ namespace DataLayer
     
     public partial class VendorDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VendorDetail()
+        {
+            this.JobDocumentUploads = new HashSet<JobDocumentUpload>();
+            this.JobResignations = new HashSet<JobResignation>();
+        }
+    
         public int Id { get; set; }
         public string VendorCode { get; set; }
         public string VendorName { get; set; }
@@ -28,5 +35,10 @@ namespace DataLayer
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobResignation> JobResignations { get; set; }
     }
 }

@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="~/styles/dependencies.css">
 
     <link rel="stylesheet" href="~/styles/wrapkit.css">
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/scripts/App/Global/Utility.js"></script>
     @RenderSection("scripts", required: false)
 </head>
 <body>
@@ -172,10 +175,42 @@
     <script type="text/javascript">
         (function () {
             'use strict';
-
             window.sidebar.setMode('horizontal');
         })(window);
     </script>
-    <script src="~/Scripts/App/General/JobPortalRegistration.js"></script>
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        })
+    </script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/js/jquery-ui.js"></script>
 </body>
 </html>

@@ -22,5 +22,6 @@ namespace DataLayer
         public Nullable<int> JobRegistrationId { get; set; }
     
         public virtual JobRegistration JobRegistration { get; set; }
+        public virtual VendorDetail VendorDetail { get; set; }
     }
 }

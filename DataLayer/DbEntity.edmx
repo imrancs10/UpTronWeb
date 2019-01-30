@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="JoiningDate" Type="datetime" />
           <Property Name="SalarySlip" Type="varbinary(max)" />
@@ -154,7 +154,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="ResignationDate" Type="datetime" />
           <Property Name="ResignationReason" Type="varchar(max)" />
@@ -352,6 +352,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobDocumentUpload_VendorDetail">
+          <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
+          <End Role="JobDocumentUpload" Type="Self.JobDocumentUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobDocumentUpload">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_JobRegistration_City">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="*" />
@@ -436,6 +448,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobResignation_VendorDetail">
+          <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
+          <End Role="JobResignation" Type="Self.JobResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobResignation">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserMaster_RoleMaster">
           <End Role="RoleMaster" Type="Self.RoleMaster" Multiplicity="0..1" />
           <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
@@ -511,6 +535,10 @@
             <End Role="JobRegistration" EntitySet="JobRegistration" />
             <End Role="JobDocumentUpload" EntitySet="JobDocumentUpload" />
           </AssociationSet>
+          <AssociationSet Name="FK_JobDocumentUpload_VendorDetail" Association="Self.FK_JobDocumentUpload_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetail" />
+            <End Role="JobDocumentUpload" EntitySet="JobDocumentUpload" />
+          </AssociationSet>
           <AssociationSet Name="FK_JobRegistration_City" Association="Self.FK_JobRegistration_City">
             <End Role="City" EntitySet="City" />
             <End Role="JobRegistration" EntitySet="JobRegistration" />
@@ -537,6 +565,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_JobResignation_JobRegistration" Association="Self.FK_JobResignation_JobRegistration">
             <End Role="JobRegistration" EntitySet="JobRegistration" />
+            <End Role="JobResignation" EntitySet="JobResignation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResignation_VendorDetail" Association="Self.FK_JobResignation_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetail" />
             <End Role="JobResignation" EntitySet="JobResignation" />
           </AssociationSet>
           <AssociationSet Name="FK_UserMaster_RoleMaster" Association="Self.FK_UserMaster_RoleMaster">
@@ -633,6 +665,14 @@
           </AssociationSet>
           <AssociationSet Name="FK_JobResignation_JobRegistration" Association="UptronWebModel.FK_JobResignation_JobRegistration">
             <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="JobResignation" EntitySet="JobResignations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDocumentUpload_VendorDetail" Association="UptronWebModel.FK_JobDocumentUpload_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetails" />
+            <End Role="JobDocumentUpload" EntitySet="JobDocumentUploads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobResignation_VendorDetail" Association="UptronWebModel.FK_JobResignation_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetails" />
             <End Role="JobResignation" EntitySet="JobResignations" />
           </AssociationSet>
         </EntityContainer>
@@ -1004,6 +1044,8 @@
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_VendorDetail" FromRole="VendorDetail" ToRole="JobDocumentUpload" />
+          <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_VendorDetail" FromRole="VendorDetail" ToRole="JobResignation" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -1092,6 +1134,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="JobRegistrationId" Type="Int32" />
           <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobDocumentUpload_JobRegistration" FromRole="JobDocumentUpload" ToRole="JobRegistration" />
+          <NavigationProperty Name="VendorDetail" Relationship="UptronWebModel.FK_JobDocumentUpload_VendorDetail" FromRole="JobDocumentUpload" ToRole="VendorDetail" />
         </EntityType>
         <EntityType Name="JobResignation">
           <Key>
@@ -1104,6 +1147,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="JobRegistrationId" Type="Int32" />
           <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_JobResignation_JobRegistration" FromRole="JobResignation" ToRole="JobRegistration" />
+          <NavigationProperty Name="VendorDetail" Relationship="UptronWebModel.FK_JobResignation_VendorDetail" FromRole="JobResignation" ToRole="VendorDetail" />
         </EntityType>
         <Association Name="FK_JobDocumentUpload_JobRegistration">
           <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
@@ -1126,6 +1170,30 @@
             </Principal>
             <Dependent Role="JobResignation">
               <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDocumentUpload_VendorDetail">
+          <End Type="UptronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobDocumentUpload" Role="JobDocumentUpload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobDocumentUpload">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobResignation_VendorDetail">
+          <End Type="UptronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobResignation" Role="JobResignation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobResignation">
+              <PropertyRef Name="VendorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1534,6 +1602,8 @@
         <EntityTypeShape EntityType="UptronWebModel.JobResignation" Width="1.5" PointX="7.5" PointY="22.125" />
         <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobResignation_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_VendorDetail" />
+        <AssociationConnector Association="UptronWebModel.FK_JobResignation_VendorDetail" />
         </Diagram>
     </Diagrams>
   </Designer>
