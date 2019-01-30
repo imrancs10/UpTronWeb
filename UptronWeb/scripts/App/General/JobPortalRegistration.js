@@ -216,10 +216,9 @@ function convertDateTimeFormat(dateInput) {
 
 fillVendor();
 function fillVendor() {
-    debugger
     let dropdown = $('#Vendor');
     dropdown.empty();
-    dropdown.append('<option value="">Select</option>');
+    dropdown.append('<option value="">--Select Vendor Name--</option>');
     dropdown.prop('selectedIndex', 0);
     $.ajax({
         dataType: 'json',

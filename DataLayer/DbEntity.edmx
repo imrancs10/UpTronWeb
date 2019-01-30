@@ -1530,11 +1530,11 @@
         <EntityTypeShape EntityType="UptronWebModel.QuickEnquiry" Width="1.5" PointX="14.375" PointY="7.75" />
         <EntityTypeShape EntityType="UptronWebModel.ServiceDetail" Width="1.5" PointX="5.375" PointY="14.75" />
         <EntityTypeShape EntityType="UptronWebModel.MajorProject" Width="1.5" PointX="7.375" PointY="14.75" />
-        <EntityTypeShape EntityType="UptronWebModel.JobDocumentUpload" Width="1.5" PointX="7.5" PointY="21.75" />
-        <EntityTypeShape EntityType="UptronWebModel.JobResignation" Width="1.5" PointX="7.5" PointY="18.625" />
+        <EntityTypeShape EntityType="UptronWebModel.JobDocumentUpload" Width="1.5" PointX="7.5" PointY="18.625" />
+        <EntityTypeShape EntityType="UptronWebModel.JobResignation" Width="1.5" PointX="7.5" PointY="22.125" />
         <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobResignation_JobRegistration" />
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

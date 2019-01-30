@@ -8,6 +8,7 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using UptronWeb.BAL;
 using UptronWeb.BAL.Login;
+using UptronWeb.Global;
 using UptronWeb.Infrastructure.Authentication;
 
 namespace UptronWeb.Controllers
@@ -52,7 +53,41 @@ namespace UptronWeb.Controllers
 
         public ActionResult EmployeeResignation()
         {
-            return View();
+            EmployeeDetails bal = new EmployeeDetails();
+            var result = bal.GetJObResignation();
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult EmployeeResignation(string Vendor, string ResignationDate, string ResignationReason, int? Id)
+        {
+            EmployeeDetails bal = new EmployeeDetails();
+            JobResignation jobresignation = new JobResignation()
+            {
+                Id = Id != null ? Id.Value : 0,
+                VendorId = Convert.ToInt32(Vendor),
+                ResignationDate = Convert.ToDateTime(ResignationDate),
+                ResignationReason = ResignationReason,
+            };
+            if (Id==null)
+            {
+                jobresignation.CreatedDate = DateTime.Now;
+            }
+            var result = bal.SaveEmployeeResignation(jobresignation);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Employee Resignation data has been Saved", "Resignation Saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Employee Resignation data has been Updated", "Resignation Updated");
+            }
+            else
+            {
+                SetAlertMessage("Employee Resignation data has been All ready Exists", "Resignation Exists");
+            }
+
+            return RedirectToAction("EmployeeResignation");
         }
         public ActionResult EmployeeSlip()
         {
