@@ -73,13 +73,13 @@
             <div class="sidebar-block">
                 <div class="media">
                     <div class="media-left">
-                        <a href="Dashboard.aspx">
+                        <a href="">
                             <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
                             <img class="media-object img-circle" src="../images/dummy/unknown-profile.jpg" alt="photo profile">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading" id="lblUserName" ">  </h4>
+                        <h4 class="media-heading" id="lblUserName" >  </h4>
 
                     </div>
                 </div>
@@ -88,15 +88,15 @@
             <!-- /navigation -->
             <div class="nav-wrapper">
                 <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
-                    <li class="nav-item open active" role="presentation">
-                        <a href="/Admin/Dashboard" data-toggle="nav-child">
+                    <li class="nav-item" role="presentation">
+                        <a href="/Admin/Dashboard">
                             @*<i class="nav-caret pull-right fa fa-angle-down"></i>*@
                             <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
                             <span class="nav-text">Dashboard</span>
                         </a>
-                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                        @*<ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
                             <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="/Admin/Dashboard"><span class="nav-text">Dashboard</span></a></li>
-                        </ul>
+                        </ul>*@
                     </li>
 
                     <li class="divider"></li>
@@ -345,6 +345,15 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                $('.nav-item a.active').removeClass('active');
+                $('.nav-item a[href]').each(function (ind, ele) {
+                    if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
+                        $(ele).parent().addClass('active');
+                        $(ele).parent().parent().show();
+                    }
+                });
+
+
                 $("#dialog").dialog({
                     resizable: false,
                     height: "auto",
