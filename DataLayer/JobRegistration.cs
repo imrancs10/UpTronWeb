@@ -50,6 +50,8 @@ namespace DataLayer
         public string EyeSight { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public string Password { get; set; }
+        public string EmployementStatus { get; set; }
+        public Nullable<int> VendorId { get; set; }
     
         public virtual City City { get; set; }
         public virtual State State { get; set; }
@@ -65,5 +67,6 @@ namespace DataLayer
         public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobResignation> JobResignations { get; set; }
+        public virtual VendorDetail VendorDetail { get; set; }
     }
 }

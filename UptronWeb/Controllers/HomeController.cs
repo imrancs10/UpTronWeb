@@ -127,7 +127,9 @@ namespace UptronWeb.Controllers
         }
         public ActionResult JobPortal()
         {
-            return View();
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var jobForm = detail.GetJobPortalRegistrationForm();
+            return View(jobForm);
         }
 
         [HttpPost]

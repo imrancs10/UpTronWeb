@@ -1,7 +1,9 @@
-﻿
+﻿@using DataLayer
+@using System.Linq
 @{
     Layout = null;
 }
+@model List<JobRegistrationForm>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,245 +95,316 @@
                                         <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Job Seekers </h4></div>
                                     </div>
                                     <hr class="tall">
-                                    <div class="form-group mt-lg">
-                                        <label class="col-sm-3 control-label">Your Name <span style="color:red;">*</span></label>
-                                        <div class="col-sm-9">
-                                            <div class="input-group input-group-icon">
-                                                <input type="text" id="txtName" class="form-control" placeholder="Your Name" />
-                                                <span class="input-group-addon">
-                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                </span>
+                                    @if (Model.Where(x => x.FieldName == "Name" && x.Active == true).Any())
+                                    {
+                                        <div class="form-group mt-lg">
+                                            <label class="col-sm-3 control-label">
+                                                Your Name
+                                                @if (Model.Where(x => x.FieldName == "Name" && x.Mandatory == true).Any())
+                                                {
+                                                    <span style="color:red;">*</span>
+                                                }
+                                            </label>
+                                            <div class="col-sm-9">
+                                                <div class="input-group input-group-icon">
+                                                    @if (Model.Where(x => x.FieldName == "Name" && x.Mandatory == true).Any())
+                                                    {
+                                                        <input type="text" id="txtName" class="form-control" placeholder="Your Name" required />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="txtName" class="form-control" placeholder="Your Name" />
+                                                    }
+                                                    <span class="input-group-addon">
+                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                    </span>
+                                                </div>
+                                                <h5>(Name within as in Educational Certificate)</h5>
                                             </div>
-                                            <h5>(Name within as in Educational Certificate)</h5>
                                         </div>
-                                    </div>
+                                    }
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Father Name <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtfatherName" class="form-control" placeholder="Father Name" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                                            </span>
+                                            @if (Model.Where(x => x.FieldName == "FatherName" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Father Name <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtfatherName" class="form-control" placeholder="Father Name" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                                </span>
+                                                            </div>
+                                                            <p>(Please don't use any prefix such as shri or Dr)</p>
                                                         </div>
-                                                        <p>(Please don't use any prefix such as shri or Dr)</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Mother Name <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtMotherName" class="form-control" placeholder="Mother Name" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                                            </span>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "MotherName" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Mother Name <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtMotherName" class="form-control" placeholder="Mother Name" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                                </span>
+                                                            </div>
+                                                            <p>(Please don't use any prefix such as Smt or Dr)</p>
                                                         </div>
-                                                        <p>(Please don't use any prefix such as Smt or Dr)</p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Date Of Birth<span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="DOB" class="form-control" name="DOB"
-                                                                   required placeholder="dd/mm/yyyy" style="cursor:text"/>
-                                                            @*<input data-input="daterangepicker" data-single-date-picker="true" data-show-dropdowns="true" name="datepicker" class="form-control" placeholder="(DD/MM/YYYY)" id="datepicker" />*@
-                                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            @if (Model.Where(x => x.FieldName == "DOB" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Date Of Birth<span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="DOB" class="form-control" name="DOB"
+                                                                       required placeholder="dd/mm/yyyy" style="cursor:text" />
+                                                                @*<input data-input="daterangepicker" data-single-date-picker="true" data-show-dropdowns="true" name="datepicker" class="form-control" placeholder="(DD/MM/YYYY)" id="datepicker" />*@
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Gender <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <select name="Gender" id="Gender" required class="form-control required">
-                                                            <option value="">Select Sex</option>
-                                                            <option value="Male">Male</option>
-                                                            <option value="Female">Female</option>
-                                                            <option value="Transgender">Transgender</option>
-                                                        </select>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "Gender" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Gender <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <select name="Gender" id="Gender" required class="form-control required">
+                                                                <option value="">Select Sex</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                <option value="Transgender">Transgender</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
+
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Marital Status </label>
-                                                    <div class="col-sm-8">
-                                                        <select name="MaritalStatus" id="MaritalStatus" required class="form-control required">
-                                                            <option value="">Select Marital Status</option>
-                                                            <option value="NEVER_MARRIED">Never Married</option>
-                                                            <option value="Married">Married</option>
-                                                            <option value="ANNULED">Annulled</option>
-                                                            <option value="DIVORCED">Divorced</option>
-                                                            <option value="WIDOWED">Widowed</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Religion <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <select name="Religion" id="Religion" required class="form-control required">
-                                                            <option value="">Select Religion</option>
-                                                            <option value="HINDU">Hindu</option>
-                                                            <option value="MUSLIM">Muslim</option>
-                                                            <option value="CHRISTIAN">Christian</option>
-                                                            <option value="SIKH">Sikh</option>
-                                                            <option value="JAIN">Jain</option>
-                                                            <option value="BUDDHIST">Buddhist</option>
-                                                            <option value="SPIRITUAL">Spiritual</option>
-                                                            <option value="PARSI">Parsi</option>
-                                                            <option value="JEWISH">Jewish</option>
-                                                            <option value="OTHERS">Others</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Identity Details <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <select name="IdentityDetails" id="IdentityDetails" required class="form-control required">
-                                                            <option value="">Select Identity</option>
-                                                            <option value="AadharCard">Aadhar Card</option>
-                                                            <option value="PanCard">Pan Card</option>
-                                                            <option value="VoterId">Voter Id</option>
-                                                            <option value="Driving_Licence">Driving Licence</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Identity No <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtIdentityNo" name="txtIdentityNo" class="form-control" placeholder="Identity No" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-user"></i></span>
-                                                            </span>
+                                            @if (Model.Where(x => x.FieldName == "MaritalStatus" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Marital Status </label>
+                                                        <div class="col-sm-8">
+                                                            <select name="MaritalStatus" id="MaritalStatus" required class="form-control required">
+                                                                <option value="">Select Marital Status</option>
+                                                                <option value="NEVER_MARRIED">Never Married</option>
+                                                                <option value="Married">Married</option>
+                                                                <option value="ANNULED">Annulled</option>
+                                                                <option value="DIVORCED">Divorced</option>
+                                                                <option value="WIDOWED">Widowed</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Mobile No <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtMobile" name="txtMobile" class="form-control" placeholder="Mobile No" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-mobile"></i></span>
-                                                            </span>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "Religion" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Religion <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <select name="Religion" id="Religion" required class="form-control required">
+                                                                <option value="">Select Religion</option>
+                                                                <option value="HINDU">Hindu</option>
+                                                                <option value="MUSLIM">Muslim</option>
+                                                                <option value="CHRISTIAN">Christian</option>
+                                                                <option value="SIKH">Sikh</option>
+                                                                <option value="JAIN">Jain</option>
+                                                                <option value="BUDDHIST">Buddhist</option>
+                                                                <option value="SPIRITUAL">Spiritual</option>
+                                                                <option value="PARSI">Parsi</option>
+                                                                <option value="JEWISH">Jewish</option>
+                                                                <option value="OTHERS">Others</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
 
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Alternate No <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtAlternate" name="txtAlternate" class="form-control" placeholder="Alternate No" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-phone"></i></span>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Email Id <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email Id" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
-                                                            </span>
+                                            @if (Model.Where(x => x.FieldName == "IdentityDetail" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Identity Details <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <select name="IdentityDetails" id="IdentityDetails" required class="form-control required">
+                                                                <option value="">Select Identity</option>
+                                                                <option value="AadharCard">Aadhar Card</option>
+                                                                <option value="PanCard">Pan Card</option>
+                                                                <option value="VoterId">Voter Id</option>
+                                                                <option value="Driving_Licence">Driving Licence</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Pin Code <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="text" id="txtPinCode" name="txtPinCode" class="form-control" placeholder="Pin Code" />
-                                                            <span class="input-group-addon">
-                                                                <span class="icon"><i class="fa fa-edit"></i></span>
-                                                            </span>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "IdentityNumber" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Identity No <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtIdentityNo" name="txtIdentityNo" class="form-control" placeholder="Identity No" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
+
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">State <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-8">
-                                                        <select name="state" id="state" class="form-control required"></select>
+                                            @if (Model.Where(x => x.FieldName == "MobileNumber" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Mobile No <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtMobile" name="txtMobile" class="form-control" placeholder="Mobile No" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">City Name</label>
-                                                    <div class="col-sm-8">
-                                                        <select name="city" id="city" class="form-control required"></select>
+                                            }
+
+                                            @if (Model.Where(x => x.FieldName == "AlternateNumber" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Alternate No <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtAlternate" name="txtAlternate" class="form-control" placeholder="Alternate No" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-phone"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            @if (Model.Where(x => x.FieldName == "EmailId" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Email Id <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtEmail" name="txtEmail" class="form-control" placeholder="Email Id" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "PinCode" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Pin Code <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <div class="input-group input-group-icon">
+                                                                <input type="text" id="txtPinCode" name="txtPinCode" class="form-control" placeholder="Pin Code" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="icon"><i class="fa fa-edit"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            @if (Model.Where(x => x.FieldName == "State" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">State <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-8">
+                                                            <select name="state" id="state" class="form-control required"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "City" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">City Name</label>
+                                                        <div class="col-sm-8">
+                                                            <select name="city" id="city" class="form-control required"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Upload Resume </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="file" name="fileResume" id="fileResume" accept="application/pdf" />
+                                            @if (Model.Where(x => x.FieldName == "Resume" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Upload Resume </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="file" name="fileResume" id="fileResume" accept="application/pdf" />
+                                                        </div>
+                                                        <span style="color:red;">Upload Resume size should be or equal to 400 KB.</span>
                                                     </div>
-                                                    <span style="color:red;">Upload Resume size should be or equal to 400 KB.</span>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Upload Image </label>
-                                                    <div class="col-sm-8">
-                                                        <input type="file" name="fileImage" id="fileImage" accept=".gif,.jpg,.jpeg,.png"/>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "Image" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Upload Image </label>
+                                                        <div class="col-sm-8">
+                                                            <input type="file" name="fileImage" id="fileImage" accept=".gif,.jpg,.jpeg,.png" />
+                                                        </div>
+                                                        <span style="color:red;">Upload Photo size should be or equal to  200 KB.</span>
                                                     </div>
-                                                    <span style="color:red;">Upload Photo size should be or equal to  200 KB.</span>
                                                 </div>
-                                            </div>
+                                            }
+
                                         </div>
 
                                     </div>
@@ -357,744 +430,717 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Qualification" id="Qualification" required class="form-control required">
-                                                                    <option value=" ">Select Qualification</option>
-                                                                    <option value="HighSchool">High School</option>
-                                                                    <option value="Seniorsecondary">Senior Secondary School</option>
-                                                                    <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                                    <option value="Master’s">Master’s Degree</option>
-                                                                    <option value="PHD/BED">PHD / BED</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Qualification" name="Qualification" class="form-control" placeholder="Your Qualification" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-book"></i></span>
-                                                                </span>
+                                                @if (Model.Where(x => x.FieldName == "Qualification10" && x.Active == true).Any())
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    High School(10th)
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Year" id="Year" required class="form-control required">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="1990">1990</option>
-                                                                    <option value="1991">1991</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Percentage" id="Percentage" required class="form-control required">
-                                                                    <option value="">Select Percentage</option>
-                                                                    <option value="90%">90%</option>
-                                                                    <option value="95%">95%</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Specialization" id="Specialization" required class="form-control required">
-                                                                    <option value="">Select Specialization</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-bookmark"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Course" id="Course" required class="form-control required">
-                                                                    <option value="">Select Course</option>
-                                                                    <option value="MCA">MCA</option>
-                                                                    <option value="BCA">BCA</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Qualification" id="Qualification" required class="form-control required">
-                                                                    <option value=" ">Select Qualification</option>
-                                                                    <option value="HighSchool">High School</option>
-                                                                    <option value="Seniorsecondary">Senior Secondary School</option>
-                                                                    <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                                    <option value="Master’s">Master’s Degree</option>
-                                                                    <option value="PHD/BED">PHD / BED</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Qualification" name="Qualification" class="form-control" placeholder="Your Qualification" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-book"></i></span>
-                                                                </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (Model.Where(x => x.FieldName == "Qualification12" && x.Active == true).Any())
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <p>Senior Secondary School (12th)</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Year" id="Year" required class="form-control required">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="1990">1990</option>
-                                                                    <option value="1991">1991</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Year" id="Year" required class="form-control required">
+                                        <option value="">Select Year</option>
+                                        <option value="1990">1990</option>
+                                        <option value="1991">1991</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Percentage" id="Percentage" required class="form-control required">
-                                                                    <option value="">Select Percentage</option>
-                                                                    <option value="90%">90%</option>
-                                                                    <option value="95%">95%</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-registered"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Percentage" id="Percentage" required class="form-control required">
+                                        <option value="">Select Percentage</option>
+                                        <option value="90%">90%</option>
+                                        <option value="95%">95%</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-registered"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Specialization" id="Specialization" required class="form-control required">
-                                                                    <option value="">Select Specialization</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Specialization" id="Specialization" required class="form-control required">
+                                        <option value="">Select Specialization</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Accounts">Accounts</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-bookmark"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Course" id="Course" required class="form-control required">
-                                                                    <option value="">Select Course</option>
-                                                                    <option value="MCA">MCA</option>
-                                                                    <option value="BCA">BCA</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Course" id="Course" required class="form-control required">
+                                        <option value="">Select Course</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Qualification" id="Qualification" required class="form-control required">
-                                                                    <option value=" ">Select Qualification</option>
-                                                                    <option value="HighSchool">High School</option>
-                                                                    <option value="Seniorsecondary">Senior Secondary School</option>
-                                                                    <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                                    <option value="Master’s">Master’s Degree</option>
-                                                                    <option value="PHD/BED">PHD / BED</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Qualification" name="Qualification" class="form-control" placeholder="Your Qualification" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-book"></i></span>
-                                                                </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (Model.Where(x => x.FieldName == "QualificationGraduate" && x.Active == true).Any())
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    Bachelor’s Degree
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Year" id="Year" required class="form-control required">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="1990">1990</option>
-                                                                    <option value="1991">1991</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Year" id="Year" required class="form-control required">
+                                        <option value="">Select Year</option>
+                                        <option value="1990">1990</option>
+                                        <option value="1991">1991</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Percentage" id="Percentage" required class="form-control required">
-                                                                    <option value="">Select Percentage</option>
-                                                                    <option value="90%">90%</option>
-                                                                    <option value="95%">95%</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-registered"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Percentage" id="Percentage" required class="form-control required">
+                                        <option value="">Select Percentage</option>
+                                        <option value="90%">90%</option>
+                                        <option value="95%">95%</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-registered"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Specialization" id="Specialization" required class="form-control required">
-                                                                    <option value="">Select Specialization</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Specialization" id="Specialization" required class="form-control required">
+                                        <option value="">Select Specialization</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Accounts">Accounts</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-bookmark"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Course" id="Course" required class="form-control required">
-                                                                    <option value="">Select Course</option>
-                                                                    <option value="MCA">MCA</option>
-                                                                    <option value="BCA">BCA</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Course" id="Course" required class="form-control required">
+                                        <option value="">Select Course</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Qualification" id="Qualification" required class="form-control required">
-                                                                    <option value=" ">Select Qualification</option>
-                                                                    <option value="HighSchool">High School</option>
-                                                                    <option value="Seniorsecondary">Senior Secondary School</option>
-                                                                    <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                                    <option value="Master’s">Master’s Degree</option>
-                                                                    <option value="PHD/BED">PHD / BED</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Qualification" name="Qualification" class="form-control" placeholder="Your Qualification" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-book"></i></span>
-                                                                </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (Model.Where(x => x.FieldName == "QualificationPostGraduate" && x.Active == true).Any())
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    Master’s Degree
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Year" id="Year" required class="form-control required">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="1990">1990</option>
-                                                                    <option value="1991">1991</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Year" id="Year" required class="form-control required">
+                                        <option value="">Select Year</option>
+                                        <option value="1990">1990</option>
+                                        <option value="1991">1991</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Percentage" id="Percentage" required class="form-control required">
-                                                                    <option value="">Select Percentage</option>
-                                                                    <option value="90%">90%</option>
-                                                                    <option value="95%">95%</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-registered"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Percentage" id="Percentage" required class="form-control required">
+                                        <option value="">Select Percentage</option>
+                                        <option value="90%">90%</option>
+                                        <option value="95%">95%</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-registered"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Specialization" id="Specialization" required class="form-control required">
-                                                                    <option value="">Select Specialization</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Specialization" id="Specialization" required class="form-control required">
+                                        <option value="">Select Specialization</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Accounts">Accounts</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-bookmark"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Course" id="Course" required class="form-control required">
-                                                                    <option value="">Select Course</option>
-                                                                    <option value="MCA">MCA</option>
-                                                                    <option value="BCA">BCA</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Course" id="Course" required class="form-control required">
+                                        <option value="">Select Course</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Qualification" id="Qualification" required class="form-control required">
-                                                                    <option value=" ">Select Qualification</option>
-                                                                    <option value="HighSchool">High School</option>
-                                                                    <option value="Seniorsecondary">Senior Secondary School</option>
-                                                                    <option value="Bachelor’s">Bachelor’s Degree</option>
-                                                                    <option value="Master’s">Master’s Degree</option>
-                                                                    <option value="PHD/BED">PHD / BED</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Qualification" name="Qualification" class="form-control" placeholder="Your Qualification" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-book"></i></span>
-                                                                </span>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                @if (Model.Where(x => x.FieldName == "QualificationOther" && x.Active == true).Any())
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    Other
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtUniversity" name="txtUniversity" class="form-control" placeholder="Board/Institute/University" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Year" id="Year" required class="form-control required">
-                                                                    <option value="">Select Year</option>
-                                                                    <option value="1990">1990</option>
-                                                                    <option value="1991">1991</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Year" id="Year" required class="form-control required">
+                                        <option value="">Select Year</option>
+                                        <option value="1990">1990</option>
+                                        <option value="1991">1991</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Year" name="Year" class="form-control" placeholder="Passing Year" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Percentage" id="Percentage" required class="form-control required">
-                                                                    <option value="">Select Percentage</option>
-                                                                    <option value="90%">90%</option>
-                                                                    <option value="95%">95%</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-registered"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Percentage" id="Percentage" required class="form-control required">
+                                        <option value="">Select Percentage</option>
+                                        <option value="90%">90%</option>
+                                        <option value="95%">95%</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Percentage" name="Percentage" class="form-control" placeholder="Passing Percentage" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-registered"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Specialization" id="Specialization" required class="form-control required">
-                                                                    <option value="">Select Specialization</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-bookmark"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Specialization" id="Specialization" required class="form-control required">
+                                        <option value="">Select Specialization</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Accounts">Accounts</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Specialization" name="Specialization" class="form-control" placeholder="Specialization(Accounts,Computer)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-bookmark"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Course" id="Course" required class="form-control required">
-                                                                    <option value="">Select Course</option>
-                                                                    <option value="MCA">MCA</option>
-                                                                    <option value="BCA">BCA</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Course" id="Course" required class="form-control required">
+                                        <option value="">Select Course</option>
+                                        <option value="MCA">MCA</option>
+                                        <option value="BCA">BCA</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Course" name="Course" class="form-control" placeholder="Course(B-ed,Bca)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                }
+
                                             </tbody>
                                         </table>
                                     </div>
 
                                     <br />
-                                    <div class="row">
-                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Present Employment Status </h4></div>
-                                    </div>
-                                    <hr class="tall">
-                                    <br />
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr class="bg-primary">
-                                                    <th colspan="6">Present Employment Status</th>
-                                                </tr>
-                                                <tr class="active">
-                                                    <th>Name Of Organization</th>
-                                                    <th>Post Held</th>
-                                                    <th>From</th>
-                                                    <th>To</th>
-                                                    <th>Industry type</th>
-                                                    <th>Salary Drawn(PM)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtOrganization" name="txtOrganization" class="form-control" placeholder="Name Of Organization" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                    @if (Model.Where(x => x.FieldName == "EmployementStatus" && x.Active == true).Any())
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Present Employment Status </h4></div>
+                                        </div>
+                                        <hr class="tall">
+                                        <br />
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr class="bg-primary">
+                                                        <th colspan="6">Present Employment Status</th>
+                                                    </tr>
+                                                    <tr class="active">
+                                                        <th>Name Of Organization</th>
+                                                        <th>Post Held</th>
+                                                        <th>From</th>
+                                                        <th>To</th>
+                                                        <th>Industry type</th>
+                                                        <th>Salary Drawn(PM)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtOrganization" name="txtOrganization" class="form-control" placeholder="Name Of Organization" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtPostHeld" name="txtPostHeld" class="form-control" placeholder="Post Held" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtPostHeld" name="txtPostHeld" class="form-control" placeholder="Post Held" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-user"></i></span>
+                                                                    </span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mt-lg">
-                                                                    @*<select name="FromMonth" id="FromMonth" required class="form-control required">
-                                                                            <option value="">Select Month</option>
-                                                                            <option value="1990">1990</option>
-                                                                            <option value="1991">1991</option>
-                                                                        </select>*@
-                                                                    <div class="input-group input-group-icon">
-                                                                        <input type="text" id="FromMonth" name="FromMonth" class="form-control" placeholder="From Month" />
-                                                                        <span class="input-group-addon">
-                                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                        </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        @*<select name="FromMonth" id="FromMonth" required class="form-control required">
+                                                <option value="">Select Month</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                            </select>*@
+                                                                        <div class="input-group input-group-icon">
+                                                                            <input type="text" id="FromMonth" name="FromMonth" class="form-control" placeholder="From Month" />
+                                                                            <span class="input-group-addon">
+                                                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        @*<select name="FromYear" id="FromYear" required class="form-control required">
+                                                <option value="">Select Year</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                            </select>*@
+                                                                        <div class="input-group input-group-icon">
+                                                                            <input type="text" id="FromYear" name="FromYear" class="form-control" placeholder="From Year" />
+                                                                            <span class="input-group-addon">
+                                                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mt-lg">
-                                                                    @*<select name="FromYear" id="FromYear" required class="form-control required">
-                                                                            <option value="">Select Year</option>
-                                                                            <option value="1990">1990</option>
-                                                                            <option value="1991">1991</option>
-                                                                        </select>*@
-                                                                    <div class="input-group input-group-icon">
-                                                                        <input type="text" id="FromYear" name="FromYear" class="form-control" placeholder="From Year" />
-                                                                        <span class="input-group-addon">
-                                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                        </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        @*<select name="ToMonth" id="ToMonth" required class="form-control required">
+                                                <option value="">Select Month</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                            </select>*@
+                                                                        <div class="input-group input-group-icon">
+                                                                            <input type="text" id="ToMonth" name="ToMonth" class="form-control" placeholder="To Month" />
+                                                                            <span class="input-group-addon">
+                                                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mt-lg">
+                                                                        @*<select name="ToYear" id="ToYear" required class="form-control required">
+                                                <option value="">Select Year</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                            </select>*@
+                                                                        <div class="input-group input-group-icon">
+                                                                            <input type="text" id="ToYear" name="ToYear" class="form-control" placeholder="To Year" />
+                                                                            <span class="input-group-addon">
+                                                                                <span class="icon"><i class="fa fa-calendar"></i></span>
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mt-lg">
-                                                                    @*<select name="ToMonth" id="ToMonth" required class="form-control required">
-                                                                            <option value="">Select Month</option>
-                                                                            <option value="1990">1990</option>
-                                                                            <option value="1991">1991</option>
-                                                                        </select>*@
-                                                                    <div class="input-group input-group-icon">
-                                                                        <input type="text" id="ToMonth" name="ToMonth" class="form-control" placeholder="To Month" />
-                                                                        <span class="input-group-addon">
-                                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                        </span>
-                                                                    </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                @*<select name="Industry" id="Industry" required class="form-control required">
+                                        <option value="">Select Industry type</option>
+                                        <option value="Computer">Computer</option>
+                                        <option value="Accounts">Accounts</option>
+                                    </select>*@
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="Industry" name="Industry" class="form-control" placeholder="Industry type" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-university"></i></span>
+                                                                    </span>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group mt-lg">
-                                                                    @*<select name="ToYear" id="ToYear" required class="form-control required">
-                                                                            <option value="">Select Year</option>
-                                                                            <option value="1990">1990</option>
-                                                                            <option value="1991">1991</option>
-                                                                        </select>*@
-                                                                    <div class="input-group input-group-icon">
-                                                                        <input type="text" id="ToYear" name="ToYear" class="form-control" placeholder="To Year" />
-                                                                        <span class="input-group-addon">
-                                                                            <span class="icon"><i class="fa fa-calendar"></i></span>
-                                                                        </span>
-                                                                    </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <input type="text" id="txtSalary" name="txtSalary" class="form-control" placeholder="Salary Drawn(PM)" />
+                                                                    <span class="input-group-addon">
+                                                                        <span class="icon"><i class="fa fa-inr"></i></span>
+                                                                    </span>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            @*<select name="Industry" id="Industry" required class="form-control required">
-                                                                    <option value="">Select Industry type</option>
-                                                                    <option value="Computer">Computer</option>
-                                                                    <option value="Accounts">Accounts</option>
-                                                                </select>*@
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="Industry" name="Industry" class="form-control" placeholder="Industry type" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-university"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="form-group mt-lg">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtSalary" name="txtSalary" class="form-control" placeholder="Salary Drawn(PM)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-inr"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    }
+
 
                                     <div class="row">
                                         <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <select class="form-control" id="LanguageDropdown" multiple="multiple">
-                                                                <option>English</option>
-                                                                <option>Hindi</option>
-                                                                <option>English (Intl.)</option>
-                                                                <option>Urdu</option>
+                                            @if (Model.Where(x => x.FieldName == "LanguageKnown" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-6 control-label">Language Known(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <select class="form-control" id="LanguageDropdown" multiple="multiple">
+                                                                    <option>English</option>
+                                                                    <option>Hindi</option>
+                                                                    <option>English (Intl.)</option>
+                                                                    <option>Urdu</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "SkillSet" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-6 control-label">Skill Information(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <select class="form-control" id="SkillDropdown" multiple="multiple">
+                                                                    <option>Accountant</option>
+                                                                    <option>Advocate</option>
+                                                                    <option>Air Hostess</option>
+                                                                    <option data-toggle="collapse" data-target="#field">Data Operator</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="txtWords" name="txtWords" class="form-control" placeholder="Words per Minute to be populated">
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            @if (Model.Where(x => x.FieldName == "Experience" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Experience in Works </label>
+                                                        <div class="col-sm-8">
+                                                            <select name="Experience" id="Experience" required class="form-control required">
+                                                                <option value="">Select Experience</option>
+                                                                <option value="1Years">1 Years</option>
+                                                                <option value="2Years">2 Years</option>
+                                                                <option value="3Years">3 Years</option>
+                                                                <option value="4Years">4 Years</option>
+                                                                <option value="5Years">5 Years</option>
+                                                                <option value="6Years">6 Years</option>
+                                                                <option value="7Years">7 Years</option>
+                                                                <option value="8Years">8 Years</option>
+                                                                <option value="9Years">9 Years</option>
+                                                                <option value="10Years">10 Years</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            @if (Model.Where(x => x.FieldName == "Disability" && x.Active == true).Any())
+                                            {
+                                                <div class="col-md-6">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Are you Person with disabilities </label>
+                                                        <div class="col-sm-8">
+                                                            <select name="disabilities" id="disabilities" required class="form-control required">
+                                                                <option value="">Select Person disabilities</option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        @if (Model.Where(x => x.FieldName == "ExServiceMan" && x.Active == true).Any())
+                                        {
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
+                                                        <div class="col-sm-8">
+                                                            <select name="ExServiceman" id="ExServiceman" required class="form-control required">
+                                                                <option value="">Select Ex-Serviceman</option>
+                                                                <option value="No">No</option>
+                                                                <option value="Yes">Yes</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-6 control-label">Skill Information(Press Ctrl key to select Multiple Language) <span style="color:red;">*</span></label>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <select class="form-control" id="SkillDropdown" multiple="multiple">
-                                                                <option>Accountant</option>
-                                                                <option>Advocate</option>
-                                                                <option>Air Hostess</option>
-                                                                <option data-toggle="collapse" data-target="#field">Data Operator</option>
-                                                            </select>
-                                                        </div>
+                                        }
 
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group mt-lg collapse" id="field" aria-expanded="false">
-                                                    <div class="input-group input-group-icon">
-                                                        <input type="text" id="txtWords" name="txtWords" class="form-control" placeholder="Words per Minute to be populated">
-                                                        <span class="input-group-addon">
-                                                            <span class="icon"><i class="fa fa-user"></i></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Experience in Works </label>
-                                                    <div class="col-sm-8">
-                                                        <select name="Experience" id="Experience" required class="form-control required">
-                                                            <option value="">Select Experience</option>
-                                                            <option value="1Years">1 Years</option>
-                                                            <option value="2Years">2 Years</option>
-                                                            <option value="3Years">3 Years</option>
-                                                            <option value="4Years">4 Years</option>
-                                                            <option value="5Years">5 Years</option>
-                                                            <option value="6Years">6 Years</option>
-                                                            <option value="7Years">7 Years</option>
-                                                            <option value="8Years">8 Years</option>
-                                                            <option value="9Years">9 Years</option>
-                                                            <option value="10Years">10 Years</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Are you Person with disabilities </label>
-                                                    <div class="col-sm-8">
-                                                        <select name="disabilities" id="disabilities" required class="form-control required">
-                                                            <option value="">Select Person disabilities</option>
-                                                            <option value="No">No</option>
-                                                            <option value="Yes">Yes</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Are You Ex-Serviceman </label>
-                                                    <div class="col-sm-8">
-                                                        <select name="ExServiceman" id="ExServiceman" required class="form-control required">
-                                                            <option value="">Select Ex-Serviceman</option>
-                                                            <option value="No">No</option>
-                                                            <option value="Yes">Yes</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <br />
-                                    <div class="row">
-                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Physical Fitness </h4></div>
-                                    </div>
-                                    <hr class="tall">
+                                    @if (Model.Where(x => x.FieldName == "Height" && x.Active == true).Any()
+                                        || Model.Where(x => x.FieldName == "Eyesight" && x.Active == true).Any())
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Physical Fitness </h4></div>
+                                        </div>
+                                        <hr class="tall">
+                                        <div class="row">
+                                            <div class="form-group">
+                                                @if (Model.Where(x => x.FieldName == "Height" && x.Active == true).Any())
+                                                {
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-lg">
+                                                            <label class="col-sm-6 control-label">Height (in cm) </label>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <input type="text" id="txtHeight" name="txtHeight" class="form-control" placeholder="Height (in cm)" />
+                                                                        <span class="input-group-addon">
+                                                                            <span class="icon"><i class="fa fa-user"></i></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                @if (Model.Where(x => x.FieldName == "Eyesight" && x.Active == true).Any())
+                                                {
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-lg">
+                                                            <label class="col-sm-4 control-label">Eye Sight</label>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <div class="nice-radio nice-radio-inline">
+                                                                        <input class="radio-o" type="radio" value="Normal" name="rdbEyeSight" id="rdbEyeSightNormal" checked="checked">
+                                                                        <label for="niceRadioAlt1">Normal</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <div class="nice-radio nice-radio-inline">
+                                                                        <input class="radio-o" type="radio" value="Corrected" name="rdbEyeSight" id="rdbEyeSightCorrected">
+                                                                        <label for="niceRadioAlt1">Corrected</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
 
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-6 control-label">Height (in cm) </label>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" id="txtHeight" name="txtHeight" class="form-control" placeholder="Height (in cm)" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-user"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Eye Sigpincodeht</label>
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <div class="nice-radio nice-radio-inline">
-                                                                <input class="radio-o" type="radio" value="Normal" name="rdbEyeSight" id="rdbEyeSightNormal" checked="checked">
-                                                                <label for="niceRadioAlt1">Normal</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <div class="nice-radio nice-radio-inline">
-                                                                <input class="radio-o" type="radio" value="Corrected" name="rdbEyeSight" id="rdbEyeSightCorrected">
-                                                                <label for="niceRadioAlt1">Corrected</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    }
+
                                     <br />
                                     <div class="row">
                                         <div class="col-md-5">

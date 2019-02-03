@@ -427,7 +427,7 @@ namespace UptronWeb.Controllers
             return View(functinaries);
         }
         [HttpPost]
-        public ActionResult KeyFunctionaries(string name,string Location, string Designation, HttpPostedFileBase keyfunctionariesFile, int? Id)
+        public ActionResult KeyFunctionaries(string name, string Location, string Designation, HttpPostedFileBase keyfunctionariesFile, int? Id)
         {
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(keyfunctionariesFile, fileattachment);
@@ -452,7 +452,7 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("Key Functionaries Has been Saved", "Key Functionaries Saved");
             }
-            else if(result == Enums.CrudStatus.Updated)
+            else if (result == Enums.CrudStatus.Updated)
             {
                 SetAlertMessage("Key Functionaries has been Updated", "Key Functionaries Updated");
             }
@@ -542,7 +542,7 @@ namespace UptronWeb.Controllers
 
             if (Id == null)
                 majorprojects.Createddate = DateTime.Now;
-            if (ProjectsImage!=null)
+            if (ProjectsImage != null)
             {
                 majorprojects.Image = fileattachment;
             }
@@ -644,7 +644,7 @@ namespace UptronWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Slider(string SliderName, string Caption1, string Caption2, string CaptionAuthor, 
+        public ActionResult Slider(string SliderName, string Caption1, string Caption2, string CaptionAuthor,
                                    string OrderNumber, string IsActive, HttpPostedFileBase SliderFile, int? Id)
         {
             byte[] fileattachment = null;
@@ -657,7 +657,7 @@ namespace UptronWeb.Controllers
                 Caption2 = Caption2,
                 CaptionAuthor = CaptionAuthor,
                 IsActive = IsActive == "on" ? true : false,
-                Id = Id!=null?Id.Value : 0
+                Id = Id != null ? Id.Value : 0
             };
             if (!string.IsNullOrEmpty(OrderNumber))
                 slider.OrderNumber = Convert.ToInt32(OrderNumber);
@@ -665,7 +665,7 @@ namespace UptronWeb.Controllers
                 slider.OrderNumber = null;
             if (Id == null)
                 slider.CreatedDate = DateTime.Now;
-            if (SliderFile!=null)
+            if (SliderFile != null)
             {
                 slider.SliderImage = fileattachment;
             }
@@ -728,6 +728,24 @@ namespace UptronWeb.Controllers
                 SetAlertMessage("Quick Enquiry detail is not Archived");
             }
             return RedirectToAction("QuickEnquiryDetail");
+        }
+        public ActionResult JobPortalRegistrationForm(string ActionForm)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            List<JobRegistrationForm> list = detail.GetJobPortalRegistrationForm();
+            ViewData["JobFormList"] = list;
+            if (ActionForm == "update")
+            {
+                SetAlertMessage("Registration Form Updated");
+            }
+            return View();
+        }
+
+        public ActionResult UpdateJobRegistrationForm(int Id, string ActionForm)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var result = detail.UpdateJobRegistrationForm(Id, ActionForm);
+            return RedirectToAction("JobPortalRegistrationForm", new { ActionForm = "update" });
         }
     }
 }

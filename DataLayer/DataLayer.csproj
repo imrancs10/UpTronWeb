@@ -93,6 +93,9 @@
     <Compile Include="JobRegistrationEmployement.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobRegistrationForm.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobRegistrationLanguage.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

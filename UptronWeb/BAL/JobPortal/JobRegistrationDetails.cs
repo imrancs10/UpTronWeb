@@ -125,5 +125,38 @@ namespace UptronWeb.BAL
                 return Enums.CrudStatus.DataAlreadyExist;
             }
         }
+        public List<JobRegistrationForm> GetJobPortalRegistrationForm()
+        {
+            _db = new UptronWebEntities();
+            var list = _db.JobRegistrationForms.ToList();
+            return list;
+        }
+        public Enums.CrudStatus UpdateJobRegistrationForm(int Id, string Action)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            var form = _db.JobRegistrationForms.Where(x => x.Id == Id).FirstOrDefault();
+            if (form != null)
+            {
+                if (Action == "InActive")
+                {
+                    form.Active = false;
+                }
+                else if (Action == "Active")
+                {
+                    form.Active = true;
+                }
+                else if (Action == "NotMandatory")
+                {
+                    form.Mandatory = false;
+                }
+                else if (Action == "Mandatory")
+                {
+                    form.Mandatory = true;
+                }
+                _effectRow = _db.SaveChanges();
+            }
+            return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+        }
     }
 }

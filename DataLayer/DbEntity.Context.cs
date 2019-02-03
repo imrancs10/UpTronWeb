@@ -51,5 +51,6 @@ namespace DataLayer
         public virtual DbSet<MajorProject> MajorProjects { get; set; }
         public virtual DbSet<JobDocumentUpload> JobDocumentUploads { get; set; }
         public virtual DbSet<JobResignation> JobResignations { get; set; }
+        public virtual DbSet<JobRegistrationForm> JobRegistrationForms { get; set; }
     }
 }
