@@ -17,6 +17,7 @@ using UptronWeb.Infrastructure.Utility;
 using System.Configuration;
 using UptronWeb.Models.Common;
 using UptronWeb.Models;
+using System.Web.UI;
 
 namespace UptronWeb.Controllers
 {
@@ -330,7 +331,7 @@ namespace UptronWeb.Controllers
             service.Name = imgsrc; //it just a hack to pass image to view
             return View(service);
         }
-
+        [OutputCache(Location = OutputCacheLocation.Server, Duration = 600, VaryByParam = "")]
         public JsonResult GetAllServiceSliderList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -351,7 +352,7 @@ namespace UptronWeb.Controllers
             return Json(modelList, JsonRequestBehavior.AllowGet);
         }
 
-        
+
         public JsonResult GetPartnerList()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
