@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UptronWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="CityId" />
@@ -243,13 +243,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
-          <Property Name="PageHeaderImage" Type="varbinary(max)" />
-          <Property Name="SliderImage" Type="varbinary(max)" />
           <Property Name="Caption" Type="varchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderNumber" Type="int" />
           <Property Name="ServiceDescription" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="PageHeaderImage" Type="varbinary(max)" />
+          <Property Name="SliderImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Slider">
           <Key>
@@ -326,6 +326,7 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_City_State">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
@@ -1083,6 +1084,7 @@
           <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_VendorDetail" FromRole="VendorDetail" ToRole="JobDocumentUpload" />
           <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_VendorDetail" FromRole="VendorDetail" ToRole="JobResignation" />
           <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_VendorDetail" FromRole="VendorDetail" ToRole="JobRegistration" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Partner">
           <Key>
@@ -1477,6 +1479,7 @@
           <EntitySetMapping Name="VendorDetails">
             <EntityTypeMapping TypeName="UptronWebModel.VendorDetail">
               <MappingFragment StoreEntitySet="VendorDetail">
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />

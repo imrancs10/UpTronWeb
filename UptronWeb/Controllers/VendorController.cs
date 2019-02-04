@@ -29,7 +29,7 @@ namespace UptronWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult VendorEntry(string txtVendorName, string txtContactPerson, string txtPhone, string txtTypeofFirm, string txtTypeofBusiness, string txtGSTNo, string txtTypeofStream, string txtAddress)
+        public ActionResult VendorEntry(string txtVendorName, string txtContactPerson, string txtPhone, string txtTypeofFirm, string txtTypeofBusiness, string txtGSTNo, string txtTypeofStream, string txtEmailId, string txtAddress)
         {
             VendorDetailBAL bal = new VendorDetailBAL();
             VendorDetail vendor = new VendorDetail()
@@ -37,6 +37,7 @@ namespace UptronWeb.Controllers
                 ContactPerson = txtContactPerson,
                 CreatedDate = DateTime.Now,
                 FullAddress = txtAddress,
+                EmailId = txtEmailId,
                 GSTNumber = txtGSTNo,
                 IsActive = true,
                 Permitted = false,
