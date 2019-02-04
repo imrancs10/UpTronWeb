@@ -52,5 +52,6 @@ namespace DataLayer
         public virtual DbSet<JobDocumentUpload> JobDocumentUploads { get; set; }
         public virtual DbSet<JobResignation> JobResignations { get; set; }
         public virtual DbSet<JobRegistrationForm> JobRegistrationForms { get; set; }
+        public virtual DbSet<VendorJob> VendorJobs { get; set; }
     }
 }

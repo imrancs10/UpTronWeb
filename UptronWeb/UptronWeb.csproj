@@ -1556,6 +1556,7 @@
     <Content Include="Views\Shared\_Partner.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Admin\JobPortalRegistrationForm.cshtml" />
+    <Content Include="Views\Admin\VendorJobEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
