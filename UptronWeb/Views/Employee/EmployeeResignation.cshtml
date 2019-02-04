@@ -96,14 +96,14 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr class="bg-primary">
-                                                <th colspan="5">Job Resignation Detail</th>
+                                                <th colspan="4">Job Resignation Detail</th>
                                             </tr>
                                             <tr class="active">
                                                 <th style="width:10%">Sl.no</th>
                                                 <th style="width:20%">Vendor Name</th>
                                                 <th style="width:20%">Resignation date</th>
                                                 <th style="width:20%">Resignation Reason</th>
-                                                <th style="width:30%">Action</th>
+                                                @*<th style="width:30%">Action</th>*@
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -140,7 +140,7 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="width:30%">
+                                                        @*<td style="width:30%">
                                                             <div class="form-group mt-lg">
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditJobResignation(@jobresignation.Id, @jobresignation.VendorId, '@jobresignation.ResignationDate', '@jobresignation.ResignationReason')">Edit</a>
@@ -148,7 +148,7 @@
                                                                     <a href="#" class="btn btn-danger">Delete</a>
                                                                 </div>
                                                             </div>
-                                                        </td>
+                                                        </td>*@
                                                     </tr>
                                                     i = i + 1;
                                                 }

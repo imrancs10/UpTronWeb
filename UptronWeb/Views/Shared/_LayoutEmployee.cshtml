@@ -1,5 +1,9 @@
 ﻿@using UptronWeb.Global
 @using UptronWeb.Infrastructure.Authentication;
+@using UptronWeb.Infrastructure.Utility;
+@{
+    Layout = null;
+}
 <!DOCTYPE html>
 <html class="no-js">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -90,15 +94,15 @@
                 <div class="nav-wrapper">
                     <ul class="nav nav-stacked" role="navigation">
                         @*<li class="nav-item open active" role="presentation">
-                                <a href="#" data-toggle="nav-child">
-                                    <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
-                                    <span class="nav-text">Dashboard</span>
-                                </a>
-                                <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
-                                    <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
-                                </ul>
-                            </li>*@
+            <a href="#" data-toggle="nav-child">
+                <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
+                <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
+            </ul>
+        </li>*@
                         <li class="nav-header" role="presentation">GET STARTED</li>
                         <li class="nav-item" role="presentation">
                             <a href="~/Employee/EmployeeProfile">
@@ -106,18 +110,24 @@
                                 <span class="nav-text">Profile</span>
                             </a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="~/Employee/EmployeeResignation">
-                                <span class="nav-icon"><i class="fa fa-cubes"></i></span>
-                                <span class="nav-text">Resignation</span>
-                            </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a href="~/Employee/EmployeeSlip">
-                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                <span class="nav-text">Employee Slip</span>
-                            </a>
-                        </li>
+                        @{
+                            var status = GetEmployementDetail();
+                            if (status == "Employed")
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a href="~/Employee/EmployeeResignation">
+                                        <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                                        <span class="nav-text">Resignation</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="~/Employee/EmployeeSlip">
+                                        <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                        <span class="nav-text">Employee Slip</span>
+                                    </a>
+                                </li>
+                            }
+                        }
                         <li class="nav-item" role="presentation">
                             <a href="#" data-toggle="nav-child">
                                 <span class="nav-icon"><i class="fa fa-align-left"></i></span>
