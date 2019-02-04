@@ -32,5 +32,12 @@ namespace UptronWeb.BAL.Common
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.VendorDetails.ToList();
         }
+
+        public List<VendorJob> GetJobType()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.VendorJobs.ToList();
+        }
     }
 }

@@ -66,5 +66,12 @@ namespace UptronWeb.Controllers
             CommonDetails _details = new CommonDetails();
             return Json(_details.GetVendor());
         }
+
+        [HttpPost]
+        public JsonResult GetJobType()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetJobType());
+        }
     }
 }

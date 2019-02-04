@@ -23,7 +23,7 @@
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                             <tr class="table-hover table-bordered bg-primary">
-                                                <th colspan="8">Job Portal Registration List Detail</th>
+                                                <th colspan="9">Job Portal Registration List Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -36,6 +36,7 @@
                                                 <th scope="col">Identity Number</th>
                                                 <th scope="col">View Details</th>
                                                 <th scope="col">Authorization</th>
+                                                <th scope="col">Alotted</th>
                                             </tr>
                                             @{
                                                 var list = ViewData["JobList"] as List<JobRegistration>;
@@ -68,6 +69,9 @@
                                                             <td align="center" valign="middle">
                                                                 <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
                                                             </td>
+                                                            <td align="center" valign="middle">
+                                                                <a data-toggle="modal" data-target="#customModal2" id="lblAlotted" class="btn btn-success" role="menuitem" tabindex="-1">Job Alott</a>
+                                                            </td>
                                                         </tr>
                                                     }
                                                 }
@@ -97,3 +101,132 @@
     </div><!-- /.content -->
 
 </section>
+
+<!-- customModal2 -->
+<div class="modal" id="customModal2" data-transition="flipXIn" tabindex="-1" role="dialog" aria-labelledby="modalBasicLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="padding: 0 12px">
+                <div class="row">
+                    <div class="clearfix">
+                        <button type="button" class="btn btn-xs btn-icon pull-right" data-dismiss="modal" aria-hidden="true"><i class="icon_close fa-2x"></i></button>
+
+                        <div class="modal-header" style="background-color:#fff;">
+                            <h4 class="modal-title" id="modalBasicLabel">Alooted Job</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <div class="form-group mt-lg">
+                                        <label class="col-sm-4 control-label">Vendor Name</label>
+                                        <div class="col-md-8">
+                                            <select name="Vendor" id="Vendor" required class="form-control required"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <div class="form-group mt-lg">
+                                        <label class="col-sm-4 control-label">Job Type</label>
+                                        <div class="col-md-8">
+                                            <select name="JobType" id="JobType" required class="form-control required"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-4 control-label">Total Seat</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group input-group-in" style="margin-top: 5px;">
+                                            <span class="input-group-addon"><i class="icon-key"></i></span>
+                                            <input type="text" id="TotalSeat" name="TotalSeat" class="form-control" placeholder="Total Seat" runat="server" />
+                                            <span class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group has-feedback">
+                                    <label class="col-sm-4 control-label">RemainingSeat</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group input-group-in" style="margin-top: 5px;margin-bottom:5px;">
+                                            <span class="input-group-addon"><i class="icon-check"></i></span>
+                                            <input type="text" id="RemainingSeat" name="RemainingSeat" class="form-control" placeholder="Remaining Seat" runat="server" />
+                                            <span class="form-control-feedback"></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="modal-footer">
+                            <input id="btnCancel" type="button" name="cancel" value="Cancel" class="btn btn-default" data-dismiss="modal" runat="server" />
+                            <input id="btnlogin" type="submit" name="submit" value="Save Changes" class="btn btn-primary" runat="server" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        fillVendor();
+        fillJobType();
+    })
+    function fillVendor() {
+        let dropdown = $('#Vendor');
+        dropdown.empty();
+        dropdown.append('<option value="">--Select Vendor Name--</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Common/GetVendor',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.VendorName));
+                });
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    function fillJobType() {
+        debugger
+        let dropdown = $('#JobType');
+        dropdown.empty();
+        dropdown.append('<option value="">--Select Job Type--</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'JSON',
+            type: 'Post',
+            url: '/Common/GetJobType',
+            async: true,
+            contentType: "application/json; charset = utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option').attr('value', entry.Id).text(entry.Jobtype));
+                });
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    }
+</script>

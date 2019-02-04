@@ -3248,7 +3248,8 @@ fieldset[disabled] .btn-primary:hover {
 .btn-success {
     color: rgba(22, 24, 27, .87);
     background-color: #5D9CEC;
-    border-color: transparent
+    border-color: transparent;
+    color: #fff;
 }
 .btn-success.active,
 .btn-success.focus,
