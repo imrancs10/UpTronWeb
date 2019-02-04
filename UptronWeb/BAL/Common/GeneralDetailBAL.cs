@@ -565,5 +565,64 @@ namespace UptronWeb.BAL.Common
             _db.SaveChanges();
             return true;
         }
+
+        public Enums.CrudStatus SaveVendorJob(VendorJob vendorjob)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (vendorjob.Id > 0)
+            {
+                var _deptRow = _db.VendorJobs.Where(x => x.Id == vendorjob.Id).FirstOrDefault();
+                if (_deptRow!=null)
+                {
+                    _deptRow.Id = vendorjob.Id;
+                    _deptRow.VendorId = vendorjob.VendorId;
+                    _deptRow.Jobtype = vendorjob.Jobtype;
+                    _deptRow.NoofRequirement = vendorjob.NoofRequirement;
+                    _deptRow.SkillsRequired = vendorjob.SkillsRequired;
+                    _deptRow.CreatedDate = vendorjob.CreatedDate;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+               
+            }
+            else
+            {
+                var _deptRow = _db.VendorJobs.Where(x => x.VendorId == vendorjob.VendorId && x.Jobtype == vendorjob.Jobtype).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(vendorjob).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+                
+            }
+        }
+
+        public List<VendorJob> GetAllVendorJob()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.VendorJobs.ToList();
+            return result;
+        }
+
+        public bool DeletevendorJobById(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.VendorJobs.FirstOrDefault(x => x.Id == Id);
+            _db.VendorJobs.Remove(result);
+            int _effectRow = _db.SaveChanges();
+            return true;
+        }
+
     }
 }

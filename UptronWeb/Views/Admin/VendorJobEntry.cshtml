@@ -1,0 +1,221 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<VendorJob>
+<form action="VendorjobEntry" method="post">
+    <input type="hidden" name="Id" id="hiddenId"/>
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active center">Vendor Job Entry</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body" style="height:900px;">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Vendor Name</label>
+                                                        <div class="col-md-8">
+                                                            <select name="Vendor" id="Vendor" required class="form-control"></select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Job Type</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="JobType" name="JobType" class="form-control" placeholder="Job Type" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">No of Requirement</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="NoofRequirement" name="NoofRequirement" class="form-control" placeholder="No of Requirement" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="form-group mt-lg">
+                                                        <label class="col-sm-4 control-label">Skills required</label>
+                                                        <div class="col-md-8">
+                                                            <textarea id="Skills" class="form-control" rows="4" placeholder="Skills required" required name="Skills"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-offset-5">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="6">Vendor Job Entry</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th style="width:10%">Sl.no</th>
+                                                <th style="width:20%">Vendor Name</th>
+                                                <th style="width:20%">Job Type</th>
+                                                <th style="width:10%">No Of Requirement</th>
+                                                <th style="width:20%">Skills required</th>
+                                                <th style="width:20%">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var vendorjob in Model)
+                                                {
+                                                    <tr>
+                                                        <td style="width:10%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:20%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@vendorjob.VendorDetail.VendorName</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:20%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@vendorjob.Jobtype</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:10%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@vendorjob.NoofRequirement</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:20%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline center">@vendorjob.SkillsRequired</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td style="width:20%">
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                    <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditVendorjob(@vendorjob.Id, @vendorjob.VendorId, '@vendorjob.Jobtype', '@vendorjob.NoofRequirement', '@vendorjob.SkillsRequired')">Edit</a>
+                                                                    <span class="label-divider" id="Span1">or</span>
+                                                                    <a id="lnkDelete" href="DeleteVendorJob/@vendorjob.Id" class="btn btn-danger">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        fillVendor();
+    })
+    function fillVendor() {
+        let dropdown = $('#Vendor');
+        dropdown.empty();
+        dropdown.append('<option value="">--Select Vendor Name--</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Common/GetVendor',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.VendorName));
+                });
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    function EditVendorjob(Id, VendorId, Jobtype, NoofRequirement, SkillsRequired) {
+        $('#hiddenId').val(Id);
+        $('#btnSave').val('Update');
+        $('#Vendor').val(VendorId);
+        $('#JobType').val(Jobtype);
+        $('#NoofRequirement').val(NoofRequirement);
+        $('#Skills').val(SkillsRequired);
+    }
+</script>

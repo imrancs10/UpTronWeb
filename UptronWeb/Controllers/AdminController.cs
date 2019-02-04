@@ -747,5 +747,49 @@ namespace UptronWeb.Controllers
             var result = detail.UpdateJobRegistrationForm(Id, ActionForm);
             return RedirectToAction("JobPortalRegistrationForm", new { ActionForm = "update" });
         }
+
+        public ActionResult VendorJobEntry()
+        {
+            GeneralDetailBAL bAL = new GeneralDetailBAL();
+            var result = bAL.GetAllVendorJob();
+            return View(result);
+        }
+        [HttpPost]
+        public ActionResult VendorJobEntry(string Vendor, string JobType, string NoofRequirement, string Skills, int? Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            VendorJob vendorjob = new VendorJob()
+            {
+                VendorId = Convert.ToInt32(Vendor),
+                Jobtype = JobType,
+                NoofRequirement = Convert.ToInt32(NoofRequirement),
+                SkillsRequired = Skills,
+                Id = Id != null ? Id.Value : 0
+            };
+            if (Id==null)
+                vendorjob.CreatedDate = DateTime.Now;
+            var result = bal.SaveVendorJob(vendorjob);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Vendor job has beed saved", "vendor job Saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Vendor Job has been Updated", "Vendor job Updated");
+            }
+            else
+            {
+                SetAlertMessage("Vendor job has been Already Exists", "Data Already Exists");
+            }
+            var message = bal.GetAllVendorJob();
+            return View(message);
+        }
+
+        public ActionResult DeleteVendorJob(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeletevendorJobById(Id);
+            return RedirectToAction("VendorJobEntry");
+        }
     }
 }

@@ -67,7 +67,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="JoiningDate" Type="datetime" />
           <Property Name="SalarySlip" Type="varbinary(max)" />
@@ -165,7 +165,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="ResignationDate" Type="datetime" />
           <Property Name="ResignationReason" Type="varchar(max)" />
@@ -327,6 +327,18 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="EmailId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VendorJob">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="Jobtype" Type="varchar" MaxLength="50" />
+          <Property Name="NoofRequirement" Type="int" />
+          <Property Name="SkillsRequired" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="JobRegistrationId" Type="int" />
         </EntityType>
         <Association Name="FK_City_State">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
@@ -520,6 +532,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VendorJob_JobRegistration">
+          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
+          <End Role="VendorJob" Type="Self.VendorJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorJob_VendorDetail">
+          <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
+          <End Role="VendorJob" Type="Self.VendorJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorJob_VendorJob">
+          <End Role="VendorJob" Type="Self.VendorJob" Multiplicity="1" />
+          <End Role="VendorJob1" Type="Self.VendorJob" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VendorJob">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="UptronWebModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactUsDetail" EntityType="Self.ContactUsDetail" Schema="dbo" store:Type="Tables" />
@@ -548,6 +596,7 @@
           <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorDetail" EntityType="Self.VendorDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorJob" EntityType="Self.VendorJob" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
@@ -611,6 +660,18 @@
           <AssociationSet Name="FK_UserMaster_UserMaster1" Association="Self.FK_UserMaster_UserMaster1">
             <End Role="UserMaster" EntitySet="UserMaster" />
             <End Role="UserMaster1" EntitySet="UserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorJob_JobRegistration" Association="Self.FK_VendorJob_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistration" />
+            <End Role="VendorJob" EntitySet="VendorJob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorJob_VendorDetail" Association="Self.FK_VendorJob_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetail" />
+            <End Role="VendorJob" EntitySet="VendorJob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorJob_VendorJob" Association="Self.FK_VendorJob_VendorJob">
+            <End Role="VendorJob" EntitySet="VendorJob" />
+            <End Role="VendorJob1" EntitySet="VendorJob" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -709,6 +770,19 @@
             <End Role="JobRegistration" EntitySet="JobRegistrations" />
           </AssociationSet>
           <EntitySet Name="JobRegistrationForms" EntityType="UptronWebModel.JobRegistrationForm" />
+          <EntitySet Name="VendorJobs" EntityType="UptronWebModel.VendorJob" />
+          <AssociationSet Name="FK_VendorJob_JobRegistration" Association="UptronWebModel.FK_VendorJob_JobRegistration">
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+            <End Role="VendorJob" EntitySet="VendorJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorJob_VendorDetail" Association="UptronWebModel.FK_VendorJob_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetails" />
+            <End Role="VendorJob" EntitySet="VendorJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorJob_VendorJob" Association="UptronWebModel.FK_VendorJob_VendorJob">
+            <End Role="VendorJob" EntitySet="VendorJobs" />
+            <End Role="VendorJob1" EntitySet="VendorJobs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -812,6 +886,7 @@
           <Property Name="EmployementStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorId" Type="Int32" />
           <NavigationProperty Name="VendorDetail" Relationship="UptronWebModel.FK_JobRegistration_VendorDetail" FromRole="JobRegistration" ToRole="VendorDetail" />
+          <NavigationProperty Name="VendorJobs" Relationship="UptronWebModel.FK_VendorJob_JobRegistration" FromRole="JobRegistration" ToRole="VendorJob" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -1084,6 +1159,7 @@
           <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_VendorDetail" FromRole="VendorDetail" ToRole="JobDocumentUpload" />
           <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_VendorDetail" FromRole="VendorDetail" ToRole="JobResignation" />
           <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_VendorDetail" FromRole="VendorDetail" ToRole="JobRegistration" />
+          <NavigationProperty Name="VendorJobs" Relationship="UptronWebModel.FK_VendorJob_VendorDetail" FromRole="VendorDetail" ToRole="VendorJob" />
           <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Partner">
@@ -1257,6 +1333,58 @@
           <Property Name="Active" Type="Boolean" />
           <Property Name="Mandatory" Type="Boolean" />
         </EntityType>
+        <EntityType Name="VendorJob">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="Jobtype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoofRequirement" Type="Int32" />
+          <Property Name="SkillsRequired" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="JobRegistrationId" Type="Int32" />
+          <NavigationProperty Name="JobRegistration" Relationship="UptronWebModel.FK_VendorJob_JobRegistration" FromRole="VendorJob" ToRole="JobRegistration" />
+          <NavigationProperty Name="VendorDetail" Relationship="UptronWebModel.FK_VendorJob_VendorDetail" FromRole="VendorJob" ToRole="VendorDetail" />
+          <NavigationProperty Name="VendorJob1" Relationship="UptronWebModel.FK_VendorJob_VendorJob" FromRole="VendorJob" ToRole="VendorJob1" />
+          <NavigationProperty Name="VendorJob2" Relationship="UptronWebModel.FK_VendorJob_VendorJob" FromRole="VendorJob1" ToRole="VendorJob" />
+        </EntityType>
+        <Association Name="FK_VendorJob_JobRegistration">
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="0..1" />
+          <End Type="UptronWebModel.VendorJob" Role="VendorJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobRegistration">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob">
+              <PropertyRef Name="JobRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorJob_VendorDetail">
+          <End Type="UptronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
+          <End Type="UptronWebModel.VendorJob" Role="VendorJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorJob_VendorJob">
+          <End Type="UptronWebModel.VendorJob" Role="VendorJob" Multiplicity="1" />
+          <End Type="UptronWebModel.VendorJob" Role="VendorJob1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VendorJob">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorJob1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1613,6 +1741,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VendorJobs">
+            <EntityTypeMapping TypeName="UptronWebModel.VendorJob">
+              <MappingFragment StoreEntitySet="VendorJob">
+                <ScalarProperty Name="JobRegistrationId" ColumnName="JobRegistrationId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SkillsRequired" ColumnName="SkillsRequired" />
+                <ScalarProperty Name="NoofRequirement" ColumnName="NoofRequirement" />
+                <ScalarProperty Name="Jobtype" ColumnName="Jobtype" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1679,6 +1820,10 @@
         <AssociationConnector Association="UptronWebModel.FK_JobResignation_VendorDetail" />
         <AssociationConnector Association="UptronWebModel.FK_JobRegistration_VendorDetail" />
         <EntityTypeShape EntityType="UptronWebModel.JobRegistrationForm" Width="1.5" PointX="14.375" PointY="11.75" />
+        <EntityTypeShape EntityType="UptronWebModel.VendorJob" Width="1.5" PointX="16.625" PointY="9" />
+        <AssociationConnector Association="UptronWebModel.FK_VendorJob_JobRegistration" />
+        <AssociationConnector Association="UptronWebModel.FK_VendorJob_VendorDetail" />
+        <AssociationConnector Association="UptronWebModel.FK_VendorJob_VendorJob" />
         </Diagram>
     </Diagrams>
   </Designer>
