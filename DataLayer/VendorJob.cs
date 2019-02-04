@@ -14,15 +14,21 @@ namespace DataLayer
     
     public partial class VendorJob
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public VendorJob()
+        {
+            this.JobRegistrations = new HashSet<JobRegistration>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> VendorId { get; set; }
         public string Jobtype { get; set; }
         public Nullable<int> NoofRequirement { get; set; }
         public string SkillsRequired { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> JobRegistrationId { get; set; }
     
-        public virtual JobRegistration JobRegistration { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobRegistration> JobRegistrations { get; set; }
         public virtual VendorDetail VendorDetail { get; set; }
         public virtual VendorJob VendorJob1 { get; set; }
         public virtual VendorJob VendorJob2 { get; set; }

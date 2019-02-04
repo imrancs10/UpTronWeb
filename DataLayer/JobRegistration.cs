@@ -17,13 +17,12 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public JobRegistration()
         {
+            this.JobDocumentUploads = new HashSet<JobDocumentUpload>();
             this.JobRegistrationEmployements = new HashSet<JobRegistrationEmployement>();
             this.JobRegistrationLanguages = new HashSet<JobRegistrationLanguage>();
             this.JobRegistrationQualifications = new HashSet<JobRegistrationQualification>();
             this.JobRegistrationSkills = new HashSet<JobRegistrationSkill>();
-            this.JobDocumentUploads = new HashSet<JobDocumentUpload>();
             this.JobResignations = new HashSet<JobResignation>();
-            this.VendorJobs = new HashSet<VendorJob>();
         }
     
         public int Id { get; set; }
@@ -52,10 +51,13 @@ namespace DataLayer
         public Nullable<bool> IsActive { get; set; }
         public string Password { get; set; }
         public string EmployementStatus { get; set; }
-        public Nullable<int> VendorId { get; set; }
+        public Nullable<int> VendorJobId { get; set; }
     
         public virtual City City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
         public virtual State State { get; set; }
+        public virtual VendorJob VendorJob { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationEmployement> JobRegistrationEmployements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -65,11 +67,6 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobRegistrationSkill> JobRegistrationSkills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobResignation> JobResignations { get; set; }
-        public virtual VendorDetail VendorDetail { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VendorJob> VendorJobs { get; set; }
     }
 }

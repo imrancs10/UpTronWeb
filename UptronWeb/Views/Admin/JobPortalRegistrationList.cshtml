@@ -36,7 +36,7 @@
                                                 <th scope="col">Identity Number</th>
                                                 <th scope="col">View Details</th>
                                                 <th scope="col">Authorization</th>
-                                                <th scope="col">Alotted</th>
+                                                <th scope="col">Alloted</th>
                                             </tr>
                                             @{
                                                 var list = ViewData["JobList"] as List<JobRegistration>;
@@ -70,7 +70,14 @@
                                                                 <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
                                                             </td>
                                                             <td align="center" valign="middle">
-                                                                <a data-toggle="modal" data-target="#customModal2" id="lblAlotted" class="btn btn-success" role="menuitem" tabindex="-1">Job Alott</a>
+                                                                @if (person.EmployementStatus == "Employed")
+                                                                {
+                                                                    <a id="" class="btn btn-primary" role="menuitem" tabindex="-1">Job Alloted</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a id="lblAlotted" class="btn btn-success" data-Id="@person.Id" role="menuitem" tabindex="-1">Job Allot</a>
+                                                                }
                                                             </td>
                                                         </tr>
                                                     }
@@ -112,7 +119,7 @@
                         <button type="button" class="btn btn-xs btn-icon pull-right" data-dismiss="modal" aria-hidden="true"><i class="icon_close fa-2x"></i></button>
 
                         <div class="modal-header" style="background-color:#fff;">
-                            <h4 class="modal-title" id="modalBasicLabel">Alooted Job</h4>
+                            <h4 class="modal-title" id="modalBasicLabel">Allot Job</h4>
                         </div>
                         <div class="modal-body">
                             <div class="col-md-12">
@@ -137,24 +144,11 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group has-feedback">
-                                    <label class="col-sm-4 control-label">Total Seat</label>
-                                    <div class="col-md-8">
-                                        <div class="input-group input-group-in" style="margin-top: 5px;">
-                                            <span class="input-group-addon"><i class="icon-key"></i></span>
-                                            <input type="text" id="TotalSeat" name="TotalSeat" class="form-control" placeholder="Total Seat" runat="server" />
-                                            <span class="form-control-feedback"></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group has-feedback">
-                                    <label class="col-sm-4 control-label">RemainingSeat</label>
+                                    <label class="col-sm-4 control-label">Remaining Seat</label>
                                     <div class="col-md-8">
                                         <div class="input-group input-group-in" style="margin-top: 5px;margin-bottom:5px;">
                                             <span class="input-group-addon"><i class="icon-check"></i></span>
-                                            <input type="text" id="RemainingSeat" name="RemainingSeat" class="form-control" placeholder="Remaining Seat" runat="server" />
+                                            <input type="text" id="RemainingSeat" name="RemainingSeat" class="form-control" placeholder="Remaining Seat" readonly />
                                             <span class="form-control-feedback"></span>
                                         </div>
                                     </div>
@@ -164,8 +158,8 @@
                         </div>
                         <br />
                         <div class="modal-footer">
-                            <input id="btnCancel" type="button" name="cancel" value="Cancel" class="btn btn-default" data-dismiss="modal" runat="server" />
-                            <input id="btnlogin" type="submit" name="submit" value="Save Changes" class="btn btn-primary" runat="server" />
+                            <input id="btnCancel" type="button" name="cancel" value="Cancel" class="btn btn-default" data-dismiss="modal" />
+                            <input id="btnSubmitJob" type="submit" name="submit" value="Allot Job" class="btn btn-primary" />
                         </div>
                     </div>
 
@@ -177,13 +171,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        debugger
         fillVendor();
-        fillJobType();
     })
     function fillVendor() {
         let dropdown = $('#Vendor');
         dropdown.empty();
-        dropdown.append('<option value="">--Select Vendor Name--</option>');
+        dropdown.append('<option value="">Vendor Name</option>');
         dropdown.prop('selectedIndex', 0);
         $.ajax({
             dataType: 'json',
@@ -197,36 +191,102 @@
                 });
             },
             failure: function (response) {
-                alert(response);
+                alert(response.responseText);
             },
             error: function (response) {
                 alert(response.responseText);
             }
         });
     }
-    function fillJobType() {
-        debugger
+
+    $('#Vendor').change(function () {
+        var selectedValue = $(this).val();
+        if (selectedValue != '') {
+            fillJobType(selectedValue);
+        }
+    })
+    function fillJobType(vendorId) {
         let dropdown = $('#JobType');
         dropdown.empty();
-        dropdown.append('<option value="">--Select Job Type--</option>');
+        dropdown.append('<option value="">Job Type</option>');
         dropdown.prop('selectedIndex', 0);
         $.ajax({
             dataType: 'JSON',
             type: 'Post',
+            data: '{VendorId: "' + vendorId + '" }',
             url: '/Common/GetJobType',
             async: true,
             contentType: "application/json; charset = utf-8",
             success: function (data) {
-                $.each(data, function (key, entry) {
+                var jsondata = JSON.parse(data);
+                $.each(jsondata, function (key, entry) {
                     dropdown.append($('<option></option').attr('value', entry.Id).text(entry.Jobtype));
                 });
             },
             failure: function (response) {
-                alert(response);
+                alert(response.responseText);
             },
             error: function (response) {
-                alert(response);
+                alert(response.responseText);
             }
         });
     }
+    $('#JobType').change(function () {
+        var selectedValue = $(this).val();
+        if (selectedValue != '') {
+            fillRemainingSeat(selectedValue);
+        }
+    });
+    function fillRemainingSeat(VendorJobId) {
+        $.ajax({
+            dataType: 'JSON',
+            type: 'Post',
+            data: '{VendorJobId: "' + VendorJobId + '" }',
+            url: '/Common/GetRemainingSeat',
+            async: true,
+            contentType: "application/json; charset = utf-8",
+            success: function (data) {
+                $('#RemainingSeat').val(data);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    var jobSeekerId = null;
+    $('#lblAlotted').click(function () {
+        $('#customModal2').modal('show');
+        jobSeekerId = $(this).attr('data-Id');
+    });
+
+    $('#btnSubmitJob').click(function () {
+        $.ajax({
+            dataType: 'JSON',
+            type: 'Post',
+            data: '{jobSeekerId: "' + jobSeekerId + '",vendorJobId: "' + $('#JobType').val() + '" }',
+            url: '/Admin/AllotJobToSeeker',
+            async: true,
+            contentType: "application/json; charset = utf-8",
+            success: function (data) {
+                if (data == true) {
+                    jobSeekerId = null;
+                    $('#customModal2').modal('hide');
+                    utility.alert.setAlert("Allot Job", "Job is Alloted to seeker");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+                    
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
 </script>

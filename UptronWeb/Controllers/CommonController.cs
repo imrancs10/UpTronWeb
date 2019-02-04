@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -68,10 +69,21 @@ namespace UptronWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetJobType()
+        public JsonResult GetJobType(int VendorId)
         {
             CommonDetails _details = new CommonDetails();
-            return Json(_details.GetJobType());
+            var result = JsonConvert.SerializeObject(_details.GetJobType(VendorId), Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                        });
+            return Json(result);
+        }
+        [HttpPost]
+        public JsonResult GetRemainingSeat(int VendorJobId)
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetRemainingSeat(VendorJobId));
         }
     }
 }

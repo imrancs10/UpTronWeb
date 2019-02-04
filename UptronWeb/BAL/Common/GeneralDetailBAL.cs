@@ -514,7 +514,7 @@ namespace UptronWeb.BAL.Common
             if (majorprojects.ID > 0)
             {
                 var _deptRow = _db.MajorProjects.Where(x => x.ID == majorprojects.ID).FirstOrDefault();
-                if (_deptRow!=null)
+                if (_deptRow != null)
                 {
                     _deptRow.ID = majorprojects.ID;
                     _deptRow.Title = majorprojects.Title;
@@ -522,7 +522,7 @@ namespace UptronWeb.BAL.Common
                     _deptRow.OrderNumber = majorprojects.OrderNumber;
                     _deptRow.IsActive = majorprojects.IsActive;
                     _deptRow.WorkDescription = majorprojects.WorkDescription;
-                    if (_deptRow.Image!=null)
+                    if (_deptRow.Image != null)
                         _deptRow.Image = majorprojects.Image;
                     _db.Entry(_deptRow).State = EntityState.Modified;
                     _effectRow = _db.SaveChanges();
@@ -530,7 +530,7 @@ namespace UptronWeb.BAL.Common
                 }
                 else
                 {
-                    return Enums.CrudStatus.DataNotFound; 
+                    return Enums.CrudStatus.DataNotFound;
                 }
             }
             else
@@ -546,10 +546,10 @@ namespace UptronWeb.BAL.Common
                 {
                     return Enums.CrudStatus.DataAlreadyExist;
                 }
-                
+
             }
         }
-        
+
         public List<MajorProject> GetAllMajorProjects()
         {
             _db = new UptronWebEntities();
@@ -573,7 +573,7 @@ namespace UptronWeb.BAL.Common
             if (vendorjob.Id > 0)
             {
                 var _deptRow = _db.VendorJobs.Where(x => x.Id == vendorjob.Id).FirstOrDefault();
-                if (_deptRow!=null)
+                if (_deptRow != null)
                 {
                     _deptRow.Id = vendorjob.Id;
                     _deptRow.VendorId = vendorjob.VendorId;
@@ -589,7 +589,7 @@ namespace UptronWeb.BAL.Common
                 {
                     return Enums.CrudStatus.DataNotFound;
                 }
-               
+
             }
             else
             {
@@ -604,7 +604,7 @@ namespace UptronWeb.BAL.Common
                 {
                     return Enums.CrudStatus.DataAlreadyExist;
                 }
-                
+
             }
         }
 
@@ -622,6 +622,20 @@ namespace UptronWeb.BAL.Common
             _db.VendorJobs.Remove(result);
             int _effectRow = _db.SaveChanges();
             return true;
+        }
+
+        public bool AllotJobToSeeker(int jobSeekerId, int vendorJobId)
+        {
+            _db = new UptronWebEntities();
+            var jobSeeker = _db.JobRegistrations.Where(x => x.Id == jobSeekerId).FirstOrDefault();
+            if (jobSeeker != null)
+            {
+                jobSeeker.VendorJobId = vendorJobId;
+                jobSeeker.EmployementStatus = "Employed";
+                _db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
     }

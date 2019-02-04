@@ -748,10 +748,14 @@ namespace UptronWeb.Controllers
             return RedirectToAction("JobPortalRegistrationForm", new { ActionForm = "update" });
         }
 
-        public ActionResult VendorJobEntry()
+        public ActionResult VendorJobEntry(string ActionForm)
         {
             GeneralDetailBAL bAL = new GeneralDetailBAL();
             var result = bAL.GetAllVendorJob();
+            if (ActionForm == "delete")
+            {
+                SetAlertMessage("Vendor job has been deleted", "vendor job");
+            }
             return View(result);
         }
         [HttpPost]
@@ -766,12 +770,12 @@ namespace UptronWeb.Controllers
                 SkillsRequired = Skills,
                 Id = Id != null ? Id.Value : 0
             };
-            if (Id==null)
+            if (Id == null)
                 vendorjob.CreatedDate = DateTime.Now;
             var result = bal.SaveVendorJob(vendorjob);
             if (result == Enums.CrudStatus.Saved)
             {
-                SetAlertMessage("Vendor job has beed saved", "vendor job Saved");
+                SetAlertMessage("Vendor job has been saved", "vendor job Saved");
             }
             else if (result == Enums.CrudStatus.Updated)
             {
@@ -789,7 +793,14 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var result = bal.DeletevendorJobById(Id);
-            return RedirectToAction("VendorJobEntry");
+            return RedirectToAction("VendorJobEntry", new { ActionForm = "delete" });
+        }
+        [HttpPost]
+        public ActionResult AllotJobToSeeker(int jobSeekerId, int vendorJobId)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.AllotJobToSeeker(jobSeekerId, vendorJobId);
+            return Json(true);
         }
     }
 }

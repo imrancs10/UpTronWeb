@@ -69,7 +69,8 @@ namespace UptronWeb.BAL
                     EyeSight = model.EyeSight,
                     IsActive = true,
                     Password = model.Password,
-                    DOB = Convert.ToDateTime(model.DOB)
+                    DOB = Convert.ToDateTime(model.DOB),
+                    EmployementStatus = "UnEmployed"
                 };
 
                 foreach (JobRegistrationLanguageModel Language in model.JobRegistrationLanguage)
