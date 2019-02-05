@@ -75,5 +75,82 @@ namespace UptronWeb.BAL.Login
             var result = _db.JobResignations.ToList();
             return result;
         }
+
+        public Enums.CrudStatus SaveEmployeeResignation(EmployeeSlip employeeslip)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (employeeslip.Id > 0)
+            {
+                var _deptRow = _db.EmployeeSlips.Where(x => x.Id == employeeslip.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = employeeslip.Id;
+                    _deptRow.JoiningDate = employeeslip.JoiningDate;
+                    if (employeeslip.SalarySlip != null)
+                    {
+                        _deptRow.SalarySlip = employeeslip.SalarySlip;
+                    }
+                    if (employeeslip.PfSlip != null)
+                    {
+                        _deptRow.PfSlip = employeeslip.PfSlip;
+                    }
+                    if (employeeslip.EsiSlip != null)
+                    {
+                        _deptRow.EsiSlip = employeeslip.EsiSlip;
+                    }
+                    _deptRow.CreatedDate = employeeslip.CreatedDate;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.EmployeeSlips.Where(x => x.Id == employeeslip.Id).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(employeeslip).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<EmployeeSlip> GetAllEmployeeSlip()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.EmployeeSlips.ToList();
+            return result;
+        }
+
+        public EmployeeSlip GetSalarySlip(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.EmployeeSlips.FirstOrDefault(x => x.Id == Id);
+            return result;
+        }
+
+        public EmployeeSlip GetPFSlip(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.EmployeeSlips.FirstOrDefault(x => x.Id == Id);
+            return result;
+        }
+
+        public EmployeeSlip GetESISlip(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.EmployeeSlips.FirstOrDefault(x => x.Id == Id);
+            return result;
+        }
     }
 }

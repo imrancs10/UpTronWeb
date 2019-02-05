@@ -1,10 +1,10 @@
-﻿
+﻿@using DataLayer;
 @{
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
-
-<form>
-
+@model List<EmployeeSlip>
+<form method="post" action="EmployeeSlip" enctype="multipart/form-data">
+    <input type="hidden" name="Id" id="hiddenId"/>
     <section class="content-wrapper" role="main">
         <div class="content">
             <div class="content-bar">
@@ -15,7 +15,7 @@
             </div><!-- /.content-bar -->
             <hr />
 
-            <div class="content-body" style="height:400px;">
+            <div class="content-body" style="height:800px;">
                 <div class="col-lg-12">
                     <div class="featured-box featured-box-primary align-left mt-xlg">
                         <div class="box-content">
@@ -28,7 +28,7 @@
                                                     <div class="form-group mt-lg">
                                                         <label class="col-sm-4 control-label">Company Name</label>
                                                         <div class="col-md-8">
-                                                            <select name="VendorName" id="VendorName" required class="form-control required"></select>
+                                                            <select name="Vendor" id="Vendor" required class="form-control required"></select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -41,7 +41,7 @@
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-in">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input type="date" id="GoDate" name="GoDate" data-input="daterangepicker"
+                                                            <input type="date" id="joiningDate" name="joiningDate" data-input="daterangepicker"
                                                                    data-single-date-picker="true" data-show-dropdowns="true" class="form-control" required />
                                                         </div>
                                                     </div>
@@ -90,31 +90,162 @@
                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                     <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
                                                     <span class="label-divider" id="Span1">or</span>
-                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                                    <a href="~/Employee/EmployeeSlip" class="btn btn-default">Reset</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br />
                                     @*<div class="row">
-                                            <div class="col-md-5">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
-                                                    <span class="label-divider" id="Span1">or</span>
-                                                    <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
-                                                </div>
-                                            </div>
-                                        </div>*@
+                                <div class="col-md-5">
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="btn-divider mr-2x mb-1x" role="divider">
+                                        <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                        <span class="label-divider" id="Span1">or</span>
+                                        <a href="~/Admin/GOCircularEntry" class="btn btn-default">Reset</a>
+                                    </div>
+                                </div>
+                            </div>*@
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br />
                 </div>
+
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="5">Employee Slip Detail</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th style="width:10%">Sl.no</th>
+                                                <th style="width:30%">Vendor Name</th>
+                                                <th style="width:20%">Salary Slip</th>
+                                                <th style="width:20%">PF Slip</th>
+                                                <th style="width:20%">ESI Slip</th>
+                                                @*<th style="width:30%">Action</th>*@
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var employeeslip in Model)
+                                                {
+                                            <tr>
+                                                <td style="width:10%">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline center"><strong>@i.</strong></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:30%">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline center">@employeeslip.VendorDetail.VendorName</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:20%">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline center">
+                                                                <a href="ViewSalarySlip/@employeeslip.Id" target="_blank">View File</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:20%">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline center">
+                                                                <a href="ViewPFSlip/@employeeslip.Id" target="_blank">View File</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td style="width:20%">
+                                                    <div class="form-group mt-lg">
+                                                        <div class="input-group input-group-icon">
+                                                            <span class="headline center">
+                                                                <a href="ViewESISlip/@employeeslip.Id" target="_blank">View File</a>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                              
+                                                @*<td style="width:30%">
+            <div class="form-group mt-lg">
+                <div class="btn-divider mr-2x mb-1x" role="divider">
+                    <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditJobResignation(@jobresignation.Id, @jobresignation.VendorId, '@jobresignation.ResignationDate', '@jobresignation.ResignationReason')">Edit</a>
+                    <span class="label-divider" id="Span1">or</span>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </td>*@
+                                            </tr>
+                                                    i = i + 1;
+                                                }
+
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div><!-- /.content -->
     </section>
 </form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        fillVendor();
+    })
+    function fillVendor() {
+        let dropdown = $('#Vendor');
+        dropdown.empty();
+        dropdown.append('<option value="">--Select Vendor Name--</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Common/GetVendor',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.VendorName));
+                });
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    //function EditJobResignation(Id, VendorId, ResignationDate, ResignationReason) {
+    //    $('#hiddenId').val(Id);
+    //    $('#btnSave').val('Update');
+    //    $('#Vendor').val(VendorId);
+    //    var dd = ResignationDate.substr(0, 2);
+    //    var mm = ResignationDate.substr(3, 2);
+    //    var yy = ResignationDate.substr(6, 4);
+    //    $('#ResignationDate').val(yy + "-" + mm + "-" + dd);
+    //    $('#ResignationReason').val(ResignationReason);
+    //}
+</script>

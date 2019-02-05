@@ -47,5 +47,18 @@ namespace UptronWeb.Infrastructure.Utility
             body += "";
             return body;
         }
+
+        public static string GetEmployeeResignationEmail(string Vendor, string ResignationDate, string ResignationReason, string Name)
+        {
+            string body = "Hi Admin<br/><br/>";
+            body += Name + " has request through Contact Us Page, details are as below.<br/>";
+            body += "<br/><b>Name:&nbsp;&nbsp;</b>" + Name + "<br/><br/>";
+            body += "<br/><b>Vendor Name:&nbsp;&nbsp;</b>" + Vendor + "<br/><br/>";
+            body += "<br/><b>Resignation Date:&nbsp;&nbsp;</b>" + ResignationDate + "<br/><br/>";
+            body += "<br/><b>Resignation Reason:&nbsp;&nbsp;</b>" + ResignationReason + "<br/><br/>";
+            body += "Thank You,<br/>";
+            body += "";
+            return body;
+        }
     }
 }

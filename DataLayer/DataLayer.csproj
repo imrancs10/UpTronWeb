@@ -75,6 +75,9 @@
     <Compile Include="DirectorMessageDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeSlip.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="GalleryMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

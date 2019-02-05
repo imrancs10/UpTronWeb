@@ -36,6 +36,19 @@
           <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="EmployeeSlip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="JoiningDate" Type="datetime" />
+          <Property Name="SalarySlip" Type="varbinary(max)" />
+          <Property Name="PfSlip" Type="varbinary(max)" />
+          <Property Name="EsiSlip" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="JobRegistrationId" Type="int" />
+        </EntityType>
         <EntityType Name="GalleryMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -67,7 +80,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="VendorId" Type="int" />
           <Property Name="JoiningDate" Type="datetime" />
           <Property Name="SalarySlip" Type="varbinary(max)" />
@@ -165,7 +178,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="VendorId" Type="int" />
           <Property Name="ResignationDate" Type="datetime" />
           <Property Name="ResignationReason" Type="varchar(max)" />
@@ -351,6 +364,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeSlip_VendorDetail">
+          <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
+          <End Role="EmployeeSlip" Type="Self.EmployeeSlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSlip">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
           <End Role="GalleryMaster" Type="Self.GalleryMaster" Multiplicity="0..1" />
           <End Role="GalleryPhotoMaster" Type="Self.GalleryPhotoMaster" Multiplicity="*" />
@@ -360,18 +385,6 @@
             </Principal>
             <Dependent Role="GalleryPhotoMaster">
               <PropertyRef Name="GalleryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobDocumentUpload_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobDocumentUpload" Type="Self.JobDocumentUpload" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobDocumentUpload">
-              <PropertyRef Name="JobRegistrationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -420,66 +433,6 @@
             </Principal>
             <Dependent Role="JobRegistration">
               <PropertyRef Name="VendorJobId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationEmployement_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobRegistrationEmployement" Type="Self.JobRegistrationEmployement" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationEmployement">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationLanguage_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobRegistrationLanguage" Type="Self.JobRegistrationLanguage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationLanguage">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationQualification_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobRegistrationQualification" Type="Self.JobRegistrationQualification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationQualification">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistrationSkill_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobRegistrationSkill" Type="Self.JobRegistrationSkill" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobRegistrationSkill">
-              <PropertyRef Name="RegistrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobResignation_JobRegistration">
-          <End Role="JobRegistration" Type="Self.JobRegistration" Multiplicity="0..1" />
-          <End Role="JobResignation" Type="Self.JobResignation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="JobRegistration">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="JobResignation">
-              <PropertyRef Name="JobRegistrationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -559,6 +512,7 @@
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactUsDetail" EntityType="Self.ContactUsDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DirectorMessageDetail" EntityType="Self.DirectorMessageDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSlip" EntityType="Self.EmployeeSlip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
@@ -588,13 +542,13 @@
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
+          <AssociationSet Name="FK_EmployeeSlip_VendorDetail" Association="Self.FK_EmployeeSlip_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetail" />
+            <End Role="EmployeeSlip" EntitySet="EmployeeSlip" />
+          </AssociationSet>
           <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="Self.FK_GalleryPhotoMaster_GalleryMaster">
             <End Role="GalleryMaster" EntitySet="GalleryMaster" />
             <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMaster" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobDocumentUpload_JobRegistration" Association="Self.FK_JobDocumentUpload_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobDocumentUpload" EntitySet="JobDocumentUpload" />
           </AssociationSet>
           <AssociationSet Name="FK_JobDocumentUpload_VendorDetail" Association="Self.FK_JobDocumentUpload_VendorDetail">
             <End Role="VendorDetail" EntitySet="VendorDetail" />
@@ -611,26 +565,6 @@
           <AssociationSet Name="FK_JobRegistration_VendorDetail" Association="Self.FK_JobRegistration_VendorDetail">
             <End Role="VendorJob" EntitySet="VendorJob" />
             <End Role="JobRegistration" EntitySet="JobRegistration" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationEmployement_JobRegistration" Association="Self.FK_JobRegistrationEmployement_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobRegistrationEmployement" EntitySet="JobRegistrationEmployement" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationLanguage_JobRegistration" Association="Self.FK_JobRegistrationLanguage_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobRegistrationLanguage" EntitySet="JobRegistrationLanguage" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationQualification_JobRegistration" Association="Self.FK_JobRegistrationQualification_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobRegistrationQualification" EntitySet="JobRegistrationQualification" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistrationSkill_JobRegistration" Association="Self.FK_JobRegistrationSkill_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobRegistrationSkill" EntitySet="JobRegistrationSkill" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobResignation_JobRegistration" Association="Self.FK_JobResignation_JobRegistration">
-            <End Role="JobRegistration" EntitySet="JobRegistration" />
-            <End Role="JobResignation" EntitySet="JobResignation" />
           </AssociationSet>
           <AssociationSet Name="FK_JobResignation_VendorDetail" Association="Self.FK_JobResignation_VendorDetail">
             <End Role="VendorDetail" EntitySet="VendorDetail" />
@@ -761,6 +695,11 @@
           <AssociationSet Name="FK_VendorJob_VendorJob" Association="UptronWebModel.FK_VendorJob_VendorJob">
             <End Role="VendorJob" EntitySet="VendorJobs" />
             <End Role="VendorJob1" EntitySet="VendorJobs" />
+          </AssociationSet>
+          <EntitySet Name="EmployeeSlips" EntityType="UptronWebModel.EmployeeSlip" />
+          <AssociationSet Name="FK_EmployeeSlip_VendorDetail" Association="UptronWebModel.FK_EmployeeSlip_VendorDetail">
+            <End Role="VendorDetail" EntitySet="VendorDetails" />
+            <End Role="EmployeeSlip" EntitySet="EmployeeSlips" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="City">
@@ -1117,6 +1056,7 @@
           <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_VendorDetail" FromRole="VendorDetail" ToRole="JobDocumentUpload" />
           <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_VendorDetail" FromRole="VendorDetail" ToRole="JobResignation" />
           <NavigationProperty Name="VendorJobs" Relationship="UptronWebModel.FK_VendorJob_VendorDetail" FromRole="VendorDetail" ToRole="VendorJob" />
+          <NavigationProperty Name="EmployeeSlips" Relationship="UptronWebModel.FK_EmployeeSlip_VendorDetail" FromRole="VendorDetail" ToRole="EmployeeSlip" />
         </EntityType>
         <EntityType Name="VendorJob">
           <Key>
@@ -1346,6 +1286,32 @@
             </Principal>
             <Dependent Role="VendorJob1">
               <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EmployeeSlip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="JoiningDate" Type="DateTime" Precision="3" />
+          <Property Name="SalarySlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PfSlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EsiSlip" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="JobRegistrationId" Type="Int32" />
+          <NavigationProperty Name="VendorDetail" Relationship="UptronWebModel.FK_EmployeeSlip_VendorDetail" FromRole="EmployeeSlip" ToRole="VendorDetail" />
+        </EntityType>
+        <Association Name="FK_EmployeeSlip_VendorDetail">
+          <End Type="UptronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
+          <End Type="UptronWebModel.EmployeeSlip" Role="EmployeeSlip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSlip">
+              <PropertyRef Name="VendorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1717,6 +1683,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSlips">
+            <EntityTypeMapping TypeName="UptronWebModel.EmployeeSlip">
+              <MappingFragment StoreEntitySet="EmployeeSlip">
+                <ScalarProperty Name="JobRegistrationId" ColumnName="JobRegistrationId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EsiSlip" ColumnName="EsiSlip" />
+                <ScalarProperty Name="PfSlip" ColumnName="PfSlip" />
+                <ScalarProperty Name="SalarySlip" ColumnName="SalarySlip" />
+                <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1786,6 +1766,8 @@
         <AssociationConnector Association="UptronWebModel.FK_UserMaster_UserMaster1" />
         <AssociationConnector Association="UptronWebModel.FK_VendorJob_VendorDetail" />
         <AssociationConnector Association="UptronWebModel.FK_VendorJob_VendorJob" />
+        <EntityTypeShape EntityType="UptronWebModel.EmployeeSlip" Width="1.5" PointX="3" PointY="20.875" />
+        <AssociationConnector Association="UptronWebModel.FK_EmployeeSlip_VendorDetail" />
       </Diagram>
     </Diagrams>
   </Designer>
