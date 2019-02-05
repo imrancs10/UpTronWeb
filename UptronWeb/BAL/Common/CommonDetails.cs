@@ -33,6 +33,20 @@ namespace UptronWeb.BAL.Common
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.VendorDetails.Where(x => x.IsActive == true && x.Permitted == true).ToList();
         }
+        public List<VendorDetail> GetSelectedVendor(int jobRegistrationId)
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            //return _db.VendorDetails.Include("VendorJobs").Include("JobResignations")
+            //                .Where(x => x.IsActive == true && x.Permitted == true 
+            //                            && x.VendorJobs.Any(y => y.vend == jobRegistrationId)).ToList();
+            var data = (from vendor in _db.VendorDetails
+                        join vendorJob in _db.VendorJobs on vendor.Id equals vendorJob.VendorId
+                        join registration in _db.JobRegistrations on vendorJob.Id equals registration.VendorJobId
+                        where registration.Id == jobRegistrationId
+                        select vendor).ToList();
+            return data;
+        }
 
         public List<VendorJobModel> GetJobType(int VendorId)
         {

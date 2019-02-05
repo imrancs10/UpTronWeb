@@ -28,13 +28,13 @@ namespace UptronWeb.BAL.Login
                 return null;
         }
 
-        public Enums.CrudStatus SaveEmployeeResignation(JobResignation jobresignation)
+        public JobResignation SaveEmployeeResignation(JobResignation jobresignation)
         {
             _db = new UptronWebEntities();
             int _effectRow = 0;
             if (jobresignation.Id > 0)
             {
-                var _deptRow = _db.JobResignations.Where(x => x.Id == jobresignation.Id).FirstOrDefault();
+                var _deptRow = _db.JobResignations.Include("VendorDetail").Include("JobRegistration").Where(x => x.Id == jobresignation.Id).FirstOrDefault();
                 if (_deptRow!=null)
                 {
                     _deptRow.Id = jobresignation.Id;
@@ -44,11 +44,11 @@ namespace UptronWeb.BAL.Login
                     _deptRow.CreatedDate = jobresignation.CreatedDate;
                     _db.Entry(_deptRow).State = EntityState.Modified;
                     _effectRow = _db.SaveChanges();
-                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                    return _deptRow;
                 }
                 else
                 {
-                    return Enums.CrudStatus.DataNotFound;
+                    return null;
                 }
             }
             else
@@ -58,12 +58,13 @@ namespace UptronWeb.BAL.Login
                 {
                     _db.Entry(jobresignation).State = EntityState.Added;
                     _effectRow = _db.SaveChanges();
-                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                    _deptRow = _db.JobResignations.Include("VendorDetail").Include("JobRegistration").Where(x => x.Id == jobresignation.Id).FirstOrDefault();
+                    return _deptRow;
                     
                 }
                 else
                 {
-                    return Enums.CrudStatus.DataAlreadyExist;
+                    return null;
                 }
             }
 

@@ -14,6 +14,7 @@ using UptronWeb.Global;
 using UptronWeb.Infrastructure.Authentication;
 using UptronWeb.Infrastructure;
 using UptronWeb.Infrastructure.Utility;
+using UptronWeb.BAL.Common;
 
 namespace UptronWeb.Controllers
 {
@@ -46,7 +47,7 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login");
         }
 
-        
+
         public ActionResult EmployeeProfile()
         {
             var user = User as CustomPrincipal;
@@ -61,41 +62,45 @@ namespace UptronWeb.Controllers
             var result = bal.GetJObResignation();
             return View(result);
         }
-
+        [HttpPost]
+        public JsonResult GetSelectedVendor()
+        {
+            CommonDetails _details = new CommonDetails();
+            var user = User as CustomPrincipal;
+            return Json(_details.GetSelectedVendor(user.Id));
+        }
         [HttpPost]
         public ActionResult EmployeeResignation(string Vendor, string ResignationDate, string ResignationReason, int? Id)
         {
             EmployeeDetails bal = new EmployeeDetails();
+            var user = User as CustomPrincipal;
             JobResignation jobresignation = new JobResignation()
             {
                 Id = Id != null ? Id.Value : 0,
                 VendorId = Convert.ToInt32(Vendor),
+                JobRegistrationId = user.Id,
                 ResignationDate = Convert.ToDateTime(ResignationDate),
                 ResignationReason = ResignationReason,
             };
-            if (Id==null)
+            if (Id == null)
             {
                 jobresignation.CreatedDate = DateTime.Now;
             }
             var result = bal.SaveEmployeeResignation(jobresignation);
-            if (result == Enums.CrudStatus.Saved)
+            if (result != null)
             {
-                SendMailForEmployeeSlip(Vendor, ResignationDate, ResignationReason);
-                SetAlertMessage("Employee Resignation data has been Saved", "Resignation Saved");
-            }
-            else if (result == Enums.CrudStatus.Updated)
-            {
-                SetAlertMessage("Employee Resignation data has been Updated", "Resignation Updated");
+                SendMailForEmployeeSlip(result);
+                SetAlertMessage("Employee Resignation data has been Saved", "Resignation");
             }
             else
             {
-                SetAlertMessage("Employee Resignation data has been All ready Exists", "Resignation Exists");
+                SetAlertMessage("Employee Resignation data has not been sent.", "Resignation");
             }
 
             return RedirectToAction("EmployeeResignation");
         }
 
-        private async Task SendMailForEmployeeSlip(string Vendor, string ResignationDate, string ResignationReason)
+        private async Task SendMailForEmployeeSlip(JobResignation vendor)
         {
             await Task.Run(() =>
             {
@@ -104,10 +109,22 @@ namespace UptronWeb.Controllers
                     MessageTo = ConfigurationManager.AppSettings["RecivingEmailAddress"].ToString(),
                     MessageNameTo = ConfigurationManager.AppSettings["RecivingEmailName"].ToString(),
                     Subject = "Employee Resignation Request",
-                    Body = EmailHelper.GetEmployeeResignationEmail(Vendor, ResignationDate, ResignationReason)
+                    Body = EmailHelper.GetEmployeeResignationEmail(vendor)
                 };
 
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+
+                msg = new Message()
+                {
+                    MessageTo = vendor.JobRegistration.EmailId,
+                    MessageNameTo = vendor.JobRegistration.Name,
+                    Subject = "Your Resignation Request",
+                    //change email body
+                    Body = EmailHelper.GetEmployeeResignationEmail(vendor)
+                };
+
+                sendMessageStrategy = new SendMessageStrategyForEmail(msg);
                 sendMessageStrategy.SendMessages();
             });
         }
@@ -136,7 +153,7 @@ namespace UptronWeb.Controllers
             {
                 employeeslip.CreatedDate = DateTime.Now;
             }
-            if (SalarySlip !=null)
+            if (SalarySlip != null)
             {
                 employeeslip.SalarySlip = fileattachment;
             }

@@ -48,14 +48,14 @@ namespace UptronWeb.Infrastructure.Utility
             return body;
         }
 
-        public static string GetEmployeeResignationEmail(string Vendor, string ResignationDate, string ResignationReason, string Name)
+        public static string GetEmployeeResignationEmail(JobResignation vendor)
         {
             string body = "Hi Admin<br/><br/>";
-            body += Name + " has request through Contact Us Page, details are as below.<br/>";
-            body += "<br/><b>Name:&nbsp;&nbsp;</b>" + Name + "<br/><br/>";
-            body += "<br/><b>Vendor Name:&nbsp;&nbsp;</b>" + Vendor + "<br/><br/>";
-            body += "<br/><b>Resignation Date:&nbsp;&nbsp;</b>" + ResignationDate + "<br/><br/>";
-            body += "<br/><b>Resignation Reason:&nbsp;&nbsp;</b>" + ResignationReason + "<br/><br/>";
+            body += vendor.JobRegistration.Name + " has request through Contact Us Page, details are as below.<br/>";
+            body += "<br/><b>Name:&nbsp;&nbsp;</b>" + vendor.JobRegistration.Name + "<br/><br/>";
+            body += "<br/><b>Vendor Name:&nbsp;&nbsp;</b>" + vendor.VendorDetail.VendorName + "<br/><br/>";
+            body += "<br/><b>Resignation Date:&nbsp;&nbsp;</b>" + vendor.ResignationDate.Value.ToString("dd/MM/yyy") + "<br/><br/>";
+            body += "<br/><b>Resignation Reason:&nbsp;&nbsp;</b>" + vendor.ResignationReason + "<br/><br/>";
             body += "Thank You,<br/>";
             body += "";
             return body;
