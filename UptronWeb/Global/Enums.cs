@@ -7,10 +7,16 @@ namespace UptronWeb.Global
 {
     public static class Enums
     {
+        public enum UserRole
+        {
+            User,
+            Admin,
+            SuperAdmin
+        }
         public enum LoginMessage
         {
-            Authenticated=1,
-            InvalidCreadential=2,
+            Authenticated = 1,
+            InvalidCreadential = 2,
             LoginFailed,
             UserDeleted,
             UserInactive,

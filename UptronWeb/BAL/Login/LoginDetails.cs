@@ -18,14 +18,14 @@ namespace UptronWeb.BAL.Login
         /// <param name="UserName">Username</param>
         /// <param name="Password">Password</param>
         /// <returns>Enums</returns>
-        public bool CheckAdminLogin(string UserName, string Password)
+        public UserMaster CheckAdminLogin(string UserName, string Password)
         {
             _db = new UptronWebEntities();
-            var result = _db.UserMasters.Where(x => x.UserName == UserName && x.Password == Password && x.IsActive == true).FirstOrDefault();
+            var result = _db.UserMasters.Include("RoleMaster").Where(x => x.UserName == UserName && x.Password == Password && x.IsActive == true).FirstOrDefault();
             if (result != null)
-                return true;
+                return result;
             else
-                return false;
+                return null;
         }
     }
 }

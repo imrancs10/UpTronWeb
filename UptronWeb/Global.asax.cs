@@ -41,7 +41,10 @@ namespace UptronWeb
                         Id = serializeModel.Id,
                         EmailId = serializeModel.EmailId,
                         MobileNo = serializeModel.MobileNo,
-                        Name = serializeModel.Name
+                        Name = serializeModel.Name,
+                        Role = serializeModel.Role,
+                        UserName = serializeModel.UserName,
+                        UserId = serializeModel.UserId,
                     };
 
                     HttpContext.Current.User = newUser;
