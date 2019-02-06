@@ -6,8 +6,12 @@
         yearRange: "-100:+0",
         dateFormat: 'dd/mm/yy',
         maxDate: 0
-    });
-    
+    }); 
+});
+
+$('#DOB').siblings('span').click(function () {
+    $('#DOB').datepicker("show");
+    //$('#ui-datepicker-div').css('width', $('#DOB').width() + parseFloat($('#DOB').siblings('span').css('width')) + 20 + 'px');
 });
 
 fillState();
@@ -214,3 +218,25 @@ function convertDateTimeFormat(dateInput) {
     return month + "/" + day + "/" + year;
 }
 
+$('#txtEmail').blur(function () {
+    $.ajax({
+        dataType: 'JSON',
+        type: 'Post',
+        data: '{emailId: "' + $(this).val() + '"}',
+        url: '/Home/CheckJobSeekerEmailId',
+        async: true,
+        contentType: "application/json; charset = utf-8",
+        success: function (data) {
+            if (data == true) {
+                utility.alert.setAlert("Email Exists", "Your Email Id is already taken, choose another one.");
+                $('#txtEmail').val('');
+            }
+        },
+        failure: function (response) {
+            alert(response.responseText);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+});

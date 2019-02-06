@@ -67,12 +67,20 @@
                                                                 <a id="lnkDetail" class="btn btn-primary" href="JobPortalRegistrationViewDetail?registrationId=@person.Id">View Detail</a>
                                                             </td>
                                                             <td align="center" valign="middle">
-                                                                <a id="lblPermitted" class="btn btn-primary" href="">Permitted</a>
+                                                                @if (person.IsActive == false)
+                                                                {
+                                                                    <a id="lblPermitted" data-Id="@person.Id" class="btn btn-primary" href="">Permit</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a class="btn btn-success" data-Id="@person.Id" href="">Permitted</a>
+                                                                }
+
                                                             </td>
                                                             <td align="center" valign="middle">
                                                                 @if (person.EmployementStatus == "Employed")
                                                                 {
-                                                                    <a id="" class="btn btn-primary" role="menuitem" tabindex="-1">Job Alloted</a>
+                                                                    <a id="" class="btn btn-primary" role="menuitem" data-Id="@person.Id" tabindex="-1">Job Alloted</a>
                                                                 }
                                                                 else
                                                                 {
@@ -171,7 +179,6 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        debugger
         fillVendor();
     })
     function fillVendor() {
@@ -278,7 +285,33 @@
                     setTimeout(function () {
                         location.reload();
                     }, 2000);
-                    
+
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+    $('#lblPermitted').click(function () {
+        var seekerId = $(this).attr('data-Id');
+        $.ajax({
+            dataType: 'JSON',
+            type: 'Post',
+            data: '{jobSeekerId: "' + seekerId + '"}',
+            url: '/Admin/PermitJobToSeeker',
+            async: true,
+            contentType: "application/json; charset = utf-8",
+            success: function (data) {
+                if (data == true) {
+                    utility.alert.setAlert("Permitted", "job seeker is permitted.");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
+
                 }
             },
             failure: function (response) {

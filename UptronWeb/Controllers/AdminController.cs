@@ -3,12 +3,15 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL;
 using UptronWeb.BAL.Common;
 using UptronWeb.BAL.Master;
 using UptronWeb.Global;
+using UptronWeb.Infrastructure;
+using UptronWeb.Infrastructure.Utility;
 
 namespace UptronWeb.Controllers
 {
@@ -801,6 +804,30 @@ namespace UptronWeb.Controllers
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var result = bal.AllotJobToSeeker(jobSeekerId, vendorJobId);
             return Json(true);
+        }
+        [HttpPost]
+        public ActionResult PermitJobToSeeker(int jobSeekerId)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.PermitJobToSeeker(jobSeekerId);
+            SendMailForJobPortal(result.Name, result.EmailId);
+            return Json(true);
+        }
+        private async Task SendMailForJobPortal(string Name, string Email)
+        {
+            await Task.Run(() =>
+            {
+                Message msg = new Message()
+                {
+                    MessageTo = Email,
+                    MessageNameTo = Name,
+                    Subject = "Uptron Job Profile",
+                    Body = EmailHelper.GetJobRegistrationActiveEmail(Name, Email)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
         }
     }
 }

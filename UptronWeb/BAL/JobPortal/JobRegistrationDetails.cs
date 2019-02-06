@@ -21,7 +21,7 @@ namespace UptronWeb.BAL
         public List<JobRegistration> GetJobPortalList()
         {
             _db = new UptronWebEntities();
-            var list = _db.JobRegistrations.Where(x => x.IsActive == true).ToList();
+            var list = _db.JobRegistrations.ToList();
             return list;
         }
 
@@ -67,7 +67,7 @@ namespace UptronWeb.BAL
                     ExServiceMan = model.ExServiceMan == "Yes" ? true : false,
                     PersonHeight = Convert.ToDecimal(model.PersonHeight),
                     EyeSight = model.EyeSight,
-                    IsActive = true,
+                    IsActive = false,
                     Password = model.Password,
                     DOB = Convert.ToDateTime(model.DOB),
                     EmployementStatus = "UnEmployed"
@@ -158,6 +158,12 @@ namespace UptronWeb.BAL
                 _effectRow = _db.SaveChanges();
             }
             return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+        }
+        public JobRegistration CheckJobSeekerEmailId(string emailId)
+        {
+            _db = new UptronWebEntities();
+            var list = _db.JobRegistrations.Where(x => x.EmailId == emailId).FirstOrDefault();
+            return list;
         }
     }
 }

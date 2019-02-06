@@ -23,13 +23,24 @@ namespace UptronWeb.Infrastructure.Utility
             body += "";
             return body;
         }
-        public static string GetJobRegistrationEmail(string Name, string Email)
+        public static string GetJobRegistrationEmail(string Name, string Email,string password)
         {
-            string defaultPassword = ConfigurationManager.AppSettings["JobRegistrationDefaultPassword"].ToString();
+           
             string body = "Hi " + Name + "<br/><br/>";
             body += Name + "Your registration is successful. Here is your Login detail<br/>";
             body += "<br/><b>User Name:&nbsp;&nbsp;</b>" + Email + "<br/><br/>";
-            body += "<br/><b>Password:&nbsp;&nbsp;</b>" + defaultPassword + "<br/><br/>";
+            body += "<br/><b>Password:&nbsp;&nbsp;</b>" + password + "<br/><br/>";
+            body += "<br/><b>Your Profile will be activate after verification.<br/><br/>";
+            body += "<br/><b>We will send you separate mail once your profile will be activated.<br/><br/>";
+            body += "Thank You,<br/>";
+            body += "";
+            return body;
+        }
+        public static string GetJobRegistrationActiveEmail(string Name, string Email)
+        {
+            string body = "Hi " + Name + "<br/><br/>";
+            body += Name + "Your profile is now Active.<br/>";
+            body += "<br/><b>You can now login to your account.<br/><br/>";
             body += "Thank You,<br/>";
             body += "";
             return body;

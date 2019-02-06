@@ -136,10 +136,12 @@ namespace UptronWeb.Controllers
         public JsonResult JobPortalSave(JobRegistrationModel model)
         {
             JobRegistrationDetails detail = new JobRegistrationDetails();
-            model.Password = Convert.ToString(ConfigurationManager.AppSettings["JobRegistrationDefaultPassword"]);
+            string defaultPassword = ConfigurationManager.AppSettings["JobRegistrationDefaultPassword"].ToString();
+            defaultPassword += VerificationCodeGeneration.GetDefaultPasswordCode();
+            model.Password = defaultPassword;
             var result = detail.SaveJobPortal(model);
             //send mail for user credential
-            SendMailForJobPortal(model.Name, model.EmailId);
+            SendMailForJobPortal(model.Name, model.EmailId, defaultPassword);
             return Json(CrudResponse(result), JsonRequestBehavior.AllowGet);
         }
 
@@ -184,7 +186,7 @@ namespace UptronWeb.Controllers
                 return Json("No files selected.");
             }
         }
-        private async Task SendMailForJobPortal(string Name, string Email)
+        private async Task SendMailForJobPortal(string Name, string Email, string password)
         {
             await Task.Run(() =>
             {
@@ -193,7 +195,7 @@ namespace UptronWeb.Controllers
                     MessageTo = Email,
                     MessageNameTo = Name,
                     Subject = "Uptron Job Registration",
-                    Body = EmailHelper.GetJobRegistrationEmail(Name, Email)
+                    Body = EmailHelper.GetJobRegistrationEmail(Name, Email, password)
                 };
 
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
@@ -481,6 +483,16 @@ namespace UptronWeb.Controllers
                 ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
                 sendMessageStrategy.SendMessages();
             });
+        }
+        [HttpPost]
+        public ActionResult CheckJobSeekerEmailId(string emailId)
+        {
+            JobRegistrationDetails detail = new JobRegistrationDetails();
+            var result = detail.CheckJobSeekerEmailId(emailId);
+            if (result != null)
+                return Json(true);
+            else
+                return Json(false);
         }
     }
 }

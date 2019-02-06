@@ -637,6 +637,17 @@ namespace UptronWeb.BAL.Common
             }
             return false;
         }
-
+        public JobRegistration PermitJobToSeeker(int jobSeekerId)
+        {
+            _db = new UptronWebEntities();
+            var jobSeeker = _db.JobRegistrations.Where(x => x.Id == jobSeekerId).FirstOrDefault();
+            if (jobSeeker != null)
+            {
+                jobSeeker.IsActive = true;
+                _db.SaveChanges();
+                return jobSeeker;
+            }
+            return null;
+        }
     }
 }

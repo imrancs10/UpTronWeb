@@ -35,6 +35,13 @@ namespace UptronWeb.Infrastructure.Utility
             return "UPL/" + code;
         }
 
+        public static string GetDefaultPasswordCode()
+        {
+            string code = new string(Enumerable.Repeat(Chars, LengthVendorCode)
+              .Select(s => s[srRandom.Next(s.Length)]).ToArray());
+            return code;
+        }
+
         public static string GetGeneratedResetCode()
         {
             return GenerateStringUsingRNGCryptoService(LengthResetCode);

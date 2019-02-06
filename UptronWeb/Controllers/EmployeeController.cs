@@ -43,7 +43,7 @@ namespace UptronWeb.Controllers
                 return RedirectToAction("Dashboard");
             }
             else
-                SetAlertMessage("Invalid Login credentials", "Login Response");
+                SetAlertMessage("Invalid Login credentials or Your profile is not active yet.", "Login Response");
             return RedirectToAction("Login");
         }
 
