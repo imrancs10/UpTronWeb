@@ -5,7 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UptronWeb.BAL.Common;
+using UptronWeb.BAL.Login;
 using UptronWeb.Global;
+using UptronWeb.Infrastructure.Authentication;
 
 namespace UptronWeb.Controllers
 {
@@ -41,7 +43,7 @@ namespace UptronWeb.Controllers
                 return Resource.Common_NoResponseFromServer;
         }
 
-        public void SetAlertMessage(string message,string title="Alert")
+        public void SetAlertMessage(string message, string title = "Alert")
         {
             TempData["Alert_Message"] = message;
             TempData["Alert_Title"] = title;
@@ -67,7 +69,7 @@ namespace UptronWeb.Controllers
             CommonDetails _details = new CommonDetails();
             return Json(_details.GetVendor());
         }
-        
+
         [HttpPost]
         public JsonResult GetJobType(int VendorId)
         {
@@ -85,5 +87,31 @@ namespace UptronWeb.Controllers
             CommonDetails _details = new CommonDetails();
             return Json(_details.GetRemainingSeat(VendorJobId));
         }
+        [HttpPost]
+        public ActionResult ResetPassword(string txtoldpassowrd, string txtnewpassword, string txtconfirmpassword, string redirectUrl)
+        {
+            LoginDetails detail = new LoginDetails();
+            if (txtnewpassword != txtconfirmpassword)
+            {
+                SetAlertMessage("New Password and Confirm Password are not matched");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Admin");
+            }
+            var user = User as CustomPrincipal;
+            var result = detail.ResetPassword(txtoldpassowrd, txtnewpassword, user.AdminUserId);
+            if (result == true)
+            {
+                SetAlertMessage("Password Updated.");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Admin");
+            }
+            else
+            {
+                SetAlertMessage("Old Password is Wrong.");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Admin");
+            }
+        }
+
     }
 }

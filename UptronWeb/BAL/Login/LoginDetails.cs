@@ -27,5 +27,20 @@ namespace UptronWeb.BAL.Login
             else
                 return null;
         }
+        public bool ResetPassword(string txtoldpassowrd, string txtnewpassword, int userId)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.UserMasters.Where(x => x.Id == userId && x.Password == txtoldpassowrd).FirstOrDefault();
+            if (result != null)
+            {
+                result.Password = txtnewpassword;
+                _db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
