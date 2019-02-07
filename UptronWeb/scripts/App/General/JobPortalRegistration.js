@@ -71,8 +71,12 @@ function fillCity(stateId) {
     });
 }
 
-$('#btnSave').click(function () {
-    //validation goes here
+$('#btnSave').click(function (e) {
+    if (!$("#form")[0].checkValidity()) {
+        $("#form").find("#submit-hidden").click();
+        return false;
+    }
+    e.preventDefault();
 
     var registrationJson = {
         Name: $('#txtName').val(),
@@ -239,4 +243,15 @@ $('#txtEmail').blur(function () {
             alert(response.responseText);
         }
     });
+});
+
+$('#SkillDropdown').change(function () {
+    var skills = $(this).val();
+    if (skills != null) {
+        $.each(skills, function (i, item) {
+            if (item === "Data Operator") {
+                $('#SkillDropdown').attr("required", "required");
+            }
+        });
+    }
 });
