@@ -227,5 +227,31 @@ namespace UptronWeb.Controllers
             HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
             Response.Cookies.Add(faCookie);
         }
+
+        [HttpPost]
+        public ActionResult ChangePassword(string txtoldpassowrd, string txtnewpassword, string txtconfirmpassword, string redirectUrl)
+        {
+            EmployeeDetails detail = new EmployeeDetails();
+            if (txtnewpassword != txtconfirmpassword)
+            {
+                SetAlertMessage("New Password and Confirm Password are not matched");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Employee");
+            }
+            var user = User as CustomPrincipal;
+            var result = detail.ChangePassword(txtoldpassowrd, txtnewpassword, user.EmailId);
+            if (result == true)
+            {
+                SetAlertMessage("Password Updated.");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Employee");
+            }
+            else
+            {
+                SetAlertMessage("Old Password is Wrong.");
+                string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
+                return RedirectToAction(action, "Employee");
+            }
+        }
     }
 }

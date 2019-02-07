@@ -62,7 +62,7 @@ namespace UptronWeb.Infrastructure.Utility
         public static string GetEmployeeResignationEmail(JobResignation vendor)
         {
             string body = "Hi Admin<br/><br/>";
-            body += vendor.JobRegistration.Name + " has request through Contact Us Page, details are as below.<br/>";
+            body += vendor.JobRegistration.Name + " has been request through Employee Resignation Page for Resignation for this Job, details are as below.<br/>";
             body += "<br/><b>Name:&nbsp;&nbsp;</b>" + vendor.JobRegistration.Name + "<br/><br/>";
             body += "<br/><b>Vendor Name:&nbsp;&nbsp;</b>" + vendor.VendorDetail.VendorName + "<br/><br/>";
             body += "<br/><b>Resignation Date:&nbsp;&nbsp;</b>" + vendor.ResignationDate.Value.ToString("dd/MM/yyy") + "<br/><br/>";
