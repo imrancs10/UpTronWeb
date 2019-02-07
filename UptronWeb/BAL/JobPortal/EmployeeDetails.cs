@@ -153,5 +153,21 @@ namespace UptronWeb.BAL.Login
             var result = _db.EmployeeSlips.FirstOrDefault(x => x.Id == Id);
             return result;
         }
+
+        public bool ChangePassword(string txtoldpassowrd, string txtnewpassword, string UserName)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.JobRegistrations.Where(x => x.EmailId == UserName && x.Password == txtoldpassowrd).FirstOrDefault();
+            if (result != null)
+            {
+                result.Password = txtnewpassword;
+                _db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
