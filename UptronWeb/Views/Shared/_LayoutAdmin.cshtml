@@ -57,7 +57,11 @@
                                 <li class="divider"></li>
                                 <li role="presentation"><a data-toggle="modal" data-target="#changePasswordModal" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
                                 <li class="divider"></li>
-                                <li role="presentation"><a id="A1" role="menuitem" tabindex="-1" href="~/UptronAdmin/Login"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out</a></li>
+                                <li role="presentation">
+                                    <a id="A1" role="menuitem" tabindex="-1" href="/UptronAdmin/Logout">
+                                        <span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out
+                                    </a>
+                                </li>
                                 <li class="divider"></li>
                             </ul>
                         </div><!-- /.dropdown -->
@@ -149,12 +153,6 @@
                                                 <span class="nav-text">Partner's</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/VendorJobEntry">
-                                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                                <span class="nav-text">Vendor Job Entry</span>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </li>
                             }
@@ -204,7 +202,14 @@
                                 <span class="nav-text">Vendor</span>
                             </a>
                             <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Vendor/VendorViewDetails"><span class="nav-text">Vendor Registration</span></a></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="/Vendor/VendorViewDetails"><span class="nav-text">Vendor Registration</span></a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a href="/Admin/VendorJobEntry">
+                                        <span class="nav-text">Vendor Job Entry</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="divider"></li>

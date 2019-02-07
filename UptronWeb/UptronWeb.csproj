@@ -1558,6 +1558,8 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Admin\JobPortalRegistrationForm.cshtml" />
     <Content Include="Views\Admin\VendorJobEntry.cshtml" />
+    <Content Include="Views\Employee\AccessDenied.cshtml" />
+    <Content Include="Views\UptronAdmin\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

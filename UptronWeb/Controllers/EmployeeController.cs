@@ -24,6 +24,7 @@ namespace UptronWeb.Controllers
         {
             return View();
         }
+        [EmployeeAuthorize]
         public ActionResult Dashboard()
         {
             var user = User as CustomPrincipal;
@@ -47,7 +48,7 @@ namespace UptronWeb.Controllers
             return RedirectToAction("Login");
         }
 
-
+        [EmployeeAuthorize]
         public ActionResult EmployeeProfile()
         {
             var user = User as CustomPrincipal;
@@ -56,6 +57,7 @@ namespace UptronWeb.Controllers
             return View(result);
         }
 
+        [EmployeeAuthorize]
         public ActionResult EmployeeResignation()
         {
             EmployeeDetails bal = new EmployeeDetails();
@@ -128,6 +130,7 @@ namespace UptronWeb.Controllers
                 sendMessageStrategy.SendMessages();
             });
         }
+        [EmployeeAuthorize]
         public ActionResult EmployeeSlip()
         {
             EmployeeDetails emp = new EmployeeDetails();
@@ -252,6 +255,18 @@ namespace UptronWeb.Controllers
                 string action = redirectUrl.Substring(redirectUrl.LastIndexOf("/") + 1, redirectUrl.Length - (redirectUrl.LastIndexOf("/") + 1));
                 return RedirectToAction(action, "Employee");
             }
+        }
+        [EmployeeAuthorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Login", "Employee");
+        }
+        public ActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

@@ -215,6 +215,13 @@
     <div id="alertModel" style="display:none;" title="">
         <p></p>
     </div>
+    <script>
+        //disable bACK BUTTON
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
 </body>
 
 </html>

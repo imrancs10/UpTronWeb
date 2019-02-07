@@ -11,10 +11,12 @@ using UptronWeb.BAL.Common;
 using UptronWeb.BAL.Master;
 using UptronWeb.Global;
 using UptronWeb.Infrastructure;
+using UptronWeb.Infrastructure.Authentication;
 using UptronWeb.Infrastructure.Utility;
 
 namespace UptronWeb.Controllers
 {
+    [AdminAuthorize]
     public class AdminController : CommonController
     {
         // GET: Admin

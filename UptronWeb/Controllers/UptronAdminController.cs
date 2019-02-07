@@ -57,5 +57,17 @@ namespace UptronWeb.Controllers
             HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
             Response.Cookies.Add(faCookie);
         }
+        [AdminAuthorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            Session.Clear();
+            return RedirectToAction("Login", "UptronAdmin");
+        }
+        public ActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

@@ -59,7 +59,11 @@
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                 <li role="presentation"><a data-toggle="modal" data-target="#changePasswordModal" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
                                 <li class="divider"></li>
-                                <li role="presentation"><a id="A1" role="menuitem" tabindex="-1" href="~/Employee/Login"><span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out</a></li>
+                                <li role="presentation">
+                                    <a id="A1" role="menuitem" tabindex="-1" href="/Employee/Logout">
+                                        <span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out
+                                    </a>
+                                </li>
                                 <li class="divider"></li>
                             </ul>
                         </div><!-- /.dropdown -->
@@ -91,19 +95,15 @@
                 <!-- /navigation -->
                 <div class="nav-wrapper">
                     <ul class="nav nav-stacked" role="navigation">
-                        @*<li class="nav-item open active" role="presentation">
-                                <a href="#" data-toggle="nav-child">
-                                    <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
-                                    <span class="nav-text">Dashboard</span>
-                                </a>
-                                <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="index-2.html"><span class="nav-text">Dashboard 1</span></a></li>
-                                    <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="index-3.html"><span class="nav-text">Dashboard 2</span></a></li>
-                                </ul>
-                            </li>*@
                         <li class="nav-header" role="presentation">GET STARTED</li>
                         <li class="nav-item" role="presentation">
-                            <a href="~/Employee/EmployeeProfile">
+                            <a href="/Employee/Dashboard">
+                                <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a href="/Employee/EmployeeProfile">
                                 <span class="nav-icon"><i class="fa fa-object-group"></i></span>
                                 <span class="nav-text">Profile</span>
                             </a>
@@ -126,24 +126,6 @@
                                 </li>
                             }
                         }
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <span class="nav-icon"><i class="fa fa-align-left"></i></span>
-                                <span class="nav-text">Level Menu</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Lorem ipsum</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Dolor sit</span></a></li>
-                                <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" data-toggle="nav-child" href="#"><span class="nav-text">Node</span></a>
-                                    <ul class="nav nav-child level-2 nav-stacked nav-pills" role="menu">
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Consectetur</span></a></li>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Assumenda</span></a></li>
-                                    </ul>
-                                </li> <!-- /node -->
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Amet</span></a></li>
-                            </ul>
-                        </li>
                         <li class="divider"></li>
                         <li class="nav-header" role="presentation">DEVELOPMENT</li>
                     </ul>

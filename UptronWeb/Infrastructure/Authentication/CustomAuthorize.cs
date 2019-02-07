@@ -7,14 +7,25 @@ using System.Web.Routing;
 
 namespace UptronWeb.Infrastructure.Authentication
 {
-    public class CustomAuthorize : AuthorizeAttribute
+    public class EmployeeAuthorize : AuthorizeAttribute
     {
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Home/AccessDenied" }));
+                    RouteValueDictionary(new { controller = "Employee/AccessDenied" }));
+            }
+        }
+    }
+    public class AdminAuthorize : AuthorizeAttribute
+    {
+        protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
+        {
+            if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "UptronAdmin/AccessDenied" }));
             }
         }
     }
