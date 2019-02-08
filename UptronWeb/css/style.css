@@ -1600,7 +1600,7 @@ textarea.form-control {
 .navbar-collapse {
     box-shadow: none;
     position: relative;
-    top: -2px;
+    top: 13px;
 }
 @media (min-width: 768px) {
     .navbar-collapse {
