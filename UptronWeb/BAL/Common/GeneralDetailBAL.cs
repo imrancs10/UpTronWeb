@@ -97,6 +97,13 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
+        public DirectorMessageDetail GetDirectorMessagePageDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.DirectorMessageDetails.OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            return result;
+        }
+
         public Enums.CrudStatus SavePartner(Partner partner)
         {
             _db = new UptronWebEntities();

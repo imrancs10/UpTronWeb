@@ -8,6 +8,7 @@
     fillNewsUpdateList();
     //fillServiceSlider();
     fillFooterImage();
+    fillDirectorMessagePage();
 });
 
 function fillNewsAndUpdate() {
@@ -400,6 +401,35 @@ function fillFooterImage() {
         },
         Error: function (response) {
             alert(response, responseText);
+        }
+    });
+}
+
+function fillDirectorMessagePage() {
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Home/GetDirectorMessagePage',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            int = 1;
+            var htmlDOM = '';
+            htmlDOM += '<div class="col-md-3">'+
+                '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:180px;height:180px;" />'+
+                                '</div>'+
+                                '<div class="col-md-9">'+
+                                    '<p> ' + data.Message + '</p>'+
+                                '</div>';
+            //htmlDOM += '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:210px;height:210px;" />'+
+            //    '<p> ' + data.Message + '</p>';
+            $('#divDirectorMessagePage').html(htmlDOM);
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
         }
     });
 }

@@ -86,6 +86,11 @@ namespace UptronWeb.Controllers
             return View();
         }
 
+        public ActionResult FullDirector_Message()
+        {
+            return View();
+        }
+
         public ActionResult MajorProject()
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
@@ -270,6 +275,22 @@ namespace UptronWeb.Controllers
             return Json(model);
         }
 
+        public JsonResult GetDirectorMessagePage()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var director = bal.GetDirectorMessagePageDetail();
+            var base64 = Convert.ToBase64String(director.Photo);
+            var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+            DirectorMessageModel model = new DirectorMessageModel()
+            {
+                Designation = director.Designation,
+                Id = director.Id,
+                Message = director.Message,
+                Name = director.Name,
+                Photo = imgsrc
+            };
+            return Json(model);
+        }
         public ActionResult Contact()
         {
             return View();
