@@ -1600,7 +1600,7 @@ textarea.form-control {
 .navbar-collapse {
     box-shadow: none;
     position: relative;
-    top: -2px;
+    top: 13px;
 }
 @media (min-width: 768px) {
     .navbar-collapse {
@@ -8158,4 +8158,12 @@ a, a > img {
 
 ::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+img.alignleft {
+    margin: 0 20px 15px 0;
+}
+
+.alignleft {
+    float: left;
 }
