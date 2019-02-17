@@ -215,6 +215,14 @@ namespace UptronWeb.BAL.Master
             var result = _db.NewsUpdateMasters.ToList();
             return result;
         }
+        public bool DeleteNewsAndUpdate(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
+            _db.NewsUpdateMasters.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
         public List<NewsUpdateMaster> GetAllActiveNewsUpdate()
         {
             _db = new UptronWebEntities();
@@ -227,14 +235,7 @@ namespace UptronWeb.BAL.Master
             var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
             return result;
         }
-        public bool DeleteNewsAndUpdate(int Id)
-        {
-            _db = new UptronWebEntities();
-            var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
-            _db.NewsUpdateMasters.Remove(result);
-            _db.SaveChanges();
-            return true;
-        }
+        
 
         public Enums.CrudStatus SaveEventsUpcoming(UpcomingEventsMaster upcomingEvents)
         {
@@ -304,6 +305,55 @@ namespace UptronWeb.BAL.Master
             _db = new UptronWebEntities();
             var result = _db.UpcomingEventsMasters.FirstOrDefault(x => x.Id == Id);
             _db.UpcomingEventsMasters.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+        public Enums.CrudStatus SaveState(State state)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (state.StateId > 0)
+            {
+                var _deptRow = _db.States.Where(x => x.StateId == state.StateId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.StateId = state.StateId;
+                    _deptRow.StateName = state.StateName;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.States.Where(x => x.StateName == state.StateName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(state).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+        public List<State> GetAllStates()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.States.ToList();
+            return result;
+        }
+        public bool DeleteState(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.States.FirstOrDefault(x => x.StateId == Id);
+            _db.States.Remove(result);
             _db.SaveChanges();
             return true;
         }

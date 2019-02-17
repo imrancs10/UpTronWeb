@@ -831,5 +831,47 @@ namespace UptronWeb.Controllers
                 sendMessageStrategy.SendMessages();
             });
         }
+
+        public ActionResult StateMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("State has been Deleted", "State Master");
+            }
+            MasterBAL bal = new MasterBAL();
+            var news = bal.GetAllStates();
+            return View(news);
+        }
+        [HttpPost]
+        public ActionResult StateMaster(string stateName, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            State state = new State()
+            {
+                StateName = stateName,
+                StateId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveState(state);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("State has been saved", "State Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("State has been Updated", "State Master");
+            }
+            else
+            {
+                SetAlertMessage("State alreday exists", "State Master");
+            }
+            var news = bal.GetAllStates();
+            return View(news);
+        }
+        public ActionResult DeleteState(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteState(Id);
+            return RedirectToAction("StateMaster", new { deleteMessage = true });
+        }
     }
 }
