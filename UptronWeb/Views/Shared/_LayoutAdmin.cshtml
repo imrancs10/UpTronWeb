@@ -26,381 +26,383 @@
     @if ((User as CustomPrincipal) != null)
     {
         string role = (User as CustomPrincipal).Role;
-        <main class="wrapkit-wrapper">
-            <!-- navigation -->
-            <nav class="header navbar">
-                <div class="container-fluid">
-                    <!-- use .pull-*, couse we need this float on any screen size -->
-                    <div class="pull-left">
-                        <a class="navbar-brand" href="#" role="logo" aria-label="Logo">
-                            <img class="logo hidden" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
-                            <img src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+    <main class="wrapkit-wrapper">
+        <!-- navigation -->
+        <nav class="header navbar">
+            <div class="container-fluid">
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-left">
+                    <a class="navbar-brand" href="#" role="logo" aria-label="Logo">
+                        <img class="logo hidden" src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                        <img src="../images/logo/brand-text-dark.png" alt="Brand" style="height:42px; width:208px;">
+                    </a>
+                    <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
+                        <i class="fa fa-bars"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                </div>
+
+                <!-- use .pull-*, couse we need this float on any screen size -->
+                <div class="pull-right" role="navigation">
+
+                    <div class="dropdown">
+
+                        <br />
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <label id="lblUserName1"></label>
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                         </a>
-                        <button data-sidebar="toggleVisible" class="btn btn-icon navbar-btn">
-                            <i class="fa fa-bars"></i>
-                            <i class="fa fa-caret-down"></i>
-                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation"><a data-toggle="modal" data-target="#changePasswordModal" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
+                            <li class="divider"></li>
+                            <li role="presentation">
+                                <a id="A1" role="menuitem" tabindex="-1" href="/UptronAdmin/Logout">
+                                    <span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div><!-- /.dropdown -->
+                </div><!-- /navigation -->
+
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- /navigation -->
+        <!-- ============================================
+    SIDEBAR SECTION
+    =============================================== -->
+        <aside class="sidebar" role="complementary">
+            <!-- profile -->
+            <div class="sidebar-block">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="">
+                            <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
+                            <img class="media-object img-circle" src="../images/dummy/unknown-profile.jpg" alt="photo profile">
+                        </a>
                     </div>
+                    <div class="media-body">
+                        <h4 class="media-heading" id="lblUserName">  </h4>
 
-                    <!-- use .pull-*, couse we need this float on any screen size -->
-                    <div class="pull-right" role="navigation">
-
-                        <div class="dropdown">
-
-                            <br />
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <label id="lblUserName1"></label>
-                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="page-profile.html"><span class="pull-right"><i class="fa fa-user text-muted"></i></span>Profile</a></li>
-                                <li class="divider"></li>
-                                <li role="presentation"><a data-toggle="modal" data-target="#changePasswordModal" role="menuitem" tabindex="-1"><span class="pull-right"><i class="fa fa-key text-muted"></i></span>Change Password</a></li>
-                                <li class="divider"></li>
-                                <li role="presentation">
-                                    <a id="A1" role="menuitem" tabindex="-1" href="/UptronAdmin/Logout">
-                                        <span class="pull-right"><i class="fa fa-sign-out text-muted"></i></span>Sign out
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                            </ul>
-                        </div><!-- /.dropdown -->
-                    </div><!-- /navigation -->
-
-                </div><!-- /.container-fluid -->
-            </nav>
+                    </div>
+                </div>
+            </div><!-- /.sidebar-block -->
+            <!-- /profile -->
             <!-- /navigation -->
-            <!-- ============================================
-            SIDEBAR SECTION
-            =============================================== -->
-            <aside class="sidebar" role="complementary">
-                <!-- profile -->
-                <div class="sidebar-block">
-                    <div class="media">
-                        <div class="media-left">
-                            <a href="">
-                                <span class="status dotted dotted-primary" data-toggle="tooltip" data-container="body" title="available"></span>
-                                <img class="media-object img-circle" src="../images/dummy/unknown-profile.jpg" alt="photo profile">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading" id="lblUserName">  </h4>
+            <div class="nav-wrapper">
+                <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
+                    <li class="nav-item" role="presentation">
+                        <a href="/Admin/Dashboard">
+                            @*<i class="nav-caret pull-right fa fa-angle-down"></i>*@
+                            <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                        @*<ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="/Admin/Dashboard"><span class="nav-text">Dashboard</span></a></li>
+                        </ul>*@
+                    </li>
 
-                        </div>
-                    </div>
-                </div><!-- /.sidebar-block -->
-                <!-- /profile -->
-                <!-- /navigation -->
-                <div class="nav-wrapper">
-                    <ul class="nav nav-stacked nav-left nav-tabs nav-contrast-teal" role="navigation">
-                        <li class="nav-item" role="presentation">
-                            <a href="/Admin/Dashboard">
-                                @*<i class="nav-caret pull-right fa fa-angle-down"></i>*@
-                                <span class="nav-icon"><i class="fa fa-dashcube"></i></span>
-                                <span class="nav-text">Dashboard</span>
-                            </a>
-                            @*<ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="/Admin/Dashboard"><span class="nav-text">Dashboard</span></a></li>
-            </ul>*@
-                        </li>
-
-                        <li class="divider"></li>
-                        <li class="nav-header" role="presentation">GET STARTED</li>
-                        @{
-                            if (role == Enums.UserRole.Admin.ToString() || role == Enums.UserRole.SuperAdmin.ToString())
-                            {
-                                <li class="nav-item" role="presentation">
-                                    <a href="#" data-toggle="nav-child">
-                                        <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                        <span class="nav-icon"><i class="fa fa-home"></i></span>
-                                        <span class="nav-text">Home Page</span>
-                                    </a>
-                                    <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                        @*<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>*@
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/Slider">
-                                                <span class="nav-icon"><i class="fa fa-object-group"></i></span>
-                                                <span class="nav-text">Home Slider</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/NewsAndUpdate">
-                                                <span class="nav-icon"><i class="fa fa-cubes"></i></span>
-                                                <span class="nav-text">News & Updates</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/EventsUpcoming">
-                                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                                <span class="nav-text">Upcoming Events</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/KeyFunctionaries">
-                                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                                <span class="nav-text">Key Functionaries</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/DirectorMessage">
-                                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                                <span class="nav-text">Director's Message</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <a href="/Admin/Partner">
-                                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                                <span class="nav-text">Partner's</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            }
+                    <li class="divider"></li>
+                    <li class="nav-header" role="presentation">GET STARTED</li>
+                    @{
+                        if (role == Enums.UserRole.Admin.ToString() || role == Enums.UserRole.SuperAdmin.ToString())
+                        {
+                            <li class="nav-item" role="presentation">
+                                <a href="#" data-toggle="nav-child">
+                                    <i class="nav-caret pull-right fa fa-angle-right"></i>
+                                    <span class="nav-icon"><i class="fa fa-home"></i></span>
+                                    <span class="nav-text">Home Page</span>
+                                </a>
+                                <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                                    @*<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Photo Gallery</span></a></li>*@
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/Slider">
+                                            <span class="nav-icon"><i class="fa fa-object-group"></i></span>
+                                            <span class="nav-text">Home Slider</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/NewsAndUpdate">
+                                            <span class="nav-icon"><i class="fa fa-cubes"></i></span>
+                                            <span class="nav-text">News & Updates</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/EventsUpcoming">
+                                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                            <span class="nav-text">Upcoming Events</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/KeyFunctionaries">
+                                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                            <span class="nav-text">Key Functionaries</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/DirectorMessage">
+                                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                            <span class="nav-text">Director's Message</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a href="/Admin/Partner">
+                                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                                            <span class="nav-text">Partner's</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         }
-
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                <span class="nav-text">GO's and Circular</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GoCircularEntry"><span class="nav-text">GO's & Circular Entry</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GoCircularView"><span class="nav-text">GO's & Circular View</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
-                                <span class="nav-text">Tender</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/TenderEntry"><span class="nav-text">Tender Entry</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/TenderView"><span class="nav-text">Tender View</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
-                                <span class="nav-text">Job Portals</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/JobPortalRegistrationList"><span class="nav-text">Job Portals Registration</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/JobPortalRegistrationForm"><span class="nav-text">Job Registration Form</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
-                                <span class="nav-text">Vendor</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation">
-                                    <a role="menuitem" tabindex="-1" href="/Vendor/VendorViewDetails"><span class="nav-text">Vendor Registration</span></a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a href="/Admin/VendorJobEntry">
-                                        <span class="nav-text">Vendor Job Entry</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-cloud"></i></span>
-                                <span class="nav-text">Our Services</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="~/Admin/Services"><span class="nav-text">Services</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-users"></i></span>
-                                <span class="nav-text">Our Partner</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="~/Admin/Partner"><span class="nav-text">Partner Detail</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-image"></i></span>
-                                <span class="nav-text">Our Gallery</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GalleryCategory"><span class="nav-text">Gallery category</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/PhotoGallery"><span class="nav-text">Photo Gallery</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
-                                <span class="nav-text">Our Enquiry</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/QuickEnquiryDetail"><span class="nav-text">Quick Enquiry</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/QuickEnquiryArchiveDetail"><span class="nav-text">Quick Enquiry Archive</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Feedback</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ContactUsDetail"><span class="nav-text">Contact Us</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ContactUsArchiveDetail"><span class="nav-text">Contact Us Archived</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="/Admin/Majorprojects">
-                                <span class="nav-icon"><i class="fa fa-anchor"></i></span>
-                                <span class="nav-text">Major Projects</span>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="nav-item" role="presentation">
-                            <a href="#" data-toggle="nav-child">
-                                <i class="nav-caret pull-right fa fa-angle-right"></i>
-                                <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
-                                <span class="nav-text">Masters</span>
-                            </a>
-                            <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/StateMaster"><span class="nav-text">State</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/CityMaster"><span class="nav-text">City</span></a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ReligionMaster"><span class="nav-text">Religion</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="collapse-item" role="presentation">
-                            <a href="#" data-sidebar="toggleCollapse">
-                                <i class="fa fa-angle-double-left"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </aside><!-- /.SIDEBAR -->
-
-            @RenderBody()
-
-            <footer class="footer-wrapper" role="contentinfo">
-                <div class="footer">
-                    @*<div class="pull-right text-muted"><small>Currently v1.2</small></div>
-                        <div>Wrapkit Template  &copy; 2015</div>*@
-                    <p>Copyright &copy; 2018  <a target="_blank" href="http://uptronpowertronics.in">Uptron Powertronics Limited</a> </p>
-                </div>
-            </footer><!-- /.FOOTER -->
-            <!-- /#MAIN -->
-            <!-- VENDORS : jQuery & Bootstrap -->
-            <script src="~/scripts/lib/vendor.js"></script>
-            <!-- END VENDORS -->
-            <!-- DEPENDENCIES : Required plugins -->
-            <script src="~/scripts/lib/dependencies.js"></script>
-            <!-- END DEPENDENCIES -->
-            <!-- WRAPKIT -->
-            <script src="~/scripts/lib/wrapkit.js"></script>
-            <!-- END WRAPKIT -->
-            <!-- WRAPKIT SETUPS -->
-            <script src="~/scripts/lib/wrapkit-setup.js"></script>
-            <!-- end WRAPKIT SETUPS -->
-            <!-- PLUGIN SETUPS: vendors & dependencies setups -->
-            <script src="~/scripts/lib/plugin-setups.js"></script>
-            <!-- END PLUGIN SETUPS -->
-            <!-- COMPONENTS -->
-            <!-- Morris.js + Raphael -->
-            <script src="~/Scripts/lib/typeahead.bundle.js"></script>
-            <script src="~/Scripts/lib/jquery.tagsinput.js"></script>
-            <script src="~/Scripts/lib/jquery.mask.js"></script>
-            <script src="~/Scripts/lib/select2.js"></script>
-            <script src="~/Scripts/lib/jquery.selectBoxit.js"></script>
-            <script src="~/Scripts/lib/moment.js"></script>
-            <script src="~/Scripts/lib/jquery-minicolors.js"></script>
-
-            <script src="~/Scripts/lib/morris.bundle.js"></script>
-            <script src="~/Scripts/lib/jquery.sparkline.js"></script>
-            @*<script src="~/Scripts/lib/daterangepicker.js"></script>*@
-            <script src="~/Scripts/lib/jquery.easypiechart.js"></script>
-            <!-- END COMPONENTS -->
-            <!-- DUMMY: Use for demo -->
-            <script src="~/Scripts/lib/demo/chart-inline-demo.js"></script>
-
-            <script src="~/Scripts/lib/demo/frm-advance-demo.js"></script>
-
-            <!-- COMPONENTS -->
-            <script src="~/Scripts/lib/jquery.mixitup.js"></script>
-            <script src="~/Scripts/lib/imagesloaded.pkgd.js"></script>
-            <script src="~/Scripts/lib/photoswipe.pkgd.js"></script>
-            <!-- END COMPONENTS -->
-            <!-- COMPONENTS -->
-            @*<script src="~/Scripts/lib/fullcalendar.js"></script>
-                <script src="~/Scripts/lib/clndr.js"></script>*@
-            <!-- END COMPONENTS -->
-            <!-- DUMMY: Use for demo -->
-            @*<script src="~/Scripts/lib/demo/plugin-calendar-demo.js"></script>*@
-            <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
-            <script src="~/Scripts/lib/fileinput.js" type="text/javascript"></script>
-            <script src="~/Scripts/lib/demo/page-gallery-demo.js"></script>
-
-            <!-- END COMPONENTS -->
-            <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
-            <script src="~/Scripts/lib/summernote.js" type="text/javascript"></script>
-            <!-- DUMMY: Use for demo -->
-            <script src="~/Scripts/lib/demo/frm-editor-demo.js" type="text/javascript"></script>
-
-            @if (TempData["Alert_Title"] != null)
-            {
-                <div id="dialog" title="@TempData["Alert_Title"].ToString()">
-                    @if (TempData["Alert_Message"] != null)
-                    {
-                        <p>@TempData["Alert_Message"].ToString()</p>
                     }
-                    else
-                    {
-                        <p>Success..!</p>
-                    }
-                </div>
-            }
-            <div id="alertModel" style="display:none;" title="">
-                <p></p>
+
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                            <span class="nav-text">GO's and Circular</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GoCircularEntry"><span class="nav-text">GO's & Circular Entry</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GoCircularView"><span class="nav-text">GO's & Circular View</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="~/Admin/GoCircularEntry" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-puzzle-piece"></i></span>
+                            <span class="nav-text">Tender</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/TenderEntry"><span class="nav-text">Tender Entry</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/TenderView"><span class="nav-text">Tender View</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="nav-text">Job Portals</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/JobPortalRegistrationList"><span class="nav-text">Job Portals Registration</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/JobPortalRegistrationForm"><span class="nav-text">Job Registration Form</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-briefcase"></i></span>
+                            <span class="nav-text">Vendor</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="/Vendor/VendorViewDetails"><span class="nav-text">Vendor Registration</span></a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a href="/Admin/VendorJobEntry">
+                                    <span class="nav-text">Vendor Job Entry</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-cloud"></i></span>
+                            <span class="nav-text">Our Services</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="~/Admin/Services"><span class="nav-text">Services</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-users"></i></span>
+                            <span class="nav-text">Our Partner</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="~/Admin/Partner"><span class="nav-text">Partner Detail</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-image"></i></span>
+                            <span class="nav-text">Our Gallery</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/GalleryCategory"><span class="nav-text">Gallery category</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/PhotoGallery"><span class="nav-text">Photo Gallery</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
+                            <span class="nav-text">Our Enquiry</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/QuickEnquiryDetail"><span class="nav-text">Quick Enquiry</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/QuickEnquiryArchiveDetail"><span class="nav-text">Quick Enquiry Archive</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="nav-text">Feedback</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ContactUsDetail"><span class="nav-text">Contact Us</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ContactUsArchiveDetail"><span class="nav-text">Contact Us Archived</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="/Admin/Majorprojects">
+                            <span class="nav-icon"><i class="fa fa-anchor"></i></span>
+                            <span class="nav-text">Major Projects</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#" data-toggle="nav-child">
+                            <i class="nav-caret pull-right fa fa-angle-right"></i>
+                            <span class="nav-icon"><i class="fa fa-envelope-square"></i></span>
+                            <span class="nav-text">Masters</span>
+                        </a>
+                        <ul class="nav nav-child level-1 nav-stacked nav-pills nav-teal" role="menu">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/StateMaster"><span class="nav-text">State</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/CityMaster"><span class="nav-text">City</span></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/Admin/ReligionMaster"><span class="nav-text">Religion</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="collapse-item" role="presentation">
+                        <a href="#" data-sidebar="toggleCollapse">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </aside><!-- /.SIDEBAR -->
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('.nav-item a.active').removeClass('active');
-                    $('.nav-item a[href]').each(function (ind, ele) {
-                        if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
-                            $(ele).parent().addClass('active');
-                            $(ele).parent().parent().show();
+        @RenderBody()
+
+        <footer class="footer-wrapper" role="contentinfo">
+            <div class="footer">
+                @*<div class="pull-right text-muted"><small>Currently v1.2</small></div>
+                <div>Wrapkit Template  &copy; 2015</div>*@
+                <p>Copyright &copy; 2018  <a target="_blank" href="http://uptronpowertronics.in">Uptron Powertronics Limited</a> </p>
+            </div>
+        </footer><!-- /.FOOTER -->
+        <!-- /#MAIN -->
+        <!-- VENDORS : jQuery & Bootstrap -->
+        <script src="~/scripts/lib/vendor.js"></script>
+        <!-- END VENDORS -->
+        <!-- DEPENDENCIES : Required plugins -->
+        <script src="~/scripts/lib/dependencies.js"></script>
+        <!-- END DEPENDENCIES -->
+        <!-- WRAPKIT -->
+        <script src="~/scripts/lib/wrapkit.js"></script>
+        <!-- END WRAPKIT -->
+        <!-- WRAPKIT SETUPS -->
+        <script src="~/scripts/lib/wrapkit-setup.js"></script>
+        <!-- end WRAPKIT SETUPS -->
+        <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+        <script src="~/scripts/lib/plugin-setups.js"></script>
+        <!-- END PLUGIN SETUPS -->
+        <!-- COMPONENTS -->
+        <!-- Morris.js + Raphael -->
+        <script src="~/Scripts/lib/typeahead.bundle.js"></script>
+        <script src="~/Scripts/lib/jquery.tagsinput.js"></script>
+        <script src="~/Scripts/lib/jquery.mask.js"></script>
+        <script src="~/Scripts/lib/select2.js"></script>
+        <script src="~/Scripts/lib/jquery.selectBoxit.js"></script>
+        <script src="~/Scripts/lib/moment.js"></script>
+        <script src="~/Scripts/lib/jquery-minicolors.js"></script>
+
+        <script src="~/Scripts/lib/morris.bundle.js"></script>
+        <script src="~/Scripts/lib/jquery.sparkline.js"></script>
+        @*<script src="~/Scripts/lib/daterangepicker.js"></script>*@
+        <script src="~/Scripts/lib/jquery.easypiechart.js"></script>
+        <!-- END COMPONENTS -->
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/chart-inline-demo.js"></script>
+
+        <script src="~/Scripts/lib/demo/frm-advance-demo.js"></script>
+
+        <!-- COMPONENTS -->
+        <script src="~/Scripts/lib/jquery.mixitup.js"></script>
+        <script src="~/Scripts/lib/imagesloaded.pkgd.js"></script>
+        <script src="~/Scripts/lib/photoswipe.pkgd.js"></script>
+        <!-- END COMPONENTS -->
+        <!-- COMPONENTS -->
+        @*<script src="~/Scripts/lib/fullcalendar.js"></script>
+        <script src="~/Scripts/lib/clndr.js"></script>*@
+        <!-- END COMPONENTS -->
+        <!-- DUMMY: Use for demo -->
+        @*<script src="~/Scripts/lib/demo/plugin-calendar-demo.js"></script>*@
+        <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/fileinput.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/demo/page-gallery-demo.js"></script>
+
+        <!-- END COMPONENTS -->
+        <script src="~/Scripts/lib/epiceditor.js" type="text/javascript"></script>
+        <script src="~/Scripts/lib/summernote.js" type="text/javascript"></script>
+        <!-- DUMMY: Use for demo -->
+        <script src="~/Scripts/lib/demo/frm-editor-demo.js" type="text/javascript"></script>
+
+        @if (TempData["Alert_Title"] != null)
+        {
+            <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+                @if (TempData["Alert_Message"] != null)
+                {
+                    <p>@TempData["Alert_Message"].ToString()</p>
+                }
+                else
+                {
+                    <p>Success..!</p>
+                }
+            </div>
+        }
+        <div id="alertModel" style="display:none;" title="">
+            <p></p>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.nav-item a.active').removeClass('active');
+                $('.nav-item a[href]').each(function (ind, ele) {
+                    if ($(ele).attr('href').toLowerCase().indexOf(location.pathname.toLowerCase()) > -1) {
+                        $(ele).parent().addClass('active');
+                        $(ele).parent().parent().show();
+                    }
+                });
+
+
+                $("#dialog").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "OK": function () {
+                            $(this).dialog("close");
                         }
-                    });
-
-
-                    $("#dialog").dialog({
-                        resizable: false,
-                        height: "auto",
-                        width: 400,
-                        modal: true,
-                        buttons: {
-                            "OK": function () {
-                                $(this).dialog("close");
-                            }
-                        }
-                    });
-                })
-            </script>
-            <link href="~/css/jquery-ui.css" rel="stylesheet" />
-            <script src="~/js/jquery-ui.js"></script>
-        </main>
+                    }
+                });
+            })
+        </script>
+        <link href="~/css/jquery-ui.css" rel="stylesheet" />
+        <script src="~/js/jquery-ui.js"></script>
+        <link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    </main>
 
         <!-- changePasswordModal -->
         <div class="modal" id="changePasswordModal" data-transition="flipXIn" tabindex="-1" role="dialog" aria-labelledby="modalBasicLabel" aria-hidden="true">

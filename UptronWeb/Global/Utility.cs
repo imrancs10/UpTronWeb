@@ -8,6 +8,10 @@ namespace UptronWeb.Global
 {
     public static class Utility
     {
+        public static bool Contains(this string source, string value, StringComparison comparisonType)
+        {
+            return source?.IndexOf(value, comparisonType) >= 0;
+        }
         private static byte[] GetHash(string inputString)
         {
             HashAlgorithm algorithm = MD5.Create();  //or use SHA256.Create();

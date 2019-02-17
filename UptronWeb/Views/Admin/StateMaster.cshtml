@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@model List<State>
+@*@model List<State>*@
 <form action="StateMaster" method="post">
     <input type="hidden" id="hiddenId" name="Id" />
     <section class="content-wrapper" role="main">
@@ -66,52 +66,7 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr class="bg-primary">
-                                                <th colspan="3">State View Detail</th>
-                                            </tr>
-                                            <tr class="active">
-                                                <th>Sl.no</th>
-                                                <th>StateName</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @{
-                                                int i = 1;
-                                                foreach (var news in Model)
-                                                {
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline"><strong>@i.</strong></span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="input-group input-group-icon">
-                                                                    <span class="headline">@news.StateName</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group mt-lg">
-                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                                    <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditState(@news.StateId,'@news.StateName')" href="#">Edit</a>
-                                                                    <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-primary" href="DeleteState/@news.StateId">Delete</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    i = i + 1;
-                                                }
-                                            }
-                                        </tbody>
-                                    </table>
+                                    <table class="table table-bordered" id="tableState"></table>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +80,74 @@
     </section>
 </form>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tableState = $("#tableState").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ordering": false,
+            "pageLength": 10,
+            "PaginationType": 'full_numbers',
+            "ajax": {
+                "url": "/Admin/GetAllStateList",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
+                { "data": "StateName", "name": "StateName", "autoWidth": true, "title": "State Name" },
+                {
+                    "title": "Action",
+                    "render": function (data, type, full, meta) {
+                        var htmlDOM = "";
+                        htmlDOM = '<div class="form-group mt-lg">' +
+                            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
+                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditState(" + full.StateId + ",\"" + full.StateName.trim() + "\")' href='#'> Edit</a>" +
+                            '<span class="label-divider" id="Span1">or</span>' +
+                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteState/' + full.StateId + '">Delete</a>' +
+                            '</div>' +
+                            '</div>';
+                        return htmlDOM;
+                    }
+                }
+            ],
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                var pageNumber = 0;
+                $.each($('.paginate_button'), function (index, button) {
+                    if ($(this).css('background-image') == 'linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%)') {
+                        pageNumber = $(this).html()
+                    }
+                });
+                if (pageNumber == 0) {
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
+                else {
+                    pageNumber = pageNumber - 1;
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
 
+                return nRow;
+            },
+        });
+        var info = tableState.page.info();
+        $("#tableState_filter input")
+            .unbind() // Unbind previous default bindings
+            .bind("input", function (e) { // Bind our desired behavior
+                // If the length is 2 or more characters, or the user pressed ENTER, search
+                if (this.value.length >= 2 || e.keyCode == 13) {
+                    // Call the API search function
+                    tableState.search(this.value).draw();
+                }
+                // Ensure we clear the search if they backspace far enough
+                if (this.value == "") {
+                    tableState.search("").draw();
+                }
+                return;
+            });
+    });
+</script>
 
 <script type="text/javascript">
     function EditState(Id, stateName) {

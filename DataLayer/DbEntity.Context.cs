@@ -18,6 +18,7 @@ namespace DataLayer
         public UptronWebEntities()
             : base("name=UptronWebEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

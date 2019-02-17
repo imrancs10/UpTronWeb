@@ -838,9 +838,9 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("State has been Deleted", "State Master");
             }
-            MasterBAL bal = new MasterBAL();
-            var news = bal.GetAllStates();
-            return View(news);
+            //MasterBAL bal = new MasterBAL();
+            //var news = bal.GetAllStates();
+            return View();
         }
         [HttpPost]
         public ActionResult StateMaster(string stateName, int? Id)
@@ -864,14 +864,37 @@ namespace UptronWeb.Controllers
             {
                 SetAlertMessage("State alreday exists", "State Master");
             }
-            var news = bal.GetAllStates();
-            return View(news);
+            //var news = bal.GetAllStates();
+            return RedirectToAction("StateMaster");
         }
         public ActionResult DeleteState(int Id)
         {
             MasterBAL bal = new MasterBAL();
             var result = bal.DeleteState(Id);
             return RedirectToAction("StateMaster", new { deleteMessage = true });
+        }
+
+        [HttpPost]
+        public ActionResult GetAllStateList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<State> result = bal.GetAllStates();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.StateName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<State> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
     }
 }
