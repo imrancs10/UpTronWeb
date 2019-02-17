@@ -94,7 +94,7 @@ function fillDirectorMessage() {
                 '<p>' + data.Message.substr(0, 100) + '</p>' +
                 '<h3>' + data.Name + '</h3>' +
                 '<h4>' + data.Designation + '</h4>' +
-                '<a href="#" style="color:#337ab7">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>' +
+                '<a href="/Home/FullDirector_Message" style="color:#337ab7">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>' +
                 '</div>' +
                 '</div>';
             $('#divDirectorMessage').html(htmlDOM);
