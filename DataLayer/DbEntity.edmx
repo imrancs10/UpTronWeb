@@ -80,7 +80,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="JoiningDate" Type="datetime" />
           <Property Name="SalarySlip" Type="varbinary(max)" />
@@ -178,7 +178,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="ResignationDate" Type="datetime" />
           <Property Name="ResignationReason" Type="varchar(max)" />
@@ -243,6 +243,13 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="IsArchive" Type="bit" />
         </EntityType>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="ReligionId" />
+          </Key>
+          <Property Name="ReligionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReligionName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -256,13 +263,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
-          <Property Name="PageHeaderImage" Type="varbinary(max)" />
-          <Property Name="SliderImage" Type="varbinary(max)" />
           <Property Name="Caption" Type="varchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderNumber" Type="int" />
           <Property Name="ServiceDescription" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="PageHeaderImage" Type="varbinary(max)" />
+          <Property Name="SliderImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Slider">
           <Key>
@@ -529,6 +536,7 @@
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuickEnquiry" EntityType="Self.QuickEnquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Religion" EntityType="Self.Religion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceDetail" EntityType="Self.ServiceDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
@@ -701,6 +709,7 @@
             <End Role="VendorDetail" EntitySet="VendorDetails" />
             <End Role="EmployeeSlip" EntitySet="EmployeeSlips" />
           </AssociationSet>
+          <EntitySet Name="Religions" EntityType="UptronWebModel.Religion" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -1315,6 +1324,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Religion">
+          <Key>
+            <PropertyRef Name="ReligionId" />
+          </Key>
+          <Property Name="ReligionId" Type="Int32" Nullable="false" />
+          <Property Name="ReligionName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1697,6 +1713,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Religions">
+            <EntityTypeMapping TypeName="UptronWebModel.Religion">
+              <MappingFragment StoreEntitySet="Religion">
+                <ScalarProperty Name="ReligionName" ColumnName="ReligionName" />
+                <ScalarProperty Name="ReligionId" ColumnName="ReligionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1768,6 +1792,7 @@
         <AssociationConnector Association="UptronWebModel.FK_VendorJob_VendorJob" />
         <EntityTypeShape EntityType="UptronWebModel.EmployeeSlip" Width="1.5" PointX="3" PointY="20.875" />
         <AssociationConnector Association="UptronWebModel.FK_EmployeeSlip_VendorDetail" />
+        <EntityTypeShape EntityType="UptronWebModel.Religion" Width="1.5" PointX="14.375" PointY="4.75" />
       </Diagram>
     </Diagrams>
   </Designer>

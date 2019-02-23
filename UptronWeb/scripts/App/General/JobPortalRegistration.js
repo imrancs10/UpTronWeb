@@ -15,7 +15,7 @@ $('#DOB').siblings('span').click(function () {
 });
 
 fillState();
-
+//fillReligion();
 function fillState() {
     let dropdown = $('#state');
     dropdown.empty();
@@ -71,6 +71,30 @@ function fillCity(stateId) {
     });
 }
 
+//function fillReligion() {
+//    let dropdown = $('#religion');
+//    dropdown.empty();
+//    dropdown.append('<option value="">Select</option>');
+//    dropdown.prop('selectedIndex', 0);
+//    $.ajax({
+//        dataType: 'json',
+//        type: 'POST',
+//        url: '/Common/GetReligion',
+//        async: true,
+//        contentType: "application/json; charset=utf-8",
+//        success: function (data) {
+//            $.each(data, function (key, entry) {
+//                dropdown.append($('<option></option>').attr('value', entry.ReligionId).text(entry.ReligionName));
+//            });
+//        },
+//        failure: function (response) {
+//            alert(response);
+//        },
+//        error: function (response) {
+//            alert(response.responseText);
+//        }
+//    });
+//}
 $('#btnSave').click(function (e) {
     if (!$("#form")[0].checkValidity()) {
         $("#form").find("#submit-hidden").click();

@@ -896,5 +896,76 @@ namespace UptronWeb.Controllers
             List<State> data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult ReligionMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Religion has been Deleted", "Religion Master");
+            }
+            //MasterBAL bal = new MasterBAL();
+            //var news = bal.GetAllStates();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ReligionMaster(string religionName, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Religion religion = new Religion()
+            {
+                ReligionName = religionName,
+                ReligionId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveReligion(religion);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Religion has been saved", "Religion Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Religion has been Updated", "Religion Master");
+            }
+            else
+            {
+                SetAlertMessage("Religion alreday exists", "Religion Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("ReligionMaster");
+        }
+
+        private static Enums.CrudStatus GetUpdated()
+        {
+            return Enums.CrudStatus.Updated;
+        }
+
+        public ActionResult DeleteReligion(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteReligion(Id);
+            return RedirectToAction("ReligionMaster", new { deleteMessage = true });
+        }
+
+        [HttpPost]
+        public ActionResult GetAllReligionList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Religion> result = bal.GetAllReligion();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.ReligionName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Religion> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

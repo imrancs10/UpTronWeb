@@ -1562,6 +1562,7 @@
     <Content Include="Views\UptronAdmin\AccessDenied.cshtml" />
     <Content Include="Views\Admin\StateMaster.cshtml" />
     <Content Include="Views\Home\FullDirector_Message.cshtml" />
+    <Content Include="Views\Admin\ReligionMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

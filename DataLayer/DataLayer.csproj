@@ -127,6 +127,9 @@
     <Compile Include="QuickEnquiry.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Religion.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="RoleMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

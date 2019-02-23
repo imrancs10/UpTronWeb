@@ -1,4 +1,5 @@
 ﻿using DataLayer;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -357,5 +358,56 @@ namespace UptronWeb.BAL.Master
             _db.SaveChanges();
             return true;
         }
+
+        public Enums.CrudStatus SaveReligion(Religion religion)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (religion.ReligionId > 0)
+            {
+                var _deptRow = _db.Religions.Where(x => x.ReligionId == religion.ReligionId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.ReligionId = religion.ReligionId;
+                    _deptRow.ReligionName = religion.ReligionName;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Religions.Where(x => x.ReligionName == religion.ReligionName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(religion).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+        public List<Religion> GetAllReligion()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Religions.ToList();
+            return result;
+        }
+        public bool DeleteReligion(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Religions.FirstOrDefault(x => x.ReligionId == Id);
+            _db.Religions.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+      
     }
 }
