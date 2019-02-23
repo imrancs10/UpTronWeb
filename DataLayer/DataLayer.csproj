@@ -84,6 +84,9 @@
     <Compile Include="GalleryPhotoMaster.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Gender.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="GOCircular.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

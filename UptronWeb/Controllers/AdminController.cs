@@ -967,5 +967,71 @@ namespace UptronWeb.Controllers
             List<Religion> data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GenderMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Gender has been Deleted", "Gender Master");
+            }
+            //MasterBAL bal = new MasterBAL();
+            //var news = bal.GetAllStates();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GenderMaster(string GenderName, string IsActive, int ? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Gender gender = new Gender()
+            {
+                GenderName = GenderName,
+                IsActive = IsActive == "on" ? true : false,
+                GenderId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveGender(gender);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Gender has been saved", "Gender Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Gender has been Updated", "Gender Master");
+            }
+            else
+            {
+                SetAlertMessage("Gender alreday exists", "Gender Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("GenderMaster");
+        }
+
+        public ActionResult GetAllGenderList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Gender> result = bal.GetAllGender();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.GenderName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Gender> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteGender(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteGender(Id);
+            return RedirectToAction("GenderMaster", new { deleteMessage = true });
+        }
     }
 }

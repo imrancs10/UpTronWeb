@@ -408,6 +408,58 @@ namespace UptronWeb.BAL.Master
             _db.SaveChanges();
             return true;
         }
-      
+
+        public Enums.CrudStatus SaveGender(Gender gender)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (gender.GenderId > 0)
+            {
+                var _deptRow = _db.Genders.Where(x => x.GenderId == gender.GenderId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.GenderId = gender.GenderId;
+                    _deptRow.GenderName = gender.GenderName;
+                    _deptRow.IsActive = gender.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Genders.Where(x => x.GenderName == gender.GenderName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(gender).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Gender> GetAllGender()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Genders.ToList();
+            return result;
+        }
+        public bool DeleteGender(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Genders.FirstOrDefault(x => x.GenderId == Id);
+            _db.Genders.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
     }
 }

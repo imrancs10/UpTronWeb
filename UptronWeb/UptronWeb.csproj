@@ -1563,6 +1563,7 @@
     <Content Include="Views\Admin\StateMaster.cshtml" />
     <Content Include="Views\Home\FullDirector_Message.cshtml" />
     <Content Include="Views\Admin\ReligionMaster.cshtml" />
+    <Content Include="Views\Admin\GenderMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

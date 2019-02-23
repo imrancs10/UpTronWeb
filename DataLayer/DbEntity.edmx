@@ -66,6 +66,14 @@
           <Property Name="PhotoName" Type="varchar" MaxLength="500" />
           <Property Name="Photo" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="GOCircular">
           <Key>
             <PropertyRef Name="Id" />
@@ -522,6 +530,7 @@
           <EntitySet Name="EmployeeSlip" EntityType="Self.EmployeeSlip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryMaster" EntityType="Self.GalleryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobDocumentUpload" EntityType="Self.JobDocumentUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistration" EntityType="Self.JobRegistration" Schema="dbo" store:Type="Tables" />
@@ -710,6 +719,7 @@
             <End Role="EmployeeSlip" EntitySet="EmployeeSlips" />
           </AssociationSet>
           <EntitySet Name="Religions" EntityType="UptronWebModel.Religion" />
+          <EntitySet Name="Genders" EntityType="UptronWebModel.Gender" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -1331,6 +1341,14 @@
           <Property Name="ReligionId" Type="Int32" Nullable="false" />
           <Property Name="ReligionName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1721,6 +1739,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="UptronWebModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1793,6 +1820,7 @@
         <EntityTypeShape EntityType="UptronWebModel.EmployeeSlip" Width="1.5" PointX="3" PointY="20.875" />
         <AssociationConnector Association="UptronWebModel.FK_EmployeeSlip_VendorDetail" />
         <EntityTypeShape EntityType="UptronWebModel.Religion" Width="1.5" PointX="14.375" PointY="4.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Gender" Width="1.5" PointX="14.375" PointY="7.75" />
       </Diagram>
     </Diagrams>
   </Designer>
