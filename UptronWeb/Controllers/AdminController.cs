@@ -843,12 +843,12 @@ namespace UptronWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult StateMaster(string stateName, int? Id)
+        public ActionResult StateMaster(string StateName, int? Id)
         {
             MasterBAL bal = new MasterBAL();
             State state = new State()
             {
-                StateName = stateName,
+                StateName = StateName,
                 StateId = Id != null ? Id.Value : 0,
             };
             var result = bal.SaveState(state);
@@ -1033,5 +1033,262 @@ namespace UptronWeb.Controllers
             var result = bal.DeleteGender(Id);
             return RedirectToAction("GenderMaster", new { deleteMessage = true });
         }
+
+        public ActionResult MaritalMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Marital Status has been Deleted", "Marital Master");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MaritalMaster(string MaritalName, string IsActive, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Marital marital = new Marital()
+            {
+                MaritalName = MaritalName,
+                IsActive = IsActive == "on" ? true : false,
+                MaritalId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveMarital(marital);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Marital Status has been saved", "Marital Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Marital Status has been Updated", "Marital Master");
+            }
+            else
+            {
+                SetAlertMessage("Marital Status alreday exists", "Marital Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("MaritalMaster");
+        }
+
+        public ActionResult GetAllMaritalList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Marital> result = bal.GetAllMarital();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.MaritalName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Marital> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteMarital(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteMarital(Id);
+            return RedirectToAction("MaritalMaster", new { deleteMessage = true });
+        }
+
+        public ActionResult IdentityMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Identity has been Deleted", "Identity Master");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult IdentityMaster(string IdentityName, string IsActive, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Identity identity = new Identity()
+            {
+                IdentityName = IdentityName,
+                IsActive = IsActive == "on" ? true : false,
+                IdentityId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveIdentity(identity);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Identity has been saved", "Identity Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Identity has been Updated", "Identity Master");
+            }
+            else
+            {
+                SetAlertMessage("Identity alreday exists", "Identity Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("IdentityMaster");
+        }
+
+        public ActionResult GetAllIdentityList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Identity> result = bal.GetAllIdentity();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.IdentityName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Identity> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteIdentity(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteIdentity(Id);
+            return RedirectToAction("IdentityMaster", new { deleteMessage = true });
+        }
+
+        public ActionResult LanguageMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Language has been Deleted", "Language Master");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LanguageMaster(string LanguageName, string IsActive, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Language language = new Language()
+            {
+                LanguageName = LanguageName,
+                IsActive = IsActive == "on" ? true : false,
+                LanguageId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveLanguage(language);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Language has been saved", "Language Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Language has been Updated", "Language Master");
+            }
+            else
+            {
+                SetAlertMessage("Language alreday exists", "Language Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("LanguageMaster");
+        }
+
+        public ActionResult GetAllLanguageList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Language> result = bal.GetAllLanguage();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.LanguageName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Language> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteLanguage(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteLanguage(Id);
+            return RedirectToAction("LanguageMaster", new { deleteMessage = true });
+        }
+
+        public ActionResult SkillMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("Skill has been Deleted", "Skill Master");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SkillMaster(string SkillName, string IsActive, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            Skill skill = new Skill()
+            {
+                SkillsName = SkillName,
+                IsActive = IsActive == "on" ? true : false,
+                SkillsId = Id != null ? Id.Value : 0,
+            };
+            var result = bal.SaveSkill(skill);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Skill has been saved", "Skill Master");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Skill has been Updated", "Skill Master");
+            }
+            else
+            {
+                SetAlertMessage("Skill alreday exists", "Skill Master");
+            }
+            //var news = bal.GetAllStates();
+            return RedirectToAction("SkillMaster");
+        }
+
+        public ActionResult GetAllSkillList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<Skill> result = bal.GetAllSkill();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.SkillsName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<Skill> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DeleteSkill(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteSkill(Id);
+            return RedirectToAction("SkillMaster", new { deleteMessage = true });
+        }
+
     }
 }

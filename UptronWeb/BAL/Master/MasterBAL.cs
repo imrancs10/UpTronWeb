@@ -461,5 +461,216 @@ namespace UptronWeb.BAL.Master
             return true;
         }
 
+        public Enums.CrudStatus SaveMarital(Marital marital)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (marital.MaritalId > 0)
+            {
+                var _deptRow = _db.Maritals.Where(x => x.MaritalId == marital.MaritalId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.MaritalId = marital.MaritalId;
+                    _deptRow.MaritalName = marital.MaritalName;
+                    _deptRow.IsActive = marital.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Maritals.Where(x => x.MaritalName == marital.MaritalName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(marital).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Marital> GetAllMarital()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Maritals.ToList();
+            return result;
+        }
+
+        public bool DeleteMarital(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Maritals.FirstOrDefault(x => x.MaritalId == Id);
+            _db.Maritals.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public Enums.CrudStatus SaveIdentity(Identity identity)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (identity.IdentityId > 0)
+            {
+                var _deptRow = _db.Identities.Where(x => x.IdentityId == identity.IdentityId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.IdentityId = identity.IdentityId;
+                    _deptRow.IdentityName = identity.IdentityName;
+                    _deptRow.IsActive = identity.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Identities.Where(x => x.IdentityName == identity.IdentityName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(identity).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Identity> GetAllIdentity()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Identities.ToList();
+            return result;
+        }
+
+        public bool DeleteIdentity(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Identities.FirstOrDefault(x => x.IdentityId == Id);
+            _db.Identities.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public Enums.CrudStatus SaveLanguage(Language language)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (language.LanguageId > 0)
+            {
+                var _deptRow = _db.Languages.Where(x => x.LanguageId == language.LanguageId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.LanguageId = language.LanguageId;
+                    _deptRow.LanguageName = language.LanguageName;
+                    _deptRow.IsActive = language.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Languages.Where(x => x.LanguageName == language.LanguageName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(language).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Language> GetAllLanguage()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Languages.ToList();
+            return result;
+        }
+
+        public bool DeleteLanguage(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Languages.FirstOrDefault(x => x.LanguageId == Id);
+            _db.Languages.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public Enums.CrudStatus SaveSkill(Skill skill)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (skill.SkillsId > 0)
+            {
+                var _deptRow = _db.Skills.Where(x => x.SkillsId == skill.SkillsId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.SkillsId = skill.SkillsId;
+                    _deptRow.SkillsName = skill.SkillsName;
+                    _deptRow.IsActive = skill.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Skills.Where(x => x.SkillsName == skill.SkillsName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(skill).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<Skill> GetAllSkill()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Skills.ToList();
+            return result;
+        }
+
+        public bool DeleteSkill(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Skills.FirstOrDefault(x => x.SkillsId == Id);
+            _db.Skills.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }

@@ -90,6 +90,9 @@
     <Compile Include="GOCircular.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Identity.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobDocumentUpload.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
@@ -117,7 +120,13 @@
     <Compile Include="KeyFunctionary.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="MajorProject.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Marital.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="NewsUpdateMaster.cs">
@@ -137,6 +146,9 @@
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceDetail.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Skill.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Slider.cs">

@@ -1564,6 +1564,10 @@
     <Content Include="Views\Home\FullDirector_Message.cshtml" />
     <Content Include="Views\Admin\ReligionMaster.cshtml" />
     <Content Include="Views\Admin\GenderMaster.cshtml" />
+    <Content Include="Views\Admin\MaritalMaster.cshtml" />
+    <Content Include="Views\Admin\IdentityMaster.cshtml" />
+    <Content Include="Views\Admin\LanguageMaster.cshtml" />
+    <Content Include="Views\Admin\SkillMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -56,5 +56,9 @@ namespace DataLayer
         public virtual DbSet<EmployeeSlip> EmployeeSlips { get; set; }
         public virtual DbSet<Religion> Religions { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
+        public virtual DbSet<Identity> Identities { get; set; }
+        public virtual DbSet<Marital> Maritals { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
     }
 }

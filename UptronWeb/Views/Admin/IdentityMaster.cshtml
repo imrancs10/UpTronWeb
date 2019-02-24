@@ -1,0 +1,181 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@*@model List<State>*@
+<form action="IdentityMaster" method="post">
+    <input type="hidden" id="hiddenId" name="Id" />
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Identity Master</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Identity Master</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Identity Name</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="IdentityName" name="IdentityName" class="form-control" placeholder="Identity name" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/IdentityMaster" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="tableIdentity"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.panel -->
+                    <div class="container">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var tableIdentity = $("#tableIdentity").DataTable({
+            "processing": true, // for show progress bar
+            "serverSide": true, // for process server side
+            "filter": true, // this is for disable filter (search box)
+            "orderMulti": false, // for disable multiple column at once
+            "ordering": false,
+            "pageLength": 10,
+            "PaginationType": 'full_numbers',
+            "ajax": {
+                "url": "/Admin/GetAllIdentityList",
+                "type": "POST",
+                "datatype": "json"
+            },
+            "columns": [
+                { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
+                { "data": "IdentityName", "name": "IdentityName", "autoWidth": true, "title": "Identity Name" },
+                { "data": "IsActive", "name": "IsActive", "autoWidth": true, "title": "IsActive" },
+                {
+                    "title": "Action",
+                    "render": function (data, type, full, meta) {
+                        var htmlDOM = "";
+                        htmlDOM = '<div class="form-group mt-lg">' +
+                            '<div class="btn-divider mr-2x mb-1x" role="divider">' +
+                            //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditIdentity(" + full.IdentityId + ",\"" + full.IdentityName.trim() + ",\"" + full.IsActive == true ? 1 : 0 + "\")' href='#'> Edit</a>" +
+                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditIdentity(" + full.IdentityId + ",\"" + full.IdentityName.trim() + "\")' href='#'> Edit</a>" +
+                            '<span class="label-divider" id="Span1">or</span>' +
+                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteIdentity/' + full.IdentityId + '">Delete</a>' +
+                            '</div>' +
+                            '</div>';
+                        return htmlDOM;
+                    }
+                }
+            ],
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                var pageNumber = 0;
+                $.each($('.paginate_button'), function (index, button) {
+                    if ($(this).css('background-image') == 'linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%)') {
+                        pageNumber = $(this).html()
+                    }
+                });
+                if (pageNumber == 0) {
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
+                else {
+                    pageNumber = pageNumber - 1;
+                    $("td:first", nRow).html((pageNumber * info.length) + iDisplayIndex + 1);
+                }
+
+                return nRow;
+            },
+        });
+        var info = tableIdentity.page.info();
+        $("#tableIdentity_filter input")
+            .unbind() // Unbind previous default bindings
+            .bind("input", function (e) { // Bind our desired behavior
+                // If the length is 2 or more characters, or the user pressed ENTER, search
+                if (this.value.length >= 2 || e.keyCode == 13) {
+                    // Call the API search function
+                    tableMarital.search(this.value).draw();
+                }
+                // Ensure we clear the search if they backspace far enough
+                if (this.value == "") {
+                    tableMarital.search("").draw();
+                }
+                return;
+            });
+    });
+</script>
+@*<script type="text/javascript">
+        function EditGender(Id, GenderName) {
+            $('#hiddenId').val(Id);
+            $('#btnSave').val('Update');
+            $('#GenderName').val(GenderName);
+        }
+    </script>*@
+<script type="text/javascript">
+    function EditIdentity(Id, IdentityName, IsActive) {
+        $('#hiddenId').val(Id);
+        $('#btnSave').val('Update');
+        $('#IdentityName').val(IdentityName);
+        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+    }
+</script>

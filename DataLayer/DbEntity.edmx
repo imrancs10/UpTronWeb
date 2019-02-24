@@ -84,6 +84,14 @@
           <Property Name="Subject" Type="nvarchar" MaxLength="500" />
           <Property Name="GOFile" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Identity">
+          <Key>
+            <PropertyRef Name="IdentityId" />
+          </Key>
+          <Property Name="IdentityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="JobDocumentUpload">
           <Key>
             <PropertyRef Name="Id" />
@@ -204,6 +212,14 @@
           <Property Name="Image" Type="varbinary(max)" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="MajorProjects">
           <Key>
             <PropertyRef Name="ID" />
@@ -216,6 +232,14 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="OrderNumber" Type="int" />
           <Property Name="Createddate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Marital">
+          <Key>
+            <PropertyRef Name="MaritalId" />
+          </Key>
+          <Property Name="MaritalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaritalName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="NewsUpdateMaster">
           <Key>
@@ -278,6 +302,14 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="PageHeaderImage" Type="varbinary(max)" />
           <Property Name="SliderImage" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="SkillsId" />
+          </Key>
+          <Property Name="SkillsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillsName" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Slider">
           <Key>
@@ -532,6 +564,7 @@
           <EntitySet Name="GalleryPhotoMaster" EntityType="Self.GalleryPhotoMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GOCircular" EntityType="Self.GOCircular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Identity" EntityType="Self.Identity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobDocumentUpload" EntityType="Self.JobDocumentUpload" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistration" EntityType="Self.JobRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobRegistrationEmployement" EntityType="Self.JobRegistrationEmployement" Schema="dbo" store:Type="Tables" />
@@ -541,13 +574,16 @@
           <EntitySet Name="JobRegistrationSkill" EntityType="Self.JobRegistrationSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobResignation" EntityType="Self.JobResignation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KeyFunctionaries" EntityType="Self.KeyFunctionaries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MajorProjects" EntityType="Self.MajorProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marital" EntityType="Self.Marital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewsUpdateMaster" EntityType="Self.NewsUpdateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuickEnquiry" EntityType="Self.QuickEnquiry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Religion" EntityType="Self.Religion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceDetail" EntityType="Self.ServiceDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
@@ -720,6 +756,10 @@
           </AssociationSet>
           <EntitySet Name="Religions" EntityType="UptronWebModel.Religion" />
           <EntitySet Name="Genders" EntityType="UptronWebModel.Gender" />
+          <EntitySet Name="Identities" EntityType="UptronWebModel.Identity" />
+          <EntitySet Name="Maritals" EntityType="UptronWebModel.Marital" />
+          <EntitySet Name="Languages" EntityType="UptronWebModel.Language" />
+          <EntitySet Name="Skills" EntityType="UptronWebModel.Skill" />
         </EntityContainer>
         <EntityType Name="City">
           <Key>
@@ -1349,6 +1389,38 @@
           <Property Name="GenderName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Identity">
+          <Key>
+            <PropertyRef Name="IdentityId" />
+          </Key>
+          <Property Name="IdentityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Marital">
+          <Key>
+            <PropertyRef Name="MaritalId" />
+          </Key>
+          <Property Name="MaritalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaritalName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillsId" />
+          </Key>
+          <Property Name="SkillsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillsName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1748,6 +1820,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Identities">
+            <EntityTypeMapping TypeName="UptronWebModel.Identity">
+              <MappingFragment StoreEntitySet="Identity">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IdentityName" ColumnName="IdentityName" />
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maritals">
+            <EntityTypeMapping TypeName="UptronWebModel.Marital">
+              <MappingFragment StoreEntitySet="Marital">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MaritalName" ColumnName="MaritalName" />
+                <ScalarProperty Name="MaritalId" ColumnName="MaritalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="UptronWebModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="UptronWebModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SkillsName" ColumnName="SkillsName" />
+                <ScalarProperty Name="SkillsId" ColumnName="SkillsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1821,6 +1929,10 @@
         <AssociationConnector Association="UptronWebModel.FK_EmployeeSlip_VendorDetail" />
         <EntityTypeShape EntityType="UptronWebModel.Religion" Width="1.5" PointX="14.375" PointY="4.75" />
         <EntityTypeShape EntityType="UptronWebModel.Gender" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Identity" Width="1.5" PointX="14.375" PointY="10.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Marital" Width="1.5" PointX="12.375" PointY="14.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Language" Width="1.5" PointX="14.375" PointY="13.75" />
+        <EntityTypeShape EntityType="UptronWebModel.Skill" Width="1.5" PointX="16.375" PointY="0.75" />
       </Diagram>
     </Diagrams>
   </Designer>
