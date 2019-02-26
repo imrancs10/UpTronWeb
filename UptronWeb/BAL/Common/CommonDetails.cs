@@ -84,5 +84,17 @@ namespace UptronWeb.BAL.Common
             }
             return null;
         }
+        public List<Religion> GetReligion()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Religions.ToList();
+        }
+        public List<Language> GetLanguages()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Languages.Where(x => x.IsActive == true).ToList();
+        }
     }
 }

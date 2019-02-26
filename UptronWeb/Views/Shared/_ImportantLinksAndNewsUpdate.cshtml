@@ -29,4 +29,38 @@
     </ul>
 </div>
 <!--<div class="panel-footer"> <p>Read More...</p></div>-->
-<script src="~/Scripts/App/General/HomeWeb.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        fillNewsUpdateList();
+    });
+    function fillNewsUpdateList() {
+        let li = $('#NewUpdateDiv');
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Home/GetNewsAndUpdateList',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                int = 1;
+                var jsonData = JSON.parse(data);
+                var htmlDOM = '';
+                $.each(jsonData, function (i, item) {
+                    htmlDOM += '<li style="width:270px;"><p>';
+                    if (item.IsNew === true) {
+                        htmlDOM += '<img src="../img/NewIcon.gif" style="padding-right:5px;height:15px;width:40px;"/>';
+                    }
+                    htmlDOM += '<a href="../Home/ViewNewsFile/' + item.Id + '" target="_blank">' + item.Title;
+                    htmlDOM += '<br/><img src="../img/readmore.jpg" style="height:15px;width:40px;"/></a></p></li>';
+                });
+                li.html(htmlDOM);
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+</script>

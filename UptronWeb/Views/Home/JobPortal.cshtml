@@ -286,7 +286,7 @@
                                                                 @if (Model.Where(x => x.FieldName == "Religion" && x.Mandatory == true).Any())
                                                                 {
                                                                     <select name="Religion" id="Religion" class="form-control" required>
-                                                                        <option value="">Select Religion</option>
+                                                                        @*<option value="">Select Religion</option>
                                                                         <option value="HINDU">Hindu</option>
                                                                         <option value="MUSLIM">Muslim</option>
                                                                         <option value="CHRISTIAN">Christian</option>
@@ -296,7 +296,7 @@
                                                                         <option value="SPIRITUAL">Spiritual</option>
                                                                         <option value="PARSI">Parsi</option>
                                                                         <option value="JEWISH">Jewish</option>
-                                                                        <option value="OTHERS">Others</option>
+                                                                        <option value="OTHERS">Others</option>*@
                                                                     </select>
                                                                 }
                                                                 else
@@ -1461,19 +1461,19 @@
                                                                     @if (Model.Where(x => x.FieldName == "LanguageKnown" && x.Mandatory == true).Any())
                                                                     {
                                                                         <select class="form-control" id="LanguageDropdown" multiple="multiple" required>
-                                                                            <option>English</option>
+                                                                            @*<option>English</option>
                                                                             <option>Hindi</option>
                                                                             <option>English (Intl.)</option>
-                                                                            <option>Urdu</option>
+                                                                            <option>Urdu</option>*@
                                                                         </select>
                                                                     }
                                                                     else
                                                                     {
                                                                         <select class="form-control" id="LanguageDropdown" multiple="multiple">
-                                                                            <option>English</option>
+                                                                            @*<option>English</option>
                                                                             <option>Hindi</option>
                                                                             <option>English (Intl.)</option>
-                                                                            <option>Urdu</option>
+                                                                            <option>Urdu</option>*@
                                                                         </select>
                                                                     }
                                                                 </div>

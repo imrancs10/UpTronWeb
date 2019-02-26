@@ -112,6 +112,17 @@ namespace UptronWeb.Controllers
                 return RedirectToAction(action, "Admin");
             }
         }
-
+        [HttpPost]
+        public JsonResult GetReligion()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetReligion());
+        }
+        [HttpPost]
+        public JsonResult GetLanguages()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetLanguages());
+        }
     }
 }

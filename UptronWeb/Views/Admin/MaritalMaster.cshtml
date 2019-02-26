@@ -46,7 +46,7 @@
                                                     <label class="col-sm-4 control-label">Is Active</label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-icon">
-                                                            <input type="checkbox" name="IsActive" required />
+                                                            <input type="checkbox" name="IsActive" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                         htmlDOM = '<div class="form-group mt-lg">' +
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
                             //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditGender(" + full.MaritalId + ",\"" + full.MaritalName.trim() + ",\"" + full.IsActive == true ? 1 : 0 + "\")' href='#'> Edit</a>" +
-                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditMarital(" + full.MaritalId + ",\"" + full.MaritalName.trim() + "\")' href='#'> Edit</a>" +
+                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditMarital(" + full.MaritalId + ",\"" + full.MaritalName.trim() + "\"," + full.IsActive + ")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
                             '<a id="lnkDelete" class="btn btn-primary" href="DeleteMarital/' + full.MaritalId + '">Delete</a>' +
                             '</div>' +
@@ -176,6 +176,6 @@
         $('#hiddenId').val(Id);
         $('#btnSave').val('Update');
         $('#MaritalName').val(MaritalName);
-        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+        $('[name=IsActive]').prop('checked', IsActive);
     }
 </script>

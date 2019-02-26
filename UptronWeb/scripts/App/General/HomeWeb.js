@@ -5,9 +5,9 @@
     fillUpcomingEvents();
     fillPartner();
     fillFunctionaries();
-    fillNewsUpdateList();
+    //fillNewsUpdateList();
     //fillServiceSlider();
-    fillFooterImage();
+    //fillFooterImage();
     fillDirectorMessagePage();
 });
 
@@ -195,37 +195,6 @@ function fillFunctionaries() {
     });
 }
 
-function fillNewsUpdateList() {
-    let li = $('#NewUpdateDiv');
-    $.ajax({
-        dataType: 'json',
-        type: 'POST',
-        url: '/Home/GetNewsAndUpdateList',
-        async: true,
-        contentType: "application/json; charset=utf-8",
-        success: function (data) {
-            int = 1;
-            var jsonData = JSON.parse(data);
-            var htmlDOM = '';
-            $.each(jsonData, function (i, item) {
-                htmlDOM += '<li style="width:270px;"><p>';
-                if (item.IsNew === true) {
-                    htmlDOM += '<img src="../img/NewIcon.gif" style="padding-right:5px;height:15px;width:40px;"/>';
-                }
-                htmlDOM += '<a href="../Home/ViewNewsFile/' + item.Id + '" target="_blank">' + item.Title;
-                htmlDOM += '<br/><img src="../img/readmore.jpg" style="height:15px;width:40px;"/></a></p></li>';
-            });
-            li.html(htmlDOM);
-        },
-        failure: function (response) {
-            alert(response);
-        },
-        error: function (response) {
-            alert(response.responseText);
-        }
-    });
-}
-
 function fillSliderList() {
     $.ajax({
         dataType: 'json',
@@ -375,32 +344,6 @@ function fillServiceSlider() {
         },
         error: function (response) {
             alert(response.responseText);
-        }
-    });
-}
-
-function fillFooterImage() {
-    $.ajax({
-        dataType: 'Json',
-        type: 'POST',
-        async: true,
-        url: '/Home/GetAllGalleryMasterList',
-        contentType: 'Application/Json; charset = utf-8',
-        success: function (data) {
-            var htmlDOM = '';
-            $.each(data, function (i, item) {
-                htmlDOM += '<div class="col-xs-4">' +
-                    //'<a href="' + /Home/Services ? Id = item.Id + '" style="background-image: url(' + item.Photo + ');"></a>' +
-                    '<a href="/Home/GalleryDetail/' + item.Id + '" style="background-image: url(' + item.GalleryImage + ');"></a>' +
-                    '</div>';
-            });
-            $('#FooterDiv').html(htmlDOM);
-        },
-        failure: function (response) {
-            alert(response);
-        },
-        Error: function (response) {
-            alert(response, responseText);
         }
     });
 }
