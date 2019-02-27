@@ -119,6 +119,30 @@ namespace UptronWeb.Controllers
             return Json(_details.GetReligion());
         }
         [HttpPost]
+        public JsonResult GetGender()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetGender());
+        }
+        [HttpPost]
+        public JsonResult GetMarital()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetMarital());
+        }
+        [HttpPost]
+        public JsonResult GetIdentity()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetIdentity());
+        }
+        [HttpPost]
+        public JsonResult GetSkill()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetSkill());
+        }
+        [HttpPost]
         public JsonResult GetLanguages()
         {
             CommonDetails _details = new CommonDetails();

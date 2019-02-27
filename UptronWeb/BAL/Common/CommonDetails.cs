@@ -90,11 +90,36 @@ namespace UptronWeb.BAL.Common
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Religions.ToList();
         }
+
+        public List<Marital> GetMarital()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Maritals.ToList();
+        }
+        public List<Gender> GetGender()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Genders.ToList();
+        }
+        public List<Identity> GetIdentity()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Identities.ToList();
+        }
         public List<Language> GetLanguages()
         {
             _db = new UptronWebEntities();
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Languages.Where(x => x.IsActive == true).ToList();
+        }
+        public List<Skill> GetSkill()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Skills.Where(x => x.IsActive == true).ToList();
         }
     }
 }

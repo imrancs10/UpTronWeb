@@ -10,7 +10,11 @@
     fillState();
     fillReligion();
     fillLanguage();
-});
+    fillGender();
+    fillMaritalStatus();
+    fillIdentityDetails();
+    fillSkill();
+}); 
 
 $('#DOB').siblings('span').click(function () {
     $('#DOB').datepicker("show");
@@ -96,6 +100,82 @@ function fillReligion() {
         }
     });
 }
+
+function fillGender() {
+    let dropdown = $('#Gender');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Common/GetGender',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.GenderName).text(entry.GenderName));
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
+function fillMaritalStatus() {
+    let dropdown = $('#MaritalStatus');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Common/GetMarital',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.MaritalName).text(entry.MaritalName));
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
+function fillIdentityDetails() {
+    let dropdown = $('#IdentityDetails');
+    dropdown.empty();
+    dropdown.append('<option value="">Select</option>');
+    dropdown.prop('selectedIndex', 0);
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Common/GetIdentity',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.IdentityName).text(entry.IdentityName));
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
 function fillLanguage() {
     let dropdown = $('#LanguageDropdown');
     dropdown.empty();
@@ -118,6 +198,30 @@ function fillLanguage() {
         }
     });
 }
+
+function fillSkill() {
+    let dropdown = $('#SkillDropdown');
+    dropdown.empty();
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Common/GetSkill',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').text(entry.SkillsName));
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
 $('#btnSave').click(function (e) {
     if (!$("#form")[0].checkValidity()) {
         $("#form").find("#submit-hidden").click();
