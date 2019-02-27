@@ -95,19 +95,19 @@ namespace UptronWeb.BAL.Common
         {
             _db = new UptronWebEntities();
             _db.Configuration.LazyLoadingEnabled = false;
-            return _db.Maritals.ToList();
+            return _db.Maritals.Where(x => x.IsActive == true).ToList();
         }
         public List<Gender> GetGender()
         {
             _db = new UptronWebEntities();
             _db.Configuration.LazyLoadingEnabled = false;
-            return _db.Genders.ToList();
+            return _db.Genders.Where(x => x.IsActive == true).ToList();
         }
         public List<Identity> GetIdentity()
         {
             _db = new UptronWebEntities();
             _db.Configuration.LazyLoadingEnabled = false;
-            return _db.Identities.ToList();
+            return _db.Identities.Where(x => x.IsActive == true).ToList();
         }
         public List<Language> GetLanguages()
         {
