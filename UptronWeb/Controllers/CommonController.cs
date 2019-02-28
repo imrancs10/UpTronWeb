@@ -137,6 +137,12 @@ namespace UptronWeb.Controllers
             return Json(_details.GetIdentity());
         }
         [HttpPost]
+        public JsonResult GetLanguages()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetLanguages());
+        }
+        [HttpPost]
         public JsonResult GetSkill()
         {
             CommonDetails _details = new CommonDetails();

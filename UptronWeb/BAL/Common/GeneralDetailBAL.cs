@@ -618,7 +618,7 @@ namespace UptronWeb.BAL.Common
         public List<VendorJob> GetAllVendorJob()
         {
             _db = new UptronWebEntities();
-            var result = _db.VendorJobs.ToList();
+            var result = _db.VendorJobs.Include(x => x.VendorDetail).ToList();
             return result;
         }
 
