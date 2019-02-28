@@ -18,7 +18,6 @@ namespace DataLayer
         public UptronWebEntities()
             : base("name=UptronWebEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,7 +25,6 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactUsDetail> ContactUsDetails { get; set; }
         public virtual DbSet<DirectorMessageDetail> DirectorMessageDetails { get; set; }
         public virtual DbSet<GalleryMaster> GalleryMasters { get; set; }
@@ -61,5 +59,7 @@ namespace DataLayer
         public virtual DbSet<Marital> Maritals { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<WhyUptron> WhyUptrons { get; set; }
     }
 }

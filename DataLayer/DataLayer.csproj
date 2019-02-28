@@ -172,6 +172,9 @@
     <Compile Include="VendorJob.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="WhyUptron.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DbEntity.edmx">

@@ -12,6 +12,7 @@
           <Property Name="CityId" Type="int" Nullable="false" />
           <Property Name="CityName" Type="varchar" MaxLength="500" />
           <Property Name="StateId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="ContactUsDetail">
           <Key>
@@ -399,6 +400,17 @@
           <Property Name="SkillsRequired" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="WhyUptron">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Counter" Type="int" />
+          <Property Name="CounterName" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OrderNumber" Type="int" />
+          <Property Name="Createddate" Type="datetime" />
+        </EntityType>
         <Association Name="FK_City_State">
           <End Role="State" Type="Self.State" Multiplicity="0..1" />
           <End Role="City" Type="Self.City" Multiplicity="*" />
@@ -591,6 +603,7 @@
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorDetail" EntityType="Self.VendorDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorJob" EntityType="Self.VendorJob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WhyUptron" EntityType="Self.WhyUptron" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
@@ -649,7 +662,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="UptronWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UptronWebEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cities" EntityType="UptronWebModel.City" />
           <EntitySet Name="ContactUsDetails" EntityType="UptronWebModel.ContactUsDetail" />
           <EntitySet Name="DirectorMessageDetails" EntityType="UptronWebModel.DirectorMessageDetail" />
           <EntitySet Name="GalleryMasters" EntityType="UptronWebModel.GalleryMaster" />
@@ -677,14 +689,6 @@
           <EntitySet Name="UserMasters" EntityType="UptronWebModel.UserMaster" />
           <EntitySet Name="VendorDetails" EntityType="UptronWebModel.VendorDetail" />
           <EntitySet Name="VendorJobs" EntityType="UptronWebModel.VendorJob" />
-          <AssociationSet Name="FK_City_State" Association="UptronWebModel.FK_City_State">
-            <End Role="State" EntitySet="States" />
-            <End Role="City" EntitySet="Cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_JobRegistration_City" Association="UptronWebModel.FK_JobRegistration_City">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="JobRegistration" EntitySet="JobRegistrations" />
-          </AssociationSet>
           <AssociationSet Name="FK_GalleryPhotoMaster_GalleryMaster" Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster">
             <End Role="GalleryMaster" EntitySet="GalleryMasters" />
             <End Role="GalleryPhotoMaster" EntitySet="GalleryPhotoMasters" />
@@ -760,17 +764,17 @@
           <EntitySet Name="Maritals" EntityType="UptronWebModel.Marital" />
           <EntitySet Name="Languages" EntityType="UptronWebModel.Language" />
           <EntitySet Name="Skills" EntityType="UptronWebModel.Skill" />
+          <EntitySet Name="Cities" EntityType="UptronWebModel.City" />
+          <AssociationSet Name="FK_City_State" Association="UptronWebModel.FK_City_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobRegistration_City" Association="UptronWebModel.FK_JobRegistration_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="JobRegistration" EntitySet="JobRegistrations" />
+          </AssociationSet>
+          <EntitySet Name="WhyUptrons" EntityType="UptronWebModel.WhyUptron" />
         </EntityContainer>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="CityId" />
-          </Key>
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="StateId" Type="Int32" />
-          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_City_State" FromRole="City" ToRole="State" />
-          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="City" ToRole="JobRegistration" />
-        </EntityType>
         <EntityType Name="ContactUsDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -869,7 +873,6 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EmployementStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VendorJobId" Type="Int32" />
-          <NavigationProperty Name="City" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="JobRegistration" ToRole="City" />
           <NavigationProperty Name="JobDocumentUploads" Relationship="UptronWebModel.FK_JobDocumentUpload_JobRegistration" FromRole="JobRegistration" ToRole="JobDocumentUpload" />
           <NavigationProperty Name="State" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="JobRegistration" ToRole="State" />
           <NavigationProperty Name="VendorJob" Relationship="UptronWebModel.FK_JobRegistration_VendorDetail" FromRole="JobRegistration" ToRole="VendorJob" />
@@ -878,6 +881,7 @@
           <NavigationProperty Name="JobRegistrationQualifications" Relationship="UptronWebModel.FK_JobRegistrationQualification_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationQualification" />
           <NavigationProperty Name="JobRegistrationSkills" Relationship="UptronWebModel.FK_JobRegistrationSkill_JobRegistration" FromRole="JobRegistration" ToRole="JobRegistrationSkill" />
           <NavigationProperty Name="JobResignations" Relationship="UptronWebModel.FK_JobResignation_JobRegistration" FromRole="JobRegistration" ToRole="JobResignation" />
+          <NavigationProperty Name="City" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="JobRegistration" ToRole="City" />
         </EntityType>
         <EntityType Name="JobRegistrationEmployement">
           <Key>
@@ -1049,8 +1053,8 @@
           </Key>
           <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cities" Relationship="UptronWebModel.FK_City_State" FromRole="State" ToRole="City" />
           <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_State" FromRole="State" ToRole="JobRegistration" />
+          <NavigationProperty Name="Cities" Relationship="UptronWebModel.FK_City_State" FromRole="State" ToRole="City" />
         </EntityType>
         <EntityType Name="Tender">
           <Key>
@@ -1132,30 +1136,6 @@
           <NavigationProperty Name="VendorJob1" Relationship="UptronWebModel.FK_VendorJob_VendorJob" FromRole="VendorJob" ToRole="VendorJob1" />
           <NavigationProperty Name="VendorJob2" Relationship="UptronWebModel.FK_VendorJob_VendorJob" FromRole="VendorJob1" ToRole="VendorJob" />
         </EntityType>
-        <Association Name="FK_City_State">
-          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
-          <End Type="UptronWebModel.City" Role="City" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="StateId" />
-            </Principal>
-            <Dependent Role="City">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_JobRegistration_City">
-          <End Type="UptronWebModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="CityId" />
-            </Principal>
-            <Dependent Role="JobRegistration">
-              <PropertyRef Name="CityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_GalleryPhotoMaster_GalleryMaster">
           <End Type="UptronWebModel.GalleryMaster" Role="GalleryMaster" Multiplicity="0..1" />
           <End Type="UptronWebModel.GalleryPhotoMaster" Role="GalleryPhotoMaster" Multiplicity="*" />
@@ -1421,21 +1401,58 @@
           <Property Name="SkillsName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
         </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="State" Relationship="UptronWebModel.FK_City_State" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="JobRegistrations" Relationship="UptronWebModel.FK_JobRegistration_City" FromRole="City" ToRole="JobRegistration" />
+        </EntityType>
+        <Association Name="FK_City_State">
+          <End Type="UptronWebModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="UptronWebModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobRegistration_City">
+          <End Type="UptronWebModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="UptronWebModel.JobRegistration" Role="JobRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="JobRegistration">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WhyUptron">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Counter" Type="Int32" />
+          <Property Name="CounterName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OrderNumber" Type="Int32" />
+          <Property Name="Createddate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UptronWebModelStoreContainer" CdmEntityContainer="UptronWebEntities">
-          <EntitySetMapping Name="Cities">
-            <EntityTypeMapping TypeName="UptronWebModel.City">
-              <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ContactUsDetails">
             <EntityTypeMapping TypeName="UptronWebModel.ContactUsDetail">
               <MappingFragment StoreEntitySet="ContactUsDetail">
@@ -1856,6 +1873,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="UptronWebModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WhyUptrons">
+            <EntityTypeMapping TypeName="UptronWebModel.WhyUptron">
+              <MappingFragment StoreEntitySet="WhyUptron">
+                <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CounterName" ColumnName="CounterName" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1879,7 +1918,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram DiagramId="96d87482f862457a932ad65ffd2427a1" Name="Diagram1">
-        <EntityTypeShape EntityType="UptronWebModel.City" Width="1.5" PointX="3" PointY="17.875" />
         <EntityTypeShape EntityType="UptronWebModel.ContactUsDetail" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="UptronWebModel.DirectorMessageDetail" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="UptronWebModel.GalleryMaster" Width="1.5" PointX="5.75" PointY="1" />
@@ -1907,8 +1945,6 @@
         <EntityTypeShape EntityType="UptronWebModel.UserMaster" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="UptronWebModel.VendorDetail" Width="1.5" PointX="0.75" PointY="8.875" />
         <EntityTypeShape EntityType="UptronWebModel.VendorJob" Width="1.5" PointX="3" PointY="13.375" />
-        <AssociationConnector Association="UptronWebModel.FK_City_State" />
-        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_City" />
         <AssociationConnector Association="UptronWebModel.FK_GalleryPhotoMaster_GalleryMaster" />
         <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_JobRegistration" />
         <AssociationConnector Association="UptronWebModel.FK_JobDocumentUpload_VendorDetail" />
@@ -1933,6 +1969,10 @@
         <EntityTypeShape EntityType="UptronWebModel.Marital" Width="1.5" PointX="12.375" PointY="14.75" />
         <EntityTypeShape EntityType="UptronWebModel.Language" Width="1.5" PointX="14.375" PointY="13.75" />
         <EntityTypeShape EntityType="UptronWebModel.Skill" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UptronWebModel.City" Width="1.5" PointX="3" PointY="17.625" />
+        <AssociationConnector Association="UptronWebModel.FK_City_State" />
+        <AssociationConnector Association="UptronWebModel.FK_JobRegistration_City" />
+        <EntityTypeShape EntityType="UptronWebModel.WhyUptron" Width="1.5" PointX="16.375" PointY="3.75" />
       </Diagram>
     </Diagrams>
   </Designer>

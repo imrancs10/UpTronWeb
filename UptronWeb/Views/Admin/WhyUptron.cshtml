@@ -1,0 +1,217 @@
+﻿@using DataLayer;
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<WhyUptron>
+<form action="WhyUptron" method="post" enctype="multipart/form-data">
+    <input type="hidden" id="hiddenId" name="Id" />
+    <section class="content-wrapper" role="main">
+        <div class="content">
+            <div class="content-bar">
+                <ul class="breadcrumb breadcrumb-angle">
+                    <li><a href="#" aria-label="home"><i class="fa fa-home"></i></a></li>
+                    <li class="active">Why Uptron</li>
+                </ul>
+            </div><!-- /.content-bar -->
+            <hr />
+
+            <div class="content-body">
+                <div class="col-lg-12">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Why Uptron</h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Counter</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="Counter" name="Counter" class="form-control" placeholder="Counter" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Counter Name</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-in">
+                                                            <input type="text" id="CounterName" name="CounterName" class="form-control" placeholder="Counter Name" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-user-secret"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Order No</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="number" id="OrderNumber" name="OrderNumber" class="form-control" placeholder="Order Number" required />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-area-chart"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Is Active</label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="checkbox" name="IsActive" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-md-5">
+                                                <br />
+                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                    <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
+                                                    <span class="label-divider" id="Span1">or</span>
+                                                    <a href="~/Admin/WhyUptron" class="btn btn-default">Reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="panel" data-fill-color="true">
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th colspan="7">Major Projects View Detail</th>
+                                            </tr>
+                                            <tr class="active">
+                                                <th>Sl.no</th>
+                                                <th>Counter</th>
+                                                <th>Counter Name</th>
+                                                <th>IsActive</th>
+                                                <th>OrderNumber</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int i = 1;
+                                                foreach (var whyUptron in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline"><strong>@i.</strong></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@whyUptron.Counter</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@whyUptron.CounterName</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@whyUptron.IsActive</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="input-group input-group-icon">
+                                                                    <span class="headline">@whyUptron.OrderNumber</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group mt-lg">
+                                                                <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                    <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditWhyWptron(@whyUptron.Id, '@whyUptron.Counter', '@whyUptron.CounterName', '@(whyUptron.IsActive == true ? 1 : 0)', '@whyUptron.OrderNumber')">Edit</a>
+                                                                    <span class="label-divider" id="Span1">or</span>
+                                                                    <a id="lnkDelete" class="btn btn-danger" href="#">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    i = i + 1;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div><!-- /.content -->
+    </section>
+</form>
+<script type="text/javascript">
+    function EditWhyWptron(Id, Counter, Countername, IsActive, OrderNumber) {
+        $('#hiddenId').val(Id);
+        $("#btnSave").val('Update');
+        $('#Counter').val(Counter);
+        $('#CounterName').val(Countername);
+        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+        $('#OrderNumber').val(OrderNumber);
+        
+    }
+</script>
+@*<script type="text/javascript">
+    function EditMajorProjects(ID, Title, DepartmentName, IsActive, OrderNumber, WorkDescription) {
+        $('#hiddenId').val(ID);
+        $('#btnSave').val('Update');
+        $('#DepartmentTitle').val(Title);
+        $('#Departmentname').val(DepartmentName);
+        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
+        $('#OrderNumber').val(OrderNumber);
+        $('#WorkDescription').val(WorkDescription);
+    }
+</script>*@

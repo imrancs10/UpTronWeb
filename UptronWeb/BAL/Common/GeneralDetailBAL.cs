@@ -656,5 +656,51 @@ namespace UptronWeb.BAL.Common
             }
             return null;
         }
+
+        public Enums.CrudStatus SaveWhyUptron(WhyUptron whyUptron)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (whyUptron.Id > 0)
+            {
+                var _deptRow = _db.WhyUptrons.Where(x => x.Id == whyUptron.Id).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.Id = whyUptron.Id;
+                    _deptRow.Counter = whyUptron.Counter;
+                    _deptRow.CounterName = whyUptron.CounterName;
+                    _deptRow.OrderNumber = whyUptron.OrderNumber;
+                    _deptRow.IsActive = whyUptron.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.WhyUptrons.Where(x => x.Id == whyUptron.Id).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(whyUptron).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+            }
+        }
+
+        public List<WhyUptron> GetAllWhyUptron()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).ToList();
+            return result;
+        }
     }
 }

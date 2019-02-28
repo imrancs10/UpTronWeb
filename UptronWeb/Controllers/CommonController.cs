@@ -143,10 +143,16 @@ namespace UptronWeb.Controllers
             return Json(_details.GetSkill());
         }
         [HttpPost]
-        public JsonResult GetLanguages()
+        public JsonResult GetStates()
         {
             CommonDetails _details = new CommonDetails();
-            return Json(_details.GetLanguages());
+            return Json(_details.GetStatesofCity());
+        }
+        [HttpPost]
+        public JsonResult GetCityList()
+        {
+            CommonDetails _details = new CommonDetails();
+            return Json(_details.GetCityList());
         }
     }
 }

@@ -1568,6 +1568,8 @@
     <Content Include="Views\Admin\IdentityMaster.cshtml" />
     <Content Include="Views\Admin\LanguageMaster.cshtml" />
     <Content Include="Views\Admin\SkillMaster.cshtml" />
+    <Content Include="Views\Admin\CityMaster.cshtml" />
+    <Content Include="Views\Admin\WhyUptron.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

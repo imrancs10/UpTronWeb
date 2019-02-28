@@ -1290,5 +1290,104 @@ namespace UptronWeb.Controllers
             return RedirectToAction("SkillMaster", new { deleteMessage = true });
         }
 
+        public ActionResult CityMaster(bool? deleteMessage)
+        {
+            if (deleteMessage == true)
+            {
+                SetAlertMessage("City has been Deleted", "City Master");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CityMaster(string State, string CityName, string IsActive, int? Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            City city = new City()
+            {
+                StateId = Convert.ToInt32(State),
+                CityName = CityName,
+                IsActive = IsActive == "on" ? true : false,
+                CityId = Id != null ? Id.Value : 0
+            };
+            var result = bal.SaveCity(city);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("City has been saved", "City Saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("City has been Updated", "City Updated");
+            }
+            else
+            {
+                SetAlertMessage("City has been Already Exists", "Data Already Exists");
+            }
+            return RedirectToAction("CityMaster");
+        }
+
+        public ActionResult GetAllCityList()
+        {
+            MasterBAL bal = new MasterBAL();
+            string draw = Request.Form.GetValues("draw").FirstOrDefault();
+            string start = Request.Form.GetValues("start").FirstOrDefault();
+            string length = Request.Form.GetValues("length").FirstOrDefault();
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+            string filterText = Request["search[value]"];
+            List<City> result = bal.GetAllCity();
+
+            if (!string.IsNullOrEmpty(filterText))
+            {
+                result = result.Where(x => x.CityName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+            }
+
+            recordsTotal = result.Count();
+            List<City> data = result.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult WhyUptron()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.GetAllWhyUptron();
+            return View(result);
+        }
+        
+        [HttpPost]
+        public ActionResult WhyUptron(string Counter, string CounterName, string IsActive, string OrderNumber, int? Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            WhyUptron whyuptron = new WhyUptron()
+            {
+                Counter = Convert.ToInt32(Counter),
+                CounterName = CounterName,
+                IsActive = IsActive == "on" ? true : false,
+                Id = Id != null ? Id.Value : 0,
+            };
+            if (!string.IsNullOrEmpty(OrderNumber))
+            {
+                whyuptron.OrderNumber = Convert.ToInt32(OrderNumber);
+            }
+            if (Id == null)
+            {
+                whyuptron.Createddate = DateTime.Now;
+            }
+            var result = bal.SaveWhyUptron(whyuptron);
+            if (result == Enums.CrudStatus.Saved)
+            {
+                SetAlertMessage("Why Uptron has been Saved", "Why Uptron Saved");
+            }
+            else if (result == Enums.CrudStatus.Updated)
+            {
+                SetAlertMessage("Why Uptron has been Update", "Why Uptron Updated");
+            }
+            else
+            {
+                SetAlertMessage("Why Uptron has been Already Exists", "Why Uptron Exists");
+            }
+
+            return RedirectToAction("WhyUptron");
+        }
     }
 }

@@ -672,5 +672,52 @@ namespace UptronWeb.BAL.Master
             _db.SaveChanges();
             return true;
         }
+
+        public Enums.CrudStatus SaveCity(City city)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            if (city.CityId > 0)
+            {
+                var _deptRow = _db.Cities.Where(x => x.CityId == city.CityId).FirstOrDefault();
+                if (_deptRow != null)
+                {
+                    _deptRow.StateId = city.StateId;
+                    _deptRow.CityId = city.CityId;
+                    _deptRow.CityName = city.CityName;
+                    _deptRow.IsActive = city.IsActive;
+                    _db.Entry(_deptRow).State = EntityState.Modified;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataNotFound;
+                }
+            }
+            else
+            {
+                var _deptRow = _db.Cities.Where(x => x.CityName == city.CityName).FirstOrDefault();
+                if (_deptRow == null)
+                {
+                    _db.Entry(city).State = EntityState.Added;
+                    _effectRow = _db.SaveChanges();
+                    return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+                }
+                else
+                {
+                    return Enums.CrudStatus.DataAlreadyExist;
+                }
+                    
+            }
+            
+        }
+
+        public List<City> GetAllCity()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Cities.ToList();
+            return result;
+        }
     }
 }

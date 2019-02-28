@@ -121,5 +121,17 @@ namespace UptronWeb.BAL.Common
             _db.Configuration.LazyLoadingEnabled = false;
             return _db.Skills.Where(x => x.IsActive == true).ToList();
         }
+        public List<State> GetStatesofCity()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.States.ToList();
+        }
+        public List<City> GetCityList()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            return _db.Cities.Where(x => x.IsActive == true).ToList();
+        }
     }
 }
