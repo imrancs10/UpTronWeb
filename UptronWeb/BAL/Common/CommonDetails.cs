@@ -131,7 +131,8 @@ namespace UptronWeb.BAL.Common
         {
             _db = new UptronWebEntities();
             _db.Configuration.LazyLoadingEnabled = false;
-            return _db.Cities.Where(x => x.IsActive == true).ToList();
+            var result = _db.Cities.ToList();
+            return result;
         }
     }
 }

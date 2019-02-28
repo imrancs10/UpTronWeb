@@ -979,7 +979,7 @@ namespace UptronWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult GenderMaster(string GenderName, string IsActive, int ? Id)
+        public ActionResult GenderMaster(string GenderName, string IsActive, int? Id)
         {
             MasterBAL bal = new MasterBAL();
             Gender gender = new Gender()
@@ -1282,12 +1282,11 @@ namespace UptronWeb.Controllers
             List<Skill> data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult DeleteSkill(int Id)
+        public ActionResult DeleteCity(int Id)
         {
             MasterBAL bal = new MasterBAL();
-            var result = bal.DeleteSkill(Id);
-            return RedirectToAction("SkillMaster", new { deleteMessage = true });
+            var result = bal.DeleteCity(Id);
+            return RedirectToAction("CityMaster", new { deleteMessage = true });
         }
 
         public ActionResult CityMaster(bool? deleteMessage)
@@ -1299,14 +1298,13 @@ namespace UptronWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CityMaster(string State, string CityName, string IsActive, int? Id)
+        public ActionResult CityMaster(string State, string CityName, int? Id)
         {
             MasterBAL bal = new MasterBAL();
             City city = new City()
             {
                 StateId = Convert.ToInt32(State),
                 CityName = CityName,
-                IsActive = IsActive == "on" ? true : false,
                 CityId = Id != null ? Id.Value : 0
             };
             var result = bal.SaveCity(city);
@@ -1335,15 +1333,16 @@ namespace UptronWeb.Controllers
             int skip = start != null ? Convert.ToInt32(start) : 0;
             int recordsTotal = 0;
             string filterText = Request["search[value]"];
-            List<City> result = bal.GetAllCity();
+            var result = bal.GetAllCity();
 
             if (!string.IsNullOrEmpty(filterText))
             {
-                result = result.Where(x => x.CityName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                result = result.Where(x => x.CityName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)
+                                         || x.StateName.Contains(filterText, StringComparison.InvariantCultureIgnoreCase)).ToList();
             }
 
             recordsTotal = result.Count();
-            List<City> data = result.Skip(skip).Take(pageSize).ToList();
+            var data = result.Skip(skip).Take(pageSize).ToList();
             return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data }, JsonRequestBehavior.AllowGet);
         }
 
@@ -1353,7 +1352,7 @@ namespace UptronWeb.Controllers
             var result = bal.GetAllWhyUptron();
             return View(result);
         }
-        
+
         [HttpPost]
         public ActionResult WhyUptron(string Counter, string CounterName, string IsActive, string OrderNumber, int? Id)
         {

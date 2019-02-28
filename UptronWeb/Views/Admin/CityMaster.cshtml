@@ -2,7 +2,6 @@
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@model List<State>
 <form action="CityMaster" method="post">
     <input type="hidden" id="hiddenId" name="Id" />
     <section class="content-wrapper" role="main">
@@ -61,18 +60,6 @@
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-md-6">
-                                                <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Is Active</label>
-                                                    <div class="col-sm-8">
-                                                        <div class="input-group input-group-icon">
-                                                            <input type="checkbox" name="IsActive" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-6">
                                                 <br />
                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                     <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary">
@@ -108,39 +95,10 @@
     </section>
 </form>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         fillState();
-    })
-    function fillState() {
-        let dropdown = $('#State');
-        dropdown.empty();
-        dropdown.append('<option value="">Select State Name</option>');
-        dropdown.prop('selectedIndex', 0);
-        $.ajax({
-            dataType: 'json',
-            type: 'POST',
-            url: '/Common/GetStates',
-            async: true,
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry.StateId).text(entry.StateName));
-                });
-            },
-            failure: function (response) {
-                alert(response);
-            },
-            error: function (response) {
-                alert(response.responseText);
-            }
-        });
-    }
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        debugger
+
         var tableCity = $("#tableCity").DataTable({
             "processing": true, // for show progress bar
             "serverSide": true, // for process server side
@@ -156,17 +114,15 @@
             },
             "columns": [
                 { "data": null, "name": "srNumber", "autoWidth": true, "title": "Sr. No" },
-                //{ "data": "StateId", "name": "StateId", "autoWidth": true, "title": "State Name" },
+                { "data": "StateName", "name": "StateName", "autoWidth": true, "title": "State Name" },
                 { "data": "CityName", "name": "CityName", "autoWidth": true, "title": "City Name" },
-                { "data": "IsActive", "name": "IsActive", "autoWidth": true, "title": "IsActive" },
                 {
                     "title": "Action",
                     "render": function (data, type, full, meta) {
                         var htmlDOM = "";
                         htmlDOM = '<div class="form-group mt-lg">' +
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
-                            //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditIdentity(" + full.IdentityId + ",\"" + full.IdentityName.trim() + ",\"" + full.IsActive == true ? 1 : 0 + "\")' href='#'> Edit</a>" +
-                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditCity(" + full.CityId + ",\"" + full.CityName.trim() + ",\"" + full.IsActive + ")' href='#'> Edit</a>" +
+                            "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditCity(" + full.StateId + "," + full.CityId + ",\"" + full.CityName.trim() + "\")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
                             '<a id="lnkDelete" class="btn btn-primary" href="DeleteCity/' + full.CityId + '">Delete</a>' +
                             '</div>' +
@@ -208,14 +164,35 @@
                 }
                 return;
             });
-    });
-</script>
-<script type="text/javascript">
-    function EditCity(Id, CityName, State, IsActive) {
+    })
+    function fillState() {
+        let dropdown = $('#State');
+        dropdown.empty();
+        dropdown.append('<option value="">Select State Name</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Common/GetStates',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.StateId).text(entry.StateName));
+                });
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    function EditCity(StateId, Id, CityName) {
         $('#hiddenId').val(Id);
         $('#btnSave').val('Update');
         $('#CityName').val(CityName);
-        $('#StateId').val(State);
-        $('[name=IsActive]').prop('checked', IsActive);
+        $('#State').val(StateId);
     }
 </script>

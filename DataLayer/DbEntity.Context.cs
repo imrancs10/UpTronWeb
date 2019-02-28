@@ -18,6 +18,7 @@ namespace DataLayer
         public UptronWebEntities()
             : base("name=UptronWebEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -25,11 +26,15 @@ namespace DataLayer
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactUsDetail> ContactUsDetails { get; set; }
         public virtual DbSet<DirectorMessageDetail> DirectorMessageDetails { get; set; }
+        public virtual DbSet<EmployeeSlip> EmployeeSlips { get; set; }
         public virtual DbSet<GalleryMaster> GalleryMasters { get; set; }
         public virtual DbSet<GalleryPhotoMaster> GalleryPhotoMasters { get; set; }
+        public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<GOCircular> GOCirculars { get; set; }
+        public virtual DbSet<Identity> Identities { get; set; }
         public virtual DbSet<JobDocumentUpload> JobDocumentUploads { get; set; }
         public virtual DbSet<JobRegistration> JobRegistrations { get; set; }
         public virtual DbSet<JobRegistrationEmployement> JobRegistrationEmployements { get; set; }
@@ -39,12 +44,16 @@ namespace DataLayer
         public virtual DbSet<JobRegistrationSkill> JobRegistrationSkills { get; set; }
         public virtual DbSet<JobResignation> JobResignations { get; set; }
         public virtual DbSet<KeyFunctionary> KeyFunctionaries { get; set; }
+        public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<MajorProject> MajorProjects { get; set; }
+        public virtual DbSet<Marital> Maritals { get; set; }
         public virtual DbSet<NewsUpdateMaster> NewsUpdateMasters { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
         public virtual DbSet<QuickEnquiry> QuickEnquiries { get; set; }
+        public virtual DbSet<Religion> Religions { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
         public virtual DbSet<ServiceDetail> ServiceDetails { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<Slider> Sliders { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Tender> Tenders { get; set; }
@@ -52,14 +61,6 @@ namespace DataLayer
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<VendorDetail> VendorDetails { get; set; }
         public virtual DbSet<VendorJob> VendorJobs { get; set; }
-        public virtual DbSet<EmployeeSlip> EmployeeSlips { get; set; }
-        public virtual DbSet<Religion> Religions { get; set; }
-        public virtual DbSet<Gender> Genders { get; set; }
-        public virtual DbSet<Identity> Identities { get; set; }
-        public virtual DbSet<Marital> Maritals { get; set; }
-        public virtual DbSet<Language> Languages { get; set; }
-        public virtual DbSet<Skill> Skills { get; set; }
-        public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<WhyUptron> WhyUptrons { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="854520e501de4181b2d5ba639db069ec" Name="Diagram1">
+        <EntityTypeShape EntityType="UpTronWebModel.City" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.ContactUsDetail" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.DirectorMessageDetail" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.EmployeeSlip" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.GalleryMaster" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.GalleryPhotoMaster" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Gender" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.GOCircular" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Identity" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobDocumentUpload" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistration" Width="1.5" PointX="5.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistrationEmployement" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistrationForm" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistrationLanguage" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistrationQualification" Width="1.5" PointX="7.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobRegistrationSkill" Width="1.5" PointX="7.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.JobResignation" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.KeyFunctionary" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Language" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.MajorProject" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Marital" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.NewsUpdateMaster" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Partner" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.QuickEnquiry" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Religion" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.RoleMaster" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.ServiceDetail" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Skill" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Slider" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.State" Width="1.5" PointX="0.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.Tender" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.UpcomingEventsMaster" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.UserMaster" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.VendorDetail" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.VendorJob" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpTronWebModel.WhyUptron" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="UpTronWebModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistration_City" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_EmployeeSlip_VendorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_GalleryPhotoMaster_GalleryMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobDocumentUpload_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobDocumentUpload_VendorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistration_State" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistration_VendorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistrationEmployement_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistrationLanguage_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistrationQualification_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobRegistrationSkill_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobResignation_JobRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_JobResignation_VendorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_UserMaster_RoleMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_UserMaster_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_UserMaster_UserMaster1" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_VendorJob_VendorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="UpTronWebModel.FK_VendorJob_VendorJob" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

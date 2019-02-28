@@ -53,6 +53,7 @@ namespace DataLayer
         public string EmployementStatus { get; set; }
         public Nullable<int> VendorJobId { get; set; }
     
+        public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobDocumentUpload> JobDocumentUploads { get; set; }
         public virtual State State { get; set; }
@@ -67,6 +68,5 @@ namespace DataLayer
         public virtual ICollection<JobRegistrationSkill> JobRegistrationSkills { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobResignation> JobResignations { get; set; }
-        public virtual City City { get; set; }
     }
 }

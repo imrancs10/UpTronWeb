@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using UptronWeb.Global;
+using UptronWeb.Models.Common;
 
 namespace UptronWeb.BAL.Master
 {
@@ -75,7 +76,7 @@ namespace UptronWeb.BAL.Master
                 {
                     _deptRow.id = tender.id;
                     _deptRow.Subject = tender.Subject;
-                    _deptRow.TenderDate= tender.TenderDate;
+                    _deptRow.TenderDate = tender.TenderDate;
                     _deptRow.TenderNumber = tender.TenderNumber;
                     if (tender.TenderFile != null)
                         _deptRow.TenderFile = tender.TenderFile;
@@ -236,7 +237,7 @@ namespace UptronWeb.BAL.Master
             var result = _db.NewsUpdateMasters.FirstOrDefault(x => x.Id == Id);
             return result;
         }
-        
+
 
         public Enums.CrudStatus SaveEventsUpcoming(UpcomingEventsMaster upcomingEvents)
         {
@@ -290,7 +291,7 @@ namespace UptronWeb.BAL.Master
         public List<UpcomingEventsMaster> GetAllActiveUpcomingEvents()
         {
             _db = new UptronWebEntities();
-            var result = _db.UpcomingEventsMasters.Where(x=>x.IsActive == true).ToList();
+            var result = _db.UpcomingEventsMasters.Where(x => x.IsActive == true).ToList();
             return result;
         }
 
@@ -683,9 +684,7 @@ namespace UptronWeb.BAL.Master
                 if (_deptRow != null)
                 {
                     _deptRow.StateId = city.StateId;
-                    _deptRow.CityId = city.CityId;
                     _deptRow.CityName = city.CityName;
-                    _deptRow.IsActive = city.IsActive;
                     _db.Entry(_deptRow).State = EntityState.Modified;
                     _effectRow = _db.SaveChanges();
                     return _effectRow > 0 ? Enums.CrudStatus.Updated : Enums.CrudStatus.NotUpdated;
@@ -700,6 +699,8 @@ namespace UptronWeb.BAL.Master
                 var _deptRow = _db.Cities.Where(x => x.CityName == city.CityName).FirstOrDefault();
                 if (_deptRow == null)
                 {
+                    int maxCityId = _db.Cities.Max(x => x.CityId);
+                    city.CityId = maxCityId + 1;
                     _db.Entry(city).State = EntityState.Added;
                     _effectRow = _db.SaveChanges();
                     return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
@@ -708,16 +709,31 @@ namespace UptronWeb.BAL.Master
                 {
                     return Enums.CrudStatus.DataAlreadyExist;
                 }
-                    
+
             }
-            
+
         }
 
-        public List<City> GetAllCity()
+        public List<CityModel> GetAllCity()
         {
             _db = new UptronWebEntities();
-            var result = _db.Cities.ToList();
+            var result = (from obj in _db.Cities.Include("State")
+                          select new CityModel()
+                          {
+                              CityId = obj.CityId,
+                              CityName = obj.CityName,
+                              StateId = obj.StateId,
+                              StateName = obj.State.StateName
+                          }).OrderBy(x => x.StateName).ToList();
             return result;
+        }
+        public bool DeleteCity(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Cities.FirstOrDefault(x => x.CityId == Id);
+            _db.Cities.Remove(result);
+            _db.SaveChanges();
+            return true;
         }
     }
 }
