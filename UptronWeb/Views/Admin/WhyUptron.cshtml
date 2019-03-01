@@ -29,7 +29,7 @@
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <div class="form-group mt-lg">
-                                                    <label class="col-sm-4 control-label">Counter</label>
+                                                    <label class="col-sm-4 control-label">Counter <span id="errmsg" style="color:red;"></span></label>
                                                     <div class="col-sm-8">
                                                         <div class="input-group input-group-in">
                                                             <input type="text" id="Counter" name="Counter" class="form-control" placeholder="Counter" required />
@@ -171,7 +171,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditWhyWptron(@whyUptron.Id, '@whyUptron.Counter', '@whyUptron.CounterName', '@(whyUptron.IsActive == true ? 1 : 0)', '@whyUptron.OrderNumber')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-danger" href="#">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" href="DeleteWhyUptronById/@whyUptron.Id">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -194,6 +194,17 @@
     </section>
 </form>
 <script type="text/javascript">
+    $(document).ready(function () {
+        //called when key is pressed in textbox
+        $("#Counter").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                $("#errmsg").html("Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
     function EditWhyWptron(Id, Counter, Countername, IsActive, OrderNumber) {
         $('#hiddenId').val(Id);
         $("#btnSave").val('Update');
@@ -204,14 +215,4 @@
         
     }
 </script>
-@*<script type="text/javascript">
-    function EditMajorProjects(ID, Title, DepartmentName, IsActive, OrderNumber, WorkDescription) {
-        $('#hiddenId').val(ID);
-        $('#btnSave').val('Update');
-        $('#DepartmentTitle').val(Title);
-        $('#Departmentname').val(DepartmentName);
-        $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
-        $('#OrderNumber').val(OrderNumber);
-        $('#WorkDescription').val(WorkDescription);
-    }
-</script>*@
+

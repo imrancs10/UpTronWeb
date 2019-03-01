@@ -1,0 +1,243 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UPTRON POWERTRONICS LIMITED</title>
+
+    <!-- PLUGINS CSS STYLE -->
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/default.css" rel="stylesheet" id="option_color">
+
+    <!-- JAVASCRIPTS -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/Scripts/App/Global/Utility.js"></script>
+</head>
+<body class="body-wrapper static">
+    <div class="se-pre-con"></div>
+    <div class="main-wrapper">
+
+        <!-- PAGE TITLE SECTION -->
+        <section class="clearfix pageTitleArea" style="background-image: url(../img/blog/pageTitle-bg-004.jpg);">
+            <div class="container">
+                <div class="pageTitle">
+                    <h1>Vendor Upload</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <div class="example">
+            <ol class="breadcrumb">
+                <li><a href="~/Home/Index">Home</a></li>
+                <li class="active">Vendor Upload</li>
+            </ol>
+        </div>
+        <!-- KEY FUNCTANIORIES & Services SECTION -->
+        <section class="clearfix">
+            <div class="container">
+                <div class="timeLine">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!--<img src="img/uptronlogo.png" class="img-responsive"/>
+                                <hr />-->
+                                <h2>Vendor Upload FORM</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- KEY FUNCTANIORIES SECTION -->
+                        <div class="col-lg-12">
+                            <div class="featured-box featured-box-primary align-left mt-xlg">
+                                <div class="box-content">
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Vender Upload Document Form </h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="form-group mt-lg">
+                                        <label class="col-sm-3 control-label">Vender Name <span style="color:red;">*</span></label>
+                                        <div class="col-sm-9">
+                                            <div class="input-group input-group-icon">
+                                                <input type="text" id="txtVenderName" class="form-control" placeholder="Vender Name" />
+                                                <span class="input-group-addon">
+                                                    <span class="icon"><i class="fa fa-user"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Mobile No <span style="color:red;">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="Text2" class="form-control" placeholder="Mobile No" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-mobile"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">Email Id <span style="color:red;">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="Text3" class="form-control" placeholder="Email Id" />
+                                                            <span class="input-group-addon">
+                                                                <span class="icon"><i class="fa fa-envelope"></i></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">One Time Password <span style="color:red;">*</span></label>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group input-group-icon">
+                                                            <input type="text" id="OTP" class="form-control" placeholder="OTP" />
+                                                        </div>
+                                                        <span style="color:red;">Plz Check your given Email Id for OTP</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Upload Document </h4></div>
+                                    </div>
+                                    <hr class="tall">
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="Upload">
+                                            <div class="col-md-4">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">PFSlip</label>
+                                                    <div class="col-sm-8">
+                                                        <form method="POST" action="uploadPFSlip" enctype="multipart/form-data">
+                                                            <input type="file" name="file" />
+                                                        </form>
+                                                    </div>
+                                                    <span style="color:red;">Size should be or equal to 400 KB.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">ESISlip</label>
+                                                    <div class="col-sm-8">
+                                                        <form method="POST" action="uploadESISlip" enctype="multipart/form-data">
+                                                            <input type="file" name="file" />
+                                                        </form>
+                                                    </div>
+                                                    <span style="color:red;">Size should be or equal to  200 KB.</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group mt-lg">
+                                                    <label class="col-sm-4 control-label">SalarySlip </label>
+                                                    <div class="col-sm-8">
+                                                        <form method="POST" action="uploadSalarySlip" enctype="multipart/form-data">
+                                                            <input type="file" name="file" />
+                                                        </form>
+                                                    </div>
+                                                    <span style="color:red;">Size should be or equal to  200 KB.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <hr class="tall">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                <input id="btnSave" type="submit" value="Submit" name="submit" class="btn btn-primary" />
+                                                <span class="label-divider" id="Span1">or</span>
+                                                <input id="btncancel" type="submit" value="Reset" name="reset" class="btn btn-default" style="background:#000;padding:10px;" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            //$('#Upload').hide();
+        })
+        
+    </script>
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/js/jquery-ui.js"></script>
+</body>
+</html>
+
+

@@ -702,5 +702,21 @@ namespace UptronWeb.BAL.Common
             var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).ToList();
             return result;
         }
+
+        public bool DeleteWhyUptron(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.WhyUptrons.FirstOrDefault(x => x.Id == Id);
+            _db.WhyUptrons.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public List<WhyUptron> GetwhyuptroneDetail()
+        {
+            _db = new UptronWebEntities();
+            var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).Take(4).ToList();
+            return result;
+        }
     }
 }

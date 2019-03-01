@@ -9,6 +9,7 @@
     //fillServiceSlider();
     //fillFooterImage();
     fillDirectorMessagePage();
+    fillWhyUptron();
 });
 
 function fillNewsAndUpdate() {
@@ -367,6 +368,32 @@ function fillDirectorMessagePage() {
             //htmlDOM += '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:210px;height:210px;" />'+
             //    '<p> ' + data.Message + '</p>';
             $('#divDirectorMessagePage').html(htmlDOM);
+        },
+        failure: function (response) {
+            alert(response);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+}
+
+function fillWhyUptron() {
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/Home/GetAllWhyUptron',
+        async: true,
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            int = 1; 
+            var htmlDOM = ''; 
+            htmlDOM += '<i class="fa fa-calendar-o"></i>'+
+                '<span class="counter-number">'+
+                    '<span class="counter">' + data.Coun + '</span>'+
+                '</span>' +
+                    '<span class="counter-text">' + data.co + '</span>';
+            $('#divWhyUptron').html(htmlDOM);
         },
         failure: function (response) {
             alert(response);

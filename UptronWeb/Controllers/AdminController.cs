@@ -1388,5 +1388,12 @@ namespace UptronWeb.Controllers
 
             return RedirectToAction("WhyUptron");
         }
+
+        public ActionResult DeleteWhyUptronById(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeleteWhyUptron(Id);
+            return RedirectToAction("WhyUptron");
+        }
     }
 }

@@ -12,7 +12,7 @@ html,
 }
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 21px;
     color: #666666;
     font-weight: 400;
@@ -8166,4 +8166,7 @@ img.alignleft {
 
 .alignleft {
     float: left;
+}
+#errmsg {
+    color: red;
 }

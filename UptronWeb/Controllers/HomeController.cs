@@ -515,5 +515,42 @@ namespace UptronWeb.Controllers
             else
                 return Json(false);
         }
+
+        //public JsonResult GetAllWhyUptron()
+        //{
+        //    GeneralDetailBAL bal = new GeneralDetailBAL();
+        //    var whyuptron = bal.GetwhyuptroneDetail();
+        //    WhyUptron abc = new WhyUptron()
+        //    {
+        //        Id = abc.Id,
+        //        Counter = abc.Counter,
+        //        CounterName = abc.CounterName,
+        //        OrderNumber = abc.OrderNumber
+        //    };
+        //    return Json(abc);
+        //}
+
+        public JsonResult GetAllWhyUptron()
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var whyuptron = bal.GetwhyuptroneDetail();
+            List<WhyUptron> whyuptronList = new List<WhyUptron>();
+            whyuptron.ForEach(x =>
+            {
+                whyuptronList.Add(new WhyUptron()
+                {
+                    Id = x.Id,
+                    Counter = x.Counter,
+                    CounterName = x.CounterName,
+                    OrderNumber = x.OrderNumber
+                });
+            });
+            return Json(whyuptronList, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult VendorUpload()
+        {
+            return View();
+        }
     }
 }
