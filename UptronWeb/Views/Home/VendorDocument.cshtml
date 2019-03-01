@@ -63,49 +63,25 @@
                         <div class="col-lg-8 col-md-offset-2">
                             <div class="featured-box featured-box-primary align-left mt-xlg">
 
-                                <form action="CheckVendorDetail" method="post">
+                                <form method="POST" action="VendorDocument" enctype="multipart/form-data">
                                     <div class="box-content">
                                         <div class="row">
                                             <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Vender Upload Document</h4></div>
                                         </div>
                                         <hr class="tall">
-                                        <div class="form-group mt-lg">
-                                            <label class="col-sm-2 control-label">Vender Code<span style="color:red;">*</span></label>
-                                            <div class="col-sm-6">
-                                                <div class="input-group input-group-icon">
-                                                    <input type="text" name="VenderCode" class="form-control" placeholder="Vender Code" />
-                                                    <span class="input-group-addon">
-                                                        <span class="icon"><i class="fa fa-user"></i></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
+                                            <div class="col-md-12"><h4 class="heading-primary text-uppercase mb-md">Upload Document </h4></div>
+                                        </div>
+                                        <hr class="tall">
+                                        <div class="col-md-12">
+                                            <div class="form-group" id="Upload">
+                                                <div class="col-md-4">
                                                     <div class="form-group mt-lg">
-                                                        <label class="col-sm-4 control-label">Mobile No <span style="color:red;">*</span></label>
+                                                        <label class="col-sm-4 control-label">File</label>
                                                         <div class="col-sm-8">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" name="MobileNumber" class="form-control" placeholder="Mobile No" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-mobile"></i></span>
-                                                                </span>
-                                                            </div>
+                                                            <input type="file" name="documentFile" multiple />
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group mt-lg">
-                                                        <label class="col-sm-4 control-label">Email Id <span style="color:red;">*</span></label>
-                                                        <div class="col-sm-8">
-                                                            <div class="input-group input-group-icon">
-                                                                <input type="text" name="EmailID" class="form-control" placeholder="Email Id" />
-                                                                <span class="input-group-addon">
-                                                                    <span class="icon"><i class="fa fa-envelope"></i></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
+                                                        <span style="color:red;">Size should be or equal to 400 KB.</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,11 +100,13 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <div class="col-md-3">
+
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
 

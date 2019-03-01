@@ -60,6 +60,8 @@
         <AssociationConnector Association="UpTronWebModel.FK_UserMaster_UserMaster1" ManuallyRouted="false" />
         <AssociationConnector Association="UpTronWebModel.FK_VendorJob_VendorDetail" ManuallyRouted="false" />
         <AssociationConnector Association="UpTronWebModel.FK_VendorJob_VendorJob" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UpTronWebModel.VendorDocument" Width="1.5" PointX="3" PointY="28.25" />
+        <AssociationConnector Association="UpTronWebModel.FK_VendorDocument_VendorDocument" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

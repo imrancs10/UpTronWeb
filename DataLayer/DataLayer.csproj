@@ -169,6 +169,9 @@
     <Compile Include="VendorDetail.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="VendorDocument.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="VendorJob.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>

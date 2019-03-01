@@ -1572,6 +1572,8 @@
     <Content Include="Views\Admin\CityMaster.cshtml" />
     <Content Include="Views\Admin\WhyUptron.cshtml" />
     <Content Include="Views\Home\VendorUpload.cshtml" />
+    <Content Include="Views\Home\VendorEnterOTP.cshtml" />
+    <Content Include="Views\Home\VendorDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -21,6 +21,7 @@ namespace DataLayer
             this.JobDocumentUploads = new HashSet<JobDocumentUpload>();
             this.JobResignations = new HashSet<JobResignation>();
             this.VendorJobs = new HashSet<VendorJob>();
+            this.VendorDocuments = new HashSet<VendorDocument>();
         }
     
         public int Id { get; set; }
@@ -47,5 +48,7 @@ namespace DataLayer
         public virtual ICollection<JobResignation> JobResignations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorJob> VendorJobs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VendorDocument> VendorDocuments { get; set; }
     }
 }

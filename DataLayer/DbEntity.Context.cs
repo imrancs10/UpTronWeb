@@ -18,7 +18,6 @@ namespace DataLayer
         public UptronWebEntities()
             : base("name=UptronWebEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,5 +61,6 @@ namespace DataLayer
         public virtual DbSet<VendorDetail> VendorDetails { get; set; }
         public virtual DbSet<VendorJob> VendorJobs { get; set; }
         public virtual DbSet<WhyUptron> WhyUptrons { get; set; }
+        public virtual DbSet<VendorDocument> VendorDocuments { get; set; }
     }
 }

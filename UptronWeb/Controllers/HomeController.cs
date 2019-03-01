@@ -534,23 +534,86 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var whyuptron = bal.GetwhyuptroneDetail();
-            //List<WhyUptron> whyuptronList = new List<WhyUptron>();
-            //whyuptron.ForEach(x =>
-            //{
-            //    whyuptronList.Add(new WhyUptron()
-            //    {
-            //        Id = x.Id,
-            //        Counter = x.Counter,
-            //        CounterName = x.CounterName,
-            //        OrderNumber = x.OrderNumber
-            //    });
-            //});
             return Json(whyuptron, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult VendorUpload()
+        public ActionResult VendorUpload(bool? invalidVendor)
+        {
+            if (invalidVendor == true)
+            {
+                SetAlertMessage("Vendor Detail are not matched");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CheckVendorDetail(string VenderCode, string MobileNumber, string EmailID)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var vendor = bal.CheckVendorDetail(VenderCode, MobileNumber, EmailID);
+            if (vendor != null)
+            {
+                string verificationCode = VerificationCodeGeneration.GenerateDeviceVerificationCode();
+                Session["otp"] = verificationCode;
+                Session["vendorId"] = vendor.Id;
+                SendMailForVendorVerification(vendor.VendorName, vendor.EmailId, verificationCode);
+                return RedirectToAction("VendorEnterOTP");
+            }
+            return RedirectToAction("VendorUpload", new { invalidVendor = true });
+        }
+
+        public ActionResult VendorEnterOTP(bool? inValidOTP)
+        {
+            if (inValidOTP == true)
+            {
+                SetAlertMessage("Entered OTP is not matched");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CheckVendorOTP(string OTPText)
+        {
+            if (OTPText == Convert.ToString(Session["otp"]))
+            {
+                Session["otp"] = null;
+                return RedirectToAction("VendorDocument");
+            }
+            return RedirectToAction("VendorEnterOTP", new { inValidOTP = true });
+        }
+        public ActionResult VendorDocument()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult VendorDocument(HttpPostedFileBase documentFile)
+        {
+            byte[] fileattachment = null;
+            fileattachment = Utility.serilizeImagetoByte(documentFile, fileattachment);
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            VendorDocument document = new VendorDocument()
+            {
+                VendorId = Convert.ToInt32(Session["vendorId"]),
+                DocumentFile = fileattachment,
+                CreatedDate = DateTime.Now
+            };
+            var result = bal.SaveVendorDocument(document);
+            SetAlertMessage("Vendor Document has been saved", "Document");
+            return View();
+        }
+        private async Task SendMailForVendorVerification(string Name, string Email, string verificationCode)
+        {
+            await Task.Run(() =>
+            {
+                Message msg = new Message()
+                {
+                    MessageTo = Email,
+                    MessageNameTo = Name,
+                    Subject = "Uptron OTP Verification",
+                    Body = EmailHelper.GetVendorVerificationEmail(Name, verificationCode)
+                };
+
+                ISendMessageStrategy sendMessageStrategy = new SendMessageStrategyForEmail(msg);
+                sendMessageStrategy.SendMessages();
+            });
         }
     }
 }

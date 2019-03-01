@@ -718,5 +718,23 @@ namespace UptronWeb.BAL.Common
             var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).Take(8).ToList();
             return result;
         }
+
+        public VendorDetail CheckVendorDetail(string VenderCode, string MobileNumber, string EmailID)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.VendorDetails.Where(x => x.IsActive == true
+                                    && x.PhoneNumber == MobileNumber
+                                    && x.EmailId == EmailID
+                                    && x.VendorCode == VenderCode).FirstOrDefault();
+            return result;
+        }
+        public Enums.CrudStatus SaveVendorDocument(VendorDocument doc)
+        {
+            _db = new UptronWebEntities();
+            int _effectRow = 0;
+            _db.Entry(doc).State = EntityState.Added;
+            _effectRow = _db.SaveChanges();
+            return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
     }
 }

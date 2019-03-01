@@ -388,6 +388,15 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="EmailId" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="VendorDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="DocumentFile" Type="varbinary(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="VendorJob">
           <Key>
             <PropertyRef Name="Id" />
@@ -614,6 +623,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VendorDocument_VendorDocument">
+          <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
+          <End Role="VendorDocument" Type="Self.VendorDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorDocument">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_VendorJob_VendorDetail">
           <End Role="VendorDetail" Type="Self.VendorDetail" Multiplicity="0..1" />
           <End Role="VendorJob" Type="Self.VendorJob" Multiplicity="*" />
@@ -673,6 +694,7 @@
           <EntitySet Name="UpcomingEventsMaster" EntityType="Self.UpcomingEventsMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorDetail" EntityType="Self.VendorDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorDocument" EntityType="Self.VendorDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VendorJob" EntityType="Self.VendorJob" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WhyUptron" EntityType="Self.WhyUptron" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
@@ -742,6 +764,10 @@
           <AssociationSet Name="FK_UserMaster_UserMaster1" Association="Self.FK_UserMaster_UserMaster1">
             <End Role="UserMaster" EntitySet="UserMaster" />
             <End Role="UserMaster1" EntitySet="UserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorDocument_VendorDocument" Association="Self.FK_VendorDocument_VendorDocument">
+            <End Role="VendorDetail" EntitySet="VendorDetail" />
+            <End Role="VendorDocument" EntitySet="VendorDocument" />
           </AssociationSet>
           <AssociationSet Name="FK_VendorJob_VendorDetail" Association="Self.FK_VendorJob_VendorDetail">
             <End Role="VendorDetail" EntitySet="VendorDetail" />
@@ -1172,6 +1198,7 @@
           <NavigationProperty Name="JobDocumentUploads" Relationship="Self.FK_JobDocumentUpload_VendorDetail" FromRole="VendorDetail" ToRole="JobDocumentUpload" />
           <NavigationProperty Name="JobResignations" Relationship="Self.FK_JobResignation_VendorDetail" FromRole="VendorDetail" ToRole="JobResignation" />
           <NavigationProperty Name="VendorJobs" Relationship="Self.FK_VendorJob_VendorDetail" FromRole="VendorDetail" ToRole="VendorJob" />
+          <NavigationProperty Name="VendorDocuments" Relationship="UpTronWebModel.FK_VendorDocument_VendorDocument" FromRole="VendorDetail" ToRole="VendorDocument" />
         </EntityType>
         <EntityType Name="VendorJob">
           <Key>
@@ -1540,7 +1567,34 @@
             <End Role="VendorJob" EntitySet="VendorJobs" />
             <End Role="VendorJob1" EntitySet="VendorJobs" />
           </AssociationSet>
+          <EntitySet Name="VendorDocuments" EntityType="UpTronWebModel.VendorDocument" />
+          <AssociationSet Name="FK_VendorDocument_VendorDocument" Association="UpTronWebModel.FK_VendorDocument_VendorDocument">
+            <End Role="VendorDetail" EntitySet="VendorDetails" />
+            <End Role="VendorDocument" EntitySet="VendorDocuments" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="VendorDocument">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="DocumentFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="VendorDetail" Relationship="UpTronWebModel.FK_VendorDocument_VendorDocument" FromRole="VendorDocument" ToRole="VendorDetail" />
+        </EntityType>
+        <Association Name="FK_VendorDocument_VendorDocument">
+          <End Type="UpTronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
+          <End Type="UpTronWebModel.VendorDocument" Role="VendorDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VendorDocument">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1985,6 +2039,16 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
                 <ScalarProperty Name="Createddate" ColumnName="Createddate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorDocuments">
+            <EntityTypeMapping TypeName="UpTronWebModel.VendorDocument">
+              <MappingFragment StoreEntitySet="VendorDocument">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DocumentFile" ColumnName="DocumentFile" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -71,5 +71,12 @@ namespace UptronWeb.Infrastructure.Utility
             body += "";
             return body;
         }
+        public static string GetVendorVerificationEmail(string name, string verificationCode)
+        {
+            string body = string.Format("Hi {0}<br/><br/>", name);
+            body += "As you requested, here is a OTP is : <b>" + verificationCode + "</b> you can use to verify your detail.<br/><br/>";
+            body += "Thank You,<br/>";
+            return body;
+        }
     }
 }
