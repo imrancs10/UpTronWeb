@@ -715,7 +715,7 @@ namespace UptronWeb.BAL.Common
         public List<WhyUptron> GetwhyuptroneDetail()
         {
             _db = new UptronWebEntities();
-            var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).Take(4).ToList();
+            var result = _db.WhyUptrons.Where(x => x.IsActive == true).OrderBy(x => x.OrderNumber).Take(8).ToList();
             return result;
         }
     }

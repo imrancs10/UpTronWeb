@@ -534,18 +534,18 @@ namespace UptronWeb.Controllers
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
             var whyuptron = bal.GetwhyuptroneDetail();
-            List<WhyUptron> whyuptronList = new List<WhyUptron>();
-            whyuptron.ForEach(x =>
-            {
-                whyuptronList.Add(new WhyUptron()
-                {
-                    Id = x.Id,
-                    Counter = x.Counter,
-                    CounterName = x.CounterName,
-                    OrderNumber = x.OrderNumber
-                });
-            });
-            return Json(whyuptronList, JsonRequestBehavior.AllowGet);
+            //List<WhyUptron> whyuptronList = new List<WhyUptron>();
+            //whyuptron.ForEach(x =>
+            //{
+            //    whyuptronList.Add(new WhyUptron()
+            //    {
+            //        Id = x.Id,
+            //        Counter = x.Counter,
+            //        CounterName = x.CounterName,
+            //        OrderNumber = x.OrderNumber
+            //    });
+            //});
+            return Json(whyuptron, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult VendorUpload()

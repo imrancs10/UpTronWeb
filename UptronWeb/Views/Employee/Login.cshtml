@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="~/styles/pages.css">
 
     <!-- PLUGINS CSS STYLE -->
-    <link href="~/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    
     <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="#" rel="stylesheet" id="bootstrap-rtl">
     <link href="~/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -63,182 +63,218 @@
     <link href="~/css/slider/css/navigation.css" rel="stylesheet" />
     <link href="~/css/slider/css/settings.css" rel="stylesheet" />
     <link href="~/css/slider/css/font-awesome.min.css" rel="stylesheet" />
-
-    <body class="body-wrapper static" style="background-image:url(../images/bguserlogin.jpg);">
-        <h1 style="text-align:center;color:#ffd800;margin-top:25px;font-weight:700;">UPTRON POWERTRONICS LIMITED</h1>
-        <main>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-5 col-md-offset-1">
-                        <div style="color:#fff; margin-left:50px;margin-top:90px;">
-                            <h2 style="color:#fff;">Get best matched Jobs !!!</h2>
-                            <h3 style="color:#fff;">Register with us in just 15 Minutes!</h3>
-                            <hr />
-                            <h4 style="color:#fff;">All you need to have is :</h4>
-                            <br />
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p style="color:#fff;"><i class="fa fa-university"></i>  Full details</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:#fff;"><i class="fa fa-university"></i>  Qualification Information</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:#fff;"><i class="fa fa-address-book"></i>  Upload Updated Resume</p>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <p style="color:#fff;"><i class="fa fa-image"></i>  Upload Updated Image</p>
-                                </div>
+    <script src="~/Scripts/App/Global/App.js"></script>
+    <script src="~/scripts/App/Global/Utility.js"></script>
+</head>
+<body class="body-wrapper static" style="background-image:url(../images/bguserlogin.jpg);">
+    <h1 style="text-align:center;color:#ffd800;margin-top:25px;font-weight:700;">UPTRON POWERTRONICS LIMITED</h1>
+    <main>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div style="color:#fff; margin-left:50px;margin-top:90px;">
+                        <h2 style="color:#fff;">Get best matched Jobs !!!</h2>
+                        <h3 style="color:#fff;">Register with us in just 15 Minutes!</h3>
+                        <hr />
+                        <h4 style="color:#fff;">All you need to have is :</h4>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p style="color:#fff;"><i class="fa fa-university"></i>  Full details</p>
                             </div>
-                            <hr />
-                            <p class="signin-cr text-light">Copyright &copy; 2018 UPTRON POWERTRONICS LIMITED</p>
+                            <div class="col-md-6">
+                                <p style="color:#fff;"><i class="fa fa-university"></i>  Qualification Information</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="color:#fff;"><i class="fa fa-address-book"></i>  Upload Updated Resume</p>
+
+                            </div>
+                            <div class="col-md-6">
+                                <p style="color:#fff;"><i class="fa fa-image"></i>  Upload Updated Image</p>
+                            </div>
                         </div>
+                        <hr />
+                        <p class="signin-cr text-light">Copyright &copy; 2018 UPTRON POWERTRONICS LIMITED</p>
                     </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="signin-wrapper">
-                            <div class="tab-content">
-                                <p class="text-center p-4x">
-                                    <img src="../images/logo/brand-text-dark.png" alt="Demon International" style="height:90px;width:270px;">
-                                </p>
-                                <div class="tab-pane fade in active" id="Div1">
+                <div class="col-md-6">
+                    <div class="signin-wrapper">
+                        <div class="tab-content">
+                            <p class="text-center p-4x">
+                                <img src="../images/logo/brand-text-dark.png" alt="Demon International" style="height:90px;width:270px;">
+                            </p>
+                            <div class="tab-pane fade in active" id="Div1">
 
-                                    <form id="Form1" role="form" action="CheckLogin" method="post">
-                                        <p class="lead">Login to Jobseeker's Account</p>
-                                        <div class="form-group">
-                                            <div class="input-group input-group-in">
-                                                <span class="input-group-addon"><i class="icon-user"></i></span>
-                                                <input id="UserName" class="form-control" placeholder="Username" name="UserName" type="text" />
-                                            </div>
-                                        </div><!-- /.form-group -->
-                                        <div class="form-group">
-                                            <div class="input-group input-group-in">
-                                                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                                <input id="Password" name="Password" class="form-control" placeholder="Password" type="password" />
+                                <form id="Form1" role="form" action="CheckLogin" method="post">
+                                    <p class="lead">Login to Jobseeker's Account</p>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-in">
+                                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                                            <input id="UserName" class="form-control" placeholder="Username" name="UserName" type="text" />
+                                        </div>
+                                    </div><!-- /.form-group -->
+                                    <div class="form-group">
+                                        <div class="input-group input-group-in">
+                                            <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                            <input id="Password" name="Password" class="form-control" placeholder="Password" type="password" />
 
+                                        </div>
+                                    </div><!-- /.form-group -->
+                                    <div class="form-group clearfix">
+                                        <div class="animated-hue pull-right">
+                                            <input id="Submit" type="submit" name="submit" value="SignIn" class="btn btn-primary" />
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="nice-checkbox nice-checkbox-inline">
+                                                <input name="keepSignin" id="Checkbox2" checked="checked" type="checkbox" />
+                                                <label for="keepSignin">Keep me sign in</label>
                                             </div>
-                                        </div><!-- /.form-group -->
-                                        <div class="form-group clearfix">
-                                            <div class="animated-hue pull-right">
-                                                <input id="Submit" type="submit" name="submit" value="SignIn" class="btn btn-primary" />
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <div class="nice-checkbox nice-checkbox-inline">
-                                                    <input name="keepSignin" id="Checkbox2" checked="checked" type="checkbox" />
-                                                    <label for="keepSignin">Keep me sign in</label>
-                                                </div>
-                                            </div>
+                                        </div>
 
-                                        </div><!-- /.form-group -->
-                                        <hr />
-                                    </form><!-- /#signinForm -->
-                                </div><!-- /.tab-pane -->
-                            </div>
+                                    </div><!-- /.form-group -->
+                                    <hr />
+                                </form><!-- /#signinForm -->
+                            </div><!-- /.tab-pane -->
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 
 
-        <!--Login JAVASCRIPTS -->
-        <!-- VENDORS : jQuery & Bootstrap -->
-        <script src="~/scripts/vendor.js"></script>
-        <!-- END VENDORS -->
-        <!-- DEPENDENCIES : Required plugins -->
-        <script src="~/scripts/dependencies.js"></script>
-        <!-- END DEPENDENCIES -->
-        <!-- WRAPKIT -->
-        <script src="~/scripts/wrapkit.js"></script>
-        <!-- END WRAPKIT -->
-        <!-- WRAPKIT SETUPS -->
-        <script src="~/scripts/wrapkit-setup.js"></script>
-        <!-- end WRAPKIT SETUPS -->
-        <!-- PLUGIN SETUPS: vendors & dependencies setups -->
-        <script src="~/scripts/plugin-setups.js"></script>
-        <!-- END PLUGIN SETUPS -->
-        <!-- COMPONENTS -->
-        <!-- Morris.js + Raphael -->
-        <script src="~/scripts/morris.bundle.js"></script>
-        <script src="~/scripts/jquery.sparkline.js"></script>
-        <script src="~/scripts/jquery.easypiechart.js"></script>
-        <!-- END COMPONENTS -->
-        <!-- DUMMY: Use for demo -->
-        <script src="~/scripts/demo/dashboard1-demo.js"></script>
+    <!--Login JAVASCRIPTS -->
+    <!-- VENDORS : jQuery & Bootstrap -->
+    <script src="~/scripts/vendor.js"></script>
+    <!-- END VENDORS -->
+    <!-- DEPENDENCIES : Required plugins -->
+    <script src="~/scripts/dependencies.js"></script>
+    <!-- END DEPENDENCIES -->
+    <!-- WRAPKIT -->
+    <script src="~/scripts/wrapkit.js"></script>
+    <!-- END WRAPKIT -->
+    <!-- WRAPKIT SETUPS -->
+    <script src="~/scripts/wrapkit-setup.js"></script>
+    <!-- end WRAPKIT SETUPS -->
+    <!-- PLUGIN SETUPS: vendors & dependencies setups -->
+    <script src="~/scripts/plugin-setups.js"></script>
+    <!-- END PLUGIN SETUPS -->
+    <!-- COMPONENTS -->
+    <!-- Morris.js + Raphael -->
+    <script src="~/scripts/morris.bundle.js"></script>
+    <script src="~/scripts/jquery.sparkline.js"></script>
+    <script src="~/scripts/jquery.easypiechart.js"></script>
+    <!-- END COMPONENTS -->
+    <!-- DUMMY: Use for demo -->
+    <script src="~/scripts/demo/dashboard1-demo.js"></script>
 
 
-        <!-- JAVASCRIPTS -->
-        <script src="~/js/timeLine.js"></script>
-        <script src="~/js/timeLine.min.js"></script>
+    <!-- JAVASCRIPTS -->
+    <script src="~/js/timeLine.js"></script>
+    <script src="~/js/timeLine.min.js"></script>
 
-        <script src="~/css/testimonial/index.js"></script>
-        <script src="~/js/script.js"></script>
+    <script src="~/css/testimonial/index.js"></script>
+    <script src="~/js/script.js"></script>
 
-        <script src="~/js/jquery.min.js"></script>
-        <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
-        <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="~/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
-        <script src="~/plugins/owl-carousel/owl.carousel.min.js"></script>
-        <script src="~/plugins/isotope/isotope.min.js"></script>
-        <script src="~/plugins/fancybox/jquery.fancybox.pack.js"></script>
-        <script src="~/plugins/isotope/isotope-triger.min.js"></script>
-        <script src="~/plugins/smoothscroll/SmoothScroll.min.js"></script>
-        <script src="~/plugins/datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="~/plugins/syotimer/jquery.syotimer.min.js"></script>
-        <script src="~/js/custom.js"></script>
-        <link href="~/options/animate.css" rel="stylesheet">
-        <script src="~/css/slider/js/jquery.themepunch.revolution.min.js"></script>
-        <script src="~/css/slider/js/jquery.themepunch.tools.min.js"></script>
-        <script src="~/js/feedback.js"></script>
-        <!--Slider js-->
-        <script src="~/css/slider/js/custom.js"></script>
-        <script src="~/css/slider/js/multislider.js"></script>
-        <script src="~/js/newsstickerscript/jquery.bootstrap.newsbox.min.js"></script>
-        <script src="~/js/jquery.easy-ticker.js"></script>
-        <script>
-            $(function () {
-                $('.demo1').easyTicker({
-                    direction: 'up',
-                    easing: 'swing'
-                });
+    <script src="~/js/jquery.min.js"></script>
 
-
-
-                $('.demo3').easyTicker({
-                    visible: 1,
-                    interval: 4000
-                });
-
-
-                $('.demo5').easyTicker({
-                    direction: 'up',
-                    visible: 2,
-                    interval: 2500,
-                    controls: {
-                        up: '.btnUp',
-                        down: '.btnDown',
-                        toggle: '.btnToggle'
-                    }
-                });
-                $('.demo6').easyTicker({
-                    direction: 'up',
-                    visible: 3,
-                    interval: 2500,
-                    controls: {
-                        up: '.btnUp',
-                        down: '.btnDown',
-                        toggle: '.btnToggle'
-                    }
-                });
+    <script src="~/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+    <script src="~/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/plugins/isotope/isotope.min.js"></script>
+    <script src="~/plugins/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="~/plugins/isotope/isotope-triger.min.js"></script>
+    <script src="~/plugins/smoothscroll/SmoothScroll.min.js"></script>
+    <script src="~/plugins/datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="~/plugins/syotimer/jquery.syotimer.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <link href="~/options/animate.css" rel="stylesheet">
+    <script src="~/css/slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/css/slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/js/feedback.js"></script>
+    <!--Slider js-->
+    <script src="~/css/slider/js/custom.js"></script>
+    <script src="~/css/slider/js/multislider.js"></script>
+    <script src="~/js/newsstickerscript/jquery.bootstrap.newsbox.min.js"></script>
+    <script src="~/js/jquery.easy-ticker.js"></script>
+    <script>
+        $(function () {
+            $('.demo1').easyTicker({
+                direction: 'up',
+                easing: 'swing'
             });
-            //disable bACK BUTTON
-            history.pushState(null, null, location.href);
-            window.onpopstate = function () {
-                history.go(1);
-            };
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </body>
+
+
+
+            $('.demo3').easyTicker({
+                visible: 1,
+                interval: 4000
+            });
+
+
+            $('.demo5').easyTicker({
+                direction: 'up',
+                visible: 2,
+                interval: 2500,
+                controls: {
+                    up: '.btnUp',
+                    down: '.btnDown',
+                    toggle: '.btnToggle'
+                }
+            });
+            $('.demo6').easyTicker({
+                direction: 'up',
+                visible: 3,
+                interval: 2500,
+                controls: {
+                    up: '.btnUp',
+                    down: '.btnDown',
+                    toggle: '.btnToggle'
+                }
+            });
+        });
+        //disable bACK BUTTON
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    @if (TempData["Alert_Title"] != null)
+    {
+        <div id="dialog" title="@TempData["Alert_Title"].ToString()">
+            @if (TempData["Alert_Message"] != null)
+            {
+                <p>@TempData["Alert_Message"].ToString()</p>
+            }
+            else
+            {
+                <p>Success..!</p>
+            }
+        </div>
+    }
+    <div id="alertModel" style="display:none;" title="">
+        <p></p>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#dialog").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    "OK": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        })
+    </script>
+    <link href="~/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+</body>
 </html>
 

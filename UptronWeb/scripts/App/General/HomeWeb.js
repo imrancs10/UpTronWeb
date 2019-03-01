@@ -359,12 +359,12 @@ function fillDirectorMessagePage() {
         success: function (data) {
             int = 1;
             var htmlDOM = '';
-            htmlDOM += '<div class="col-md-3">'+
-                '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:180px;height:180px;" />'+
-                                '</div>'+
-                                '<div class="col-md-9">'+
-                                    '<p> ' + data.Message + '</p>'+
-                                '</div>';
+            htmlDOM += '<div class="col-md-3">' +
+                '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:180px;height:180px;" />' +
+                '</div>' +
+                '<div class="col-md-9">' +
+                '<p> ' + data.Message + '</p>' +
+                '</div>';
             //htmlDOM += '<img src="' + data.Photo + '" alt="' + data.Name + '" class="img-responsive" style="width:210px;height:210px;" />'+
             //    '<p> ' + data.Message + '</p>';
             $('#divDirectorMessagePage').html(htmlDOM);
@@ -386,13 +386,23 @@ function fillWhyUptron() {
         async: true,
         contentType: "application/json; charset=utf-8",
         success: function (data) {
-            int = 1; 
-            var htmlDOM = ''; 
-            htmlDOM += '<i class="fa fa-calendar-o"></i>'+
-                '<span class="counter-number">'+
-                    '<span class="counter">' + data.Coun + '</span>'+
-                '</span>' +
-                    '<span class="counter-text">' + data.co + '</span>';
+            int = 1;
+            var htmlDOM = '';
+            var arrayClass = ["fa fa-calendar-o", "fa fa-smile-o", "fa fa-home", "fa fa-wpbeginner"];
+            $.each(data, function (index, item) {
+                var i = index % 4;
+                htmlDOM += '<div class="col-md-3 col-xs-6">' +
+                    '<i class="' + arrayClass[i] + '"></i>' +
+                    '<span class="counter-number"> ' +
+                    '<span class="counter" > ' +
+                    '' + item.Counter + '' +
+                    '+</span> ' +
+                    '</span> ' +
+                    '<span class="counter-text">' +
+                    '' + item.CounterName + '' +
+                    '</span>' +
+                    '</div>';
+            });
             $('#divWhyUptron').html(htmlDOM);
         },
         failure: function (response) {
