@@ -124,7 +124,7 @@
                             '<div class="btn-divider mr-2x mb-1x" role="divider">' +
                             "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditCity(" + full.StateId + "," + full.CityId + ",\"" + full.CityName.trim() + "\")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
-                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteCity/' + full.CityId + '">Delete</a>' +
+                            '<a id="lnkDelete" class="btn btn-primary" onclick="javascript:return openDialogue();" href="#" data-url="DeleteCity/' + full.CityId + '">Delete</a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;
