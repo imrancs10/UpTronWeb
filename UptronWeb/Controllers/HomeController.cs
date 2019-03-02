@@ -615,5 +615,10 @@ namespace UptronWeb.Controllers
                 sendMessageStrategy.SendMessages();
             });
         }
+
+        public ActionResult UploadDocument()
+        {
+            return View();
+        }
     }
 }

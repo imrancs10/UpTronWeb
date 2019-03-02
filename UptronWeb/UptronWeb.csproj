@@ -231,6 +231,25 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\demo.css" />
+    <Content Include="assets\css\material-bootstrap-wizard.css" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\default-avatar.png" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\thumb_list_boat.png" />
+    <Content Include="assets\img\thumb_list_place.png" />
+    <Content Include="assets\img\thumb_register.png" />
+    <Content Include="assets\img\tim_80x80.png" />
+    <Content Include="assets\img\wizard-book.jpg" />
+    <Content Include="assets\img\wizard-city.jpg" />
+    <Content Include="assets\img\wizard-profile.jpg" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery-2.2.4.min.js" />
+    <Content Include="assets\js\jquery.bootstrap.js" />
+    <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\material-bootstrap-wizard.js" />
     <Content Include="Content\App\admin\uptronweb.css" />
     <Content Include="Content\App\Login\Login.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1512,6 +1531,29 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="assets\scss\material-bootstrap-wizard.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\mixins\_buttons.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\mixins\_inputs.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\mixins\_vendor-prefixes.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_buttons.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_card.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_checkboxes.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_colors.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_footers.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_inputs-size.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_inputs.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_misc.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_mixins.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_navs-pagination.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_radios.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_responsive.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_ripples.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_shadows.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_tooltips.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_typography.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_variables.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_variables_bootstrap.scss" />
+    <Content Include="assets\scss\material-bootstrap-wizard\_wizard-card.scss" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Home\MajorProject.cshtml" />
@@ -1574,6 +1616,7 @@
     <Content Include="Views\Home\VendorUpload.cshtml" />
     <Content Include="Views\Home\VendorEnterOTP.cshtml" />
     <Content Include="Views\Home\VendorDocument.cshtml" />
+    <Content Include="Views\Home\UploadDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
