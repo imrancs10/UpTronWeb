@@ -179,7 +179,7 @@
                                                         <div class="btn-divider mr-2x mb-1x" role="divider">
                                                             <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditNews(@news.Id,'@news.Title','@(news.IsActive==true?1:0)','@(news.IsNew==true?1:0)')" href="#">Edit</a>
                                                             <span class="label-divider" id="Span1">or</span>
-                                                            <a id="lnkDelete" class="btn btn-primary" href="DeleteNewsAndUpdate/@news.Id">Delete</a>
+                                                            <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteNewsAndUpdate/@news.Id">Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

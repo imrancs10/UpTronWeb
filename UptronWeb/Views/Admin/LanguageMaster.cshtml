@@ -122,7 +122,7 @@
                             //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditLanguage(" + full.LanguageId + ",\"" + full.LanguageName.trim() + ",\"" + full.IsActive == true ? 1 : 0 + "\")' href='#'> Edit</a>" +
                             "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditLanguage(" + full.LanguageId + ",\"" + full.LanguageName.trim() + "\"," + full.IsActive + ")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
-                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteLanguage/' + full.LanguageId + '">Delete</a>' +
+                            '<a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteLanguage/' + full.LanguageId + '">Delete</a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;

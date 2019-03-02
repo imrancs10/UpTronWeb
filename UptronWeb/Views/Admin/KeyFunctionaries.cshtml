@@ -191,7 +191,7 @@
                                                                     @*<a id="lnkEdit" href="#" onclick="javascript:EditKeyFunctionaries(@keyfunctionaries.Id, '@keyfunctionaries.Name', '@keyfunctionaries.Designation', '@keyfunctionaries.Location', '@imgsrc')" class="btn btn-primary">Edit</a>*@
                                                                     <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditKeyFunctionaries(@keyfunctionaries.Id, '@keyfunctionaries.Name','@keyfunctionaries.Designation','@keyfunctionaries.Location','@imgsrc')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a href="DeleteKeyFunctionaries/@keyfunctionaries.Id" class="btn btn-danger">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteKeyFunctionaries/@keyfunctionaries.Id">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>

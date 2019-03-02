@@ -122,7 +122,7 @@
                             "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditGender(" + full.GenderId + ",\"" + full.GenderName.trim() + "\"," + full.IsActive + ")' href='#'> Edit</a>" +
                             //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditGender(" + full.GenderId + ",\"" + full.GenderName.trim() + "\")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
-                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteGender/' + full.GenderId + '">Delete</a>' +
+                            '<a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteGender/' + full.GenderId + '">Delete</a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;

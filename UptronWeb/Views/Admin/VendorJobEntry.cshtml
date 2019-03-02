@@ -157,7 +157,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditVendorjob(@vendorjob.Id, @vendorjob.VendorId, '@vendorjob.Jobtype', '@vendorjob.NoofRequirement', '@vendorjob.SkillsRequired')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" href="DeleteVendorJob/@vendorjob.Id" class="btn btn-danger">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteVendorJob/@vendorjob.Id">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>

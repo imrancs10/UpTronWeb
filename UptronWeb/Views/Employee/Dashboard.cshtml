@@ -34,34 +34,34 @@ MAIN CONTENT SECTION
                             <div class="col-sm-8">
                                 <div class="visible-xs">
                                     <h1 class="display-name media-heading text-teal">@Model.Name</h1>
-                                    <p class="text-muted mb-4x"><span class="mr-2x">@Model.EmployementStatus</span> <span><i class="fa fa-map-marker fa-fw"></i>@Model.City</span></p>
+                                    <p class="text-muted mb-4x"><span class="mr-2x">@Model.MobileNo</span> <span><i class="fa fa-map-marker fa-fw"></i>@Model.EmailId</span></p>
                                 </div>
                                 <div class="hidden-xs">
                                     <h1 class="media-heading text-light">@Model.Name</h1>
-                                    <p class="mb-4x text-light"><span class="mr-2x">@Model.EmployementStatus</span> <span><i class="fa fa-map-marker fa-fw"></i>@Model.City</span></p>
+                                    <p class="mb-4x text-light"><span class="mr-2x">@Model.MobileNo</span> <span><i class="fa fa-map-marker fa-fw"></i>@Model.EmailId</span></p>
                                 </div>
                             </div><!-- /.media-body -->
                         </div><!-- /.float-bar -->
                     </div><!-- /.cols -->
 
                     <div class="col-lg-6">
-                        <h4 class="text-muted">Achievement</h4>
+                        <h4 class="text-muted">Profile Status</h4>
                         <div class="row">
                             <div class="col-xs-3">
                                 <span class="headline"><strong>@Model.Experience</strong></span>
-                                <p>Years</p>
+                                <p>Experience</p>
                             </div>
                             <div class="col-xs-3">
-                                <span class="headline"><strong></strong></span>
-                                <p></p>
+                                <span class="headline"><strong>@Model.EmployementStatus</strong></span>
+                                <p>Employement Status</p>
                             </div>
                             <div class="col-xs-3">
-                                <span class="headline"><strong></strong></span>
-                                <p></p>
+                                <span class="headline"><strong>@Model.Religion</strong></span>
+                                <p>Religion</p>
                             </div>
                             <div class="col-xs-3">
-                                <span class="headline"><strong></strong></span>
-                                <p></p>
+                                <span class="headline"><strong>@Model.MaritalStatus</strong></span>
+                                <p>Marital Status</p>
                             </div>
                         </div>
                     </div><!-- /.cols -->
@@ -91,8 +91,8 @@ MAIN CONTENT SECTION
                                             </span>
                                         </div>
                                         <div class="media-body">
-                                            <h3 class="media-heading" href="#">My Profile</h3>
-                                            <p class="help-block">Progress in 46% - Last update 2d</p>
+                                            <h3 class="media-heading"><a href="/Employee/EmployeeProfile">My Profile</a></h3>
+                                            <p class="help-block"></p>
                                         </div><!-- /.media -body-->
                                     </div><!-- /.media -->
                                 </div><!-- /.panel-body -->
@@ -116,8 +116,8 @@ MAIN CONTENT SECTION
                                             </span>
                                         </div>
                                         <div class="media-body">
-                                            <h3 class="media-heading" href="#">Resignation</h3>
-                                            <p class="help-block">Progress in 89% - Last update 1w</p>
+                                            <h3 class="media-heading"><a href="~/Employee/EmployeeResignation">Resignation</a></h3>
+                                            <p class="help-block"></p>
                                         </div><!-- /.media -body-->
                                     </div><!-- /.media -->
                                 </div><!-- /.panel-body -->
@@ -141,8 +141,8 @@ MAIN CONTENT SECTION
                                             </span>
                                         </div>
                                         <div class="media-body">
-                                            <h3 class="media-heading" href="#">Upload Resume</h3>
-                                            <p class="help-block">Progress in 96% - Last update 1h</p>
+                                            <h3 class="media-heading"><a href="~/Employee/EmployeeSlip">Upload Resume</a></h3>
+                                            <p class="help-block"></p>
                                         </div><!-- /.media -body-->
                                     </div><!-- /.media -->
                                 </div><!-- /.panel-body -->

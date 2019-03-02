@@ -221,7 +221,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditMajorProjects(@majorprojects.ID, '@majorprojects.Title','@majorprojects.DepartmentName','@(majorprojects.IsActive==true ? 1 : 0)','@majorprojects.OrderNumber','@majorprojects.WorkDescription')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-danger" href="DeleteMajorProjectsById/@majorprojects.ID">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteMajorProjectsById/@majorprojects.ID">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>

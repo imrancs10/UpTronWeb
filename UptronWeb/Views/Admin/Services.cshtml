@@ -245,7 +245,7 @@
                                                         <div class="btn-divider mr-2x mb-1x" role="divider">
                                                             <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditService(@service.Id,'@service.Name','@service.Caption','@(service.IsActive==true?1:0)','@service.OrderNumber','@i')" href="#">Edit</a>
                                                             <span class="label-divider" id="Span1">or</span>
-                                                            <a id="lnkDelete" class="btn btn-danger" href="DeleteServiceById/@service.Id">Delete</a>
+                                                            <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteServiceById/@service.Id">Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

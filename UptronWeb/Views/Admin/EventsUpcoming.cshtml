@@ -175,7 +175,7 @@
                                                                         <a id="lnkEdit" class="btn btn-primary" onclick="javascript:EditEvents(@Upcomingevents.Id, '@Upcomingevents.Title','@(Upcomingevents.IsActive==true?1:0)',
                                                                                                                                               '@(Upcomingevents.IsNew==true?1:0)')" href="#">Edit</a>
                                                                         <span class="label-divider" id="Span1">or</span>
-                                                                        <a id="lnkDelete" class="btn btn-primary" href="DeleteUpcomingEvents/@Upcomingevents.Id">Delete</a>
+                                                                        <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteUpcomingEvents/@Upcomingevents.Id">Delete</a>
                                                                     </div>
                                                                 </div>
                                                             </td>

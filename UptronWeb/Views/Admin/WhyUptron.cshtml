@@ -171,7 +171,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditWhyWptron(@whyUptron.Id, '@whyUptron.Counter', '@whyUptron.CounterName', '@(whyUptron.IsActive == true ? 1 : 0)', '@whyUptron.OrderNumber')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-danger" href="DeleteWhyUptronById/@whyUptron.Id">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteWhyUptronById/@whyUptron.Id">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -213,6 +213,12 @@
         $('[name=IsActive]').prop('checked', IsActive == 1 ? true : false);
         $('#OrderNumber').val(OrderNumber);
         
+    }
+    function ConfirmOnDelete(item) {
+        if (confirm("Are you sure to delete this record..?") == true)
+            return true;
+        else
+            return false;
     }
 </script>
 

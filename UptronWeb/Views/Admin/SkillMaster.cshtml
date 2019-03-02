@@ -121,7 +121,7 @@
                             //"<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditSkill(" + full.SkillId + ",\"" + full.SkillName.trim() + ",\"" + full.IsActive == true ? 1 : 0 + "\")' href='#'> Edit</a>" +
                             "<a id='lnkEdit' class='btn btn-primary' onclick='javascript:EditSkill(" + full.SkillsId + ",\"" + full.SkillsName.trim() + "\"," + full.IsActive + ")' href='#'> Edit</a>" +
                             '<span class="label-divider" id="Span1">or</span>' +
-                            '<a id="lnkDelete" class="btn btn-primary" href="DeleteSkill/' + full.SkillsId + '">Delete</a>' +
+                            '<a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteSkill/' + full.SkillsId + '">Delete</a>' +
                             '</div>' +
                             '</div>';
                         return htmlDOM;

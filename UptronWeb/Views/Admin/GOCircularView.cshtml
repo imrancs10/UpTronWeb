@@ -84,9 +84,9 @@
                                             <td>
                                                 <div class="form-group mt-lg">
                                                     <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                        <a href="GOCircularEntry/@goCircular.Id" class="btn btn-primary">Edit</a>
+                                                        <a id="lnkEdit" href="GOCircularEntry/@goCircular.Id" class="btn btn-primary">Edit</a>
                                                         <span class="label-divider" id="Span1">or</span>
-                                                        <a href="DeleteGOCircular/@goCircular.Id" class="btn btn-danger">Delete</a>
+                                                        <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteGOCircular/@goCircular.Id">Delete</a>
                                                     </div>
                                                 </div>
                                                 @*<div class="form-group mt-lg">
