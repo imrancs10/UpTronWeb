@@ -136,7 +136,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditGalleryCategory(@gallerycategory.Id,'@gallerycategory.GalleryName','@imgsrc')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue();" href="#" data-url="DeleteGalleryCategory/@gallerycategory.Id">Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue(@gallerycategory.Id);" href="#" data-url="DeleteGalleryCategory">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>

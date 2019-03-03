@@ -238,7 +238,7 @@
                                                                 <div class="btn-divider mr-2x mb-1x" role="divider">
                                                                     <a id="lnkEdit" class="btn btn-primary" href="#" onclick="javascript:EditSlider(@slider.Id, '@slider.SliderName', '@slider.Caption1', '@slider.Caption2', '@slider.CaptionAuthor', '@(slider.IsActive == true ? 1 : 0)', '@slider.OrderNumber', '@imgsrc')">Edit</a>
                                                                     <span class="label-divider" id="Span1">or</span>
-                                                                    <a id="lnkDelete" class="btn btn-danger" href="DeleteSlider/@slider.Id" >Delete</a>
+                                                                    <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue(@slider.Id);" href="#" data-url="DeleteSlider">Delete</a>
                                                                 </div>
                                                             </div>
                                                         </td>

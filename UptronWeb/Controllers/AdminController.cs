@@ -179,7 +179,12 @@ namespace UptronWeb.Controllers
             return File(fileByte, "application/pdf");
         }
 
-
+        public ActionResult TenderDelete(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteTender(Id);
+            return RedirectToAction("TenderView", new { deleteMessage = true });
+        }
 
         public ActionResult GalleryCategory()
         {
@@ -210,6 +215,14 @@ namespace UptronWeb.Controllers
             }
             return View();
         }
+
+        public ActionResult DeleteGalleryCategory(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteGalleryCategory(Id);
+            return RedirectToAction("GalleryCategory", new { deleteMessage = true });
+        }
+
         public ActionResult PhotoGallery()
         {
             return View();
@@ -1224,6 +1237,13 @@ namespace UptronWeb.Controllers
             MasterBAL bal = new MasterBAL();
             var result = bal.DeleteLanguage(Id);
             return RedirectToAction("LanguageMaster", new { deleteMessage = true });
+        }
+
+        public ActionResult DeleteSkill(int Id)
+        {
+            MasterBAL bal = new MasterBAL();
+            var result = bal.DeleteSkill(Id);
+            return RedirectToAction("SkillMaster", new { deleteMessage = true });
         }
 
         public ActionResult SkillMaster(bool? deleteMessage)

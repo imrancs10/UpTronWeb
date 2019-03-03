@@ -157,7 +157,7 @@
                                                         <div class="btn-divider mr-2x mb-1x" role="divider">
                                                             <a id="lnkEdit" href="#" class="btn btn-primary" onclick="javascript:EditPartnerDetail(@partner.Id,'@partner.PartnerName','@partner.PartnerUrl','@imgsrc')">Edit</a>
                                                             <span class="label-divider" id="Span1">or</span>
-                                                            <a href="#" class="btn btn-danger">Delete</a>
+                                                            <a id="lnkDelete" class="btn btn-danger" onclick="javascript:return openDialogue(@partner.Id);" href="#" data-url="DeletePartner">Delete</a>
                                                         </div>
                                                     </div>
                                                 </td>

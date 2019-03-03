@@ -11,6 +11,9 @@ namespace UptronWeb.BAL.Master
     public class MasterBAL
     {
         private UptronWebEntities _db = null;
+
+        public int Id { get; private set; }
+
         public Enums.CrudStatus SaveGOCircluar(GOCircular goCircular)
         {
             _db = new UptronWebEntities();
@@ -170,6 +173,16 @@ namespace UptronWeb.BAL.Master
             var result = _db.GalleryPhotoMasters.Where(x => x.GalleryId == Id).ToList();
             return result;
         }
+
+        public bool DeleteTender(int Id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Tenders.FirstOrDefault(x => x.id == Id);
+            _db.Tenders.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
         public Enums.CrudStatus SaveNewsAndUpdate(NewsUpdateMaster newsAndUpdate)
         {
             _db = new UptronWebEntities();
@@ -211,6 +224,16 @@ namespace UptronWeb.BAL.Master
                 }
             }
         }
+
+        public bool DeleteGalleryCategory(int id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.GalleryMasters.FirstOrDefault(x => x.Id == id);
+            _db.GalleryMasters.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
         public List<NewsUpdateMaster> GetAllNewsUpdate()
         {
             _db = new UptronWebEntities();
