@@ -478,7 +478,7 @@
                     id: "Yes",
                     text: "Yes",
                     click: function () {
-                        var url = $("[id*=lnkDelete]").data('url');
+                        var url = $("[id*=lnkDelete]").data('url') + "/" + $('#hiddenID').val();
                         window.location = url;
                     }
                 },
@@ -491,10 +491,13 @@
                 }
             ]
         });
-        function openDialogue() {
+        function openDialogue(Id) {
             $('#dialogConfirmation').dialog('open');
+            $('#hiddenID').val(Id);
+            return false;
         }
         
     </script>
+    <input type="hidden" id="hiddenID" value="" />
 </body>
 </html>
