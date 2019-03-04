@@ -531,6 +531,12 @@ namespace UptronWeb.Controllers
             return View(messages);
         }
 
+        public ActionResult DeletePartner(int Id)
+        {
+            GeneralDetailBAL bal = new GeneralDetailBAL();
+            var result = bal.DeletePartnerById(Id);
+            return RedirectToAction("Partner");
+        }
 
         public ActionResult Majorprojects()
         {

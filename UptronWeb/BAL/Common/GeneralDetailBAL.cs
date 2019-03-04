@@ -466,6 +466,15 @@ namespace UptronWeb.BAL.Common
             return result;
         }
 
+        public bool DeletePartnerById(int id)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.Partners.FirstOrDefault(x => x.Id == id);
+            _db.Partners.Remove(result);
+            _db.SaveChanges();
+            return true;
+        }
+
         public List<Slider> GetAllActiveSliderDetail()
         {
             _db = new UptronWebEntities();
