@@ -226,6 +226,7 @@
     <Compile Include="Models\JobPortal\JobRegistrationQualificationModel.cs" />
     <Compile Include="Models\JobPortal\JobRegistrationSkillModel.cs" />
     <Compile Include="Models\Common\ServiceModel.cs" />
+    <Compile Include="Models\JobPortal\VendorModel.cs" />
     <Compile Include="Models\JobPortal\VendorJobModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

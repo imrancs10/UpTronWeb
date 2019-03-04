@@ -537,52 +537,33 @@ namespace UptronWeb.Controllers
             return Json(whyuptron, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult VendorUpload(bool? invalidVendor)
-        {
-            if (invalidVendor == true)
-            {
-                SetAlertMessage("Vendor Detail are not matched");
-            }
-            return View();
-        }
         [HttpPost]
-        public ActionResult CheckVendorDetail(string VenderCode, string MobileNumber, string EmailID)
+        public JsonResult CheckVendorDetail(VendorModel vendorModel)
         {
             GeneralDetailBAL bal = new GeneralDetailBAL();
-            var vendor = bal.CheckVendorDetail(VenderCode, MobileNumber, EmailID);
+            var vendor = bal.CheckVendorDetail(vendorModel.VenderCode, vendorModel.MobileNumber, vendorModel.EmailID);
             if (vendor != null)
             {
                 string verificationCode = VerificationCodeGeneration.GenerateDeviceVerificationCode();
                 Session["otp"] = verificationCode;
                 Session["vendorId"] = vendor.Id;
                 SendMailForVendorVerification(vendor.VendorName, vendor.EmailId, verificationCode);
-                return RedirectToAction("VendorEnterOTP");
+                return Json("OTP Sent");
             }
-            return RedirectToAction("VendorUpload", new { invalidVendor = true });
+            return Json("OTP Sent Fail");
         }
 
-        public ActionResult VendorEnterOTP(bool? inValidOTP)
-        {
-            if (inValidOTP == true)
-            {
-                SetAlertMessage("Entered OTP is not matched");
-            }
-            return View();
-        }
         [HttpPost]
-        public ActionResult CheckVendorOTP(string OTPText)
+        public JsonResult CheckVendorOTP(VendorModel vendorModel)
         {
-            if (OTPText == Convert.ToString(Session["otp"]))
+            if (Convert.ToString(vendorModel.OTPText) == Convert.ToString(Session["otp"]))
             {
                 Session["otp"] = null;
-                return RedirectToAction("VendorDocument");
+                return Json("OTP Mached");
             }
-            return RedirectToAction("VendorEnterOTP", new { inValidOTP = true });
+            return Json("OTP Not Mached");
         }
-        public ActionResult VendorDocument()
-        {
-            return View();
-        }
+
         [HttpPost]
         public ActionResult VendorDocument(HttpPostedFileBase documentFile)
         {
@@ -597,7 +578,8 @@ namespace UptronWeb.Controllers
             };
             var result = bal.SaveVendorDocument(document);
             SetAlertMessage("Vendor Document has been saved", "Document");
-            return View();
+            TempData["hasDocumentUpload"] = true;
+            return RedirectToAction("UploadDocument");
         }
         private async Task SendMailForVendorVerification(string Name, string Email, string verificationCode)
         {
@@ -618,6 +600,10 @@ namespace UptronWeb.Controllers
 
         public ActionResult UploadDocument()
         {
+            if (Convert.ToBoolean(TempData["hasDocumentUpload"]) == true)
+            {
+                ViewData["DocumentUpload"] = true;
+            }
             return View();
         }
     }
