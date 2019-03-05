@@ -1618,6 +1618,7 @@
     <Content Include="Views\Home\VendorEnterOTP.cshtml" />
     <Content Include="Views\Home\VendorDocument.cshtml" />
     <Content Include="Views\Home\UploadDocument.cshtml" />
+    <Content Include="Views\Admin\VendorUploadView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

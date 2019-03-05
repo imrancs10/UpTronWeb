@@ -130,7 +130,7 @@ h3 a:hover {
     color: #CFB53B;
 }
 h4 {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 20px;
     text-transform: capitalize;
     font-family: Blackadder ITC;
@@ -3125,7 +3125,7 @@ textarea.form-control {
 
 }
 .productImage a {
-    opacity: 0;
+    /*opacity: 0;*/
 }
 .productImage a i {
     width: 50px;
@@ -3152,7 +3152,7 @@ textarea.form-control {
     background-color: #ffffff;
 }
 .productSection:hover .productImage a {
-    opacity: 1;
+    /*opacity: 1;*/
 }
 .reviewSection {
     padding: 0 0 10px 0;

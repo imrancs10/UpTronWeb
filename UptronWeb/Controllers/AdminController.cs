@@ -1421,5 +1421,10 @@ namespace UptronWeb.Controllers
             var result = bal.DeleteWhyUptron(Id);
             return RedirectToAction("WhyUptron");
         }
+
+        public ActionResult VendorUploadView()
+        {
+            return View();
+        }
     }
 }
