@@ -134,5 +134,12 @@ namespace UptronWeb.BAL.Common
             var result = _db.Cities.ToList();
             return result;
         }
+        public List<VendorDetail> GetVendors()
+        {
+            _db = new UptronWebEntities();
+            _db.Configuration.LazyLoadingEnabled = false;
+            var result = _db.VendorDetails.Where(x => x.IsActive == true && x.Permitted == true).ToList();
+            return result;
+        }
     }
 }

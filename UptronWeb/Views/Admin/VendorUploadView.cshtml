@@ -1,4 +1,7 @@
 ﻿@using DataLayer;
+@using System.Data;
+@using System.Linq;
+
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -12,7 +15,7 @@
             </ul>
         </div><!-- /.content-bar -->
         <hr />
-        
+
         <div class="content-body">
             <div class="col-lg-12">
                 <div class="featured-box featured-box-primary align-left mt-xlg">
@@ -31,11 +34,7 @@
                                                     <label class="control-label">Vendor Name</label>
                                                 </label>
                                                 <div class="col-sm-8">
-                                                    <select name="Vendor" id="Vendor" class="form-control" required>
-                                                        <option value="">Select Vendor</option>
-                                                        <option value="Uptron">Uptron</option>
-                                                        <option value="Demon">Demon</option>
-                                                    </select>
+                                                    <select name="Vendor" id="VendorDropdown" class="form-control"></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -48,8 +47,8 @@
                 <br />
             </div>
             <!-- ============================================
-    LATEST POSTS LIST
-    =============================================== -->
+            LATEST POSTS LIST
+            =============================================== -->
             <div class="panel" data-fill-color="true">
                 <div class="panel-body">
                     <div class="col-md-12">
@@ -69,53 +68,77 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline center"><strong>1</strong></span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline center">UPL-1054</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline center">Uptron</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="form-group mt-lg">
-                                                    <div class="input-group input-group-icon">
-                                                        <span class="headline center">
-                                                            neyazahmad001@gmail.com
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <div class="form-group mt-lg">
-                                                    <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                        @*<a href="#" target="_blank">View File</a>*@
-                                                        <a id="lnkEdit" href="" class="btn btn-primary">View</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <div class="form-group mt-lg">
-                                                    <div class="btn-divider mr-2x mb-1x" role="divider">
-                                                        <a id="lnkDelete" class="btn btn-info" href="#">Download</a>
-                                                    </div>
-                                                </div>
-                                            </tdstyle="text-align:>
-                                        </tr>
+                                        @{
+                                            var vendorDetail = ViewData["VendorDetail"] as VendorDetail;
+                                            if (vendorDetail != null)
+                                            {
+                                                int i = 1;
+                                                if (vendorDetail.VendorDocuments.Any())
+                                                {
+                                                    foreach (var document in vendorDetail.VendorDocuments)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline center"><strong>@i.</strong></span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline center">@vendorDetail.VendorCode</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline center">@vendorDetail.VendorName</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="input-group input-group-icon">
+                                                                        <span class="headline center">
+                                                                            @vendorDetail.EmailId
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                        <a id="lnkEdit" class="btn btn-primary" target="_blank"
+                                                                           href="/Admin/ViewVendorFile?documentId=@document.Id">View</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <div class="form-group mt-lg">
+                                                                    <div class="btn-divider mr-2x mb-1x" role="divider">
+                                                                        <a id="lnkDelete" class="btn btn-info"
+                                                                           href="/Admin/DownloadVendorFile?documentId=@document.Id">Download</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        i = i + 1;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            No Record Found.
+                                                        </td>
+                                                    </tr>
+                                                }
+
+                                            }
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -135,3 +158,58 @@
         </div><!-- /.content -->
     </div>
 </section>
+<script type="text/javascript">
+    $(document).ready(function () {
+        fillVendor();
+    });
+    function fillVendor() {
+        let dropdown = $('#VendorDropdown');
+        dropdown.empty();
+        dropdown.append('<option value="">Select Vendor</option>');
+        dropdown.prop('selectedIndex', 0);
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: '/Common/GetVendors',
+            async: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry.Id).text(entry.VendorName + " - " + entry.VendorCode));
+                });
+                var vendorId = getUrlParameter('vendorId');
+                if (vendorId != '' && vendorId != undefined) {
+                    $('#VendorDropdown').val(vendorId);
+                }
+            },
+            failure: function (response) {
+                alert(response);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    $('#VendorDropdown').on('change', function (e) {
+        var valueSelected = this.value;
+        FillVendorDetail(valueSelected);
+    });
+    function FillVendorDetail(vendorId) {
+        var url = "/Admin/VendorUploadView?vendorId=" + vendorId;
+        window.location.href = url;
+    }
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+</script>

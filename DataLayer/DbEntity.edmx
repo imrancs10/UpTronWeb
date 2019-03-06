@@ -374,8 +374,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorCode" Type="varchar" MaxLength="50" />
-          <Property Name="VendorName" Type="varchar" MaxLength="50" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="VendorName" Type="varchar" MaxLength="50" />
           <Property Name="TypeofFirm" Type="varchar" MaxLength="100" />
           <Property Name="TypeOfBusiness" Type="varchar" MaxLength="100" />
           <Property Name="GSTNumber" Type="varchar" MaxLength="50" />
@@ -386,7 +387,6 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
-          <Property Name="EmailId" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VendorDocument">
           <Key>
@@ -395,6 +395,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VendorId" Type="int" />
           <Property Name="DocumentFile" Type="varbinary(max)" />
+          <Property Name="FileExtension" Type="varchar" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="VendorJob">
@@ -1582,6 +1583,7 @@
           <Property Name="DocumentFile" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="VendorDetail" Relationship="UpTronWebModel.FK_VendorDocument_VendorDocument" FromRole="VendorDocument" ToRole="VendorDetail" />
+          <Property Name="FileExtension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_VendorDocument_VendorDocument">
           <End Type="UpTronWebModel.VendorDetail" Role="VendorDetail" Multiplicity="0..1" />
@@ -2045,6 +2047,7 @@
           <EntitySetMapping Name="VendorDocuments">
             <EntityTypeMapping TypeName="UpTronWebModel.VendorDocument">
               <MappingFragment StoreEntitySet="VendorDocument">
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="DocumentFile" ColumnName="DocumentFile" />
                 <ScalarProperty Name="VendorId" ColumnName="VendorId" />

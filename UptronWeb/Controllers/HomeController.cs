@@ -569,11 +569,13 @@ namespace UptronWeb.Controllers
         {
             byte[] fileattachment = null;
             fileattachment = Utility.serilizeImagetoByte(documentFile, fileattachment);
+            string extension = documentFile.FileName.Substring(documentFile.FileName.LastIndexOf('.'));
             GeneralDetailBAL bal = new GeneralDetailBAL();
             VendorDocument document = new VendorDocument()
             {
                 VendorId = Convert.ToInt32(Session["vendorId"]),
                 DocumentFile = fileattachment,
+                FileExtension = extension,
                 CreatedDate = DateTime.Now
             };
             var result = bal.SaveVendorDocument(document);

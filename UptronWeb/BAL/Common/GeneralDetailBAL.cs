@@ -555,7 +555,7 @@ namespace UptronWeb.BAL.Common
                 if (_deptRow == null)
                 {
                     _db.Entry(majorprojects).State = EntityState.Added;
-                    
+
                     try
                     {
                         _effectRow = _db.SaveChanges();
@@ -762,6 +762,20 @@ namespace UptronWeb.BAL.Common
             _db.Entry(doc).State = EntityState.Added;
             _effectRow = _db.SaveChanges();
             return _effectRow > 0 ? Enums.CrudStatus.Saved : Enums.CrudStatus.NotSaved;
+        }
+        public VendorDetail GetVendorList(int vendorID)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.VendorDetails.Include(x => x.VendorDocuments).Where(x => x.IsActive == true
+                                      && x.Permitted == true
+                                      && x.Id == vendorID).FirstOrDefault();
+            return result;
+        }
+        public VendorDocument GetVendorDocument(int documentId)
+        {
+            _db = new UptronWebEntities();
+            var result = _db.VendorDocuments.Where(x => x.Id == documentId).FirstOrDefault();
+            return result;
         }
     }
 }

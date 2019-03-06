@@ -1422,9 +1422,32 @@ namespace UptronWeb.Controllers
             return RedirectToAction("WhyUptron");
         }
 
-        public ActionResult VendorUploadView()
+        public ActionResult VendorUploadView(string vendorId)
         {
+            if (!string.IsNullOrEmpty(vendorId))
+            {
+                GeneralDetailBAL _details = new GeneralDetailBAL();
+                ViewData["VendorDetail"] = _details.GetVendorList(Convert.ToInt32(vendorId));
+            }
             return View();
+        }
+        public ActionResult DownloadVendorFile(string documentId)
+        {
+            GeneralDetailBAL _details = new GeneralDetailBAL();
+            var document = _details.GetVendorDocument(Convert.ToInt32(documentId));
+            byte[] imageBytes = document.DocumentFile;
+            FileContentResult responseFile = new FileContentResult(imageBytes, _mappings[document.FileExtension])
+            {
+                FileDownloadName = "vendor_file_" + DateTime.Now.Date + document.FileExtension
+            };
+            return responseFile;
+        }
+        public ActionResult ViewVendorFile(string documentId)
+        {
+            GeneralDetailBAL _details = new GeneralDetailBAL();
+            var document = _details.GetVendorDocument(Convert.ToInt32(documentId));
+            byte[] imageBytes = document.DocumentFile;
+            return File(imageBytes, _mappings[document.FileExtension]);
         }
     }
 }

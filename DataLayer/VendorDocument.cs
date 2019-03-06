@@ -18,6 +18,7 @@ namespace DataLayer
         public Nullable<int> VendorId { get; set; }
         public byte[] DocumentFile { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
+        public string FileExtension { get; set; }
     
         public virtual VendorDetail VendorDetail { get; set; }
     }
